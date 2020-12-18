@@ -21,7 +21,8 @@ export default function SarsCov2Suspense(props) {
 /** https://threejs.org/docs/#api/en/objects/Group */
 function SarsCov2(props) {
   const group = useRef();
-  const { nodes, materials } = useGLTF("/models/SarsCov2/scene.gltf");
+  const gltf = useGLTF("/models/SarsCov2/scene.gltf");
+  const { nodes, materials } = gltf as any;
   // const [ref, api] = useSphere(() => ({ mass: 1 }));
 
   // {/* // https://threejs.org/docs/#api/en/objects/Group */}

@@ -8,7 +8,20 @@ const Scene = () => {
     <>
       <OrbitControls />
       <Lighting />
-      <Physics>
+      <Physics
+      // iterations={20}
+      // tolerance={0.0001}
+      // defaultContactMaterial={{
+      //   friction: 0.9,
+      //   restitution: 0.7,
+      //   contactEquationStiffness: 1e7,
+      //   contactEquationRelaxation: 1,
+      //   frictionEquationStiffness: 1e7,
+      //   frictionEquationRelaxation: 2,
+      // }}
+      // // gravity={[0, -40, 0]}
+      // allowSleep={false}
+      >
         <Plane />
         <Cube />
         <Covid />
@@ -24,7 +37,7 @@ function Lighting() {
     <>
       <pointLight position={[10, 10, 10]} intensity={0.2} />
       <ambientLight intensity={0.3} />
-      <color attach="background" args={["#d3e4a4"]} />
+      <color attach="background" args={["#d3e4a4"] as any} />
       <pointLight position={[-10, -10, -10]} />
       <spotLight
         position={[10, 10, 10]}
