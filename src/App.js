@@ -8,11 +8,13 @@ function App() {
 
   return (
     <div className="App">
-      <Controls.Canvas
-        style={{ height: windowSize.height, width: windowSize.width }}
-      >
-        <Scene />
-      </Controls.Canvas>
+      <Controls.Provider>
+        <Controls.Canvas
+          style={{ height: windowSize.height, width: windowSize.width }}
+        >
+          <Scene />
+        </Controls.Canvas>
+      </Controls.Provider>
     </div>
   );
 }

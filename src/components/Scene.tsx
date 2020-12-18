@@ -3,8 +3,21 @@ import { Physics } from "@react-three/cannon";
 import { OrbitControls } from "@react-three/drei";
 import { Covid } from "./Covid";
 import { Lighting } from "./Lighting";
+import { useControl } from "react-three-gui";
+import { randBetween } from "../utils/utils";
 
 const Scene = () => {
+  const numParticles = useControl("particles", {
+    type: "number",
+    min: 1,
+    max: 1000,
+    value: 2,
+  });
+  const positions = [...new Array(Math.ceil(numParticles))].map((_, idx) => [
+    randBetween(-10, 10),
+    randBetween(-10, 10),
+    randBetween(-10, 10),
+  ]);
   return (
     <>
       <OrbitControls />
@@ -24,8 +37,9 @@ const Scene = () => {
         // allowSleep={false}
       >
         {/* <Plane /> */}
-        <Covid position={[10, 0, 0]} />
-        <Covid position={[-10, 0, 0]} />
+        {positions.map((pos) => (
+          <Covid position={pos} />
+        ))}
       </Physics>
     </>
   );
