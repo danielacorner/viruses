@@ -1,5 +1,5 @@
 import React from "react";
-import { Canvas } from "react-three-fiber";
+import { Controls } from "react-three-gui";
 import Scene from "./components/Scene";
 import { useWindowSize } from "./utils/hooks";
 
@@ -8,9 +8,11 @@ function App() {
 
   return (
     <div className="App">
-      <Canvas style={{ height: windowSize.height, width: windowSize.width }}>
+      <Controls.Canvas
+        style={{ height: windowSize.height, width: windowSize.width }}
+      >
         <Scene />
-      </Canvas>
+      </Controls.Canvas>
     </div>
   );
 }
