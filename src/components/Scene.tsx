@@ -2,6 +2,7 @@ import React from "react";
 import { Physics, usePlane, useBox, useSphere } from "@react-three/cannon";
 import SarsCov2Suspense from "./GLTFs/SarsCov2";
 import { OrbitControls } from "@react-three/drei";
+import { useStore } from "../store";
 
 const Scene = () => {
   return (
@@ -24,7 +25,8 @@ const Scene = () => {
       >
         <Plane />
         <Cube />
-        <Covid />
+        <Covid position={[0, 0, 0]} />
+        <Covid position={[0, 2, 3]} />
       </Physics>
     </>
   );
@@ -71,23 +73,24 @@ function Cube(props) {
   );
 }
 
-function Covid(props) {
-  const scale = 0.015;
-  const pos = [0, 0, 0];
+function Covid({ position, ...rest }) {
+  const covidScale = 0.015;
+
+  const scale = useStore((state) => state.scale);
 
   const [ref] = useSphere(() => ({
     // rotation: [-Math.PI / 2, 0, 0],
     mass: 1,
-    position: [3, 5, 0],
+    position: position.map((xyz) => xyz * scale),
   }));
   return (
-    <mesh ref={ref}>
+    <mesh ref={ref} {...rest}>
       <boxBufferGeometry attach="geometry" />
       <SarsCov2Suspense
         attach="material"
         // ref={idx === 0 ? ref : null}
-        scale={[scale, scale, scale]}
-        position={pos}
+        scale={[covidScale, covidScale, covidScale]}
+        position={[0, 0, 0]}
       />
     </mesh>
   );
