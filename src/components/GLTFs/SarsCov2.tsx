@@ -6,21 +6,12 @@ source: https://sketchfab.com/3d-models/lowpoly-coronavirus-sars-cov-2-81acdfb64
 title: Lowpoly Coronavirus (SARS-CoV-2)
 */
 
-import React, { useRef, Suspense } from "react";
+import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei/useGLTF";
 // import { useSphere } from "@react-three/cannon";
 
-export default function SarsCov2Suspense(props) {
-  console.log("🌟🚨 ~ SarsCov2Suspense ~ props", props);
-  return (
-    <Suspense fallback={null}>
-      <SarsCov2 {...props} />
-    </Suspense>
-  );
-}
-
 /** https://threejs.org/docs/#api/en/objects/Group */
-function SarsCov2(props) {
+export default function SarsCov2(props) {
   console.log("🌟🚨 ~ SarsCov2 ~ props", props.rotation);
   const group = useRef();
   const gltf = useGLTF("/models/SarsCov2/scene.gltf");

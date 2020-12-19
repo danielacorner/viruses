@@ -1,0 +1,242 @@
+{
+  "accessors": [
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 22737,
+      "max": [
+        36.8135986328125,
+        9.4306497573852539,
+        51.423801422119141
+      ],
+      "min": [
+        -20.316799163818359,
+        -41.145801544189453,
+        -1.313289999961853
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 272844,
+      "componentType": 5126,
+      "count": 22737,
+      "max": [
+        0.99985587596893311,
+        0.99986714124679565,
+        0.99993348121643066
+      ],
+      "min": [
+        -0.99987488985061646,
+        -0.99987345933914185,
+        -0.99988597631454468
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 136290,
+      "max": [
+        22736
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 545688,
+      "componentType": 5126,
+      "count": 7330,
+      "max": [
+        35.45159912109375,
+        -21.348199844360352,
+        38.069698333740234
+      ],
+      "min": [
+        -25.50200080871582,
+        -48.966300964355469,
+        6.491030216217041
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 633648,
+      "componentType": 5126,
+      "count": 7330,
+      "max": [
+        0.99999457597732544,
+        0.99986600875854492,
+        0.99962174892425537
+      ],
+      "min": [
+        -0.99983549118041992,
+        -0.99989306926727295,
+        -0.99968385696411133
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 545160,
+      "componentType": 5125,
+      "count": 43968,
+      "max": [
+        7329
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "MedChemProf (https://sketchfab.com/MedChemProf)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/thrombin-hirudin-surface-e0e1be8c525849d1a30b110829921531",
+      "title": "Thrombin Hirudin Surface"
+    },
+    "generator": "Sketchfab-4.47.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 721032,
+      "byteOffset": 0,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 721608,
+      "byteOffset": 721032,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 1442640,
+      "uri": "scene.bin"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "name": "material_1",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          1,
+          0.90466117440000005,
+          0,
+          1
+        ],
+        "metallicFactor": 0.270007622,
+        "roughnessFactor": 0.63586128050000001
+      }
+    },
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "name": "material",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.042154737892794718,
+          0.40978045221433884,
+          0.80181109147691465,
+          1
+        ],
+        "metallicFactor": 0.17244664630000001,
+        "roughnessFactor": 0.2177972561
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0
+          },
+          "indices": 2,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 4,
+            "POSITION": 3
+          },
+          "indices": 5,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "name": "RootNode (gltf orientation matrix)",
+      "rotation": [
+        -0.70710678118654746,
+        -0,
+        -0,
+        0.70710678118654757
+      ]
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "RootNode (model correction matrix)"
+    },
+    {
+      "children": [
+        3,
+        4
+      ],
+      "name": "Thrombin_Hirudin_Surface.obj.cleaner.materialmerger.gles"
+    },
+    {
+      "mesh": 0,
+      "name": ""
+    },
+    {
+      "mesh": 1,
+      "name": ""
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "OSG_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}
+
