@@ -9,7 +9,7 @@ title: Activator Protein-1
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei/useGLTF";
 
-export default function Model(props) {
+export default function ModelActivatorProtein(props) {
   const group = useRef();
   const { nodes, materials } = useGLTF(
     "/models/activator_protein-1/scene.gltf"

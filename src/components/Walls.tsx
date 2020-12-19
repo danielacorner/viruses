@@ -49,8 +49,13 @@ export function Walls() {
 
   return (
     <>
-      {walls.map((props) => (
-        <Plane {...props} width={worldRadius * 2} height={worldRadius * 2} />
+      {walls.map((props, idx) => (
+        <Plane
+          {...props}
+          key={idx}
+          width={worldRadius * 2}
+          height={worldRadius * 2}
+        />
       ))}
     </>
   );

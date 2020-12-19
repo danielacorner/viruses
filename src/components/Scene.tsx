@@ -10,6 +10,7 @@ import JitteryParticle from "./Shapes/JitteryParticle";
 import ModelActivatorProtein from "./GLTFs/activator_protein-1";
 import SarsCov2 from "./GLTFs/SarsCov2";
 import Model1bv1 from "./GLTFs/1bv1";
+import ModelAntibody from "./GLTFs/antibody";
 
 const getRandStartPosition = (min, max) => [
   randBetween(min, max),
@@ -44,6 +45,11 @@ const Scene = () => {
     },
     {
       particle: ModelActivatorProtein,
+      scale: 0.005,
+      positions: getRandPositionsArr(numParticles, worldRadius / 2),
+    },
+    {
+      particle: ModelAntibody,
       scale: 0.005,
       positions: getRandPositionsArr(numParticles, worldRadius / 2),
     },
