@@ -12,7 +12,6 @@ import { useGLTF } from "@react-three/drei/useGLTF";
 
 /** https://threejs.org/docs/#api/en/objects/Group */
 export default function SarsCov2(props) {
-  console.log("🌟🚨 ~ SarsCov2 ~ props", props.rotation);
   const group = useRef();
   const gltf = useGLTF("/models/SarsCov2/scene.gltf");
   const { nodes, materials } = gltf as any;

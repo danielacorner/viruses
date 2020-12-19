@@ -5,10 +5,21 @@ import { Lighting } from "./Lighting";
 import { useControl } from "react-three-gui";
 import { randBetween } from "../utils/utils";
 import { Walls } from "./Walls";
-import { ShapeSarsCov2 } from "./Shapes/ShapeSarsCov2";
-import { Shape1bv1 } from "./Shapes/Shape1bv1";
 import { useStore } from "../store";
-// import niceColors from "nice-color-palettes";
+import JitteryParticle from "./Shapes/JitteryParticle";
+import ModelActivatorProtein from "./GLTFs/activator_protein-1";
+import SarsCov2 from "./GLTFs/SarsCov2";
+
+const getRandStartPosition = (min, max) => [
+  randBetween(min, max),
+  randBetween(min, max),
+  randBetween(min, max),
+];
+
+const getRandPositionsArr = (num, scalePosition) =>
+  [...new Array(Math.ceil(num))].map((_, idx) =>
+    getRandStartPosition(-scalePosition, scalePosition)
+  );
 
 const Scene = () => {
   const numParticles = useControl("particles", {
@@ -18,19 +29,10 @@ const Scene = () => {
     value: 10,
   });
   const worldSize = useStore((state) => state.worldSize);
-  const getRandStartPosition = (min, max) => [
-    randBetween(min, max),
-    randBetween(min, max),
-    randBetween(min, max),
-  ];
-  const getRandPositionsArr = (num) =>
-    [...new Array(Math.ceil(num))].map((_, idx) =>
-      getRandStartPosition(-worldSize, worldSize)
-    );
 
   const positions = {
-    covid: getRandPositionsArr(numParticles),
-    protein1: getRandPositionsArr(numParticles),
+    covid: getRandPositionsArr(numParticles, worldSize),
+    protein1: getRandPositionsArr(numParticles, worldSize),
   };
   return (
     <>
@@ -54,22 +56,24 @@ const Scene = () => {
         {positions.covid.map((pos) => (
           // instance performance https://codesandbox.io/embed/r3f-instanced-colors-8fo01
           // <instancedMesh key={JSON.stringify(pos)}>
-          <ShapeSarsCov2
-            key={JSON.stringify(pos)}
-            position={pos}
-            width={1}
-            height={1}
-          />
+          <instancedMesh key={JSON.stringify(pos)}>
+            <JitteryParticle
+              key={JSON.stringify(pos)}
+              ChildParticle={SarsCov2}
+              position={pos}
+              scale={0.005}
+            />
+          </instancedMesh>
         ))}
         {positions.protein1.map((pos) => (
           // instance performance https://codesandbox.io/embed/r3f-instanced-colors-8fo01
-          // <instancedMesh key={JSON.stringify(pos)}>
-          <Shape1bv1
-            key={JSON.stringify(pos)}
-            position={pos}
-            width={1}
-            height={1}
-          />
+          <instancedMesh key={JSON.stringify(pos)}>
+            <JitteryParticle
+              position={pos}
+              ChildParticle={ModelActivatorProtein}
+              scale={0.005}
+            />
+          </instancedMesh>
         ))}
 
         <Walls />
