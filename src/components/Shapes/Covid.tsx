@@ -1,7 +1,7 @@
 import React from "react";
 import { useSphere } from "@react-three/cannon";
-import SarsCov2Suspense from "./GLTFs/SarsCov2";
-import { useStore } from "../store";
+import SarsCov2Suspense from "../GLTFs/SarsCov2";
+import { useStore } from "../../store";
 
 export function Covid({ position, ...rest }) {
   const covidScale = 0.015;

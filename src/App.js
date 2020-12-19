@@ -10,10 +10,12 @@ function App() {
     <div className="App">
       <Controls.Provider>
         <Controls.Canvas
+          gl={{ antialias: false, alpha: false }}
           style={{ height: windowSize.height, width: windowSize.width }}
         >
           <Scene />
         </Controls.Canvas>
+        <Controls />
       </Controls.Provider>
     </div>
   );
