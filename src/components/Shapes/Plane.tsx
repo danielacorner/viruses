@@ -1,22 +1,28 @@
 import React from "react";
 import { usePlane } from "@react-three/cannon";
-import { TextureLoader } from "three";
-import { useLoader } from "react-three-fiber";
 
-export function Plane(props) {
-  const texture = useLoader(TextureLoader, "https://picsum.photos/500/500/");
-  console.log("🌟🚨: Plane -> props", props);
+export function Plane({
+  width = 100,
+  height = 100,
+  widthSegments = 1,
+  heightSegments = 1,
+  color,
+  ...rest
+}) {
   const [ref] = usePlane(() => ({
-    rotation: [-Math.PI / 2, 0, 0],
-    ...props,
+    // rotation: [-Math.PI / 2, 0, 0],
+    ...rest,
     // position: [-100, -100, -100],
   }));
   return (
     <mesh ref={ref}>
-      <planeBufferGeometry attach="geometry" args={[100, 100]} />
+      <planeGeometry
+        attach="geometry"
+        args={[width, height, widthSegments, heightSegments]}
+      />
       <meshStandardMaterial
         attach="material"
-        color={props.color}
+        color={color}
         // roughness={0.7}
         // metalness={0.5}
         opacity={0.5}
