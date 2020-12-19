@@ -9,6 +9,7 @@ import { Walls } from "./Walls";
 // import niceColors from "nice-color-palettes";
 
 const Scene = () => {
+  const worldSize = 10;
   const numParticles = useControl("particles", {
     type: "number",
     min: 1,
@@ -16,9 +17,9 @@ const Scene = () => {
     value: 10,
   });
   const positions = [...new Array(Math.ceil(numParticles))].map((_, idx) => [
-    randBetween(-10, 10),
-    randBetween(-10, 10),
-    randBetween(-10, 10),
+    randBetween(-worldSize, worldSize),
+    randBetween(-worldSize, worldSize),
+    randBetween(-worldSize, worldSize),
   ]);
   return (
     <>
@@ -41,9 +42,13 @@ const Scene = () => {
         {/* <Plane /> */}
         {positions.map((pos) => (
           // instance performance https://codesandbox.io/embed/r3f-instanced-colors-8fo01
-          <instancedMesh key={JSON.stringify(pos)}>
-            <Covid position={pos} width={1} height={1} />
-          </instancedMesh>
+          // <instancedMesh key={JSON.stringify(pos)}>
+          <Covid
+            key={JSON.stringify(pos)}
+            position={pos}
+            width={1}
+            height={1}
+          />
         ))}
         <Walls />
       </Physics>

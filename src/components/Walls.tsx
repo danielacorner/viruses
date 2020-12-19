@@ -46,15 +46,10 @@ export function Walls({ distance = 20 }) {
     },
   ];
 
-  const heightPerDistance = 2.5;
   return (
     <>
       {walls.map((props) => (
-        <Plane
-          {...props}
-          width={distance * heightPerDistance}
-          height={distance * heightPerDistance}
-        />
+        <Plane {...props} width={distance * 2} height={distance * 2} />
       ))}
     </>
   );

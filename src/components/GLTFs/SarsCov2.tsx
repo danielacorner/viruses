@@ -11,6 +11,7 @@ import { useGLTF } from "@react-three/drei/useGLTF";
 // import { useSphere } from "@react-three/cannon";
 
 export default function SarsCov2Suspense(props) {
+  console.log("🌟🚨 ~ SarsCov2Suspense ~ props", props);
   return (
     <Suspense fallback={null}>
       <SarsCov2 {...props} />
@@ -20,6 +21,7 @@ export default function SarsCov2Suspense(props) {
 
 /** https://threejs.org/docs/#api/en/objects/Group */
 function SarsCov2(props) {
+  console.log("🌟🚨 ~ SarsCov2 ~ props", props.rotation);
   const group = useRef();
   const gltf = useGLTF("/models/SarsCov2/scene.gltf");
   const { nodes, materials } = gltf as any;
