@@ -18,16 +18,26 @@ export function Covid({ position, ...rest }) {
 
   const group = useRef(null as any);
 
-  const jitterRotate = 0.01;
+  const jitterRotation = 0.01;
+  const jitterPosition = 0.01;
 
   useFrame(() => {
     if (group.current) {
+      // jitter rotation
       group.current.rotation.x =
-        group.current.rotation.x + randBetween(-jitterRotate, jitterRotate);
+        group.current.rotation.x + randBetween(-jitterRotation, jitterRotation);
       group.current.rotation.y =
-        group.current.rotation.y + randBetween(-jitterRotate, jitterRotate);
+        group.current.rotation.y + randBetween(-jitterRotation, jitterRotation);
       group.current.rotation.z =
-        group.current.rotation.z + randBetween(-jitterRotate, jitterRotate);
+        group.current.rotation.z + randBetween(-jitterRotation, jitterRotation);
+
+      // jitter position
+      group.current.position.x =
+        group.current.position.x + randBetween(-jitterPosition, jitterPosition);
+      group.current.position.y =
+        group.current.position.y + randBetween(-jitterPosition, jitterPosition);
+      group.current.position.z =
+        group.current.position.z + randBetween(-jitterPosition, jitterPosition);
     }
   });
 
