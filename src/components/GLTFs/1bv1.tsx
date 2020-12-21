@@ -6,16 +6,23 @@ source: https://sketchfab.com/models/875ca8f437cf42d4b8575945b3414ae7
 title: 1bv1
 */
 
-import React, { useRef } from "react";
+import React from "react";
 import { useGLTF } from "@react-three/drei/useGLTF";
 
 export default function Model1bv1(props) {
-  const group = useRef();
   const gltf = useGLTF("/models/1bv1/scene.gltf");
-  const { nodes, materials } = gltf as any;
-
+  // https://codesandbox.io/s/react-three-fiber-gltf-camera-animation-forked-pecl6?file=/src/Model.js:582-592
+  const { nodes, materials /* ,animation */ } = gltf as any;
+  // Extract animation actions
+  // const { ref, actions, names } = useAnimations(animations)
+  // useEffect(() => {
+  //   // Reset and fade in animation after an index has been changed
+  //   actions[names[index]].reset().fadeIn(0.5).play()
+  //   // In the clean-up phase, fade it out
+  //   return () => actions[names[index]].fadeOut(0.5)
+  // }, [index, actions, names])
   return (
-    <group ref={group} {...props} dispose={null}>
+    <group {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]}>
         <group rotation={[Math.PI / 2, 0, 0]}>
           <group

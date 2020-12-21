@@ -1,59 +1,57 @@
-import React from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Physics } from "@react-three/cannon";
 import { OrbitControls } from "@react-three/drei";
 import { Lighting } from "./Lighting";
 import { useControl } from "react-three-gui";
-import { randBetween } from "../utils/utils";
 import { Walls } from "./Walls";
-import { useStore } from "../store";
 import JitteryParticle from "./Shapes/JitteryParticle";
 import ModelActivatorProtein from "./GLTFs/activator_protein-1";
 import SarsCov2 from "./GLTFs/SarsCov2";
 import Model1bv1 from "./GLTFs/1bv1";
 import ModelAntibody from "./GLTFs/antibody";
+import * as THREE from "three";
+import { useStore } from "../store";
+import { useFrame } from "react-three-fiber";
+import { useMount } from "../utils/utils";
+import { getRandStartPosition } from "./Shapes/particleUtils";
+import { InstancedBufferGeometry, PlaneBufferGeometry } from "three";
 
-const getRandStartPosition = (min, max) => [
-  randBetween(min, max),
-  randBetween(min, max),
-  randBetween(min, max),
-];
-
-const getRandPositionsArr = (num, scalePosition) =>
-  [...new Array(Math.ceil(num))].map((_, idx) =>
-    getRandStartPosition(-scalePosition, scalePosition)
-  );
+const object3D = new THREE.Object3D();
+const tempColor = new THREE.Color();
 
 const Scene = () => {
-  const numParticles = useControl("particles", {
+  const numParticles: number = useControl("particles", {
     type: "number",
     min: 1,
     max: 50,
     value: 10,
   });
-  const worldRadius = useStore((state) => state.worldRadius);
+  const temperature: number = useControl("temperature", {
+    type: "number",
+    min: 0,
+    max: 1,
+    value: 0.01,
+  });
 
   const proteins = [
     {
       particle: SarsCov2,
       scale: 0.005,
-      positions: getRandPositionsArr(numParticles, worldRadius / 2),
     },
     {
       particle: Model1bv1,
       scale: 0.005,
-      positions: getRandPositionsArr(numParticles, worldRadius / 2),
     },
     {
       particle: ModelActivatorProtein,
       scale: 0.005,
-      positions: getRandPositionsArr(numParticles, worldRadius / 2),
     },
     {
       particle: ModelAntibody,
       scale: 0.005,
-      positions: getRandPositionsArr(numParticles, worldRadius / 2),
     },
   ];
+
   return (
     <>
       <OrbitControls />
@@ -72,21 +70,21 @@ const Scene = () => {
         gravity={[0, 0, 0]}
         // allowSleep={false}
       >
-        {/* <Plane /> */}
-        {proteins.map(({ particle, scale, positions }, idx) => (
+        {proteins.map(({ particle, scale }, idx) => (
           <React.Fragment key={idx}>
-            {positions.map((pos) => (
-              // instance performance https://codesandbox.io/embed/r3f-instanced-colors-8fo01
-              // <instancedMesh key={JSON.stringify(pos)}>
-              <instancedMesh key={JSON.stringify(pos)}>
-                <JitteryParticle
-                  // key={JSON.stringify(pos)}
-                  ChildParticle={particle}
-                  position={pos}
-                  scale={0.005}
-                />
-              </instancedMesh>
-            ))}
+            {/* // instance performance https://codesandbox.io/embed/r3f-instanced-colors-8fo01 */}
+            {/* <instancedMesh args={[geometry, material, count]}> */}
+            <JitteryParticle
+              // key={JSON.stringify(pos)}
+              {...{
+                amount: Math.ceil(numParticles),
+                ChildParticle: particle,
+                // positionsArray: positionsArrays[idx],
+                temperature,
+                scale,
+              }}
+            />
+            {/* </instancedMesh> */}
           </React.Fragment>
         ))}
         <Walls />
