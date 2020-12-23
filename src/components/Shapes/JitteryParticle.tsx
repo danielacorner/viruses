@@ -44,10 +44,11 @@ const JitteryParticle = ({
     position: position || getRandStartPosition(-worldRadius, worldRadius),
   }));
 
-  const ref = useJitterInstanceParticle({
+  useJitterInstanceParticle({
     jitterPosition: temperature,
     jitterRotation: 0.01,
     numParticles,
+    ref: sphereRef,
   });
 
   // const dummy = new THREE.Object3D();
@@ -99,20 +100,36 @@ const JitteryParticle = ({
   const usedgltf = useGLTF("/models/SarsCov2/scene.gltf") as any;
   console.log("🌟🚨 ~ usedgltf", usedgltf);
 
+  const allGeometries = Object.values(usedgltf?.nodes)
+    .map((node) => (node as any).geometry)
+    .filter(Boolean);
+
+  console.log("🌟🚨 ~ allGeometries", allGeometries);
+
+  // const mergedGeometry = allGeometries.slice(-1).reduce((acc, cur) => {
+  //   return (acc as any).merge(cur);
+  // });
+  const mergedGeometry = allGeometries[allGeometries.length - 1];
+  // const mergedGeometry = useMemo(() => {
+  //   const base = allGeometries.slice(1).reduce((acc, cur) => {
+  //     return (acc as any).merge(cur);
+  //   }, allGeometries[0]);
+  //   return base;
+  // }, [allGeometries]);
+  console.log("🌟🚨 ~ mergedGeometry ~ mergedGeometry", mergedGeometry);
+
   const geometry = usedgltf?.nodes?.["RNA__SARS-CoV-2_0"]?.geometry;
   const materials = usedgltf?.materials["SARS-CoV-2"];
   console.log("🌟🚨 ~ geometry", geometry);
   // console.log("🌟🚨 ~ geometry", geometry);
 
-  return geometry ? (
-    <group ref={sphereRef}>
-      {/* // each instance must have only one geometry https://github.com/pmndrs/react-three-fiber/issues/574#issuecomment-703296449 */}
-      <instancedMesh
-        ref={ref}
-        args={[geometry, materials, Math.ceil(numParticles)]}
-        renderOrder={2}
-      ></instancedMesh>
-    </group>
+  // each instance must have only one geometry https://github.com/pmndrs/react-three-fiber/issues/574#issuecomment-703296449
+  return mergedGeometry ? (
+    <instancedMesh
+      ref={sphereRef}
+      args={[mergedGeometry as any, materials, Math.ceil(numParticles)]}
+      renderOrder={2}
+    ></instancedMesh>
   ) : null;
   // <instancedMesh
   //   ref={mesh}

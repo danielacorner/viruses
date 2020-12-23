@@ -9,9 +9,8 @@ export function useJitterInstanceParticle({
   jitterRotation = 0.01,
   jitterPosition = 0.01,
   numParticles,
+  ref,
 }) {
-  const ref = useRef(null as any);
-
   useMount(() => {
     if (!ref.current) {
       return;
