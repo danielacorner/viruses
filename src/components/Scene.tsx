@@ -10,11 +10,6 @@ import SarsCov2 from "./GLTFs/SarsCov2";
 import Model1bv1 from "./GLTFs/1bv1";
 import ModelAntibody from "./GLTFs/antibody";
 import * as THREE from "three";
-import { useStore } from "../store";
-import { useFrame } from "react-three-fiber";
-import { useMount } from "../utils/utils";
-import { getRandStartPosition } from "./Shapes/particleUtils";
-import { InstancedBufferGeometry, PlaneBufferGeometry } from "three";
 
 const object3D = new THREE.Object3D();
 const tempColor = new THREE.Color();
@@ -23,7 +18,7 @@ const Scene = () => {
   const numParticles: number = useControl("particles", {
     type: "number",
     min: 1,
-    max: 50,
+    max: 1000,
     value: 10,
   });
   const temperature: number = useControl("temperature", {
