@@ -1,6 +1,6 @@
 import React, { Suspense, useMemo, useRef } from "react";
 import { useSphere } from "@react-three/cannon";
-import { useJitterParticle } from "./useJitterParticle";
+import { useJitterInstanceParticle } from "./useJitterParticle";
 import { useFrame, useLoader } from "react-three-fiber";
 import * as THREE from "three";
 // https://discourse.threejs.org/t/there-is-no-gltfloader-in-three-module/16117/4
@@ -8,6 +8,8 @@ import { useMount } from "../../utils/utils";
 import { useGLTF } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { BufferGeometryLoader } from "three";
+import { getRandStartPosition } from "./particleUtils";
+import { useStore } from "../../store";
 // import * as antibody from "./models/1bv1/scene.gltf";
 
 const dummy = new THREE.Object3D();
@@ -24,30 +26,29 @@ const JitteryParticle = ({
   scale,
   position = null,
   temperature,
-  amount,
+  numParticles,
   ...rest
 }) => {
   // const coords = useMemo(
-  //   () => [...new Array(amount)].map(() => [rpi(), rpi(), rpi()]),
-  //   [amount]
+  //   () => [...new Array(numParticles)].map(() => [rpi(), rpi(), rpi()]),
+  //   [numParticles]
   // );
 
-  // const worldRadius = useStore((state) => state.worldRadius);
+  const worldRadius = useStore((state) => state.worldRadius);
 
   // https://codesandbox.io/s/may-with-60fps-your-web-site-run-xj31x?from-embed=&file=/src/index.js:297-1112
 
-  const mesh = useRef(null as any);
-  const ref = useRef(null as any);
-  // const [mesh] = useSphere(() => ({
-  //   // rotation: [-Math.PI / 2, 0, 0],
-  //   mass: 1,
-  //   position: position || getRandStartPosition(-worldRadius, worldRadius),
-  // }));
+  const [sphereRef, api] = useSphere(() => ({
+    // rotation: [-Math.PI / 2, 0, 0],
+    mass: 1,
+    position: position || getRandStartPosition(-worldRadius, worldRadius),
+  }));
 
-  // const particleRef = useJitterParticle({
-  //   jitterPosition: temperature,
-  //   jitterRotation: 0.01,
-  // });
+  const ref = useJitterInstanceParticle({
+    jitterPosition: temperature,
+    jitterRotation: 0.01,
+    numParticles,
+  });
 
   // const dummy = new THREE.Object3D();
   // useFrame((state) => {
@@ -62,43 +63,20 @@ const JitteryParticle = ({
   // });
 
   // random start positions
-  useMount(() => {
-    if (!ref.current) {
-      return;
-    }
-    dummy.position.set(0, 0, 0);
-    ref.current.setMatrixAt(0, dummy.matrix);
+  // useMount(() => {
+  //   if (!ref.current) {
+  //     return;
+  //   }
+  //   dummy.position.set(0, 0, 0);
+  //   ref.current.setMatrixAt(0, dummy.matrix);
 
-    ref.current.instanceMatrix.needsUpdate = true;
-  });
+  //   ref.current.instanceMatrix.needsUpdate = true;
+  // });
 
-  useFrame((state) => {
-    const time = state.clock.getElapsedTime();
-    ref.current.rotation.x = Math.sin(time / 4);
-    ref.current.rotation.y = Math.sin(time / 2);
-    let i = 0;
-    for (let x = 0; x < 10; x++)
-      for (let y = 0; y < 10; y++)
-        for (let z = 0; z < 10; z++) {
-          dummy.position.set(5 - x, 5 - y, 5 - z);
-          dummy.rotation.y =
-            Math.sin(x / 4 + time) +
-            Math.sin(y / 4 + time) +
-            Math.sin(z / 4 + time);
-          dummy.rotation.z = dummy.rotation.y * 2;
-          dummy.updateMatrix();
-          ref.current.setMatrixAt(i++, dummy.matrix);
-        }
-    ref.current.instanceMatrix.needsUpdate = true;
-  });
-  // Load async model
-  // When we're here it's loaded, now compute vertex normals
-  // useMemo(() => {
-  //   geometry.computeVertexNormals()
-  //   geometry.scale(0.5, 0.5, 0.5)
-  // }, [geometry])
-  // Compute per-frame instance positions
   // useFrame((state) => {
+  //   if (!ref.current) {
+  //     return;
+  //   }
   //   const time = state.clock.getElapsedTime();
   //   ref.current.rotation.x = Math.sin(time / 4);
   //   ref.current.rotation.y = Math.sin(time / 2);
@@ -118,9 +96,6 @@ const JitteryParticle = ({
   //   ref.current.instanceMatrix.needsUpdate = true;
   // });
 
-  // const usedgltf = useGLTF("/public/models/SarsCov2/scene.gltf") as any;
-  // console.log("🌟🚨 ~ usedgltf", usedgltf);
-  // const { nodes } = usedgltf;
   const usedgltf = useGLTF("/models/SarsCov2/scene.gltf") as any;
   console.log("🌟🚨 ~ usedgltf", usedgltf);
 
@@ -129,19 +104,19 @@ const JitteryParticle = ({
   console.log("🌟🚨 ~ geometry", geometry);
   // console.log("🌟🚨 ~ geometry", geometry);
 
-  // each instance must have only one geometry https://github.com/pmndrs/react-three-fiber/issues/574#issuecomment-703296449
-  // <group ref={particleRef} {...rest}>
-
   return geometry ? (
-    <instancedMesh
-      ref={ref}
-      args={[geometry, materials, Math.ceil(amount)]}
-      renderOrder={2}
-    ></instancedMesh>
+    <group ref={sphereRef}>
+      {/* // each instance must have only one geometry https://github.com/pmndrs/react-three-fiber/issues/574#issuecomment-703296449 */}
+      <instancedMesh
+        ref={ref}
+        args={[geometry, materials, Math.ceil(numParticles)]}
+        renderOrder={2}
+      ></instancedMesh>
+    </group>
   ) : null;
   // <instancedMesh
   //   ref={mesh}
-  //   args={[null, null, amount]}
+  //   args={[null, null, numParticles]}
   //   renderOrder={2}
   //   // onPointerMove={(e) => setHovered(e.instanceId)}
   //   // onPointerOut={(e) => setHovered(undefined)}

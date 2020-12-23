@@ -72,7 +72,7 @@ const Scene = () => {
             <JitteryParticle
               // key={JSON.stringify(pos)}
               {...{
-                amount: Math.ceil(numParticles),
+                numParticles: Math.ceil(numParticles),
                 ChildParticle: particle,
                 // positionsArray: positionsArrays[idx],
                 temperature,
