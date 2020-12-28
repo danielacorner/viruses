@@ -42,8 +42,8 @@ const Scene = () => {
   const numParticles: number = useControl("particles", {
     type: "number",
     min: 1,
-    max: 200,
-    value: 10,
+    max: 100,
+    value: 2,
   });
   const temperature: number = useControl("temperature", {
     type: "number",
@@ -87,7 +87,7 @@ const Scene = () => {
                   // key={JSON.stringify(pos)}
                   {...{
                     instanced: true,
-                    numParticles: 200,
+                    numParticles: 50,
                     jittery: true,
                     ChildParticle: particle,
                     // positionsArray: positionsArrays[idx],

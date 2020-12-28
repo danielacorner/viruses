@@ -9,15 +9,12 @@ import * as THREE from "three";
 // https://discourse.threejs.org/t/there-is-no-gltfloader-in-three-module/16117/4
 import { useMount } from "../../utils/utils";
 import { useGLTF } from "@react-three/drei";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { BufferGeometryLoader } from "three";
 import { getRandStartPosition } from "./particleUtils";
 import { useStore } from "../../store";
 // import * as antibody from "./models/1bv1/scene.gltf";
 
 const dummy = new THREE.Object3D();
 
-const colors = [...new Array(1000)].map(() => "white");
 const rpi = () => Math.random() * Math.PI;
 
 // const FancyParticle = React.forwardRef((props, ref) => {
@@ -39,7 +36,8 @@ const Particle = ({
 
   // https://codesandbox.io/s/may-with-60fps-your-web-site-run-xj31x?from-embed=&file=/src/index.js:297-1112
 
-  const [ref, api] = useSphere(() => ({
+  const instancedRef = useRef();
+  const [sphereRef, sphereApi] = useSphere(() => ({
     // rotation: [-Math.PI / 2, 0, 0],
     mass: 1,
     position: position || getRandStartPosition(-worldRadius, worldRadius),
@@ -49,17 +47,16 @@ const Particle = ({
     jitterPosition: !jittery ? 0 : temperature,
     jitterRotation: !jittery ? 0 : temperature,
     numParticles,
-    ref: ref,
+    ref: instanced ? instancedRef : sphereRef,
   });
 
-  const dummy = new THREE.Object3D();
-  const mesh = useRef(null as any);
+  // random start positions: instanced
   const coords = useMemo(
     () => [...new Array(numParticles)].map(() => [rpi(), rpi(), rpi()]),
     [numParticles]
   );
   useFrame((state) => {
-    if (!(ref.current as any)?.setMatrixAt) {
+    if (!instanced || !(instancedRef.current as any)?.setMatrixAt) {
       return;
     }
     const t = state.clock.getElapsedTime();
@@ -67,34 +64,19 @@ const Particle = ({
       dummy.rotation.set(x + t, y + t, z + t);
       //       dummy.updateMatrix(void dummy.rotation.set(x + t, y + t, z + t))
       dummy.updateMatrix();
-      (ref.current as any).setMatrixAt(i, dummy.matrix);
+      (instancedRef.current as any).setMatrixAt(i, dummy.matrix);
     });
-    (ref.current as any).instanceMatrix.needsUpdate = true;
+    (instancedRef.current as any).instanceMatrix.needsUpdate = true;
   });
 
-  // random start positions
+  // random start positions: non-instanced
   useMount(() => {
-    if (!ref.current) {
+    if (instanced) {
       return;
     }
-
-    if (instanced) {
-      for (let idx = 0; idx < numParticles; idx++) {
-        const [x, y, z] = getRandStartPosition(
-          -worldRadius * 4,
-          worldRadius * 4
-        );
-        dummy.position.set(x, y, z);
-        // dummy.position.set(idx, 0, 0);
-        (ref.current as any).setMatrixAt(1, dummy.matrix);
-      }
-      (ref.current as any).instanceMatrix.needsUpdate = true;
-    } else {
-      const [x, y, z] = getRandStartPosition(-worldRadius, worldRadius);
-      ref.current.position.x = x;
-      ref.current.position.y = y;
-      ref.current.position.z = z;
-    }
+    const [x, y, z] = getRandStartPosition(-worldRadius, worldRadius);
+    // https://codesandbox.io/s/r3f-cannon-instanced-physics-devf8
+    sphereApi.position.set(x, y, z);
   });
 
   // // random start positions
@@ -163,7 +145,7 @@ const Particle = ({
     <>
       {allGeometries.map((geom) => (
         <instancedMesh
-          ref={ref}
+          ref={instancedRef}
           args={[geom, materials, Math.ceil(numParticles)]}
           renderOrder={2}
           scale={[scale, scale, scale]}
@@ -171,7 +153,7 @@ const Particle = ({
       ))}
     </>
   ) : (
-    <ChildParticle ref={ref} scale={[scale, scale, scale]} />
+    <ChildParticle ref={sphereRef} scale={[scale, scale, scale]} />
   );
   // <instancedMesh
   //   ref={mesh}
