@@ -1,6 +1,9 @@
 import React, { Suspense, useMemo, useRef } from "react";
 import { useSphere } from "@react-three/cannon";
-import { useJitterInstanceParticle } from "./useJitterParticle";
+import {
+  useJitterInstanceParticle,
+  useJitterParticle,
+} from "./useJitterParticle";
 import { useFrame, useLoader } from "react-three-fiber";
 import * as THREE from "three";
 // https://discourse.threejs.org/t/there-is-no-gltfloader-in-three-module/16117/4
@@ -21,12 +24,15 @@ const rpi = () => Math.random() * Math.PI;
 //   return <group ref={ref}>{props.children}</group>;
 // });
 
-const JitteryParticle = ({
+const Particle = ({
   ChildParticle,
   scale,
   position = null,
   temperature,
   numParticles,
+  pathToGLTF,
+  instanced = true,
+  jittery,
   ...rest
 }) => {
   // const coords = useMemo(
@@ -38,17 +44,17 @@ const JitteryParticle = ({
 
   // https://codesandbox.io/s/may-with-60fps-your-web-site-run-xj31x?from-embed=&file=/src/index.js:297-1112
 
-  const [sphereRef, api] = useSphere(() => ({
+  const [ref, api] = useSphere(() => ({
     // rotation: [-Math.PI / 2, 0, 0],
     mass: 1,
     position: position || getRandStartPosition(-worldRadius, worldRadius),
   }));
 
-  useJitterInstanceParticle({
-    jitterPosition: temperature,
-    jitterRotation: 0.01,
+  (instanced ? useJitterInstanceParticle : useJitterParticle)({
+    jitterPosition: !jittery ? 0 : temperature,
+    jitterRotation: !jittery ? 0 : temperature,
     numParticles,
-    ref: sphereRef,
+    ref: ref,
   });
 
   // const dummy = new THREE.Object3D();
@@ -64,6 +70,31 @@ const JitteryParticle = ({
   // });
 
   // random start positions
+  useMount(() => {
+    if (!ref.current) {
+      return;
+    }
+
+    if (instanced) {
+      for (let idx = 0; idx < numParticles; idx++) {
+        const [x, y, z] = getRandStartPosition(
+          -worldRadius * 4,
+          worldRadius * 4
+        );
+        dummy.position.set(x, y, z);
+        // dummy.position.set(idx, 0, 0);
+        (ref.current as any).setMatrixAt(1, dummy.matrix);
+      }
+      (ref.current as any).instanceMatrix.needsUpdate = true;
+    } else {
+      const [x, y, z] = getRandStartPosition(-worldRadius, worldRadius);
+      ref.current.position.x = x;
+      ref.current.position.y = y;
+      ref.current.position.z = z;
+    }
+  });
+
+  // // random start positions
   // useMount(() => {
   //   if (!ref.current) {
   //     return;
@@ -97,7 +128,7 @@ const JitteryParticle = ({
   //   ref.current.instanceMatrix.needsUpdate = true;
   // });
 
-  const usedgltf = useGLTF("/models/SarsCov2/scene.gltf") as any;
+  const usedgltf = useGLTF(pathToGLTF) as any;
   console.log("🌟🚨 ~ usedgltf", usedgltf);
 
   const allGeometries = Object.values(usedgltf?.nodes)
@@ -120,17 +151,25 @@ const JitteryParticle = ({
 
   const geometry = usedgltf?.nodes?.["RNA__SARS-CoV-2_0"]?.geometry;
   const materials = usedgltf?.materials["SARS-CoV-2"];
+  console.log("🌟🚨 ~ instanced", instanced);
   console.log("🌟🚨 ~ geometry", geometry);
   // console.log("🌟🚨 ~ geometry", geometry);
 
   // each instance must have only one geometry https://github.com/pmndrs/react-three-fiber/issues/574#issuecomment-703296449
-  return mergedGeometry ? (
-    <instancedMesh
-      ref={sphereRef}
-      args={[mergedGeometry as any, materials, Math.ceil(numParticles)]}
-      renderOrder={2}
-    ></instancedMesh>
-  ) : null;
+  return instanced && mergedGeometry ? (
+    <>
+      {allGeometries.map((geom) => (
+        <instancedMesh
+          ref={ref}
+          args={[geom, materials, Math.ceil(numParticles)]}
+          renderOrder={2}
+          scale={[scale, scale, scale]}
+        ></instancedMesh>
+      ))}
+    </>
+  ) : (
+    <ChildParticle ref={ref} scale={[scale, scale, scale]} />
+  );
   // <instancedMesh
   //   ref={mesh}
   //   args={[null, null, numParticles]}
@@ -138,8 +177,6 @@ const JitteryParticle = ({
   //   // onPointerMove={(e) => setHovered(e.instanceId)}
   //   // onPointerOut={(e) => setHovered(undefined)}
   // >
-  //   {/* <boxBufferGeometry attach="geometry" /> */}
-  //   {/* <instancedBufferGeometry */}
   //   {/* <Suspense fallback={null}>
   //     <ChildParticle scale={[scale, scale, scale]} />
   //   </Suspense> */}
@@ -148,6 +185,4 @@ const JitteryParticle = ({
   // </instancedMesh>
 };
 
-useGLTF.preload("/models/SarsCov2/scene.gltf");
-
-export default JitteryParticle;
+export default Particle;
