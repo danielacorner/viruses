@@ -33,13 +33,7 @@ export function Stars() {
 	return (
 		<group ref={group}>
 			{coords.map(([p1, p2, p3], i) => (
-				<mesh
-					castShadow
-					key={i}
-					geometry={geo}
-					material={mat}
-					position={[p1, p2, p3]}
-				/>
+				<mesh key={i} geometry={geo} material={mat} position={[p1, p2, p3]} />
 			))}
 		</group>
 	);

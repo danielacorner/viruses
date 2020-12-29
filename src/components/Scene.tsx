@@ -59,7 +59,7 @@ const Scene = () => {
 	console.log("🌟🚨: Scene -> worldRadius", worldRadius);
 	const [positionsArray, setPositionsArray] = useState(
 		[...new Array(numParticlesCeil)].map(() =>
-			getRandStartPosition(-worldRadius, worldRadius)
+			getRandStartPosition(worldRadius)
 		)
 	);
 	// update positionsArray when numParticles changes manually, to avoid re-rendering all particles

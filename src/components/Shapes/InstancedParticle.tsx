@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import { useSphere } from "@react-three/cannon";
 import { useSpring, a } from "react-spring/three";
 import {
@@ -34,7 +34,7 @@ const InstancedParticle = ({
 	const [ref, sphereApi] = useSphere((index) => ({
 		// rotation: [-Math.PI / 2, 0, 0],
 		mass: 1,
-		position: getRandStartPosition(-worldRadius, worldRadius),
+		position: getRandStartPosition(worldRadius),
 		args: 1, // ? https://codesandbox.io/s/r3f-cannon-instanced-physics-devf8?file=/src/index.js
 	}));
 
@@ -59,27 +59,32 @@ const InstancedParticle = ({
 	const springProps = useSpring({
 		scale: [scaleActual, scaleActual, scaleActual],
 	});
-
+	const randPos = useMemo(() => getRandStartPosition(worldRadius), [
+		worldRadius,
+	]);
 	return (
-		<>
-			{allGeometriesAndMaterials.map(({ geometry, material }, idx) => (
-				<a.instancedMesh
-					castShadow
-					key={idx}
-					ref={ref}
-					onPointerOver={() => {
-						setActive(true);
-					}}
-					onPointerOut={() => {
-						setActive(false);
-					}}
-					args={[null, null, Math.ceil(numParticles)]}
-					renderOrder={2}
-					scale={springProps.scale}
-				>
-					<primitive object={geometry} attach="geometry"></primitive>
-					<primitive object={material} attach="material"></primitive>
-					{/* <instancedBufferGeometry
+		<mesh position={randPos}>
+			{allGeometriesAndMaterials.map(
+				({ geometry, material, position }, idx) => (
+					<a.instancedMesh
+						castShadow
+						key={idx}
+						ref={ref}
+						onPointerOver={() => {
+							setActive(true);
+						}}
+						onPointerOut={() => {
+							setActive(false);
+						}}
+						args={[geometry, material, Math.ceil(numParticles)]}
+						renderOrder={2}
+						scale={springProps.scale}
+						position={position}
+					>
+						<primitive object={usedgltf.scene}></primitive>
+						<primitive object={geometry} attach="geometry"></primitive>
+						<primitive object={material} attach="material"></primitive>
+						{/* <instancedBufferGeometry
 						attach="geometry"
 						// args={[null, null, null]}
 					></instancedBufferGeometry>
@@ -88,10 +93,11 @@ const InstancedParticle = ({
 						attach="geometry"
 						args={[null, null, null]}
 					/> */}
-					{/* <ChildParticle attach="geometry" /> */}
-				</a.instancedMesh>
-			))}
-		</>
+						{/* <ChildParticle attach="geometry" /> */}
+					</a.instancedMesh>
+				)
+			)}
+		</mesh>
 	);
 	// <instancedMesh
 	//   ref={mesh}
