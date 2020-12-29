@@ -11,17 +11,18 @@ export function useJitterInstanceParticle({
   numParticles,
   ref,
 }) {
-  useMount(() => {
+  // useMount(() => {
+  //   if (!ref.current) {
+  //     return;
+  //   }
+  //   dummy.position.set(0, 0, 0);
+  //   ref.current.setMatrixAt(0, dummy.matrix);
+  //   ref.current.instanceMatrix.needsUpdate = true;
+  // });
+  useFrame((state) => {
     if (!ref.current) {
       return;
     }
-    dummy.position.set(0, 0, 0);
-    ref.current.setMatrixAt(0, dummy.matrix);
-
-    ref.current.instanceMatrix.needsUpdate = true;
-  });
-
-  useFrame((state) => {
     let i = 0;
     const rPos = () => randBetween(-jitterPosition, jitterPosition);
     const rRot = () => randBetween(-jitterRotation, jitterRotation);
@@ -31,17 +32,13 @@ export function useJitterInstanceParticle({
       dummy.rotation.x = dummy.rotation.x + rRot();
       dummy.rotation.y = dummy.rotation.y + rRot();
       dummy.rotation.z = dummy.rotation.z + rRot();
-
       // jitter position
       dummy.position.set(x + rPos(), y + rPos(), z + rPos());
-
       dummy.updateMatrix();
       ref.current.setMatrixAt(i++, dummy.matrix);
     }
     ref.current.instanceMatrix.needsUpdate = true;
   });
-
-  return ref;
 }
 
 export function useJitterParticle({

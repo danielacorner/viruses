@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Physics } from "@react-three/cannon";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Lighting } from "./Lighting";
@@ -10,6 +10,8 @@ import SarsCov2 from "./GLTFs/SarsCov2";
 import Model1bv1 from "./GLTFs/1bv1";
 import ModelAntibody from "./GLTFs/antibody";
 import { Stars } from "./Stars";
+import { getRandStartPosition } from "./Shapes/particleUtils";
+import { useStore } from "../store";
 
 const PROTEINS = [
   {
@@ -21,19 +23,19 @@ const PROTEINS = [
   {
     particle: Model1bv1,
     scale: 0.005,
-    instanced: true,
+    instanced: false,
     pathToGLTF: "/models/1bv1/scene.gltf",
   },
   {
     particle: ModelActivatorProtein,
     scale: 0.005,
-    instanced: true,
+    instanced: false,
     pathToGLTF: "/models/activator_protein-1/scene.gltf",
   },
   {
     particle: ModelAntibody,
     scale: 0.005,
-    instanced: true,
+    instanced: false,
     pathToGLTF: "/models/antibody/scene.gltf",
   },
 ];
@@ -52,7 +54,22 @@ const Scene = () => {
     value: 0.01,
   });
   const numParticlesCeil = Math.ceil(numParticles);
-
+  const worldRadius = useStore((state) => state.worldRadius);
+  const [positionsArray, setPositionsArray] = useState(
+    [...new Array(numParticlesCeil)].map(() =>
+      getRandStartPosition(-worldRadius, worldRadius)
+    )
+  );
+  // update positionsArray when numParticles changes manually, to avoid re-rendering all particles
+  useEffect(() => {
+    const newPositionsArr = positionsArray
+      .slice(0, numParticlesCeil)
+      .filter(Boolean);
+    console.log("🌟🚨 ~ useEffect ~ newPositionsArr", newPositionsArr);
+    if (newPositionsArr.length !== positionsArray.length) {
+      setPositionsArray(newPositionsArr);
+    }
+  }, [numParticlesCeil, setPositionsArray, positionsArray]);
   return (
     <>
       <OrbitControls />
@@ -82,12 +99,13 @@ const Scene = () => {
           // * -> can interact with useSphere, useBox, usePlane etc
           return (
             <React.Fragment key={idx}>
+              {/* TODO: clean up abstraction */}
               {instanced ? (
                 <Particle
                   // key={JSON.stringify(pos)}
                   {...{
                     instanced: true,
-                    numParticles: 50,
+                    numParticles: 1,
                     jittery: true,
                     ChildParticle: particle,
                     // positionsArray: positionsArrays[idx],
@@ -97,24 +115,22 @@ const Scene = () => {
                   }}
                 />
               ) : (
-                /* true ? null : */ [...new Array(numParticlesCeil)].map(
-                  (_, idx) => (
-                    <Particle
-                      key={idx}
-                      // key={JSON.stringify(pos)}
-                      {...{
-                        instanced: false,
-                        numParticles: numParticlesCeil,
-                        jittery: true,
-                        ChildParticle: particle,
-                        // positionsArray: positionsArrays[idx],
-                        temperature,
-                        pathToGLTF,
-                        scale,
-                      }}
-                    />
-                  )
-                )
+                positionsArray.map((pos) => (
+                  <Particle
+                    key={JSON.stringify(pos)}
+                    // key={JSON.stringify(pos)}
+                    {...{
+                      instanced: false,
+                      numParticles: numParticlesCeil,
+                      jittery: true,
+                      ChildParticle: particle,
+                      // positionsArray: positionsArrays[idx],
+                      temperature,
+                      pathToGLTF,
+                      scale,
+                    }}
+                  />
+                ))
               )}
             </React.Fragment>
           );

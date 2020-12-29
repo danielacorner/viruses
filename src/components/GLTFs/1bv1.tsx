@@ -8,7 +8,7 @@ title: 1bv1
 
 import React from "react";
 import { useGLTF } from "@react-three/drei/useGLTF";
-
+import { a } from "react-spring/three";
 export default function Model1bv1(props) {
   const gltf = useGLTF("/models/1bv1/scene.gltf");
   // https://codesandbox.io/s/react-three-fiber-gltf-camera-animation-forked-pecl6?file=/src/Model.js:582-592
@@ -22,7 +22,7 @@ export default function Model1bv1(props) {
   //   return () => actions[names[index]].fadeOut(0.5)
   // }, [index, actions, names])
   return (
-    <group {...props} dispose={null}>
+    <a.group {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]}>
         <group rotation={[Math.PI / 2, 0, 0]}>
           <group
@@ -1687,7 +1687,7 @@ export default function Model1bv1(props) {
           </group>
         </group>
       </group>
-    </group>
+    </a.group>
   );
 }
 

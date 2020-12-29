@@ -1,5 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useSphere } from "@react-three/cannon";
+import { useSpring, a } from "react-spring/three";
 import {
   useJitterInstanceParticle,
   useJitterParticle,
@@ -23,7 +24,7 @@ const Particle = ({
   temperature,
   numParticles,
   pathToGLTF,
-  instanced = true,
+  instanced,
   jittery,
   ...rest
 }) => {
@@ -39,12 +40,12 @@ const Particle = ({
     args: 1, // ? https://codesandbox.io/s/r3f-cannon-instanced-physics-devf8?file=/src/index.js
   }));
 
-  // (instanced ? useJitterInstanceParticle : useJitterParticle)({
-  //   jitterPosition: !jittery ? 0 : temperature,
-  //   jitterRotation: !jittery ? 0 : temperature,
-  //   numParticles,
-  //   ref: instanced ? instancedRef : sphereRef,
-  // });
+  (instanced ? useJitterInstanceParticle : useJitterParticle)({
+    jitterPosition: !jittery ? 0 : temperature,
+    jitterRotation: !jittery ? 0 : temperature,
+    numParticles,
+    ref: instanced ? instancedRef : sphereRef,
+  });
 
   // random start positions: instanced
   // useMount(() => {
@@ -136,23 +137,34 @@ const Particle = ({
   // }, [allGeometries]);
 
   // each instance must have only one geometry https://github.com/pmndrs/react-three-fiber/issues/574#issuecomment-703296449
+  const [active, setActive] = useState(false);
+  const springProps = useSpring({
+    scale: [
+      (active ? 2 : 1) * scale,
+      (active ? 2 : 1) * scale,
+      (active ? 2 : 1) * scale,
+    ],
+  });
+
   return instanced ? (
     <>
       {allGeometriesAndMaterials.map(({ geometry, material }) => (
-        <instancedMesh
+        <a.instancedMesh
+          onPointerOver={() => {
+            setActive(true);
+          }}
+          onPointerOut={() => {
+            setActive(false);
+          }}
           ref={sphereRef}
           args={[geometry, material, Math.ceil(numParticles)]}
           renderOrder={2}
-          scale={[scale, scale, scale]}
-        ></instancedMesh>
+          scale={springProps.scale}
+        ></a.instancedMesh>
       ))}
     </>
   ) : (
-    <ChildParticle
-      ref={sphereRef}
-      scale={[scale, scale, scale]}
-      position={getRandStartPosition(-worldRadius, worldRadius)}
-    />
+    <ChildParticle ref={sphereRef} scale={springProps.scale} />
   );
   // <instancedMesh
   //   ref={mesh}

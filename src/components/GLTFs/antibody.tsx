@@ -8,12 +8,13 @@ title: Antibody
 
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei/useGLTF";
+import { a } from "react-spring/three";
 
 export default function ModelAntibody(props) {
   const group = useRef();
   const { nodes, materials } = useGLTF("/models/antibody/scene.gltf") as any;
   return (
-    <group ref={group} {...props} dispose={null}>
+    <a.group ref={group} {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]}>
         <group
           position={[0.02, 0.05, 0.04]}
@@ -31,7 +32,7 @@ export default function ModelAntibody(props) {
           scale={[1, 1, 1]}
         />
       </group>
-    </group>
+    </a.group>
   );
 }
 

@@ -9,6 +9,7 @@ title: Lowpoly Coronavirus (SARS-CoV-2)
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei/useGLTF";
 // import { useSphere } from "@react-three/cannon";
+import { a } from "react-spring/three";
 
 /** https://threejs.org/docs/#api/en/objects/Group */
 export default function SarsCov2(props) {
@@ -19,7 +20,7 @@ export default function SarsCov2(props) {
 
   // {/* // https://threejs.org/docs/#api/en/objects/Group */}
   return (
-    <group ref={group} {...props} dispose={null}>
+    <a.group ref={group} {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]}>
         <group rotation={[Math.PI / 2, 0, 0]}>
           <group
@@ -1378,7 +1379,7 @@ export default function SarsCov2(props) {
           </group>
         </group>
       </group>
-    </group>
+    </a.group>
   );
 }
 

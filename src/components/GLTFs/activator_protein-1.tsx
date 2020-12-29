@@ -8,6 +8,7 @@ title: Activator Protein-1
 
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei/useGLTF";
+import { a } from "react-spring/three";
 
 export default function ModelActivatorProtein(props) {
   const group = useRef();
@@ -15,7 +16,7 @@ export default function ModelActivatorProtein(props) {
     "/models/activator_protein-1/scene.gltf"
   ) as any;
   return (
-    <group ref={group} {...props} dispose={null}>
+    <a.group ref={group} {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]}>
         <group
           position={[16.34, 16.08, -8.87]}
@@ -6805,7 +6806,7 @@ export default function ModelActivatorProtein(props) {
           </group>
         </group>
       </group>
-    </group>
+    </a.group>
   );
 }
 
