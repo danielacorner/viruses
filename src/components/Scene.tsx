@@ -18,24 +18,24 @@ const PROTEINS = [
     instanced: false,
     pathToGLTF: "/models/SarsCov2/scene.gltf",
   },
-  {
-    particle: Model1bv1,
-    scale: 0.005,
-    instanced: true,
-    pathToGLTF: "/models/1bv1/scene.gltf",
-  },
-  {
-    particle: ModelActivatorProtein,
-    scale: 0.005,
-    instanced: true,
-    pathToGLTF: "/models/activator_protein-1/scene.gltf",
-  },
-  {
-    particle: ModelAntibody,
-    scale: 0.005,
-    instanced: true,
-    pathToGLTF: "/models/antibody/scene.gltf",
-  },
+  // {
+  //   particle: Model1bv1,
+  //   scale: 0.005,
+  //   instanced: true,
+  //   pathToGLTF: "/models/1bv1/scene.gltf",
+  // },
+  // {
+  //   particle: ModelActivatorProtein,
+  //   scale: 0.005,
+  //   instanced: true,
+  //   pathToGLTF: "/models/activator_protein-1/scene.gltf",
+  // },
+  // {
+  //   particle: ModelAntibody,
+  //   scale: 0.005,
+  //   instanced: true,
+  //   pathToGLTF: "/models/antibody/scene.gltf",
+  // },
 ];
 
 const Scene = () => {

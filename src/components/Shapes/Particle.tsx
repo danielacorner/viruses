@@ -24,7 +24,7 @@ const rpi = () => Math.random() * Math.PI;
 const Particle = ({
   ChildParticle,
   scale,
-  position = null,
+  position: positionProp = null,
   temperature,
   numParticles,
   pathToGLTF,
@@ -33,6 +33,8 @@ const Particle = ({
   ...rest
 }) => {
   const worldRadius = useStore((state) => state.worldRadius);
+  const position =
+    positionProp || getRandStartPosition(-worldRadius, worldRadius);
 
   // https://codesandbox.io/s/may-with-60fps-your-web-site-run-xj31x?from-embed=&file=/src/index.js:297-1112
 
@@ -40,7 +42,7 @@ const Particle = ({
   const [sphereRef, sphereApi] = useSphere(() => ({
     // rotation: [-Math.PI / 2, 0, 0],
     mass: 1,
-    position: position || getRandStartPosition(-worldRadius, worldRadius),
+    position,
   }));
 
   (instanced ? useJitterInstanceParticle : useJitterParticle)({
@@ -70,6 +72,8 @@ const Particle = ({
   });
 
   // random start positions: non-instanced
+  // ! not working
+  // * https://www.npmjs.com/package/@react-three/cannon
   useMount(() => {
     if (instanced) {
       return;
@@ -153,7 +157,11 @@ const Particle = ({
       ))}
     </>
   ) : (
-    <ChildParticle ref={sphereRef} scale={[scale, scale, scale]} />
+    <ChildParticle
+      ref={sphereRef}
+      scale={[scale, scale, scale]}
+      position={position}
+    />
   );
   // <instancedMesh
   //   ref={mesh}
