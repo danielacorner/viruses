@@ -120,37 +120,34 @@ const Particle = ({
   const usedgltf = useGLTF(pathToGLTF) as any;
   console.log("🌟🚨 ~ usedgltf", usedgltf);
 
-  const allGeometries = Object.values(usedgltf?.nodes)
-    .map((node) => (node as any).geometry)
-    .filter(Boolean);
+  const allGeometriesAndMaterials = Object.values(usedgltf?.nodes)
+    // .map(([nodeName, node]) => ({
+    //   geometry: (node as any).geometry,
+    //   material: (node as any).material,
+    // }))
+    // geometry must exist
+    .filter(({ geometry }) => Boolean(geometry));
 
-  console.log("🌟🚨 ~ allGeometries", allGeometries);
+  console.log("🌟🚨 ~ allGeometriesAndMaterials", allGeometriesAndMaterials);
 
   // const mergedGeometry = allGeometries.slice(-1).reduce((acc, cur) => {
   //   return (acc as any).merge(cur);
   // });
-  const mergedGeometry = allGeometries[allGeometries.length - 1];
+  // const mergedGeometry = allGeometries[allGeometries.length - 1];
   // const mergedGeometry = useMemo(() => {
   //   const base = allGeometries.slice(1).reduce((acc, cur) => {
   //     return (acc as any).merge(cur);
   //   }, allGeometries[0]);
   //   return base;
   // }, [allGeometries]);
-  console.log("🌟🚨 ~ mergedGeometry ~ mergedGeometry", mergedGeometry);
-
-  const geometry = usedgltf?.nodes?.["RNA__SARS-CoV-2_0"]?.geometry;
-  const materials = usedgltf?.materials["SARS-CoV-2"];
-  console.log("🌟🚨 ~ instanced", instanced);
-  console.log("🌟🚨 ~ geometry", geometry);
-  // console.log("🌟🚨 ~ geometry", geometry);
 
   // each instance must have only one geometry https://github.com/pmndrs/react-three-fiber/issues/574#issuecomment-703296449
-  return instanced && mergedGeometry ? (
+  return instanced ? (
     <>
-      {allGeometries.map((geom) => (
+      {allGeometriesAndMaterials.map(({ geometry, material }) => (
         <instancedMesh
           ref={instancedRef}
-          args={[geom, materials, Math.ceil(numParticles)]}
+          args={[geometry, material, Math.ceil(numParticles)]}
           renderOrder={2}
           scale={[scale, scale, scale]}
         ></instancedMesh>
