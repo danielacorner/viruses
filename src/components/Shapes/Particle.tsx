@@ -1,4 +1,4 @@
-import React, { Suspense, useMemo, useRef } from "react";
+import React, { useRef } from "react";
 import { useSphere } from "@react-three/cannon";
 import {
   useJitterInstanceParticle,
@@ -17,14 +17,9 @@ const dummy = new THREE.Object3D();
 
 const rpi = () => Math.random() * Math.PI;
 
-// const FancyParticle = React.forwardRef((props, ref) => {
-//   return <group ref={ref}>{props.children}</group>;
-// });
-
 const Particle = ({
   ChildParticle,
   scale,
-  position: positionProp = null,
   temperature,
   numParticles,
   pathToGLTF,
@@ -33,55 +28,55 @@ const Particle = ({
   ...rest
 }) => {
   const worldRadius = useStore((state) => state.worldRadius);
-  const position =
-    positionProp || getRandStartPosition(-worldRadius, worldRadius);
 
   // https://codesandbox.io/s/may-with-60fps-your-web-site-run-xj31x?from-embed=&file=/src/index.js:297-1112
 
   const instancedRef = useRef();
-  const [sphereRef, sphereApi] = useSphere(() => ({
+  const [sphereRef, sphereApi] = useSphere((index) => ({
     // rotation: [-Math.PI / 2, 0, 0],
     mass: 1,
-    position,
+    position: getRandStartPosition(-worldRadius, worldRadius),
+    args: 1, // ? https://codesandbox.io/s/r3f-cannon-instanced-physics-devf8?file=/src/index.js
   }));
 
-  (instanced ? useJitterInstanceParticle : useJitterParticle)({
-    jitterPosition: !jittery ? 0 : temperature,
-    jitterRotation: !jittery ? 0 : temperature,
-    numParticles,
-    ref: instanced ? instancedRef : sphereRef,
-  });
+  // (instanced ? useJitterInstanceParticle : useJitterParticle)({
+  //   jitterPosition: !jittery ? 0 : temperature,
+  //   jitterRotation: !jittery ? 0 : temperature,
+  //   numParticles,
+  //   ref: instanced ? instancedRef : sphereRef,
+  // });
 
   // random start positions: instanced
-  const coords = useMemo(
-    () => [...new Array(numParticles)].map(() => [rpi(), rpi(), rpi()]),
-    [numParticles]
-  );
-  useFrame((state) => {
-    if (!instanced || !(instancedRef.current as any)?.setMatrixAt) {
-      return;
-    }
-    const t = state.clock.getElapsedTime();
-    coords.forEach(([x, y, z], i) => {
-      dummy.rotation.set(x + t, y + t, z + t);
-      //       dummy.updateMatrix(void dummy.rotation.set(x + t, y + t, z + t))
-      dummy.updateMatrix();
-      (instancedRef.current as any).setMatrixAt(i, dummy.matrix);
-    });
-    (instancedRef.current as any).instanceMatrix.needsUpdate = true;
-  });
+  // useMount(() => {
+  //   if (!instanced || !(instancedRef.current as any)?.setMatrixAt) {
+  //     return;
+  //   }
+  //   let i = 0;
+  //   for (let idx = 0; idx < numParticles; idx++) {
+  //     const [x, y, z] = getRandStartPosition(-worldRadius, worldRadius);
+  //     console.log("🌟🚨 ~ useMount ~ [x, y, z]", [x, y, z]);
+  //     dummy.position.x = x;
+  //     dummy.position.x = y;
+  //     dummy.position.x = z;
+  //     // dummy.position.set(x, y, z);
+
+  //     //       dummy.updateMatrix(void dummy.rotation.set(x + t, y + t, z + t))
+  //     dummy.updateMatrix();
+  //     (instancedRef.current as any).setMatrixAt(i++, dummy.matrix);
+  //   }
+  //   (instancedRef.current as any).instanceMatrix.needsUpdate = true;
+  // });
 
   // random start positions: non-instanced
-  // ! not working
   // * https://www.npmjs.com/package/@react-three/cannon
-  useMount(() => {
-    if (instanced) {
-      return;
-    }
-    const [x, y, z] = getRandStartPosition(-worldRadius, worldRadius);
-    // https://codesandbox.io/s/r3f-cannon-instanced-physics-devf8
-    sphereApi.position.set(x, y, z);
-  });
+  // useMount(() => {
+  //   if (instanced) {
+  //     return;
+  //   }
+  //   const [x, y, z] = getRandStartPosition(-worldRadius, worldRadius);
+  //   // https://codesandbox.io/s/r3f-cannon-instanced-physics-devf8
+  //   sphereApi.position.set(x, y, z);
+  // });
 
   // // random start positions
   // useMount(() => {
@@ -127,7 +122,6 @@ const Particle = ({
     // }))
     // geometry must exist
     .filter(({ geometry }) => Boolean(geometry));
-
   console.log("🌟🚨 ~ allGeometriesAndMaterials", allGeometriesAndMaterials);
 
   // const mergedGeometry = allGeometries.slice(-1).reduce((acc, cur) => {
@@ -146,7 +140,7 @@ const Particle = ({
     <>
       {allGeometriesAndMaterials.map(({ geometry, material }) => (
         <instancedMesh
-          ref={instancedRef}
+          ref={sphereRef}
           args={[geometry, material, Math.ceil(numParticles)]}
           renderOrder={2}
           scale={[scale, scale, scale]}
@@ -157,7 +151,7 @@ const Particle = ({
     <ChildParticle
       ref={sphereRef}
       scale={[scale, scale, scale]}
-      position={position}
+      position={getRandStartPosition(-worldRadius, worldRadius)}
     />
   );
   // <instancedMesh

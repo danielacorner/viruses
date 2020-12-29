@@ -25,7 +25,7 @@ export function useJitterInstanceParticle({
     let i = 0;
     const rPos = () => randBetween(-jitterPosition, jitterPosition);
     const rRot = () => randBetween(-jitterRotation, jitterRotation);
-    for (let x = 0; x < numParticles; x++) {
+    for (let idx = 0; idx < numParticles; idx++) {
       const { x, y, z } = ref.current.position;
       // jitter rotation
       dummy.rotation.x = dummy.rotation.x + rRot();
