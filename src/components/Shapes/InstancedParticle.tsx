@@ -67,9 +67,9 @@ const InstancedParticle = ({
 			{allGeometriesAndMaterials.map(
 				({ geometry, material, position }, idx) => (
 					<a.instancedMesh
+						ref={ref}
 						castShadow
 						key={idx}
-						ref={ref}
 						onPointerOver={() => {
 							setActive(true);
 						}}
@@ -81,6 +81,7 @@ const InstancedParticle = ({
 						scale={springProps.scale}
 						position={position}
 					>
+						{/* ??? .scene works for SARSCov2 but not others? */}
 						<primitive object={usedgltf.scene}></primitive>
 						<primitive object={geometry} attach="geometry"></primitive>
 						<primitive object={material} attach="material"></primitive>

@@ -18,25 +18,21 @@ const PROTEINS = [
 	{
 		particle: SarsCov2,
 		scale: 0.005,
-		instanced: false,
 		pathToGLTF: "/models/SarsCov2/scene.gltf",
 	},
 	{
 		particle: Model1bv1,
 		scale: 0.005,
-		instanced: false,
 		pathToGLTF: "/models/1bv1/scene.gltf",
 	},
 	{
 		particle: ModelActivatorProtein,
 		scale: 0.005,
-		instanced: false,
 		pathToGLTF: "/models/activator_protein-1/scene.gltf",
 	},
 	{
 		particle: ModelAntibody,
 		scale: 0.005,
-		instanced: false,
 		pathToGLTF: "/models/antibody/scene.gltf",
 	},
 ];
@@ -46,7 +42,7 @@ const Scene = () => {
 		type: "number",
 		min: 1,
 		max: 100,
-		value: 2,
+		value: 5,
 	});
 	const temperature: number = useControl("temperature", {
 		type: "number",
@@ -90,20 +86,11 @@ const Scene = () => {
 				gravity={[0, 0, 0]}
 				// allowSleep={false}
 			>
-				{PROTEINS.map(({ particle, scale, instanced, pathToGLTF }, idx) => {
-					// * instanced particles
-					// * -> replicate up to 1000 times
-					// * -> we can only control their movements algorithmically e.g. useFrame
-					// * -> each instance must specify one Geometry (e.g. const geometry = useGLTF("/models/SarsCov2/scene.gltf")?.nodes?.["RNA__SARS-CoV-2_0"]?.geometry )
-					// *
-					// * non-instanced particles
-					// * -> replicate up to 200 times
-					// * -> can interact with useSphere, useBox, usePlane etc
+				{PROTEINS.map(({ particle, scale, pathToGLTF }, idx) => {
 					return (
 						<InstancedParticle
 							key={idx}
 							{...{
-								instanced: false,
 								numParticles: numParticlesCeil,
 								jittery: true,
 								ChildParticle: particle,
