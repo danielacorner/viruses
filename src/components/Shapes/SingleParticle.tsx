@@ -1,8 +1,5 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useSphere } from "@react-three/cannon";
-import { useGLTF } from "@react-three/drei";
-import { getRandStartPosition } from "./particleUtils";
-import { useStore } from "../../store";
 import { useJitterParticle } from "./useJitterParticle";
 
 export function SingleParticle({
@@ -10,8 +7,32 @@ export function SingleParticle({
 	scale,
 	position,
 	temperature,
-	pathToGLTF,
+	interactive,
 	jittery,
+}) {
+	// TODO: make NonInteractiveParticle instanced for better performance?
+	// TODO: make InteractiveParticle instanced for better performance?
+	const Particle = interactive ? InteractiveParticle : NonInteractiveParticle;
+	return (
+		<Particle
+			{...{
+				jittery,
+				temperature,
+				position,
+				scale,
+				ChildParticle,
+			}}
+		/>
+	);
+}
+
+/** interacts with other particles using @react-three/cannon */
+function InteractiveParticle({
+	jittery,
+	temperature,
+	position,
+	scale,
+	ChildParticle,
 }) {
 	const [ref] = useSphere(() => ({
 		mass: 1,
@@ -20,11 +41,34 @@ export function SingleParticle({
 	}));
 	useJitterParticle({
 		jitterPosition: !jittery ? 0 : temperature,
-		jitterRotation: !jittery ? 0 : temperature * Math.PI,
+		jitterRotation: !jittery ? 0 : temperature * (2 * Math.PI) ** 2,
 		ref,
 	});
+
 	return (
 		<mesh ref={ref} scale={[scale, scale, scale]}>
+			<ChildParticle />
+		</mesh>
+	);
+}
+
+/** doesn't interact with other particles (passes through them) */
+function NonInteractiveParticle({
+	jittery,
+	temperature,
+	position,
+	scale,
+	ChildParticle,
+}) {
+	const ref = useRef();
+	useJitterParticle({
+		jitterPosition: !jittery ? 0 : temperature,
+		jitterRotation: !jittery ? 0 : temperature * (2 * Math.PI) ** 2,
+		ref,
+	});
+
+	return (
+		<mesh ref={ref} scale={[scale, scale, scale]} position={position}>
 			<ChildParticle />
 		</mesh>
 	);
