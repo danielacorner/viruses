@@ -13,6 +13,7 @@ import { useGLTF } from "@react-three/drei";
 import { getRandStartPosition } from "./particleUtils";
 import { useStore } from "../../store";
 // import * as antibody from "./models/1bv1/scene.gltf";
+import niceColors from "nice-color-palettes";
 
 const dummy = new THREE.Object3D();
 
@@ -82,8 +83,7 @@ const InstancedParticle = ({
 						position={position}
 					>
 						{/* ??? .scene works for SARSCov2 but not others? */}
-						<primitive object={usedgltf.scene}></primitive>
-						<primitive object={geometry} attach="geometry"></primitive>
+						<primitive object={usedgltf.scene} attach="geometry"></primitive>
 						<primitive object={material} attach="material"></primitive>
 						{/* <instancedBufferGeometry
 						attach="geometry"

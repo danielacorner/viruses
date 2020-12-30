@@ -13,1374 +13,1372 @@ import { a } from "react-spring/three";
 
 /** https://threejs.org/docs/#api/en/objects/Group */
 export default function SarsCov2(props) {
-  const group = useRef();
-  const gltf = useGLTF("/models/SarsCov2/scene.gltf");
-  const { nodes, materials } = gltf as any;
-  // const [ref, api] = useSphere(() => ({ mass: 1 }));
+	const gltf = useGLTF("/models/SarsCov2/scene.gltf");
+	const { nodes, materials } = gltf as any;
 
-  // {/* // https://threejs.org/docs/#api/en/objects/Group */}
-  return (
-    <a.group ref={group} {...props} dispose={null}>
-      <group rotation={[-Math.PI / 2, 0, 0]}>
-        <group rotation={[Math.PI / 2, 0, 0]}>
-          <group
-            position={[41.52, 43.1, 61.1]}
-            rotation={[-0.7, 0.43, -0.2]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein002__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[6.47, 49.55, 69.41]}
-            rotation={[-0.7, 0.01, -0.34]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein003__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[0.27, 6.39, 85.28]}
-            rotation={[-0.16, -0.06, -0.41]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein004__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[-38.95, 47.59, 59.43]}
-            rotation={[-0.77, -0.53, -0.42]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein005__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[31.67, 10.74, 78.71]}
-            rotation={[-0.22, 0.31, -0.28]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein006__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[66.12, -6.22, 53.88]}
-            rotation={[-0.02, 0.83, -0.36]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein007__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[44.65, -36.6, 63.1]}
-            rotation={[0.41, 0.51, -0.61]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein008__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[1.13, -34.1, 78.42]}
-            rotation={[0.32, -0.03, -0.57]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein009__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[-39.02, -43.18, 62.67]}
-            rotation={[0.51, -0.54, -0.39]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein010__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[-39.08, -7.13, 75.74]}
-            rotation={[-0.01, -0.52, -0.59]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein011__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[-71.53, 9.65, 45.88]}
-            rotation={[-0.39, -1.02, -0.8]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein012__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[-72.11, 43.73, 14.22]}
-            rotation={[-1.41, -0.95, -1.64]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein013__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[-67.41, 37.45, -36.98]}
-            rotation={[-2.38, -0.81, -2.42]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein014__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[-36.4, 74.79, -19.88]}
-            rotation={[-1.89, -0.35, -2.05]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein015__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[-0.86, 85.29, -6.22]}
-            rotation={[-1.7, 0.08, -1.96]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein016__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[-32.09, 71.7, 33.81]}
-            rotation={[-1.2, -0.3, -1.92]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein017__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[26.84, 74.21, 32.95]}
-            rotation={[-1.19, 0.42, -2.19]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein018__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[72.35, 43.38, 14.05]}
-            rotation={[-1.33, 1.11, -2.19]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein019__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[71.85, 33.38, -32.2]}
-            rotation={[-2.53, 1.02, -1.14]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein020__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[84.78, 10.1, 5]}
-            rotation={[-1.56, 1.54, -1.99]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein021__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[71.06, -42.85, 20.69]}
-            rotation={[1.28, 0.93, 1.57]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein022__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[43.26, -70.49, 21.76]}
-            rotation={[1.38, 0.49, 1.7]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein023__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[-11.5, -74.05, 41.21]}
-            rotation={[1.17, -0.15, 2]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein024__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[3.19, -85.45, -1.34]}
-            rotation={[1.69, 0.03, 2.03]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein025__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[-41.63, -74.21, 8.6]}
-            rotation={[1.57, -0.52, 2.09]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein026__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[30.22, -75.54, -26.35]}
-            rotation={[2.02, 0.36, 2.09]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein027__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[-27.95, -75.53, -28.78]}
-            rotation={[2.05, -0.33, 2.17]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein028__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[-44.87, -37.68, -62.3]}
-            rotation={[2.72, -0.54, 2.28]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein029__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[1.27, -40.23, -75.46]}
-            rotation={[2.76, 0.02, 2.2]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein030__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[-28.24, -12.25, -79.79]}
-            rotation={[3.1, -0.33, 2.22]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein031__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[39.12, 46.42, -60.24]}
-            rotation={[-2.37, 0.45, 1.83]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein032__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[64.9, -3.71, -55.57]}
-            rotation={[-3.05, 0.86, 2.11]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein033__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[74.54, -36.86, -19.97]}
-            rotation={[2.2, 1.14, 3.05]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein034__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[51.72, 67.09, -11.74]}
-            rotation={[-1.74, 0.55, 0.63]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein035__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[-79.65, -26.7, 16.04]}
-            rotation={[0.85, -1.28, -0.12]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein036__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[-72.77, -38.28, -23.52]}
-            rotation={[2.26, -1.1, 1.34]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein037__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[-84.72, 1.32, -11.63]}
-            rotation={[-2.43, -1.39, 2.88]}
-            scale={[100, 100, 100]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["E_Protein038__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[-78.12, -18.54, -23.75]}
-            rotation={[2.49, -1.25, 1.7]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer001__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[20, 24.04, -75.46]}
-            rotation={[-2.84, 0.29, -0.25]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer003__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-62.85, -54.51, 9.44]}
-            rotation={[1.34, -0.87, 0.54]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer004__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-17.84, -40.26, -71.21]}
-            rotation={[2.65, -0.25, 2.22]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer005__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[58.13, -30.03, -50.46]}
-            rotation={[2.66, 0.76, 2.72]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer006__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-11.35, 47.79, -66.49]}
-            rotation={[-2.47, -0.17, -2.76]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer007__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[63.12, 46.35, -26.36]}
-            rotation={[-2.09, 0.82, 1.55]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer008__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[60.36, 48.83, 28.26]}
-            rotation={[-1.09, 0.78, 0.91]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer009__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[23.07, 79.1, 6.12]}
-            rotation={[-1.52, 0.24, 1.08]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer010__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-20.96, 79.3, 9.97]}
-            rotation={[-1.47, -0.3, 1.1]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer011__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-7.4, -70.89, -41.79]}
-            rotation={[2.07, -0.06, -0.72]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer012__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[77.47, 26.59, -4.94]}
-            rotation={[-1.52, 1.26, -1.85]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer013__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[79.36, -0.53, -22.98]}
-            rotation={[3.1, 1.34, -1.41]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer014__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-53.98, 12.86, -61.22]}
-            rotation={[-2.93, -0.66, -1.66]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer015__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[26.81, -49.41, -60.55]}
-            rotation={[2.47, 0.38, -1.76]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer016__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[63.88, -26.97, 45.9]}
-            rotation={[0.47, 0.82, 1.66]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer018__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[12.95, -79.34, 22.76]}
-            rotation={[1.22, 0.17, 0.38]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer019__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-57.21, -50.28, 33.01]}
-            rotation={[0.95, -0.71, -0.6]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer020__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-49.64, 20.04, 62.49]}
-            rotation={[-0.24, -0.63, -2.3]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer021__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[25.2, 34.45, 70.45]}
-            rotation={[-0.41, 0.27, 3.06]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer022__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-1.15, -6.95, 81.13]}
-            rotation={[0.06, -0.02, 3.12]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer023__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-0.35, 22.15, 77.81]}
-            rotation={[-0.26, -0.01, 2.07]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer024__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-25, 35.74, 69.67]}
-            rotation={[-0.43, -0.28, -3.12]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer025__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-25.79, -22.64, 73.95]}
-            rotation={[0.28, -0.34, -1.92]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer026__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-49.63, -9.24, 63.45]}
-            rotation={[0.15, -0.63, -3.03]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer027__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-66, -23.64, 43.87]}
-            rotation={[0.43, -0.87, -1.71]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer028__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-17.01, -49.29, 63.09]}
-            rotation={[0.67, -0.22, -0.61]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer029__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-32.06, -62.52, 41.72]}
-            rotation={[0.95, -0.39, -1.57]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer030__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-17.12, -78.57, 22.29]}
-            rotation={[1.23, -0.23, -0.36]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer031__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[13.06, -50.06, 63.56]}
-            rotation={[0.67, 0.17, 0.59]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer032__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[28.08, -64.07, 42.66]}
-            rotation={[0.95, 0.33, -0.53]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer033__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[54.09, -53.14, 34.75]}
-            rotation={[0.95, 0.65, 0.6]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer034__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[22.86, -23.89, 74.71]}
-            rotation={[0.29, 0.3, 1.88]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer035__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[47.67, -11.74, 64.97]}
-            rotation={[0.18, 0.6, 0.88]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer036__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[49.21, 17.51, 64.03]}
-            rotation={[-0.2, 0.61, 2.23]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer037__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[1.45, 71.01, 42.74]}
-            rotation={[-0.99, 0.01, 3.11]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer039__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-63.04, 34.31, 39.92]}
-            rotation={[-0.66, -0.89, -1.62]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer041__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-78.29, 20.22, 19.5]}
-            rotation={[-0.7, -1.2, -2.7]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer042__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-80.33, -8.91, 21.9]}
-            rotation={[0.26, -1.26, -0.66]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer043__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-49.85, -66, -15.65]}
-            rotation={[1.75, -0.64, -0.11]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer045__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[22.64, -81.56, -5.64]}
-            rotation={[1.6, 0.3, 1.26]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer047__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[47.45, -68.5, -14.13]}
-            rotation={[1.72, 0.59, 0.16]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer048__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[63.64, 30.88, 41.65]}
-            rotation={[-0.59, 0.89, -2.59]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer052__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-48.18, 59.57, 34.12]}
-            rotation={[-1.04, -0.61, -3.08]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer053__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-26.09, 62.47, -48]}
-            rotation={[-2.19, -0.33, 2.62]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer069__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-50.44, 51.34, -39.94]}
-            rotation={[-2.19, -0.65, -2.54]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer070__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[17.86, 79.89, -29.71]}
-            rotation={[-1.92, 0.23, 2.53]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer077__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[16.72, 47.81, -66.99]}
-            rotation={[-2.47, 0.22, 2.78]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer079__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[47.65, 10.02, -67.21]}
-            rotation={[-3, 0.63, -1.15]}
-            scale={[90.25, 90.25, 90.25]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["hemagglutinin-esterase_dimer081__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[4.64, 81.58, 9.99]}
-            rotation={[-1.45, -0.67, 1.7]}
-            scale={[65.78, 65.78, 65.78]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["M_Protein001__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[21.56, 58.63, 53.61]}
-            rotation={[-0.5, -0.38, 2.2]}
-            scale={[65.78, 65.78, 65.78]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["M_Protein002__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[-46.25, 38.7, 56.03]}
-            rotation={[-1.29, -1.22, 0.79]}
-            scale={[65.78, 65.78, 65.78]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["M_Protein003__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[-71.26, 5.83, -40.8]}
-            rotation={[-3.08, -0.32, -1.38]}
-            scale={[65.78, 65.78, 65.78]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["M_Protein004__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[0.87, 40.35, -71.75]}
-            rotation={[-2.33, 0.68, -1.9]}
-            scale={[65.78, 65.78, 65.78]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["M_Protein005__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[66.42, 48.59, -1.99]}
-            rotation={[-0.94, 0.41, 2.29]}
-            scale={[65.78, 65.78, 65.78]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["M_Protein006__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[69.48, -24.83, -36.5]}
-            rotation={[0.36, 1.33, 0.98]}
-            scale={[65.78, 65.78, 65.78]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["M_Protein007__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[42.63, -49.71, 49.88]}
-            rotation={[-0.06, 0.5, 0.41]}
-            scale={[65.78, 65.78, 65.78]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["M_Protein008__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[-34.62, -51.52, 54.07]}
-            rotation={[0.03, -0.22, -0.28]}
-            scale={[65.78, 65.78, 65.78]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["M_Protein009__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[-71.77, -39.92, -5.63]}
-            rotation={[0.2, -1, -0.61]}
-            scale={[65.78, 65.78, 65.78]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["M_Protein010__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[-6.82, -79.43, -20.52]}
-            rotation={[1.44, -0.72, 1.11]}
-            scale={[65.78, 65.78, 65.78]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["M_Protein011__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[-3.25, -26.83, -77.76]}
-            rotation={[2.62, -0.74, 1.41]}
-            scale={[65.78, 65.78, 65.78]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["M_Protein012__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[-66.96, 47.5, -6]}
-            rotation={[-1.12, -0.37, -1.93]}
-            scale={[65.78, 65.78, 65.78]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["M_Protein013__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[10.6, 0.72, 81.63]}
-            rotation={[-0.59, 0.62, -0.47]}
-            scale={[65.78, 65.78, 65.78]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["M_Protein014__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[14.91, -63.15, 45.88]}
-            rotation={[0.94, 0.19, 0.79]}
-            scale={[103.64, 103.64, 103.64]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["Spike_Glycoprotein_(S)002__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[48.24, -63.15, 0]}
-            rotation={[Math.PI / 2, 0.65, -2.62]}
-            scale={[103.64, 103.64, 103.64]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["Spike_Glycoprotein_(S)003__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-39.03, -63.15, 28.35]}
-            rotation={[1.15, -0.51, 1.88]}
-            scale={[103.64, 103.64, 103.64]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["Spike_Glycoprotein_(S)004__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-39.03, -63.15, -28.35]}
-            rotation={[1.99, -0.51, -2.92]}
-            scale={[103.64, 103.64, 103.64]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["Spike_Glycoprotein_(S)005__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[14.91, -63.15, -45.88]}
-            rotation={[2.2, 0.19, -1.84]}
-            scale={[103.64, 103.64, 103.64]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["Spike_Glycoprotein_(S)006__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[78.05, -14.91, 0]}
-            rotation={[1.57, 1.38, -1.57]}
-            scale={[103.64, 103.64, 103.64]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["Spike_Glycoprotein_(S)007__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[24.12, -14.91, 74.23]}
-            rotation={[0.2, 0.31, -0.06]}
-            scale={[103.64, 103.64, 103.64]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["Spike_Glycoprotein_(S)008__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-63.15, -14.91, 45.88]}
-            rotation={[0.31, -0.92, 0.25]}
-            scale={[103.64, 103.64, 103.64]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["Spike_Glycoprotein_(S)009__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-63.15, -14.91, -45.88]}
-            rotation={[2.83, -0.92, 2.89]}
-            scale={[103.64, 103.64, 103.64]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["Spike_Glycoprotein_(S)010__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[24.12, -14.91, -74.23]}
-            rotation={[2.94, 0.31, -3.08]}
-            scale={[103.64, 103.64, 103.64]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["Spike_Glycoprotein_(S)011__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[63.15, 14.91, 45.88]}
-            rotation={[-0.31, 0.92, 1.3]}
-            scale={[103.64, 103.64, 103.64]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["Spike_Glycoprotein_(S)012__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-24.12, 14.91, 74.23]}
-            rotation={[-0.2, -0.31, 0.99]}
-            scale={[103.64, 103.64, 103.64]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["Spike_Glycoprotein_(S)013__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-78.05, 14.91, 0]}
-            rotation={[-Math.PI / 2, -1.38, -0.52]}
-            scale={[103.64, 103.64, 103.64]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["Spike_Glycoprotein_(S)014__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-24.12, 14.91, -74.23]}
-            rotation={[-2.94, -0.31, -2.03]}
-            scale={[103.64, 103.64, 103.64]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["Spike_Glycoprotein_(S)015__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[63.15, 14.91, -45.88]}
-            rotation={[-2.83, 0.92, -2.35]}
-            scale={[103.64, 103.64, 103.64]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["Spike_Glycoprotein_(S)016__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[39.03, 63.15, 28.35]}
-            rotation={[-1.15, 0.51, 0.83]}
-            scale={[103.64, 103.64, 103.64]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["Spike_Glycoprotein_(S)017__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-14.91, 63.15, 45.88]}
-            rotation={[-0.94, -0.19, -0.25]}
-            scale={[103.64, 103.64, 103.64]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["Spike_Glycoprotein_(S)018__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-48.24, 63.15, 0]}
-            rotation={[-Math.PI / 2, -0.65, -Math.PI / 2]}
-            scale={[103.64, 103.64, 103.64]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["Spike_Glycoprotein_(S)019__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[-14.91, 63.15, -45.88]}
-            rotation={[-2.2, -0.19, -2.89]}
-            scale={[103.64, 103.64, 103.64]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["Spike_Glycoprotein_(S)020__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group
-            position={[39.03, 63.15, -28.35]}
-            rotation={[-1.99, 0.51, 2.31]}
-            scale={[103.64, 103.64, 103.64]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={
-                nodes["Spike_Glycoprotein_(S)021__SARS-CoV-2_0"].geometry
-              }
-            />
-          </group>
-          <group rotation={[-Math.PI / 2, 0, 0]} scale={[100, 100, 100]}>
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["Envelope-low__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-          <group
-            position={[16.48, -1.7, 0]}
-            rotation={[-Math.PI / 2, 0, 0]}
-            scale={[58.01, 58.01, 58.01]}
-          >
-            <mesh
-              material={materials["SARS-CoV-2"]}
-              geometry={nodes["RNA__SARS-CoV-2_0"].geometry}
-            />
-          </group>
-        </group>
-      </group>
-    </a.group>
-  );
+	// {/* // https://threejs.org/docs/#api/en/objects/Group */}
+	return (
+		<group {...props} dispose={null}>
+			<group rotation={[-Math.PI / 2, 0, 0]}>
+				<group rotation={[Math.PI / 2, 0, 0]}>
+					<group
+						position={[41.52, 43.1, 61.1]}
+						rotation={[-0.7, 0.43, -0.2]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein002__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[6.47, 49.55, 69.41]}
+						rotation={[-0.7, 0.01, -0.34]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein003__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[0.27, 6.39, 85.28]}
+						rotation={[-0.16, -0.06, -0.41]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein004__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[-38.95, 47.59, 59.43]}
+						rotation={[-0.77, -0.53, -0.42]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein005__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[31.67, 10.74, 78.71]}
+						rotation={[-0.22, 0.31, -0.28]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein006__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[66.12, -6.22, 53.88]}
+						rotation={[-0.02, 0.83, -0.36]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein007__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[44.65, -36.6, 63.1]}
+						rotation={[0.41, 0.51, -0.61]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein008__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[1.13, -34.1, 78.42]}
+						rotation={[0.32, -0.03, -0.57]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein009__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[-39.02, -43.18, 62.67]}
+						rotation={[0.51, -0.54, -0.39]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein010__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[-39.08, -7.13, 75.74]}
+						rotation={[-0.01, -0.52, -0.59]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein011__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[-71.53, 9.65, 45.88]}
+						rotation={[-0.39, -1.02, -0.8]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein012__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[-72.11, 43.73, 14.22]}
+						rotation={[-1.41, -0.95, -1.64]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein013__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[-67.41, 37.45, -36.98]}
+						rotation={[-2.38, -0.81, -2.42]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein014__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[-36.4, 74.79, -19.88]}
+						rotation={[-1.89, -0.35, -2.05]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein015__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[-0.86, 85.29, -6.22]}
+						rotation={[-1.7, 0.08, -1.96]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein016__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[-32.09, 71.7, 33.81]}
+						rotation={[-1.2, -0.3, -1.92]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein017__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[26.84, 74.21, 32.95]}
+						rotation={[-1.19, 0.42, -2.19]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein018__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[72.35, 43.38, 14.05]}
+						rotation={[-1.33, 1.11, -2.19]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein019__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[71.85, 33.38, -32.2]}
+						rotation={[-2.53, 1.02, -1.14]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein020__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[84.78, 10.1, 5]}
+						rotation={[-1.56, 1.54, -1.99]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein021__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[71.06, -42.85, 20.69]}
+						rotation={[1.28, 0.93, 1.57]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein022__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[43.26, -70.49, 21.76]}
+						rotation={[1.38, 0.49, 1.7]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein023__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[-11.5, -74.05, 41.21]}
+						rotation={[1.17, -0.15, 2]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein024__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[3.19, -85.45, -1.34]}
+						rotation={[1.69, 0.03, 2.03]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein025__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[-41.63, -74.21, 8.6]}
+						rotation={[1.57, -0.52, 2.09]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein026__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[30.22, -75.54, -26.35]}
+						rotation={[2.02, 0.36, 2.09]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein027__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[-27.95, -75.53, -28.78]}
+						rotation={[2.05, -0.33, 2.17]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein028__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[-44.87, -37.68, -62.3]}
+						rotation={[2.72, -0.54, 2.28]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein029__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[1.27, -40.23, -75.46]}
+						rotation={[2.76, 0.02, 2.2]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein030__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[-28.24, -12.25, -79.79]}
+						rotation={[3.1, -0.33, 2.22]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein031__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[39.12, 46.42, -60.24]}
+						rotation={[-2.37, 0.45, 1.83]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein032__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[64.9, -3.71, -55.57]}
+						rotation={[-3.05, 0.86, 2.11]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein033__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[74.54, -36.86, -19.97]}
+						rotation={[2.2, 1.14, 3.05]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein034__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[51.72, 67.09, -11.74]}
+						rotation={[-1.74, 0.55, 0.63]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein035__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[-79.65, -26.7, 16.04]}
+						rotation={[0.85, -1.28, -0.12]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein036__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[-72.77, -38.28, -23.52]}
+						rotation={[2.26, -1.1, 1.34]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein037__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[-84.72, 1.32, -11.63]}
+						rotation={[-2.43, -1.39, 2.88]}
+						scale={[100, 100, 100]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["E_Protein038__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[-78.12, -18.54, -23.75]}
+						rotation={[2.49, -1.25, 1.7]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer001__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[20, 24.04, -75.46]}
+						rotation={[-2.84, 0.29, -0.25]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer003__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-62.85, -54.51, 9.44]}
+						rotation={[1.34, -0.87, 0.54]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer004__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-17.84, -40.26, -71.21]}
+						rotation={[2.65, -0.25, 2.22]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer005__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[58.13, -30.03, -50.46]}
+						rotation={[2.66, 0.76, 2.72]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer006__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-11.35, 47.79, -66.49]}
+						rotation={[-2.47, -0.17, -2.76]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer007__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[63.12, 46.35, -26.36]}
+						rotation={[-2.09, 0.82, 1.55]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer008__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[60.36, 48.83, 28.26]}
+						rotation={[-1.09, 0.78, 0.91]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer009__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[23.07, 79.1, 6.12]}
+						rotation={[-1.52, 0.24, 1.08]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer010__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-20.96, 79.3, 9.97]}
+						rotation={[-1.47, -0.3, 1.1]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer011__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-7.4, -70.89, -41.79]}
+						rotation={[2.07, -0.06, -0.72]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer012__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[77.47, 26.59, -4.94]}
+						rotation={[-1.52, 1.26, -1.85]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer013__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[79.36, -0.53, -22.98]}
+						rotation={[3.1, 1.34, -1.41]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer014__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-53.98, 12.86, -61.22]}
+						rotation={[-2.93, -0.66, -1.66]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer015__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[26.81, -49.41, -60.55]}
+						rotation={[2.47, 0.38, -1.76]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer016__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[63.88, -26.97, 45.9]}
+						rotation={[0.47, 0.82, 1.66]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer018__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[12.95, -79.34, 22.76]}
+						rotation={[1.22, 0.17, 0.38]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer019__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-57.21, -50.28, 33.01]}
+						rotation={[0.95, -0.71, -0.6]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer020__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-49.64, 20.04, 62.49]}
+						rotation={[-0.24, -0.63, -2.3]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer021__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[25.2, 34.45, 70.45]}
+						rotation={[-0.41, 0.27, 3.06]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer022__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-1.15, -6.95, 81.13]}
+						rotation={[0.06, -0.02, 3.12]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer023__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-0.35, 22.15, 77.81]}
+						rotation={[-0.26, -0.01, 2.07]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer024__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-25, 35.74, 69.67]}
+						rotation={[-0.43, -0.28, -3.12]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer025__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-25.79, -22.64, 73.95]}
+						rotation={[0.28, -0.34, -1.92]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer026__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-49.63, -9.24, 63.45]}
+						rotation={[0.15, -0.63, -3.03]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer027__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-66, -23.64, 43.87]}
+						rotation={[0.43, -0.87, -1.71]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer028__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-17.01, -49.29, 63.09]}
+						rotation={[0.67, -0.22, -0.61]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer029__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-32.06, -62.52, 41.72]}
+						rotation={[0.95, -0.39, -1.57]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer030__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-17.12, -78.57, 22.29]}
+						rotation={[1.23, -0.23, -0.36]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer031__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[13.06, -50.06, 63.56]}
+						rotation={[0.67, 0.17, 0.59]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer032__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[28.08, -64.07, 42.66]}
+						rotation={[0.95, 0.33, -0.53]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer033__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[54.09, -53.14, 34.75]}
+						rotation={[0.95, 0.65, 0.6]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer034__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[22.86, -23.89, 74.71]}
+						rotation={[0.29, 0.3, 1.88]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer035__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[47.67, -11.74, 64.97]}
+						rotation={[0.18, 0.6, 0.88]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer036__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[49.21, 17.51, 64.03]}
+						rotation={[-0.2, 0.61, 2.23]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer037__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[1.45, 71.01, 42.74]}
+						rotation={[-0.99, 0.01, 3.11]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer039__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-63.04, 34.31, 39.92]}
+						rotation={[-0.66, -0.89, -1.62]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer041__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-78.29, 20.22, 19.5]}
+						rotation={[-0.7, -1.2, -2.7]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer042__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-80.33, -8.91, 21.9]}
+						rotation={[0.26, -1.26, -0.66]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer043__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-49.85, -66, -15.65]}
+						rotation={[1.75, -0.64, -0.11]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer045__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[22.64, -81.56, -5.64]}
+						rotation={[1.6, 0.3, 1.26]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer047__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[47.45, -68.5, -14.13]}
+						rotation={[1.72, 0.59, 0.16]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer048__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[63.64, 30.88, 41.65]}
+						rotation={[-0.59, 0.89, -2.59]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer052__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-48.18, 59.57, 34.12]}
+						rotation={[-1.04, -0.61, -3.08]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer053__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-26.09, 62.47, -48]}
+						rotation={[-2.19, -0.33, 2.62]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer069__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-50.44, 51.34, -39.94]}
+						rotation={[-2.19, -0.65, -2.54]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer070__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[17.86, 79.89, -29.71]}
+						rotation={[-1.92, 0.23, 2.53]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer077__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[16.72, 47.81, -66.99]}
+						rotation={[-2.47, 0.22, 2.78]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer079__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[47.65, 10.02, -67.21]}
+						rotation={[-3, 0.63, -1.15]}
+						scale={[90.25, 90.25, 90.25]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["hemagglutinin-esterase_dimer081__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[4.64, 81.58, 9.99]}
+						rotation={[-1.45, -0.67, 1.7]}
+						scale={[65.78, 65.78, 65.78]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["M_Protein001__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[21.56, 58.63, 53.61]}
+						rotation={[-0.5, -0.38, 2.2]}
+						scale={[65.78, 65.78, 65.78]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["M_Protein002__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[-46.25, 38.7, 56.03]}
+						rotation={[-1.29, -1.22, 0.79]}
+						scale={[65.78, 65.78, 65.78]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["M_Protein003__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[-71.26, 5.83, -40.8]}
+						rotation={[-3.08, -0.32, -1.38]}
+						scale={[65.78, 65.78, 65.78]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["M_Protein004__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[0.87, 40.35, -71.75]}
+						rotation={[-2.33, 0.68, -1.9]}
+						scale={[65.78, 65.78, 65.78]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["M_Protein005__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[66.42, 48.59, -1.99]}
+						rotation={[-0.94, 0.41, 2.29]}
+						scale={[65.78, 65.78, 65.78]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["M_Protein006__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[69.48, -24.83, -36.5]}
+						rotation={[0.36, 1.33, 0.98]}
+						scale={[65.78, 65.78, 65.78]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["M_Protein007__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[42.63, -49.71, 49.88]}
+						rotation={[-0.06, 0.5, 0.41]}
+						scale={[65.78, 65.78, 65.78]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["M_Protein008__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[-34.62, -51.52, 54.07]}
+						rotation={[0.03, -0.22, -0.28]}
+						scale={[65.78, 65.78, 65.78]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["M_Protein009__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[-71.77, -39.92, -5.63]}
+						rotation={[0.2, -1, -0.61]}
+						scale={[65.78, 65.78, 65.78]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["M_Protein010__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[-6.82, -79.43, -20.52]}
+						rotation={[1.44, -0.72, 1.11]}
+						scale={[65.78, 65.78, 65.78]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["M_Protein011__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[-3.25, -26.83, -77.76]}
+						rotation={[2.62, -0.74, 1.41]}
+						scale={[65.78, 65.78, 65.78]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["M_Protein012__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[-66.96, 47.5, -6]}
+						rotation={[-1.12, -0.37, -1.93]}
+						scale={[65.78, 65.78, 65.78]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["M_Protein013__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[10.6, 0.72, 81.63]}
+						rotation={[-0.59, 0.62, -0.47]}
+						scale={[65.78, 65.78, 65.78]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["M_Protein014__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[14.91, -63.15, 45.88]}
+						rotation={[0.94, 0.19, 0.79]}
+						scale={[103.64, 103.64, 103.64]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["Spike_Glycoprotein_(S)002__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[48.24, -63.15, 0]}
+						rotation={[Math.PI / 2, 0.65, -2.62]}
+						scale={[103.64, 103.64, 103.64]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["Spike_Glycoprotein_(S)003__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-39.03, -63.15, 28.35]}
+						rotation={[1.15, -0.51, 1.88]}
+						scale={[103.64, 103.64, 103.64]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["Spike_Glycoprotein_(S)004__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-39.03, -63.15, -28.35]}
+						rotation={[1.99, -0.51, -2.92]}
+						scale={[103.64, 103.64, 103.64]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["Spike_Glycoprotein_(S)005__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[14.91, -63.15, -45.88]}
+						rotation={[2.2, 0.19, -1.84]}
+						scale={[103.64, 103.64, 103.64]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["Spike_Glycoprotein_(S)006__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[78.05, -14.91, 0]}
+						rotation={[1.57, 1.38, -1.57]}
+						scale={[103.64, 103.64, 103.64]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["Spike_Glycoprotein_(S)007__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[24.12, -14.91, 74.23]}
+						rotation={[0.2, 0.31, -0.06]}
+						scale={[103.64, 103.64, 103.64]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["Spike_Glycoprotein_(S)008__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-63.15, -14.91, 45.88]}
+						rotation={[0.31, -0.92, 0.25]}
+						scale={[103.64, 103.64, 103.64]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["Spike_Glycoprotein_(S)009__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-63.15, -14.91, -45.88]}
+						rotation={[2.83, -0.92, 2.89]}
+						scale={[103.64, 103.64, 103.64]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["Spike_Glycoprotein_(S)010__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[24.12, -14.91, -74.23]}
+						rotation={[2.94, 0.31, -3.08]}
+						scale={[103.64, 103.64, 103.64]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["Spike_Glycoprotein_(S)011__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[63.15, 14.91, 45.88]}
+						rotation={[-0.31, 0.92, 1.3]}
+						scale={[103.64, 103.64, 103.64]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["Spike_Glycoprotein_(S)012__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-24.12, 14.91, 74.23]}
+						rotation={[-0.2, -0.31, 0.99]}
+						scale={[103.64, 103.64, 103.64]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["Spike_Glycoprotein_(S)013__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-78.05, 14.91, 0]}
+						rotation={[-Math.PI / 2, -1.38, -0.52]}
+						scale={[103.64, 103.64, 103.64]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["Spike_Glycoprotein_(S)014__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-24.12, 14.91, -74.23]}
+						rotation={[-2.94, -0.31, -2.03]}
+						scale={[103.64, 103.64, 103.64]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["Spike_Glycoprotein_(S)015__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[63.15, 14.91, -45.88]}
+						rotation={[-2.83, 0.92, -2.35]}
+						scale={[103.64, 103.64, 103.64]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["Spike_Glycoprotein_(S)016__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[39.03, 63.15, 28.35]}
+						rotation={[-1.15, 0.51, 0.83]}
+						scale={[103.64, 103.64, 103.64]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["Spike_Glycoprotein_(S)017__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-14.91, 63.15, 45.88]}
+						rotation={[-0.94, -0.19, -0.25]}
+						scale={[103.64, 103.64, 103.64]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["Spike_Glycoprotein_(S)018__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-48.24, 63.15, 0]}
+						rotation={[-Math.PI / 2, -0.65, -Math.PI / 2]}
+						scale={[103.64, 103.64, 103.64]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["Spike_Glycoprotein_(S)019__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[-14.91, 63.15, -45.88]}
+						rotation={[-2.2, -0.19, -2.89]}
+						scale={[103.64, 103.64, 103.64]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["Spike_Glycoprotein_(S)020__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group
+						position={[39.03, 63.15, -28.35]}
+						rotation={[-1.99, 0.51, 2.31]}
+						scale={[103.64, 103.64, 103.64]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={
+								nodes["Spike_Glycoprotein_(S)021__SARS-CoV-2_0"].geometry
+							}
+						/>
+					</group>
+					<group rotation={[-Math.PI / 2, 0, 0]} scale={[100, 100, 100]}>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["Envelope-low__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+					<group
+						position={[16.48, -1.7, 0]}
+						rotation={[-Math.PI / 2, 0, 0]}
+						scale={[58.01, 58.01, 58.01]}
+					>
+						<mesh
+							material={materials["SARS-CoV-2"]}
+							geometry={nodes["RNA__SARS-CoV-2_0"].geometry}
+						/>
+					</group>
+				</group>
+			</group>
+		</group>
+	);
 }
 
 useGLTF.preload("/models/SarsCov2/scene.gltf");
