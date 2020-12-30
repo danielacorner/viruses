@@ -44,33 +44,22 @@ export function useJitterInstanceParticle({
 export function useJitterParticle({
 	jitterRotation = 0.01,
 	jitterPosition = 0.01,
+	ref = null,
 } = {}) {
-	const particle = useRef(null as any);
+	const rPos = () => randBetween(-jitterPosition, jitterPosition);
+	const rRot = () => randBetween(-jitterRotation, jitterRotation);
 
 	useFrame(() => {
-		if (particle.current) {
+		if (ref.current) {
 			// jitter rotation
-			particle.current.rotation.x =
-				particle.current.rotation.x +
-				randBetween(-jitterRotation, jitterRotation);
-			particle.current.rotation.y =
-				particle.current.rotation.y +
-				randBetween(-jitterRotation, jitterRotation);
-			particle.current.rotation.z =
-				particle.current.rotation.z +
-				randBetween(-jitterRotation, jitterRotation);
+			ref.current.rotation.x = ref.current.rotation.x + rRot();
+			ref.current.rotation.y = ref.current.rotation.y + rRot();
+			ref.current.rotation.z = ref.current.rotation.z + rRot();
 
 			// jitter position
-			particle.current.position.x =
-				particle.current.position.x +
-				randBetween(-jitterPosition, jitterPosition);
-			particle.current.position.y =
-				particle.current.position.y +
-				randBetween(-jitterPosition, jitterPosition);
-			particle.current.position.z =
-				particle.current.position.z +
-				randBetween(-jitterPosition, jitterPosition);
+			ref.current.position.x = ref.current.position.x + rPos();
+			ref.current.position.y = ref.current.position.y + rPos();
+			ref.current.position.z = ref.current.position.z + rPos();
 		}
 	});
-	return particle;
 }

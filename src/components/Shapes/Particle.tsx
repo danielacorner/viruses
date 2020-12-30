@@ -39,14 +39,6 @@ const Particle = ({
 		position: getRandStartPosition(worldRadius),
 		args: 1, // ? https://codesandbox.io/s/r3f-cannon-instanced-physics-devf8?file=/src/index.js
 	}));
-
-	(instanced ? useJitterInstanceParticle : useJitterParticle)({
-		jitterPosition: !jittery ? 0 : temperature,
-		jitterRotation: !jittery ? 0 : temperature,
-		numParticles,
-		ref: instanced ? instancedRef : sphereRef,
-	});
-
 	// random start positions: instanced
 	// useMount(() => {
 	//   if (!instanced || !(instancedRef.current as any)?.setMatrixAt) {

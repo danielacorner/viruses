@@ -15,6 +15,9 @@ import { Stars as ManualStars } from "./Stars";
 import { getRandStartPosition } from "./Shapes/particleUtils";
 import { useStore } from "../store";
 import Protein from "./Protein";
+import { useMount } from "../utils/utils";
+import useSound from "use-sound";
+import music from "../assets/music";
 
 const PROTEINS = [
 	{
@@ -46,13 +49,25 @@ const Scene = () => {
 		max: 100,
 		value: 5,
 	});
+	const numParticlesCeil = Math.ceil(numParticles);
+
 	const temperature: number = useControl("temperature", {
 		type: "number",
 		min: 0,
-		max: 0.04,
+		max: 0.5,
 		value: 0.01,
 	});
-	const numParticlesCeil = Math.ceil(numParticles);
+
+	// audio track
+	const [play, exposedData] = useSound(music, { volume: 1 });
+	const audioEnabled: boolean = useControl("audio", {
+		type: "boolean",
+		value: true,
+		onChange: () => {
+			console.log("🌟🚨: Scene -> exposedData", exposedData);
+			play();
+		},
+	});
 
 	return (
 		<>
@@ -75,6 +90,7 @@ const Scene = () => {
 				{PROTEINS.map(({ particle, scale, pathToGLTF }, idx) => {
 					return (
 						<Protein
+							key={pathToGLTF}
 							{...{
 								particle,
 								scale,
