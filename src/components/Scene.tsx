@@ -4,46 +4,20 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Lighting } from "./Lighting";
 import { useControl } from "react-three-gui";
 import { Walls } from "./Walls";
-import SarsCov2 from "./GLTFs/SarsCov2";
-import Model1bv1 from "./GLTFs/1bv1";
-import ModelAntibody from "./GLTFs/antibody";
 import ProteinGroup from "./ProteinGroup";
 import { useMount } from "../utils/utils";
 import useSound from "use-sound";
 import music from "../assets/music";
-import { PHYSICS_PROPS } from "../utils/constants";
-
-const PROTEINS = [
-	{
-		name: "SarsCov2",
-		particle: SarsCov2,
-		scale: 0.005,
-		pathToGLTF: "/models/SarsCov2/scene.gltf",
-		interactive: true,
-	},
-	{
-		name: "1bv1",
-		particle: Model1bv1,
-		scale: 0.005,
-		pathToGLTF: "/models/1bv1/scene.gltf",
-		interactive: true,
-	},
-	{
-		name: "antibody",
-		particle: ModelAntibody,
-		scale: 0.005,
-		pathToGLTF: "/models/antibody/scene.gltf",
-		interactive: false,
-	},
-];
+import { PHYSICS_PROPS, PROTEINS } from "../utils/constants";
+import CellMembrane from "./CellMembrane";
 
 const Scene = () => {
 	const temperature: number = useControl("temperature", {
 		group: "Environment",
 		type: "number",
 		min: 0,
-		max: 0.5,
-		value: 0.01,
+		max: 100,
+		value: 1,
 	});
 
 	// audio track
@@ -59,22 +33,26 @@ const Scene = () => {
 				// allowSleep={false}
 				{...PHYSICS_PROPS}
 			>
-				{PROTEINS.map(({ particle, scale, pathToGLTF, name, interactive }) => {
-					return (
-						<ProteinGroup
-							key={pathToGLTF}
-							{...{
-								particleName: name,
-								particle,
-								interactive,
-								scale,
-								pathToGLTF,
-								temperature,
-							}}
-						/>
-					);
-				})}
+				{PROTEINS.map(
+					({ particle, scale, pathToGLTF, name, interactive, mass }) => {
+						return (
+							<ProteinGroup
+								key={pathToGLTF}
+								{...{
+									particleName: name,
+									particle,
+									interactive,
+									scale,
+									pathToGLTF,
+									temperature,
+									mass,
+								}}
+							/>
+						);
+					}
+				)}
 				<Walls />
+				<CellMembrane />
 			</Physics>
 			{/* <Effects /> */}
 		</>

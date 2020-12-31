@@ -10,6 +10,7 @@ const ProteinGroup = ({
 	temperature,
 	particleName,
 	interactive,
+	mass,
 }) => {
 	const numParticlesFloat: number = useControl(particleName, {
 		group: "Particles",
@@ -53,7 +54,7 @@ const ProteinGroup = ({
 					key={JSON.stringify(position)}
 					{...{
 						position,
-						jittery: true,
+						mass,
 						interactive,
 						ChildParticle: particle,
 						temperature,

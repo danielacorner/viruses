@@ -6,9 +6,9 @@ export function SingleParticle({
 	ChildParticle,
 	scale,
 	position,
+	mass,
 	temperature,
 	interactive,
-	jittery,
 }) {
 	// TODO: make NonInteractiveParticle instanced for better performance?
 	// TODO: make InteractiveParticle instanced for better performance?
@@ -16,8 +16,8 @@ export function SingleParticle({
 	return (
 		<Particle
 			{...{
-				jittery,
 				temperature,
+				mass,
 				position,
 				scale,
 				ChildParticle,
@@ -28,20 +28,20 @@ export function SingleParticle({
 
 /** interacts with other particles using @react-three/cannon */
 function InteractiveParticle({
-	jittery,
 	temperature,
 	position,
 	scale,
 	ChildParticle,
+	mass,
 }) {
 	const [ref] = useSphere(() => ({
-		mass: 1,
+		mass,
 		position,
 		args: 1,
 	}));
 	useJitterParticle({
-		jitterPosition: !jittery ? 0 : temperature,
-		jitterRotation: !jittery ? 0 : temperature * (2 * Math.PI) ** 2,
+		temperature,
+		mass,
 		ref,
 	});
 
@@ -54,16 +54,16 @@ function InteractiveParticle({
 
 /** doesn't interact with other particles (passes through them) */
 function NonInteractiveParticle({
-	jittery,
 	temperature,
+	mass,
 	position,
 	scale,
 	ChildParticle,
 }) {
 	const ref = useRef();
 	useJitterParticle({
-		jitterPosition: !jittery ? 0 : temperature,
-		jitterRotation: !jittery ? 0 : temperature * (2 * Math.PI) ** 2,
+		temperature,
+		mass,
 		ref,
 	});
 
