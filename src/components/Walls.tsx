@@ -21,31 +21,31 @@ export function Walls() {
     // {/* behind */}
     {
       rotation: [0, -1 * Math.PI, 0],
-      color: colors[1],
+      color: colors[0],
       position: [0, -0, worldRadius],
     },
     // {/* left */}
     {
       rotation: [0, 0.5 * Math.PI, 0],
-      color: colors[2],
+      color: colors[1],
       position: [-worldRadius, 0, 0],
     },
     // {/* right */}
     {
       rotation: [0, -0.5 * Math.PI, 0],
-      color: colors[3],
+      color: colors[1],
       position: [worldRadius, -0, 0],
     },
     // {/* floor */}
-    {
-      rotation: [-0.5 * Math.PI, 0, 0],
-      color: colors[4],
-      position: [0, -worldRadius, 0],
-    },
+    // {
+    //   rotation: [-0.5 * Math.PI, 0, 0],
+    //   color: colors[2],
+    //   position: [0, -worldRadius, 0],
+    // },
     // {/* ceiling */}
     {
       rotation: [0.5 * Math.PI, 0, 0],
-      color: colors[5],
+      color: colors[2],
       position: [0, worldRadius, 0],
     },
   ];
