@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { Physics, useSphere } from "@react-three/cannon";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Lighting } from "./Lighting";
@@ -9,7 +9,7 @@ import { PHYSICS_PROPS, PROTEINS } from "../utils/constants";
 import CellMembrane from "./CellMembrane";
 import { useAudioTrack } from "./useAudioTrack";
 import * as THREE from "three";
-import { useLoader } from "react-three-fiber";
+import { ATPInstanced } from "./GLTFs/other/ATPInstanced";
 
 const Scene = () => {
   const temperature: number = useControl("temperature", {
@@ -53,7 +53,7 @@ const Scene = () => {
           }
         )}
         <Water />
-        <ATP />
+        <ATPInstanced />
         <Walls />
         <CellMembrane />
       </Physics>
@@ -92,33 +92,3 @@ function Water() {
     </instancedMesh>
   );
 }
-
-const tempColor = new THREE.Color();
-
-const numATPMolecules = 20;
-function ATP() {
-  const [ref] = useSphere((index) => ({
-    mass: 0.2,
-    position: [Math.random() - 0.5, Math.random() - 0.5, index * 2],
-    args: 1,
-  }));
-  const { nodes, materials } = useGLTF("/models/atp/scene.gltf") as any;
-
-  return (
-    <instancedMesh
-      ref={ref}
-      receiveShadow
-      args={[null, null, numATPMolecules]}
-      renderOrder={2}
-      material={materials["Scene_-_Root"]}
-    >
-      <bufferGeometry {...nodes.mesh_0.geometry}>
-        <instancedBufferAttribute
-          attachObject={["attributes", "color"]}
-          args={[Float32Array.from(tempColor.set("#b91515").toArray()), 1]}
-        />
-      </bufferGeometry>
-    </instancedMesh>
-  );
-}
-useGLTF.preload("/models/atp/scene.gltf");
