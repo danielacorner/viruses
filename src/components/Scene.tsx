@@ -13,76 +13,50 @@ import { useStoredControl } from "./useStoredControl";
 import { Water } from "./Water";
 
 const Scene = () => {
-	const temperature = useStoredControl("temperature", {
-		group: "Environment",
-		type: "number",
-		min: 0,
-		max: 100,
-		value: 1,
-	});
+  const temperature = useStoredControl("temperature", {
+    group: "Environment",
+    type: "number",
+    min: 0,
+    max: 100,
+    value: 1,
+  });
 
-	const scale = useStoredControl("scale", {
-		group: "Environment",
-		type: "number",
-		min: 0,
-		max: 0.002,
-		value: 0.001,
-	});
+  const scale = useStoredControl("scale", {
+    group: "Environment",
+    type: "number",
+    min: 0,
+    max: 0.002,
+    value: 0.001,
+  });
 
-	// audio track
-	useAudioTrack();
+  // audio track
+  useAudioTrack();
 
-	return (
-		<>
-			<OrbitControls />
-			<Lighting />
-			<Physics
-				// iterations={20}
-				// tolerance={0.0001}
-				// allowSleep={false}
-				{...PHYSICS_PROPS}
-			>
-				{PROTEINS.map(
-					// TODO: abstract / clean up
-					({
-						particle,
-						pathToGLTF,
-						pathToImage,
-						atomCount,
-						PDBUrl,
-						name,
-						interactive,
-						mass,
-						numIcosahedronFaces,
-					}) => {
-						return (
-							<ProteinGroup
-								key={pathToGLTF}
-								{...{
-									name,
-									atomCount,
-									particle,
-									PDBUrl,
-									pathToImage,
-									interactive,
-									numIcosahedronFaces,
-									// instanced,
-									pathToGLTF,
-									mass,
-								}}
-							/>
-						);
-					}
-				)}
-				<Water />
-				{/* TODO: ATP is inside the cell only? */}
-				{/* <ATPInstanced /> */}
-				<Walls />
-				{/* <CellMembrane /> */}
-			</Physics>
-			{/* <Effects /> */}
-		</>
-	);
+  return (
+    <>
+      <OrbitControls />
+      <Lighting />
+      <Physics
+        // iterations={20}
+        // tolerance={0.0001}
+        // allowSleep={false}
+        {...PHYSICS_PROPS}
+      >
+        {PROTEINS.map(
+          // TODO: abstract / clean up
+          (protein) => {
+            return <ProteinGroup key={protein.name} {...protein} />;
+          }
+        )}
+        <Water />
+        {/* TODO: ATP is inside the cell only? */}
+        {/* <ATPInstanced /> */}
+        <Walls />
+        {/* <CellMembrane /> */}
+      </Physics>
+      {/* <Effects /> */}
+    </>
+  );
 };
 
 PROTEINS.forEach(({ pathToGLTF }) => useGLTF.preload(pathToGLTF));
