@@ -19,6 +19,8 @@ type Protein = {
   pathToGLTF: string;
   /** does the particle bump into others? (may cost more CPU) */
   interactive: boolean;
+  /** if interactive, how many faces does the geometry have? determined shape for physics interactions in useConvexPolyhedron */
+  numIcosahedronFaces: number;
 };
 
 export const PROTEINS: Protein[] = [
@@ -28,6 +30,7 @@ export const PROTEINS: Protein[] = [
     PDBurl: "https://www.rcsb.org/structure/6CGV",
     mass: 1532.27,
     atomCount: 99723,
+    numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/adenovirus_160_outer.glb",
     interactive: true,
   },
@@ -37,6 +40,7 @@ export const PROTEINS: Protein[] = [
     PDBurl: "https://www.rcsb.org/structure/5J7V",
     mass: 215.35,
     atomCount: 14478,
+    numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/faust_1200_1.glb",
     interactive: true,
   },
@@ -46,7 +50,8 @@ export const PROTEINS: Protein[] = [
     PDBurl: "https://www.rcsb.org/structure/1UF2",
     mass: 889.08,
     atomCount: 58130,
-    pathToGLTF: "/models/viruses/faust_1200_1.glb",
+    numIcosahedronFaces: 20,
+    pathToGLTF: "/models/viruses/Rice_dwarf_100.glb",
     interactive: true,
   },
 ];

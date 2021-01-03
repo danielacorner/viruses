@@ -43,7 +43,14 @@ const Scene = () => {
         {...PHYSICS_PROPS}
       >
         {PROTEINS.map(
-          ({ particle, pathToGLTF, name, interactive, mass, scale }) => {
+          ({
+            particle,
+            pathToGLTF,
+            name,
+            interactive,
+            mass,
+            numIcosahedronFaces,
+          }) => {
             return (
               <ProteinGroup
                 key={pathToGLTF}
@@ -51,6 +58,7 @@ const Scene = () => {
                   particleName: name,
                   particle,
                   interactive,
+                  numIcosahedronFaces,
                   // instanced,
                   pathToGLTF,
                   mass,

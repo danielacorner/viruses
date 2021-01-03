@@ -3,13 +3,13 @@ import { useControl } from "react-three-gui";
 import { SingleParticle } from "./Shapes/SingleParticle";
 import { getRandStartPosition } from "./Shapes/particleUtils";
 import { useStore } from "../store";
-import { useGLTF } from "@react-three/drei";
 
 const ProteinGroup = ({
   particle,
   particleName,
   interactive,
   pathToGLTF,
+  numIcosahedronFaces,
   instanced = true,
   mass,
 }) => {
@@ -56,6 +56,7 @@ const ProteinGroup = ({
           {...{
             position,
             pathToGLTF,
+            numIcosahedronFaces,
             mass,
             interactive,
             ChildParticle: particle,
