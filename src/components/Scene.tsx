@@ -1,17 +1,16 @@
-import React, { useEffect } from "react";
-import { Physics, useSphere } from "@react-three/cannon";
+import React from "react";
+import { Physics } from "@react-three/cannon";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Lighting } from "./Lighting";
-import { ControlOptions, useControl } from "react-three-gui";
 import { Walls } from "./Walls";
 import ProteinGroup from "./ProteinGroup";
 import { PHYSICS_PROPS } from "../utils/PHYSICS_PROPS";
 import { PROTEINS } from "../utils/PROTEINS";
 import CellMembrane from "./CellMembrane";
 import { useAudioTrack } from "./useAudioTrack";
-import * as THREE from "three";
 import { ATPInstanced } from "./GLTFs/other/ATPInstanced";
-import { useStore } from "../store";
+import { useStoredControl } from "./useStoredControl";
+import { Water } from "./Water";
 
 const Scene = () => {
   const temperature = useStoredControl("temperature", {
@@ -77,41 +76,3 @@ PROTEINS.forEach(({ pathToGLTF }) => useGLTF.preload(pathToGLTF));
 // <instancedMesh args={[geometry, material, count]}>
 
 export default Scene;
-
-const numWaterMolecules = 5;
-
-/** name must be identical to stored value */
-function useStoredControl(name: string, controlProps: ControlOptions) {
-  // const storedValue = useStore((state) => state[name]);
-  const controlledValue: number = useControl(name, controlProps);
-  // sync temperature to store
-  const set = useStore((state) => state.set);
-  useEffect(() => {
-    set({ [name]: controlledValue });
-  }, [set, name, controlledValue]);
-
-  return controlledValue;
-}
-
-function Water() {
-  const [ref] = useSphere((index) => ({
-    mass: 0.2,
-    position: [Math.random() - 0.5, Math.random() - 0.5, index * 2],
-    args: 1,
-  }));
-  return (
-    <instancedMesh
-      ref={ref}
-      receiveShadow
-      args={[null, null, numWaterMolecules]}
-      renderOrder={2}
-    >
-      <sphereBufferGeometry args={[0.1, 8, 8]} />
-      <meshStandardMaterial
-        color={new THREE.Color("#6f6dda")}
-        transparent={true}
-        opacity={0.5}
-      />
-    </instancedMesh>
-  );
-}
