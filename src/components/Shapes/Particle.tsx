@@ -150,7 +150,7 @@ const Particle = ({
       ))}
     </>
   ) : (
-    <ChildParticle ref={sphereRef} scale={springProps.scale} onPointerOver />
+    <ChildParticle ref={sphereRef} scale={springProps.scale} />
   );
   // <instancedMesh
   //   ref={mesh}

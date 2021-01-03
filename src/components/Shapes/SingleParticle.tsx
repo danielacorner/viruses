@@ -34,6 +34,7 @@ function InteractiveParticle({
   pathToGLTF,
   position,
   ChildParticle,
+  pathToImage,
   mass,
   numIcosahedronFaces,
 }) {
@@ -54,9 +55,14 @@ function InteractiveParticle({
     ref,
   });
   const scale = useStore((state) => state.scale);
+  const set = useStore((state) => state.set);
 
   return (
-    <mesh ref={ref} scale={[scale, scale, scale]}>
+    <mesh
+      ref={ref}
+      scale={[scale, scale, scale]}
+      onPointerDown={() => set({ selectedProtein: { pathToImage } })}
+    >
       <ChildParticle />
     </mesh>
   );
@@ -77,15 +83,9 @@ function NonInteractiveParticle({
     ref,
   });
   const scale = useStore((state) => state.scale);
-  const set = useStore((state) => state.set);
 
   return (
-    <mesh
-      ref={ref}
-      scale={[scale, scale, scale]}
-      position={position}
-      onPointerOver={() => set({ selectedProtein: { pathToImage } })}
-    >
+    <mesh ref={ref} scale={[scale, scale, scale]} position={position}>
       <ChildParticle />
     </mesh>
   );
