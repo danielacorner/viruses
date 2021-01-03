@@ -6,6 +6,7 @@ export const useStore = create((set) => ({
   temperature: 1,
   // TODO: display scale on walls
   scale: 0.001,
+  selectedProtein: null as any,
   set: (newState) => set((state) => ({ ...state, ...newState })),
   // increasePopulation: () => set(state => ({ bears: state.bears + 1 })),
   // removeAllBears: () => set({ bears: 0 })

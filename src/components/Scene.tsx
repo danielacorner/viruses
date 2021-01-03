@@ -46,6 +46,7 @@ const Scene = () => {
           ({
             particle,
             pathToGLTF,
+            pathToImage,
             name,
             interactive,
             mass,
@@ -57,6 +58,7 @@ const Scene = () => {
                 {...{
                   particleName: name,
                   particle,
+                  pathToImage,
                   interactive,
                   numIcosahedronFaces,
                   // instanced,

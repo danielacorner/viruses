@@ -8,6 +8,7 @@ export function SingleParticle({
   ChildParticle,
   position,
   numIcosahedronFaces,
+  pathToImage,
   mass,
   interactive,
   pathToGLTF,
@@ -21,6 +22,7 @@ export function SingleParticle({
         mass,
         position,
         numIcosahedronFaces,
+        pathToImage,
         ChildParticle,
         pathToGLTF,
       }}
@@ -67,6 +69,7 @@ function NonInteractiveParticle({
   position,
   ChildParticle,
   numIcosahedronFaces,
+  pathToImage,
 }) {
   const ref = useRef();
   useJitterParticle({
@@ -74,9 +77,15 @@ function NonInteractiveParticle({
     ref,
   });
   const scale = useStore((state) => state.scale);
+  const set = useStore((state) => state.set);
 
   return (
-    <mesh ref={ref} scale={[scale, scale, scale]} position={position}>
+    <mesh
+      ref={ref}
+      scale={[scale, scale, scale]}
+      position={position}
+      onPointerOver={() => set({ selectedProtein: { pathToImage } })}
+    >
       <ChildParticle />
     </mesh>
   );

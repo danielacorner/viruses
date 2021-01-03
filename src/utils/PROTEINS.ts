@@ -17,6 +17,8 @@ type Protein = {
   scale?: number;
   /** path to the model's .gltf file (unused?) */
   pathToGLTF: string;
+  /** path to the high-res image of the virus */
+  pathToImage: string;
   /** does the particle bump into others? (may cost more CPU) */
   interactive: boolean;
   /** if interactive, how many faces does the geometry have? determined shape for physics interactions in useConvexPolyhedron */
@@ -32,6 +34,7 @@ export const PROTEINS: Protein[] = [
     atomCount: 99723,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/adenovirus_160_outer.glb",
+    pathToImage: "/images/adenovirus.png",
     interactive: true,
   },
   {
@@ -42,6 +45,7 @@ export const PROTEINS: Protein[] = [
     atomCount: 14478,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/faust_1200_1.glb",
+    pathToImage: "/images/Faustovirus.png",
     interactive: true,
   },
   {
@@ -52,6 +56,7 @@ export const PROTEINS: Protein[] = [
     atomCount: 58130,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/Rice_dwarf_100.glb",
+    pathToImage: "/images/Rice dwarf Virus (RDV).png",
     interactive: true,
   },
 ];

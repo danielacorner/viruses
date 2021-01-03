@@ -9,6 +9,7 @@ const ProteinGroup = ({
   particleName,
   interactive,
   pathToGLTF,
+  pathToImage,
   numIcosahedronFaces,
   instanced = true,
   mass,
@@ -56,6 +57,7 @@ const ProteinGroup = ({
           {...{
             position,
             pathToGLTF,
+            pathToImage,
             numIcosahedronFaces,
             mass,
             interactive,
