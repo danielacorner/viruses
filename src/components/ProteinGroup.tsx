@@ -6,15 +6,17 @@ import { useStore } from "../store";
 
 const ProteinGroup = ({
 	particle,
-	particleName,
+	name,
 	interactive,
+	PDBUrl,
 	pathToGLTF,
 	pathToImage,
+	atomCount,
 	numIcosahedronFaces,
 	instanced = true,
 	mass,
 }) => {
-	const numParticlesFloat: number = useControl(particleName, {
+	const numParticlesFloat: number = useControl(name, {
 		group: "Particles",
 		type: "number",
 		min: 1,
@@ -56,8 +58,11 @@ const ProteinGroup = ({
 					key={JSON.stringify(position)}
 					{...{
 						position,
+						name,
 						pathToGLTF,
+						PDBUrl,
 						pathToImage,
+						atomCount,
 						numIcosahedronFaces,
 						mass,
 						interactive,

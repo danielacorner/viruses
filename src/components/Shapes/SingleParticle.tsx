@@ -9,7 +9,10 @@ export function SingleParticle({
 	position,
 	numIcosahedronFaces,
 	pathToImage,
+	atomCount,
 	mass,
+	name,
+	PDBUrl,
 	interactive,
 	pathToGLTF,
 }) {
@@ -20,9 +23,12 @@ export function SingleParticle({
 		<Particle
 			{...{
 				mass,
+				PDBUrl,
 				position,
+				atomCount,
 				numIcosahedronFaces,
 				pathToImage,
+				name,
 				ChildParticle,
 				pathToGLTF,
 			}}
@@ -33,8 +39,11 @@ export function SingleParticle({
 function InteractiveParticle({
 	pathToGLTF,
 	position,
+	atomCount,
+	PDBUrl,
 	ChildParticle,
 	pathToImage,
+	name,
 	mass,
 	numIcosahedronFaces,
 }) {
@@ -61,7 +70,10 @@ function InteractiveParticle({
 		<mesh
 			ref={ref}
 			scale={[scale, scale, scale]}
-			onPointerDown={() => set({ selectedProtein: { pathToImage } })}
+			onPointerOver={() =>
+				set({ selectedProtein: { pathToImage, name, PDBUrl, mass, atomCount } })
+			}
+			// onPointerDown={() => set({ selectedProtein: { pathToImage } })}
 		>
 			<ChildParticle />
 		</mesh>

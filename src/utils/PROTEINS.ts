@@ -12,7 +12,7 @@ type Protein = {
 	/** display name */
 	name: string;
 	/** url to Protein Data Bank entry */
-	PDBurl?: string;
+	PDBUrl?: string;
 	/** weight in kDA. heavier = spins less & interacts more heavily with other objects */
 	mass: number;
 	/** how many atoms? used to estimate particle radius */
@@ -36,7 +36,7 @@ export const PROTEINS: Protein[] = [
 	{
 		particle: Adenovirus_160_outer,
 		name: "Adenovirus",
-		PDBurl: "https://www.rcsb.org/structure/6CGV",
+		PDBUrl: "https://www.rcsb.org/structure/6CGV",
 		mass: 1532.27,
 		atomCount: 99723,
 		numIcosahedronFaces: 20,
@@ -47,7 +47,7 @@ export const PROTEINS: Protein[] = [
 	{
 		particle: Herpes_600,
 		name: "Herpes",
-		PDBurl: "https://www.rcsb.org/structure/6CGR",
+		PDBUrl: "https://www.rcsb.org/structure/6CGR",
 		mass: 4031.74,
 		atomCount: 219702,
 		numIcosahedronFaces: 20,
@@ -58,7 +58,7 @@ export const PROTEINS: Protein[] = [
 	{
 		particle: Nodavirus_40_radial,
 		name: "Penaeus vannamei nodavirus",
-		PDBurl: "https://www.rcsb.org/structure/6AB6",
+		PDBUrl: "https://www.rcsb.org/structure/6AB6",
 		mass: 121.03,
 		atomCount: 7256,
 		numIcosahedronFaces: 20,
@@ -69,7 +69,7 @@ export const PROTEINS: Protein[] = [
 	{
 		particle: SH1_140,
 		name: "SH1 virus",
-		PDBurl: "https://www.rcsb.org/structure/6QT9",
+		PDBUrl: "https://www.rcsb.org/structure/6QT9",
 		mass: 604.19,
 		atomCount: 42370,
 		numIcosahedronFaces: 20,
@@ -80,7 +80,7 @@ export const PROTEINS: Protein[] = [
 	{
 		particle: Faust_1200_1,
 		name: "Faustovirus",
-		PDBurl: "https://www.rcsb.org/structure/5J7V",
+		PDBUrl: "https://www.rcsb.org/structure/5J7V",
 		mass: 215.35,
 		atomCount: 14478,
 		numIcosahedronFaces: 20,
@@ -91,7 +91,7 @@ export const PROTEINS: Protein[] = [
 	{
 		particle: Rice_dwarf_100,
 		name: "Rice dwarf virus",
-		PDBurl: "https://www.rcsb.org/structure/1UF2",
+		PDBUrl: "https://www.rcsb.org/structure/1UF2",
 		mass: 889.08,
 		atomCount: 58130,
 		numIcosahedronFaces: 20,
@@ -102,7 +102,7 @@ export const PROTEINS: Protein[] = [
 	{
 		particle: Haloarcula_californiae_140,
 		name: "Haloarcula californiae",
-		PDBurl: "https://www.rcsb.org/structure/6H9C",
+		PDBUrl: "https://www.rcsb.org/structure/6H9C",
 		mass: 648.0,
 		atomCount: 43691,
 		numIcosahedronFaces: 20,
