@@ -20,7 +20,7 @@ const ProteinGroup = ({
 		group: "Particles",
 		type: "number",
 		min: 1,
-		max: 100,
+		max: 20,
 		value: 1,
 	});
 	const numParticles = Math.ceil(numParticlesFloat);
