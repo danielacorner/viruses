@@ -3,24 +3,15 @@ import { useSphere } from "@react-three/cannon";
 import { useJitterParticle } from "./useJitterParticle";
 import { useStore } from "../../store";
 
-export function SingleParticle({
-  ChildParticle,
-  scale,
-  position,
-  mass,
-  temperature,
-  interactive,
-}) {
+export function SingleParticle({ ChildParticle, position, mass, interactive }) {
   // TODO: make NonInteractiveParticle instanced for better performance?
   // TODO: make InteractiveParticle instanced for better performance?
   const Particle = interactive ? InteractiveParticle : NonInteractiveParticle;
   return (
     <Particle
       {...{
-        temperature,
         mass,
         position,
-        scale,
         ChildParticle,
       }}
     />
@@ -28,13 +19,7 @@ export function SingleParticle({
 }
 
 /** interacts with other particles using @react-three/cannon */
-function InteractiveParticle({
-  temperature,
-  position,
-  scale,
-  ChildParticle,
-  mass,
-}) {
+function InteractiveParticle({ position, ChildParticle, mass }) {
   // TODO:
   // const temperature=useStore(state=>state.temperature)
 
@@ -44,10 +29,10 @@ function InteractiveParticle({
     args: 1,
   }));
   useJitterParticle({
-    temperature,
     mass,
     ref,
   });
+  const scale = useStore((state) => state.scale);
 
   return (
     <mesh ref={ref} scale={[scale, scale, scale]}>
@@ -61,15 +46,14 @@ function NonInteractiveParticle({
   temperature,
   mass,
   position,
-  scale,
   ChildParticle,
 }) {
   const ref = useRef();
   useJitterParticle({
-    temperature,
     mass,
     ref,
   });
+  const scale = useStore((state) => state.scale);
 
   return (
     <mesh ref={ref} scale={[scale, scale, scale]} position={position}>

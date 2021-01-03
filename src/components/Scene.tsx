@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Physics, useSphere } from "@react-three/cannon";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Lighting } from "./Lighting";
-import { useControl } from "react-three-gui";
+import { ControlOptions, useControl } from "react-three-gui";
 import { Walls } from "./Walls";
 import ProteinGroup from "./ProteinGroup";
 import { PHYSICS_PROPS } from "../utils/PHYSICS_PROPS";
@@ -11,12 +11,10 @@ import CellMembrane from "./CellMembrane";
 import { useAudioTrack } from "./useAudioTrack";
 import * as THREE from "three";
 import { ATPInstanced } from "./GLTFs/other/ATPInstanced";
-
-// TODO: display scale on walls
-const SCALE = 0.001; /* units? */
+import { useStore } from "../store";
 
 const Scene = () => {
-  const temperature: number = useControl("temperature", {
+  const temperature = useStoredControl("temperature", {
     group: "Environment",
     type: "number",
     min: 0,
@@ -24,12 +22,12 @@ const Scene = () => {
     value: 1,
   });
 
-  const defaultScale: number = useControl("scale", {
+  const scale = useStoredControl("scale", {
     group: "Environment",
     type: "number",
     min: 0,
-    max: SCALE * 3,
-    value: SCALE,
+    max: 0.002,
+    value: 0.001,
   });
 
   // audio track
@@ -56,9 +54,7 @@ const Scene = () => {
                   interactive,
                   // instanced,
                   pathToGLTF,
-                  temperature,
                   mass,
-                  scale: scale || defaultScale,
                 }}
               />
             );
@@ -83,6 +79,20 @@ PROTEINS.forEach(({ pathToGLTF }) => useGLTF.preload(pathToGLTF));
 export default Scene;
 
 const numWaterMolecules = 5;
+
+/** name must be identical to stored value */
+function useStoredControl(name: string, controlProps: ControlOptions) {
+  // const storedValue = useStore((state) => state[name]);
+  const controlledValue: number = useControl(name, controlProps);
+  // sync temperature to store
+  const set = useStore((state) => state.set);
+  useEffect(() => {
+    set({ [name]: controlledValue });
+  }, [set, name, controlledValue]);
+
+  return controlledValue;
+}
+
 function Water() {
   const [ref] = useSphere((index) => ({
     mass: 0.2,
