@@ -7,12 +7,12 @@ import { useGLTF } from "@react-three/drei";
 
 const ProteinGroup = ({
   particle,
-  scale,
   temperature,
   particleName,
   interactive,
   pathToGLTF,
   instanced = true,
+  scale,
   mass,
 }) => {
   const numParticlesFloat: number = useControl(particleName, {
@@ -61,7 +61,6 @@ const ProteinGroup = ({
             interactive,
             ChildParticle: particle,
             temperature,
-
             scale,
           }}
         />

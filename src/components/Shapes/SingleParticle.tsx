@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { useSphere } from "@react-three/cannon";
 import { useJitterParticle } from "./useJitterParticle";
+import { useStore } from "../../store";
 
 export function SingleParticle({
   ChildParticle,
@@ -34,6 +35,9 @@ function InteractiveParticle({
   ChildParticle,
   mass,
 }) {
+  // TODO:
+  // const temperature=useStore(state=>state.temperature)
+
   const [ref] = useSphere(() => ({
     mass,
     position,

@@ -9,10 +9,7 @@ export function useAudioTrack() {
   const isAudioEnabled = useControl("audio", {
     group: "Environment",
     type: "boolean",
-    value: true,
-    onChange: () => {
-      play();
-    },
+    value: false,
   });
 
   useMount(() => {

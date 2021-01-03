@@ -44,9 +44,9 @@ export function useJitterParticle({ temperature, mass, ref }) {
   // based on the temperature, we can determine the velocity change
   // https://courses.lumenlearning.com/boundless-chemistry/chapter/kinetic-molecular-theory/#:~:text=It%20is%20represented%20by%20the,is%20the%20temperature%20in%20Kelvin.
   // v =~ sqrt( temperature / mass )
-  const velocity = (temperature / mass) ** 0.5 / 100;
+  const velocity = (temperature / mass) ** 0.5 / 50;
   const jitterPosition = velocity;
-  const jitterRotation = velocity * Math.PI ** 2;
+  const jitterRotation = velocity * 10;
   const rPos = () => randBetween(-jitterPosition, jitterPosition);
   const rRot = () => randBetween(-jitterRotation, jitterRotation);
 

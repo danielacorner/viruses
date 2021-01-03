@@ -5,11 +5,15 @@ import { Lighting } from "./Lighting";
 import { useControl } from "react-three-gui";
 import { Walls } from "./Walls";
 import ProteinGroup from "./ProteinGroup";
-import { PHYSICS_PROPS, PROTEINS } from "../utils/constants";
+import { PHYSICS_PROPS } from "../utils/PHYSICS_PROPS";
+import { PROTEINS } from "../utils/PROTEINS";
 import CellMembrane from "./CellMembrane";
 import { useAudioTrack } from "./useAudioTrack";
 import * as THREE from "three";
 import { ATPInstanced } from "./GLTFs/other/ATPInstanced";
+
+// TODO: display scale on walls
+const SCALE = 0.001; /* units? */
 
 const Scene = () => {
   const temperature: number = useControl("temperature", {
@@ -18,6 +22,14 @@ const Scene = () => {
     min: 0,
     max: 100,
     value: 1,
+  });
+
+  const defaultScale: number = useControl("scale", {
+    group: "Environment",
+    type: "number",
+    min: 0,
+    max: SCALE * 3,
+    value: SCALE,
   });
 
   // audio track
@@ -34,7 +46,7 @@ const Scene = () => {
         {...PHYSICS_PROPS}
       >
         {PROTEINS.map(
-          ({ particle, scale, pathToGLTF, name, interactive, mass }) => {
+          ({ particle, pathToGLTF, name, interactive, mass, scale }) => {
             return (
               <ProteinGroup
                 key={pathToGLTF}
@@ -42,20 +54,21 @@ const Scene = () => {
                   particleName: name,
                   particle,
                   interactive,
-                  scale,
                   // instanced,
                   pathToGLTF,
                   temperature,
                   mass,
+                  scale: scale || defaultScale,
                 }}
               />
             );
           }
         )}
         <Water />
-        <ATPInstanced />
+        {/* TODO: ATP is inside the cell only? */}
+        {/* <ATPInstanced /> */}
         <Walls />
-        <CellMembrane />
+        {/* <CellMembrane /> */}
       </Physics>
       {/* <Effects /> */}
     </>
