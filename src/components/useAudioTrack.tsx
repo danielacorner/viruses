@@ -6,8 +6,8 @@ import music from "../assets/music";
 
 export function useAudioTrack() {
   const [play, { isPlaying, pause }] = useSound(music, { volume: 1 });
-  const isAudioEnabled = useControl("audio", {
-    group: "Environment",
+  const isAudioEnabled = useControl(`🎧 audio`, {
+    // group: "Environment",
     type: "boolean",
     value: false,
   });

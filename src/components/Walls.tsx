@@ -2,8 +2,8 @@ import React from "react";
 import { useStore } from "../store";
 import { Plane } from "./Shapes/Plane";
 import niceColors from "nice-color-palettes";
-const colors = niceColors[17];
-console.log("🌟🚨 ~ colors", colors);
+// const colors = niceColors[17];
+const colors = ["#69d2e7", "#a7dbd8", "#e0e4cc", "#f38630", "#fa6900"];
 
 // https://www.npmjs.com/package/nice-color-palettes
 // https://raw.githubusercontent.com/Jam3/nice-color-palettes/HEAD/visualize/1000.png
@@ -15,13 +15,13 @@ export function Walls() {
     // {/* in front */}
     {
       rotation: [0 * Math.PI, 0, 0],
-      color: colors[0],
+      color: colors[1],
       position: [0, -0, -worldRadius],
     },
     // {/* behind */}
     {
       rotation: [0, -1 * Math.PI, 0],
-      color: colors[0],
+      color: colors[1],
       position: [0, -0, worldRadius],
     },
     // {/* left */}
@@ -33,19 +33,19 @@ export function Walls() {
     // {/* right */}
     {
       rotation: [0, -0.5 * Math.PI, 0],
-      color: colors[1],
+      color: colors[2],
       position: [worldRadius, -0, 0],
     },
     // {/* floor */}
-    // {
-    //   rotation: [-0.5 * Math.PI, 0, 0],
-    //   color: colors[2],
-    //   position: [0, -worldRadius, 0],
-    // },
+    {
+      rotation: [-0.5 * Math.PI, 0, 0],
+      color: colors[1],
+      position: [0, -worldRadius, 0],
+    },
     // {/* ceiling */}
     {
       rotation: [0.5 * Math.PI, 0, 0],
-      color: colors[2],
+      color: colors[1],
       position: [0, worldRadius, 0],
     },
   ];
