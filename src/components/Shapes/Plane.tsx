@@ -15,19 +15,19 @@ export function Plane({
 		// position: [-100, -100, -100],
 	}));
 	return (
-		<mesh ref={ref} receiveShadow>
+		<mesh ref={ref} /* receiveShadow */>
 			<planeGeometry
 				attach="geometry"
 				args={[width, height, widthSegments, heightSegments]}
 			/>
-			<meshStandardMaterial
+			{/* <meshStandardMaterial
 				attach="material"
 				color={color}
 				// roughness={0.7}
 				// metalness={0.5}
-				opacity={0.5}
+				// opacity={0.5}
 				depthTest={false}
-			/>
+			/> */}
 		</mesh>
 	);
 }
