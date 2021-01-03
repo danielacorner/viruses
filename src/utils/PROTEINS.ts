@@ -2,6 +2,7 @@ import Adenovirus_160_outer from "../components/GLTFs/viruses/Adenovirus_160_out
 import Herpes_600 from "../components/GLTFs/viruses/Herpes_600";
 import Rice_dwarf_100 from "../components/GLTFs/viruses/Rice_dwarf_100";
 import Faust_1200_1 from "../components/GLTFs/viruses/Faust_1200_1";
+import Nodavirus_40_radial from "../components/GLTFs/viruses/Nodavirus_40_radial";
 
 type Protein = {
 	/** Particle component to render */
@@ -50,6 +51,17 @@ export const PROTEINS: Protein[] = [
 		numIcosahedronFaces: 20,
 		pathToGLTF: "/models/viruses/Herpes_600.glb",
 		pathToImage: "/images/herpes.png",
+		interactive: true,
+	},
+	{
+		particle: Nodavirus_40_radial,
+		name: "Penaeus vannamei nodavirus",
+		PDBurl: "https://www.rcsb.org/structure/6AB6",
+		mass: 121.03,
+		atomCount: 7256,
+		numIcosahedronFaces: 20,
+		pathToGLTF: "/models/viruses/Penaeus vannamei nodavirus_40_radial.glb",
+		pathToImage: "/images/Penaeus vannamei nodavirus_radial.png",
 		interactive: true,
 	},
 	{
