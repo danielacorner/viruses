@@ -55,6 +55,7 @@ const ProteinGroup = ({
           key={JSON.stringify(position)}
           {...{
             position,
+            pathToGLTF,
             mass,
             interactive,
             ChildParticle: particle,
