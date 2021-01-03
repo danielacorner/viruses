@@ -4,6 +4,7 @@ import Rice_dwarf_100 from "../components/GLTFs/viruses/Rice_dwarf_100";
 import Faust_1200_1 from "../components/GLTFs/viruses/Faust_1200_1";
 import Nodavirus_40_radial from "../components/GLTFs/viruses/Nodavirus_40_radial";
 import SH1_140 from "../components/GLTFs/viruses/SH1_140";
+import Haloarcula_californiae_140 from "../components/GLTFs/viruses/Haloarcula_californiae_140";
 
 type Protein = {
 	/** Particle component to render */
@@ -96,6 +97,17 @@ export const PROTEINS: Protein[] = [
 		numIcosahedronFaces: 20,
 		pathToGLTF: "/models/viruses/Rice_dwarf_100.glb",
 		pathToImage: "/images/Rice dwarf Virus (RDV).png",
+		interactive: true,
+	},
+	{
+		particle: Haloarcula_californiae_140,
+		name: "Haloarcula californiae",
+		PDBurl: "https://www.rcsb.org/structure/6H9C",
+		mass: 648.0,
+		atomCount: 43691,
+		numIcosahedronFaces: 20,
+		pathToGLTF: "/models/viruses/Haloarcula_californiae_140.glb",
+		pathToImage: "/images/Haloarcula hispanica.png",
 		interactive: true,
 	},
 ];
