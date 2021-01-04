@@ -11,6 +11,7 @@ import HIV_200 from "../components/GLTFs/viruses/HIV_200";
 import Spiroplasma_50 from "../components/GLTFs/viruses/Spiroplasma_50";
 // antibodies
 import Antibody_hiv from "../components/GLTFs/antibodies/Antibody_hiv";
+import Antibody_herpes from "../components/GLTFs/antibodies/Antibody_herpes";
 
 export const PROTEIN_TYPES = {
   antibody: "antibody",
@@ -180,6 +181,18 @@ export const PROTEINS: Protein[] = [
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/antibodies/antibody_hiv.glb",
     pathToImage: "/images/antibodies/antibody_HIV.png",
+    interactive: true,
+  },
+  {
+    Component: Antibody_herpes,
+    name: "anti-Herpes Antibody",
+    type: PROTEIN_TYPES.antibody,
+    PDBUrl: "https://www.rcsb.org/structure/3W9E",
+    mass: 81.86,
+    atomCount: 5355,
+    numIcosahedronFaces: 20,
+    pathToGLTF: "/models/antibodies/antibody_herpes.glb",
+    pathToImage: "/images/antibodies/antibody_Herpes.png",
     interactive: true,
   },
 ];
