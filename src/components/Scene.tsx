@@ -11,6 +11,7 @@ import { useAudioTrack } from "./useAudioTrack";
 import { ATPInstanced } from "./GLTFs/other/ATPInstanced";
 import { useStoredControl } from "./useStoredControl";
 import { Water } from "./Water";
+import Cells from "./Cells";
 
 const Scene = () => {
   const temperature = useStoredControl("temperature", {
@@ -52,7 +53,8 @@ const Scene = () => {
         {/* TODO: ATP is inside the cell only? */}
         {/* <ATPInstanced /> */}
         <Walls />
-        <CellMembrane />
+        {/* <CellMembrane /> */}
+        <Cells />
       </Physics>
       {/* <Effects /> */}
     </>
