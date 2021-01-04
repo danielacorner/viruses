@@ -52,7 +52,7 @@ const Scene = () => {
         {/* TODO: ATP is inside the cell only? */}
         {/* <ATPInstanced /> */}
         <Walls />
-        {/* <CellMembrane /> */}
+        <CellMembrane />
       </Physics>
       {/* <Effects /> */}
     </>

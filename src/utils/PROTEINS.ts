@@ -12,10 +12,18 @@ import Spiroplasma_50 from "../components/GLTFs/viruses/Spiroplasma_50";
 // antibodies
 import Antibody_hiv from "../components/GLTFs/antibodies/Antibody_hiv";
 import Antibody_herpes from "../components/GLTFs/antibodies/Antibody_herpes";
+// cells
+import Eosinophil from "../components/GLTFs/cells/Eosinophil";
+import Basophil from "../components/GLTFs/cells/Basophil";
+import Lymphocyte from "../components/GLTFs/cells/Lymphocyte";
+// other
+import Cell_membrane from "../components/GLTFs/other/Cell_membrane";
 
 export const PROTEIN_TYPES = {
   antibody: "antibody",
   virus: "virus",
+  cell: "cell",
+  other: "other",
 };
 
 type Protein = {
@@ -56,7 +64,7 @@ export const PROTEINS: Protein[] = [
     atomCount: 99723,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/adenovirus_160_outer.glb",
-    pathToImage: "/images/viruses/adenovirus.png",
+    pathToImage: "/models/viruses/adenovirus.png",
     interactive: true,
   },
   {
@@ -68,7 +76,7 @@ export const PROTEINS: Protein[] = [
     atomCount: 219702,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/Herpes_600.glb",
-    pathToImage: "/images/viruses/herpes.png",
+    pathToImage: "/models/viruses/herpes.png",
     interactive: true,
   },
   {
@@ -80,7 +88,7 @@ export const PROTEINS: Protein[] = [
     atomCount: 7256,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/Penaeus vannamei nodavirus_40_radial.glb",
-    pathToImage: "/images/viruses/Penaeus vannamei nodavirus_radial.png",
+    pathToImage: "/models/viruses/Penaeus vannamei nodavirus_radial.png",
     interactive: true,
   },
   {
@@ -92,7 +100,7 @@ export const PROTEINS: Protein[] = [
     atomCount: 42370,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/SH1_140.glb",
-    pathToImage: "/images/viruses/SH1_hd.png",
+    pathToImage: "/models/viruses/SH1_hd.png",
     interactive: true,
   },
   {
@@ -104,7 +112,7 @@ export const PROTEINS: Protein[] = [
     atomCount: 14478,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/faust_1200_1.glb",
-    pathToImage: "/images/viruses/Faustovirus.png",
+    pathToImage: "/models/viruses/Faustovirus.png",
     interactive: true,
   },
   {
@@ -116,7 +124,7 @@ export const PROTEINS: Protein[] = [
     atomCount: 58130,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/Rice_dwarf_100.glb",
-    pathToImage: "/images/viruses/Rice dwarf Virus (RDV).png",
+    pathToImage: "/models/viruses/Rice dwarf Virus (RDV).png",
     interactive: true,
   },
   {
@@ -128,7 +136,7 @@ export const PROTEINS: Protein[] = [
     atomCount: 43691,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/Haloarcula_californiae_140.glb",
-    pathToImage: "/images/viruses/Haloarcula hispanica.png",
+    pathToImage: "/models/viruses/Haloarcula hispanica.png",
     interactive: true,
   },
   {
@@ -140,7 +148,7 @@ export const PROTEINS: Protein[] = [
     atomCount: 208346,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/varicella_zoster_300.glb",
-    pathToImage: "/images/viruses/Varicella_zoster.png",
+    pathToImage: "/models/viruses/Varicella_zoster.png",
     interactive: true,
   },
   {
@@ -152,7 +160,7 @@ export const PROTEINS: Protein[] = [
     atomCount: 2116800,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/HIV_200.glb",
-    pathToImage: "/images/viruses/HIV.png",
+    pathToImage: "/models/viruses/HIV.png",
     interactive: true,
   },
   {
@@ -164,7 +172,7 @@ export const PROTEINS: Protein[] = [
     atomCount: 497,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/Spiroplasma_50.glb",
-    pathToImage: "/images/viruses/Spiroplasma.png",
+    pathToImage: "/models/viruses/Spiroplasma.png",
     interactive: true,
   },
   // ANTIBODIES
@@ -180,7 +188,7 @@ export const PROTEINS: Protein[] = [
     atomCount: 6650,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/antibodies/antibody_hiv.glb",
-    pathToImage: "/images/antibodies/antibody_HIV.png",
+    pathToImage: "/models/antibodies/antibody_HIV.png",
     interactive: true,
   },
   {
@@ -192,7 +200,55 @@ export const PROTEINS: Protein[] = [
     atomCount: 5355,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/antibodies/antibody_herpes.glb",
-    pathToImage: "/images/antibodies/antibody_Herpes.png",
+    pathToImage: "/models/antibodies/antibody_Herpes.png",
     interactive: true,
   },
+  // {
+  //   Component: Lymphocyte,
+  //   name: "Lymphocyte",
+  //   type: PROTEIN_TYPES.cell,
+  //   PDBUrl: "https://en.wikipedia.org/wiki/Lymphocyte",
+  //   mass: 5000,
+  //   atomCount: 5000,
+  //   numIcosahedronFaces: 20,
+  //   pathToGLTF: "/models/cells/lymphocyte.gltf",
+  //   pathToImage: "/models/cells/lymphocyte.png",
+  //   interactive: true,
+  // },
+  // {
+  //   Component: Eosinophil,
+  //   name: "Eosinophil",
+  //   type: PROTEIN_TYPES.cell,
+  //   PDBUrl: "https://en.wikipedia.org/wiki/Eosinophil",
+  //   mass: 9999999,
+  //   atomCount: 9999999,
+  //   numIcosahedronFaces: 20,
+  //   pathToGLTF: "/models/cells/eosinophil.glb",
+  //   pathToImage: "/models/cells/eosinophil.png",
+  //   interactive: true,
+  // },
+  // {
+  //   Component: Basophil,
+  //   name: "Basophil",
+  //   type: PROTEIN_TYPES.cell,
+  //   PDBUrl: "https://en.wikipedia.org/wiki/Basophil",
+  //   mass: 9999999,
+  //   atomCount: 9999999,
+  //   numIcosahedronFaces: 20,
+  //   pathToGLTF: "/models/cells/basophil.glb",
+  //   pathToImage: "/models/cells/basophil.png",
+  //   interactive: true,
+  // },
+  // {
+  //   Component: Cell_membrane,
+  //   name: "Cell_membrane",
+  //   type: PROTEIN_TYPES.other,
+  //   PDBUrl: "https://en.wikipedia.org/wiki/Cell_membrane",
+  //   mass: 9999999,
+  //   atomCount: 9999999,
+  //   numIcosahedronFaces: 20,
+  //   pathToGLTF: "/models/cells/cell_membrane.gltf",
+  //   pathToImage: "/models/cells/cell_membrane.jpg",
+  //   interactive: true,
+  // },
 ];

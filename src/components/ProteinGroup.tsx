@@ -7,6 +7,7 @@ import { PROTEIN_TYPES } from "../utils/PROTEINS";
 
 /** a set of proteins of the same species -- each species of protein can be rendered multiple times */
 const ProteinGroup = (props) => {
+  console.log("🌟🚨 ~ ProteinGroup ~ props.name", props.name);
   const numParticlesFloat: number = useControl(props.name, {
     group: `Particles - ${props.type}`,
     type: "number",
