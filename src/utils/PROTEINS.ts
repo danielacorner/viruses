@@ -8,6 +8,7 @@ import SH1_140 from "../components/GLTFs/viruses/SH1_140";
 import Haloarcula_californiae_140 from "../components/GLTFs/viruses/Haloarcula_californiae_140";
 import Varicella_zoster_300 from "../components/GLTFs/viruses/Varicella_zoster_300";
 import HIV_200 from "../components/GLTFs/viruses/HIV_200";
+import Spiroplasma_50 from "../components/GLTFs/viruses/Spiroplasma_50";
 // antibodies
 import Antibody_hiv from "../components/GLTFs/antibodies/Antibody_hiv";
 
@@ -151,6 +152,18 @@ export const PROTEINS: Protein[] = [
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/HIV_200.glb",
     pathToImage: "/images/viruses/HIV.png",
+    interactive: true,
+  },
+  {
+    Component: Spiroplasma_50,
+    name: "Spiroplasma",
+    type: PROTEIN_TYPES.virus,
+    PDBUrl: "https://www.rcsb.org/structure/1KVP",
+    mass: 55.83,
+    atomCount: 497,
+    numIcosahedronFaces: 20,
+    pathToGLTF: "/models/viruses/Spiroplasma_50.glb",
+    pathToImage: "/images/viruses/Spiroplasma.png",
     interactive: true,
   },
   // ANTIBODIES
