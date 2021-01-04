@@ -14,194 +14,162 @@ export default function Model(props) {
     <group ref={group} {...props} dispose={null}>
       <mesh
         material={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_A_Gaussian_surface"
-          ].material
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_A_Gaussian_surface"]
+            .material
         }
         geometry={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_A_Gaussian_surface"
-          ].geometry
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_A_Gaussian_surface"]
+            .geometry
         }
       />
       <mesh
         material={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_B_Gaussian_surface"
-          ].material
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_B_Gaussian_surface"]
+            .material
         }
         geometry={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_B_Gaussian_surface"
-          ].geometry
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_B_Gaussian_surface"]
+            .geometry
         }
       />
       <mesh
         material={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_P_Gaussian_surface"
-          ].material
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_P_Gaussian_surface"]
+            .material
         }
         geometry={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_P_Gaussian_surface"
-          ].geometry
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_P_Gaussian_surface"]
+            .geometry
         }
       />
       <mesh
         material={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_C_Gaussian_surface"
-          ].material
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_C_Gaussian_surface"]
+            .material
         }
         geometry={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_C_Gaussian_surface"
-          ].geometry
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_C_Gaussian_surface"]
+            .geometry
         }
       />
       <mesh
         material={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_D_Gaussian_surface"
-          ].material
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_D_Gaussian_surface"]
+            .material
         }
         geometry={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_D_Gaussian_surface"
-          ].geometry
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_D_Gaussian_surface"]
+            .geometry
         }
       />
       <mesh
         material={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_Q_Gaussian_surface"
-          ].material
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_Q_Gaussian_surface"]
+            .material
         }
         geometry={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_Q_Gaussian_surface"
-          ].geometry
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_Q_Gaussian_surface"]
+            .geometry
         }
       />
       <mesh
         material={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_E_Gaussian_surface"
-          ].material
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_E_Gaussian_surface"]
+            .material
         }
         geometry={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_E_Gaussian_surface"
-          ].geometry
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_E_Gaussian_surface"]
+            .geometry
         }
       />
       <mesh
         material={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_F_Gaussian_surface"
-          ].material
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_F_Gaussian_surface"]
+            .material
         }
         geometry={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_F_Gaussian_surface"
-          ].geometry
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_F_Gaussian_surface"]
+            .geometry
         }
       />
       <mesh
         material={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_R_Gaussian_surface"
-          ].material
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_R_Gaussian_surface"]
+            .material
         }
         geometry={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_R_Gaussian_surface"
-          ].geometry
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_R_Gaussian_surface"]
+            .geometry
         }
       />
       <mesh
         material={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_G_Gaussian_surface"
-          ].material
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_G_Gaussian_surface"]
+            .material
         }
         geometry={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_G_Gaussian_surface"
-          ].geometry
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_G_Gaussian_surface"]
+            .geometry
         }
       />
       <mesh
         material={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_H_Gaussian_surface"
-          ].material
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_H_Gaussian_surface"]
+            .material
         }
         geometry={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_H_Gaussian_surface"
-          ].geometry
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_H_Gaussian_surface"]
+            .geometry
         }
       />
       <mesh
         material={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_S_Gaussian_surface"
-          ].material
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_S_Gaussian_surface"]
+            .material
         }
         geometry={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_S_Gaussian_surface"
-          ].geometry
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_S_Gaussian_surface"]
+            .geometry
         }
       />
       <mesh
         material={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_I_Gaussian_surface"
-          ].material
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_I_Gaussian_surface"]
+            .material
         }
         geometry={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_I_Gaussian_surface"
-          ].geometry
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_I_Gaussian_surface"]
+            .geometry
         }
       />
       <mesh
         material={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_J_Gaussian_surface"
-          ].material
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_J_Gaussian_surface"]
+            .material
         }
         geometry={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_J_Gaussian_surface"
-          ].geometry
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_J_Gaussian_surface"]
+            .geometry
         }
       />
       <mesh
         material={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_T_Gaussian_surface"
-          ].material
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_T_Gaussian_surface"]
+            .material
         }
         geometry={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_T_Gaussian_surface"
-          ].geometry
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_T_Gaussian_surface"]
+            .geometry
         }
       />
       <mesh
         material={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_K_Gaussian_surface"
-          ].material
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_K_Gaussian_surface"]
+            .material
         }
         geometry={
-          nodes[
-            "1uf2_-_Rice_dwarf_Virus_(RDV)cif_assembly_1_K_Gaussian_surface"
-          ].geometry
+          nodes["Rice_dwarf_Virus_(RDV)cif_assembly_1_K_Gaussian_surface"]
+            .geometry
         }
       />
     </group>
