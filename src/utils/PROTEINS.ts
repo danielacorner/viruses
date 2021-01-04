@@ -1,3 +1,4 @@
+// viruses
 import Adenovirus_160_outer from "../components/GLTFs/viruses/Adenovirus_160_outer";
 import Herpes_600 from "../components/GLTFs/viruses/Herpes_600";
 import Rice_dwarf_100 from "../components/GLTFs/viruses/Rice_dwarf_100";
@@ -6,6 +7,8 @@ import Nodavirus_40_radial from "../components/GLTFs/viruses/Nodavirus_40_radial
 import SH1_140 from "../components/GLTFs/viruses/SH1_140";
 import Haloarcula_californiae_140 from "../components/GLTFs/viruses/Haloarcula_californiae_140";
 import Varicella_zoster_300 from "../components/GLTFs/viruses/Varicella_zoster_300";
+import HIV_200 from "../components/GLTFs/viruses/HIV_200";
+// antibodies
 import Antibody_hiv from "../components/GLTFs/antibodies/Antibody_hiv";
 
 export const PROTEIN_TYPES = {
@@ -136,6 +139,18 @@ export const PROTEINS: Protein[] = [
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/varicella_zoster_300.glb",
     pathToImage: "/images/viruses/Varicella_zoster.png",
+    interactive: true,
+  },
+  {
+    Component: HIV_200,
+    name: "HIV",
+    type: PROTEIN_TYPES.virus,
+    PDBUrl: "https://www.rcsb.org/structure/3J3Y",
+    mass: 30226.13,
+    atomCount: 2116800,
+    numIcosahedronFaces: 20,
+    pathToGLTF: "/models/viruses/HIV_200.glb",
+    pathToImage: "/images/viruses/HIV.png",
     interactive: true,
   },
   // ANTIBODIES
