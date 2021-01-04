@@ -13,17 +13,19 @@ export function SingleParticle(props) {
   return <Particle {...props} />;
 }
 /** interacts with other particles using @react-three/cannon */
-function InteractiveParticle({
-  pathToGLTF,
-  position,
-  atomCount,
-  PDBUrl,
-  Component,
-  pathToImage,
-  name,
-  mass,
-  numIcosahedronFaces,
-}) {
+function InteractiveParticle(props) {
+  const {
+    pathToGLTF,
+    position,
+    atomCount,
+    PDBUrl,
+    Component,
+    pathToImage,
+    name,
+    type,
+    mass,
+    numIcosahedronFaces,
+  } = props;
   // TODO:
   // const temperature=useStore(state=>state.temperature)
 
@@ -47,9 +49,7 @@ function InteractiveParticle({
     <mesh
       ref={ref}
       scale={[scale, scale, scale]}
-      onPointerOver={() =>
-        set({ selectedProtein: { pathToImage, name, PDBUrl, mass, atomCount } })
-      }
+      onPointerOver={() => set({ selectedProtein: props })}
       // onPointerDown={() => set({ selectedProtein: { pathToImage } })}
     >
       <Component />

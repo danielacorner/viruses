@@ -4,6 +4,8 @@ import styled from "styled-components/macro";
 import { Close, Fullscreen, FullscreenExit } from "@material-ui/icons";
 import { IconButton, Typography } from "@material-ui/core";
 import { useWindowSize } from "../utils/hooks";
+import { startCase } from "lodash";
+const TOOLTIP_HEIGHT = 390;
 
 const Tooltip = () => {
   const selectedProtein = useStore(({ selectedProtein }) => selectedProtein);
@@ -15,7 +17,11 @@ const Tooltip = () => {
   return selectedProtein ? (
     <TooltipStyles
       maximized={maximized}
-      height={maximized ? Math.min(windowSize.width, windowSize.height) : 300}
+      height={
+        maximized
+          ? Math.min(windowSize.width, windowSize.height)
+          : TOOLTIP_HEIGHT
+      }
     >
       <div className="tooltipContent">
         <IconButton
@@ -33,50 +39,73 @@ const Tooltip = () => {
         >
           {maximized ? <FullscreenExit /> : <Fullscreen />}
         </IconButton>
-        <div className="title">
+        <div className="titleSection">
           <a
             href={selectedProtein.PDBUrl}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Typography variant="h6">{selectedProtein.name}</Typography>
+            <Typography className="title" variant="h6">
+              {startCase(selectedProtein.name)}
+            </Typography>
           </a>
+          <Typography variant="subtitle1">{selectedProtein.type}</Typography>
         </div>
         <img src={selectedProtein.pathToImage} alt="" />
+        <div className="details">
+          <div className="weight">{selectedProtein.mass} kDa</div>
+          <div className="atomCount">{selectedProtein.atomCount} atoms</div>
+        </div>
       </div>
     </TooltipStyles>
   ) : null;
 };
 
 const TooltipStyles = styled.div`
-  opacity: ${(props) => (props.maximized ? 0.95 : 0.7)};
+  opacity: ${(props) => (props.maximized ? 1 : 0.9)};
   position: fixed;
   bottom: 0;
   left: 0;
   width: ${(props) => props.height}px;
   height: ${(props) => props.height}px;
-  background: black;
   .tooltipContent {
+    box-sizing: border-box;
+    background: black;
+    color: white;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 1em;
     height: 100%;
     position: relative;
-    .title {
-      color: white;
+    .titleSection {
+      text-align: center;
+      a {
+        color: #14bcff;
+      }
     }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 0.5em;
+      box-sizing: border-box;
+    }
+    .details {
+      display: grid;
+      grid-template-columns: 1fr auto;
+    }
+
     button {
       position: absolute;
       color: white;
     }
     .btnMaximize {
-      top: 0;
-      right: 32px;
+      top: 32px;
+      right: 0;
     }
     .btnClose {
       top: 0;
       right: 0;
-    }
-    img {
-      width: 100%;
-      height: auto;
     }
   }
 `;

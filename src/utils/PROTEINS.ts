@@ -166,7 +166,7 @@ export const PROTEINS: Protein[] = [
     atomCount: 6650,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/antibodies/antibody_hiv.glb",
-    pathToImage: "/images/antibodies/Haloarcula hispanica.png",
+    pathToImage: "/images/antibodies/antibody_HIV.png",
     interactive: true,
   },
 ];
