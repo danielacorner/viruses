@@ -5,6 +5,7 @@ import Faust_1200_1 from "../components/GLTFs/viruses/Faust_1200_1";
 import Nodavirus_40_radial from "../components/GLTFs/viruses/Nodavirus_40_radial";
 import SH1_140 from "../components/GLTFs/viruses/SH1_140";
 import Haloarcula_californiae_140 from "../components/GLTFs/viruses/Haloarcula_californiae_140";
+import Varicella_zoster_300 from "../components/GLTFs/viruses/Varicella_zoster_300";
 import Antibody_hiv from "../components/GLTFs/antibodies/Antibody_hiv";
 
 export const PROTEIN_TYPES = {
@@ -125,6 +126,22 @@ export const PROTEINS: Protein[] = [
     pathToImage: "/images/viruses/Haloarcula hispanica.png",
     interactive: true,
   },
+  {
+    Component: Varicella_zoster_300,
+    name: "Varicella Zoster (Chicken Pox)",
+    type: PROTEIN_TYPES.virus,
+    PDBUrl: "https://www.rcsb.org/structure/6LGL",
+    mass: 3463.29,
+    atomCount: 208346,
+    numIcosahedronFaces: 20,
+    pathToGLTF: "/models/viruses/varicella_zoster_300.glb",
+    pathToImage: "/images/viruses/Varicella_zoster.png",
+    interactive: true,
+  },
+  // ANTIBODIES
+  // ANTIBODIES
+  // ANTIBODIES
+  // ANTIBODIES
   {
     Component: Antibody_hiv,
     name: "anti-HIV Antibody",
