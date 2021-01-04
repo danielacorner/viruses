@@ -5,8 +5,9 @@ import Faust_1200_1 from "../components/GLTFs/viruses/Faust_1200_1";
 import Nodavirus_40_radial from "../components/GLTFs/viruses/Nodavirus_40_radial";
 import SH1_140 from "../components/GLTFs/viruses/SH1_140";
 import Haloarcula_californiae_140 from "../components/GLTFs/viruses/Haloarcula_californiae_140";
+import Antibody_hiv from "../components/GLTFs/antibodies/Antibody_hiv";
 
-const PROTEIN_TYPES = {
+export const PROTEIN_TYPES = {
   antibody: "antibody",
   virus: "virus",
 };
@@ -49,7 +50,7 @@ export const PROTEINS: Protein[] = [
     atomCount: 99723,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/adenovirus_160_outer.glb",
-    pathToImage: "/images/adenovirus.png",
+    pathToImage: "/images/viruses/adenovirus.png",
     interactive: true,
   },
   {
@@ -61,7 +62,7 @@ export const PROTEINS: Protein[] = [
     atomCount: 219702,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/Herpes_600.glb",
-    pathToImage: "/images/herpes.png",
+    pathToImage: "/images/viruses/herpes.png",
     interactive: true,
   },
   {
@@ -73,7 +74,7 @@ export const PROTEINS: Protein[] = [
     atomCount: 7256,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/Penaeus vannamei nodavirus_40_radial.glb",
-    pathToImage: "/images/Penaeus vannamei nodavirus_radial.png",
+    pathToImage: "/images/viruses/Penaeus vannamei nodavirus_radial.png",
     interactive: true,
   },
   {
@@ -85,7 +86,7 @@ export const PROTEINS: Protein[] = [
     atomCount: 42370,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/SH1_140.glb",
-    pathToImage: "/images/SH1_hd.png",
+    pathToImage: "/images/viruses/SH1_hd.png",
     interactive: true,
   },
   {
@@ -97,7 +98,7 @@ export const PROTEINS: Protein[] = [
     atomCount: 14478,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/faust_1200_1.glb",
-    pathToImage: "/images/Faustovirus.png",
+    pathToImage: "/images/viruses/Faustovirus.png",
     interactive: true,
   },
   {
@@ -109,7 +110,7 @@ export const PROTEINS: Protein[] = [
     atomCount: 58130,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/Rice_dwarf_100.glb",
-    pathToImage: "/images/Rice dwarf Virus (RDV).png",
+    pathToImage: "/images/viruses/Rice dwarf Virus (RDV).png",
     interactive: true,
   },
   {
@@ -121,19 +122,19 @@ export const PROTEINS: Protein[] = [
     atomCount: 43691,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/Haloarcula_californiae_140.glb",
-    pathToImage: "/images/Haloarcula hispanica.png",
+    pathToImage: "/images/viruses/Haloarcula hispanica.png",
     interactive: true,
   },
-  // {
-  //   Component: Haloarcula_californiae_140,
-  //   name: "anti-HIV Antibody",
-  //   type: PROTEIN_TYPES.antibody,
-  //   PDBUrl: "https://www.rcsb.org/structure/3RPI",
-  //   mass: 96.41,
-  //   atomCount: 6650,
-  //   numIcosahedronFaces: 20,
-  //   pathToGLTF: "/models/viruses/Haloarcula_californiae_140.glb",
-  //   pathToImage: "/images/Haloarcula hispanica.png",
-  //   interactive: true,
-  // },
+  {
+    Component: Antibody_hiv,
+    name: "anti-HIV Antibody",
+    type: PROTEIN_TYPES.antibody,
+    PDBUrl: "https://www.rcsb.org/structure/3RPI",
+    mass: 96.41,
+    atomCount: 6650,
+    numIcosahedronFaces: 20,
+    pathToGLTF: "/models/antibodies/antibody_hiv.glb",
+    pathToImage: "/images/antibodies/Haloarcula hispanica.png",
+    interactive: true,
+  },
 ];

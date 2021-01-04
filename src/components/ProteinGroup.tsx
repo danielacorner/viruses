@@ -3,14 +3,15 @@ import { useControl } from "react-three-gui";
 import { SingleParticle } from "./Shapes/SingleParticle";
 import { getRandStartPosition } from "./Shapes/particleUtils";
 import { useStore } from "../store";
+import { PROTEIN_TYPES } from "../utils/PROTEINS";
 
 /** a set of proteins of the same species -- each species of protein can be rendered multiple times */
 const ProteinGroup = (props) => {
   const numParticlesFloat: number = useControl(props.name, {
-    group: "Particles",
+    group: `Particles - ${props.type}`,
     type: "number",
     min: 0,
-    max: 20,
+    max: props.type === PROTEIN_TYPES.antibody ? 100 : 20,
     value: 1,
   });
   const numParticles = Math.ceil(numParticlesFloat);
