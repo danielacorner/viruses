@@ -18,6 +18,8 @@ import Antibody_herpes from "../components/GLTFs/antibodies/Antibody_herpes";
 // nanotech
 import Protein_cage_20 from "../components/GLTFs/nanotech/Protein_cage_20";
 import Octahedral_nanoparticle_20 from "../components/GLTFs/nanotech/Octahedral_nanoparticle_20";
+import Tetrahedral_nanoparticle_20 from "../components/GLTFs/nanotech/Tetrahedral_nanoparticle_20";
+import Icosahedral_nanoparticle_20 from "../components/GLTFs/nanotech/Icosahedral_nanoparticle_20";
 // cells
 import Eosinophil from "../components/GLTFs/cells/Eosinophil";
 import Basophil from "../components/GLTFs/cells/Basophil";
@@ -273,9 +275,33 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/6VFI",
     mass: 36.55,
     atomCount: 2437,
-    numIcosahedronFaces: 20,
+    numIcosahedronFaces: 8,
     pathToGLTF: "/models/nanotech/octahedral_nanoparticle_20.glb",
     pathToImage: "/models/nanotech/octahedral_nanoparticle.webp",
+    interactive: true,
+  },
+  {
+    Component: Tetrahedral_nanoparticle_20,
+    name: "Tetrahedral nanoparticle",
+    type: PROTEIN_TYPES.nanotech,
+    PDBUrl: "https://www.rcsb.org/structure/6VFH",
+    mass: 45.55,
+    atomCount: 3082,
+    numIcosahedronFaces: 5,
+    pathToGLTF: "/models/nanotech/tetrahedral_nanoparticle_20.glb",
+    pathToImage: "/models/nanotech/tetrahedral_nanoparticle.webp",
+    interactive: true,
+  },
+  {
+    Component: Icosahedral_nanoparticle_20,
+    name: "Icosahedral nanoparticle",
+    type: PROTEIN_TYPES.nanotech,
+    PDBUrl: "https://www.rcsb.org/structure/6VFJ",
+    mass: 32.57,
+    atomCount: 2196,
+    numIcosahedronFaces: 5,
+    pathToGLTF: "/models/nanotech/icosahedral_nanoparticle_20.glb",
+    pathToImage: "/models/nanotech/icosahedral_nanoparticle.webp",
     interactive: true,
   },
   // CELLS
