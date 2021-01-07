@@ -64,7 +64,7 @@ export const PROTEINS: Protein[] = [
     atomCount: 99723,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/adenovirus_160_outer.glb",
-    pathToImage: "/models/viruses/adenovirus.png",
+    pathToImage: "/models/viruses/adenovirus.webp",
     interactive: true,
   },
   {
@@ -112,7 +112,7 @@ export const PROTEINS: Protein[] = [
     atomCount: 14478,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/faust_1200_1.glb",
-    pathToImage: "/models/viruses/Faustovirus.png",
+    pathToImage: "/models/viruses/faustovirus.webp",
     interactive: true,
   },
   {
@@ -148,7 +148,7 @@ export const PROTEINS: Protein[] = [
     atomCount: 208346,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/varicella_zoster_300.glb",
-    pathToImage: "/models/viruses/Varicella_zoster.png",
+    pathToImage: "/models/viruses/varicella_zoster.webp",
     interactive: true,
   },
   {
@@ -160,7 +160,7 @@ export const PROTEINS: Protein[] = [
     atomCount: 2116800,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/HIV_200.glb",
-    pathToImage: "/models/viruses/HIV.png",
+    pathToImage: "/models/viruses/hiv.webp",
     interactive: true,
   },
   {
@@ -172,7 +172,7 @@ export const PROTEINS: Protein[] = [
     atomCount: 497,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/Spiroplasma_50.glb",
-    pathToImage: "/models/viruses/Spiroplasma.png",
+    pathToImage: "/models/viruses/Spiroplasma_SPV4.png",
     interactive: true,
   },
   // ANTIBODIES
