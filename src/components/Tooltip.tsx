@@ -53,13 +53,22 @@ const Tooltip = () => {
         </div>
         <img src={selectedProtein.pathToImage} alt="" />
         <div className="details">
-          <div className="weight">{selectedProtein.mass} kDa</div>
-          <div className="atomCount">{selectedProtein.atomCount} atoms</div>
+          <div className="weight">
+            {numberWithCommas(selectedProtein.mass)} kDa
+          </div>
+          <div className="atomCount">
+            {numberWithCommas(selectedProtein.atomCount)} atoms
+          </div>
         </div>
       </div>
     </TooltipStyles>
   ) : null;
 };
+
+// https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 const TooltipStyles = styled.div`
   opacity: ${(props) => (props.maximized ? 1 : 0.9)};

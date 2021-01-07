@@ -9,6 +9,8 @@ import Haloarcula_californiae_140 from "../components/GLTFs/viruses/Haloarcula_c
 import Varicella_zoster_300 from "../components/GLTFs/viruses/Varicella_zoster_300";
 import HIV_200 from "../components/GLTFs/viruses/HIV_200";
 import Spiroplasma_50 from "../components/GLTFs/viruses/Spiroplasma_50";
+import Sindbis_70 from "../components/GLTFs/viruses/Sindbis_70";
+import Poliovirus_50 from "../components/GLTFs/viruses/Poliovirus_50";
 // antibodies
 import Antibody_hiv from "../components/GLTFs/antibodies/Antibody_hiv";
 import Antibody_herpes from "../components/GLTFs/antibodies/Antibody_herpes";
@@ -165,14 +167,38 @@ export const PROTEINS: Protein[] = [
   },
   {
     Component: Spiroplasma_50,
-    name: "Spiroplasma",
+    name: "Spiroplasma SPV4",
     type: PROTEIN_TYPES.virus,
     PDBUrl: "https://www.rcsb.org/structure/1KVP",
     mass: 55.83,
     atomCount: 497,
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/Spiroplasma_50.glb",
-    pathToImage: "/models/viruses/Spiroplasma_SPV4.png",
+    pathToImage: "/models/viruses/Spiroplasma_SPV4.webp",
+    interactive: true,
+  },
+  {
+    Component: Sindbis_70,
+    name: "Sindbis virus",
+    type: PROTEIN_TYPES.virus,
+    PDBUrl: "https://www.rcsb.org/structure/1Z8Y",
+    mass: 258.38,
+    atomCount: 18071,
+    numIcosahedronFaces: 20,
+    pathToGLTF: "/models/viruses/Sindbis_70.glb",
+    pathToImage: "/models/viruses/sindbis.webp",
+    interactive: true,
+  },
+  {
+    Component: Poliovirus_50,
+    name: "Poliovirus",
+    type: PROTEIN_TYPES.virus,
+    PDBUrl: "https://www.rcsb.org/structure/1Z8Y",
+    mass: 98.54,
+    atomCount: 6688,
+    numIcosahedronFaces: 20,
+    pathToGLTF: "/models/viruses/poliovirus_50.glb",
+    pathToImage: "/models/viruses/poliovirus.webp",
     interactive: true,
   },
   // ANTIBODIES
