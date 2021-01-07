@@ -10,6 +10,14 @@
 
 
 
+##### [*Human Papillomavirus (HPV)*](https://www.rcsb.org/structure/3J6R):
+
+###### (11,466 atoms)
+
+![HPV](./public/models/viruses/hpv.webp)
+
+
+
 ##### [*Adenovirus*](https://www.rcsb.org/structure/6CGV):
 
 ###### (99,723 atoms)
@@ -23,14 +31,6 @@
 ###### (208,346 atoms)
 
 ![Chicken Pox](./public/models/viruses/varicella_zoster.webp)
-
-
-
-##### [*Human Papillomavirus (HPV)*](https://www.rcsb.org/structure/3J6R):
-
-###### (11,466 atoms)
-
-![HPV](./public/models/viruses/hpv.webp)
 
 
 
