@@ -14,6 +14,8 @@ import Poliovirus_50 from "../components/GLTFs/viruses/Poliovirus_50";
 // antibodies
 import Antibody_hiv from "../components/GLTFs/antibodies/Antibody_hiv";
 import Antibody_herpes from "../components/GLTFs/antibodies/Antibody_herpes";
+// nanotech
+import Protein_cage_20 from "../components/GLTFs/nanotech/Protein_cage_20";
 // cells
 import Eosinophil from "../components/GLTFs/cells/Eosinophil";
 import Basophil from "../components/GLTFs/cells/Basophil";
@@ -23,6 +25,7 @@ import Cell_membrane from "../components/GLTFs/other/Cell_membrane";
 
 export const PROTEIN_TYPES = {
   antibody: "antibody",
+  nanotech: "nanotech",
   virus: "virus",
   cell: "cell",
   other: "other",
@@ -229,6 +232,26 @@ export const PROTEINS: Protein[] = [
     pathToImage: "/models/antibodies/antibody_Herpes.png",
     interactive: true,
   },
+  // NANOTECH
+  // NANOTECH
+  // NANOTECH
+  // NANOTECH
+  {
+    Component: Protein_cage_20,
+    name: "16nm protein cage",
+    type: PROTEIN_TYPES.nanotech,
+    PDBUrl: "https://www.rcsb.org/structure/3VDX",
+    mass: 150.79,
+    atomCount: 10149,
+    numIcosahedronFaces: 20,
+    pathToGLTF: "/models/nanotech/protein_cage_20.glb",
+    pathToImage: "/models/nanotech/protein_cage.webp",
+    interactive: true,
+  },
+  // CELLS
+  // CELLS
+  // CELLS
+  // CELLS
   // {
   //   Component: Lymphocyte,
   //   name: "Lymphocyte",
