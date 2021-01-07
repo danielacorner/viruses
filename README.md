@@ -6,7 +6,9 @@ Here's a [*Spiroplasma SPV4*](https://www.rcsb.org/structure/1KVP):
 
 ![Spiroplasma SPV4](./public/models/viruses/Spiroplasma_SPV4_360.gif)
 
-### Then, I used [react-three-fiber](https://github.com/pmndrs/react-three-fiber) to render them, and [@react-three/cannon](https://github.com/pmndrs/use-cannon) to simulate physical interactions, using mass and size data from PDB.
+### Then, I used [react-three-fiber](https://github.com/pmndrs/react-three-fiber) and [@react-three/cannon](https://github.com/pmndrs/use-cannon) to rander and simulate physical interactions.
+
+molecule mass and size data sourced from PDB.
 
 ### Other tools:
 
