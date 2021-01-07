@@ -2,41 +2,41 @@
 
 ### I used [ChimeraX](https://www.rbvi.ucsf.edu/chimerax/download.html) to visualize virus capsid data from the [Protein DataBank (PDB)](https://www.rcsb.org/)
 
-Here's a [*Spiroplasma SPV4*](https://www.rcsb.org/structure/1KVP):
+##### [*Spiroplasma SPV4*](https://www.rcsb.org/structure/1KVP):
 
-(497 atoms)
+###### (497 atoms)
 
 ![Spiroplasma SPV4](./public/models/viruses/Spiroplasma_SPV4.webp)
 
 
 
-This one's an [*Adenovirus*](https://www.rcsb.org/structure/6CGV):
+##### [*Adenovirus*](https://www.rcsb.org/structure/6CGV):
 
-(99,723 atoms)
+###### (99,723 atoms)
 
 ![Adenovirus](./public/models/viruses/adenovirus.webp)
 
 
 
-[*Chicken Pox (Varicella Zoster)*](https://www.rcsb.org/structure/6LGN):
+##### [*Chicken Pox (Varicella Zoster)*](https://www.rcsb.org/structure/6LGN):
 
-(208,346 atoms)
+###### (208,346 atoms)
 
 ![Chicken Pox](./public/models/viruses/varicella_zoster.webp)
 
 
 
-[*Human Papillomavirus (HPV)*](https://www.rcsb.org/structure/3J6R):
+##### [*Human Papillomavirus (HPV)*](https://www.rcsb.org/structure/3J6R):
 
-(11,466 atoms)
+###### (11,466 atoms)
 
 ![HPV](./public/models/viruses/hpv.webp)
 
 
 
-[*HIV*](https://www.rcsb.org/structure/3J3Y):
+##### [*HIV*](https://www.rcsb.org/structure/3J3Y):
 
-(2,116,800 atoms)
+###### (2,116,800 atoms)
 
 ![HIV](./public/models/viruses/hiv.webp)
 
