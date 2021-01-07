@@ -11,11 +11,13 @@ import HIV_200 from "../components/GLTFs/viruses/HIV_200";
 import Spiroplasma_50 from "../components/GLTFs/viruses/Spiroplasma_50";
 import Sindbis_70 from "../components/GLTFs/viruses/Sindbis_70";
 import Poliovirus_50 from "../components/GLTFs/viruses/Poliovirus_50";
+import Denguevirus_50 from "../components/GLTFs/viruses/Denguevirus_50";
 // antibodies
 import Antibody_hiv from "../components/GLTFs/antibodies/Antibody_hiv";
 import Antibody_herpes from "../components/GLTFs/antibodies/Antibody_herpes";
 // nanotech
 import Protein_cage_20 from "../components/GLTFs/nanotech/Protein_cage_20";
+import Octahedral_nanoparticle_20 from "../components/GLTFs/nanotech/Octahedral_nanoparticle_20";
 // cells
 import Eosinophil from "../components/GLTFs/cells/Eosinophil";
 import Basophil from "../components/GLTFs/cells/Basophil";
@@ -60,6 +62,10 @@ type Protein = {
 };
 
 export const PROTEINS: Protein[] = [
+  // VIRUSES
+  // VIRUSES
+  // VIRUSES
+  // VIRUSES
   {
     Component: Adenovirus_160_outer,
     name: "Adenovirus",
@@ -204,6 +210,18 @@ export const PROTEINS: Protein[] = [
     pathToImage: "/models/viruses/poliovirus.webp",
     interactive: true,
   },
+  {
+    Component: Denguevirus_50,
+    name: "Denguevirus",
+    type: PROTEIN_TYPES.virus,
+    PDBUrl: "https://www.rcsb.org/structure/3J05",
+    mass: 131.25,
+    atomCount: 1128,
+    numIcosahedronFaces: 20,
+    pathToGLTF: "/models/viruses/denguevirus_50.glb",
+    pathToImage: "/models/viruses/denguevirus.webp",
+    interactive: true,
+  },
   // ANTIBODIES
   // ANTIBODIES
   // ANTIBODIES
@@ -246,6 +264,18 @@ export const PROTEINS: Protein[] = [
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/nanotech/protein_cage_20.glb",
     pathToImage: "/models/nanotech/protein_cage.webp",
+    interactive: true,
+  },
+  {
+    Component: Octahedral_nanoparticle_20,
+    name: "Octahedral nanoparticle",
+    type: PROTEIN_TYPES.nanotech,
+    PDBUrl: "https://www.rcsb.org/structure/6VFI",
+    mass: 36.55,
+    atomCount: 2437,
+    numIcosahedronFaces: 20,
+    pathToGLTF: "/models/nanotech/octahedral_nanoparticle_20.glb",
+    pathToImage: "/models/nanotech/octahedral_nanoparticle.webp",
     interactive: true,
   },
   // CELLS
