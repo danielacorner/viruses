@@ -8,31 +8,31 @@ Molecule mass and size data sourced from PDB.
 
 <p align="middle">
   <a href="https://www.rcsb.org/structure/1KVP">
-    <p align="middle"><i>Spiroplasma SPV4</i> <small>(497 atoms)</small></p>
+    <span><i>Spiroplasma SPV4</i> <small>(497 atoms)</small></span>
     <img width="360" src="./public/models/viruses/Spiroplasma_SPV4.webp" />
   </a>
 </p>
 <p align="middle">
   <a href="https://www.rcsb.org/structure/3J6R">
-    <p align="middle"><i>Human Papillomavirus (HPV)</i> <small>(11,466 atoms)</small></p>
+    <span><i>Human Papillomavirus (HPV)</i> <small>(11,466 atoms)</small></span>
     <img width="360" src="./public/models/viruses/hpv.webp" />
   </a>
 </p>
 <p align="middle">
   <a href="https://www.rcsb.org/structure/6CGV">
-    <p align="middle"><i>Adenovirus</i> <small>(99,723 atoms)</small></p>
+    <span><i>Adenovirus</i> <small>(99,723 atoms)</small></span>
     <img width="360" src="./public/models/viruses/adenovirus.webp" />
   </a>
 </p>
 <p align="middle">
   <a href="https://www.rcsb.org/structure/6LGN">
-    <p align="middle"><i>Chicken Pox (Varicella Zoster)</i> <small>(208,346 atoms)</small></p>
+    <span><i>Chicken Pox (Varicella Zoster)</i> <small>(208,346 atoms)</small></span>
     <img width="360" src="./public/models/viruses/varicella_zoster.webp" />
   </a>
 </p>
 <p align="middle">
   <a href="https://www.rcsb.org/structure/3J3Y">
-    <p align="middle"><i>HIV</i> <small>(2,116,800 atoms)</small></p>
+    <span><i>HIV</i> <small>(2,116,800 atoms)</small></span>
     <img width="360" src="./public/models/viruses/hiv.webp" />
   </a>
 </p>
