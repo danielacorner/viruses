@@ -18,12 +18,6 @@ Molecule mass and size data sourced from PDB.
       <div align="middle"><img width="360" src="./public/models/viruses/hpv.webp" /></div>
   </p>
 </a>
-<a href="https://www.rcsb.org/structure/5J7V">
-  <p align="middle">
-      <div align="middle"><i>Faustovirus</i></div>
-      <div align="middle"><img width="360" src="/models/viruses/faustovirus.webp" /></div>
-  </p>
-</a>
 <a href="https://www.rcsb.org/structure/6CGV">
   <p align="middle">
       <div align="middle"><i>Adenovirus</i></div>
@@ -34,6 +28,12 @@ Molecule mass and size data sourced from PDB.
   <p align="middle">
       <div align="middle"><i>Chicken Pox (Varicella Zoster)</i></div>
       <div align="middle"><img width="360" src="./public/models/viruses/varicella_zoster.webp" /></div>
+  </p>
+</a>
+<a href="https://www.rcsb.org/structure/5J7V">
+  <p align="middle">
+      <div align="middle"><i>Faustovirus</i></div>
+      <div align="middle"><img width="360" src="./public//models/viruses/faustovirus.webp" /></div>
   </p>
 </a>
 <a href="https://www.rcsb.org/structure/3J3Y">
