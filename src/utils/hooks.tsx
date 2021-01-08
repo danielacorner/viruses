@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef } from "react";
 
 export function useWindowSize() {
 	// (For SSR apps only?) Initialize state with undefined width/height so server and client renders match
@@ -31,3 +31,19 @@ export function useWindowSize() {
 	return windowSize;
 }
 
+export const usePrevious = value => {
+  // The ref object is a generic container whose current property is mutable ...
+  // ... and can hold any value, similar to an instance property on a class
+  const ref = useRef();
+
+  // Store current value in ref
+  useEffect(() => {
+    ref.current = value;
+    return () => {
+      ref.current = undefined;
+    };
+  }, [value]); // Only re-run if value changes
+
+  // Return previous value (happens before update in useEffect above)
+  return ref.current;
+};

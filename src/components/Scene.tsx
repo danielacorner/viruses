@@ -50,14 +50,13 @@ const Scene = () => {
 				// tolerance={0.0001}
 				// allowSleep={false}
 				{...PHYSICS_PROPS}
-				step={paused ? 0 : 1 / 60}
 			>
-				{paused && <DisableRender />}
+				{/* {paused && <DisableRender />} */}
 
 				{PROTEINS.map(
 					// TODO: abstract / clean up
 					(protein) => {
-						return <ProteinGroup key={protein.name} {...protein} />;
+						return <ProteinGroup key={protein.name} {...protein} {...{paused}}/>;
 					}
 				)}
 				<Water />

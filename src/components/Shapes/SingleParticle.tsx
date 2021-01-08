@@ -1,7 +1,9 @@
-import React, { useRef } from "react";
+import React, { useRef,useEffect } from "react";
 import { useConvexPolyhedron } from "@react-three/cannon";
+import {useFrame}from 'react-three-fiber'
 import { useJitterParticle } from "./useJitterParticle";
 import { useStore } from "../../store";
+import { usePrevious } from "../../utils/hooks";
 import * as THREE from "three";
 
 export function SingleParticle(props) {
@@ -25,6 +27,7 @@ function InteractiveParticle(props) {
     type,
     mass,
     numIcosahedronFaces,
+    paused
   } = props;
   // TODO:
   // const temperature=useStore(state=>state.temperature)
@@ -32,12 +35,20 @@ function InteractiveParticle(props) {
   // https://codesandbox.io/s/r3f-convex-polyhedron-cnm0s?from-embed=&file=/src/index.js:1639-1642
 
   const detail = Math.ceil(numIcosahedronFaces / 20);
-  const [ref] = useConvexPolyhedron(() => ({
+  const [ref, api] = useConvexPolyhedron(() => ({
     mass,
     position,
     // https://threejs.org/docs/scenes/geometry-browser.html#IcosahedronBufferGeometry
     args: new THREE.IcosahedronGeometry(1, detail),
   }));
+  const prevPosition = useRef([0, 0, 0])
+  useEffect(() => api.position.subscribe((p) => (prevPosition.current = p)), [])
+  useFrame(()=>{
+    if(paused&&prevPosition.current){
+      const [x,y,z] = prevPosition.current as any
+      api.position.set(x,y,z)
+    }
+  })
   useJitterParticle({
     mass,
     ref,
