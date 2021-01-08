@@ -6,36 +6,36 @@ Then, I used [react-three-fiber](https://github.com/pmndrs/react-three-fiber) an
 
 Molecule mass and size data sourced from PDB.
 
-<p align="middle">
-  <a href="https://www.rcsb.org/structure/1KVP">
-    <span><i>Spiroplasma SPV4</i> <small>(497 atoms)</small></span>
-    <img width="360" src="./public/models/viruses/Spiroplasma_SPV4.webp" />
-  </a>
-</p>
-<p align="middle">
-  <a href="https://www.rcsb.org/structure/3J6R">
-    <span><i>Human Papillomavirus (HPV)</i> <small>(11,466 atoms)</small></span>
-    <img width="360" src="./public/models/viruses/hpv.webp" />
-  </a>
-</p>
-<p align="middle">
-  <a href="https://www.rcsb.org/structure/6CGV">
-    <span><i>Adenovirus</i> <small>(99,723 atoms)</small></span>
-    <img width="360" src="./public/models/viruses/adenovirus.webp" />
-  </a>
-</p>
-<p align="middle">
-  <a href="https://www.rcsb.org/structure/6LGN">
-    <span><i>Chicken Pox (Varicella Zoster)</i> <small>(208,346 atoms)</small></span>
-    <img width="360" src="./public/models/viruses/varicella_zoster.webp" />
-  </a>
-</p>
-<p align="middle">
-  <a href="https://www.rcsb.org/structure/3J3Y">
-    <span><i>HIV</i> <small>(2,116,800 atoms)</small></span>
-    <img width="360" src="./public/models/viruses/hiv.webp" />
-  </a>
-</p>
+<a href="https://www.rcsb.org/structure/1KVP">
+  <p align="middle">
+      <p align="middle"><i>Spiroplasma SPV4</i> <small>(497 atoms)</small></p>
+      <img width="360" src="./public/models/viruses/Spiroplasma_SPV4.webp" />
+  </p>
+</a>
+<a href="https://www.rcsb.org/structure/3J6R">
+  <p align="middle">
+      <p align="middle"><i>Human Papillomavirus (HPV)</i> <small>(11,466 atoms)</small></p>
+      <img width="360" src="./public/models/viruses/hpv.webp" />
+  </p>
+</a>
+<a href="https://www.rcsb.org/structure/6CGV">
+  <p align="middle">
+      <p align="middle"><i>Adenovirus</i> <small>(99,723 atoms)</small></p>
+      <img width="360" src="./public/models/viruses/adenovirus.webp" />
+  </p>
+</a>
+<a href="https://www.rcsb.org/structure/6LGN">
+  <p align="middle">
+      <p align="middle"><i>Chicken Pox (Varicella Zoster)</i> <small>(208,346 atoms)</small></p>
+      <img width="360" src="./public/models/viruses/varicella_zoster.webp" />
+  </p>
+</a>
+<a href="https://www.rcsb.org/structure/3J3Y">
+  <p align="middle">
+      <p align="middle"><i>HIV</i> <small>(2,116,800 atoms)</small></p>
+      <img width="360" src="./public/models/viruses/hiv.webp" />
+  </p>
+</a>
 <p align="middle">
   <i>Click a virus to see it in the Protein DataBank!</i>
 </p>
