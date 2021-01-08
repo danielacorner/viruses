@@ -3,23 +3,23 @@
 I used [ChimeraX](https://www.rbvi.ucsf.edu/chimerax/download.html) to visualize virus capsid data from the [Protein DataBank (PDB)](https://www.rcsb.org/)
 
 <p align="center">
-<div>
+<div style="width: fit-content;">
   <a href="https://www.rcsb.org/structure/1KVP"><img width="360" src="./public/models/viruses/Spiroplasma_SPV4.webp" /></a>
   <p align="middle"><i>Spiroplasma SPV4</i> <small>(497 atoms)</small></p>
 </div>
-  <div>
+  <div style="width: fit-content;">
   <a href="https://www.rcsb.org/structure/3J6R"><img width="360" src="./public/models/viruses/hpv.webp" /></a>
   <p align="middle"><i>Human Papillomavirus (HPV)</i> <small>(11,466 atoms)</small></p>
   </div>
-  <div>
+  <div style="width: fit-content;">
   <a href="https://www.rcsb.org/structure/6CGV"><img width="360" src="./public/models/viruses/adenovirus.webp" /></a>
   <p align="middle"><i>Adenovirus</i> <small>(99,723 atoms)</small></p>
   </div>
-  <div>
+  <div style="width: fit-content;">
   <a href="https://www.rcsb.org/structure/6LGN"><img width="360" src="./public/models/viruses/varicella_zoster.webp" /></a>
   <p align="middle"><i>Chicken Pox (Varicella Zoster)</i> <small>(208,346 atoms)</small></p>
   </div>
-  <div>
+  <div style="width: fit-content;">
   <a href="https://www.rcsb.org/structure/3J3Y"><img width="360" src="./public/models/viruses/hiv.webp" /></a>
   <p align="middle"><i>HIV</i> <small>(2,116,800 atoms)</small></p>
   </div>
