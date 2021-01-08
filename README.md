@@ -1,50 +1,36 @@
 # Hey, welcome to my virus terrarium.
 
-### I used [ChimeraX](https://www.rbvi.ucsf.edu/chimerax/download.html) to visualize virus capsid data from the [Protein DataBank (PDB)](https://www.rcsb.org/)
+I used [ChimeraX](https://www.rbvi.ucsf.edu/chimerax/download.html) to visualize virus capsid data from the [Protein DataBank (PDB)](https://www.rcsb.org/)
 
-##### [*Spiroplasma SPV4*](https://www.rcsb.org/structure/1KVP):
+<p align="center">
+<div>
+  <a href="https://www.rcsb.org/structure/1KVP"><img width="360" src="./public/models/viruses/Spiroplasma_SPV4.webp" /></a>
+  <p align="middle"><i>Spiroplasma SPV4</i> <small>(497 atoms)</small></p>
+</div>
+  <div>
+  <a href="https://www.rcsb.org/structure/3J6R"><img width="360" src="./public/models/viruses/hpv.webp" /></a>
+  <p align="middle"><i>Human Papillomavirus (HPV)</i> <small>(11,466 atoms)</small></p>
+  </div>
+  <div>
+  <a href="https://www.rcsb.org/structure/6CGV"><img width="360" src="./public/models/viruses/adenovirus.webp" /></a>
+  <p align="middle"><i>Adenovirus</i> <small>(99,723 atoms)</small></p>
+  </div>
+  <div>
+  <a href="https://www.rcsb.org/structure/6LGN"><img width="360" src="./public/models/viruses/varicella_zoster.webp" /></a>
+  <p align="middle"><i>Chicken Pox (Varicella Zoster)</i> <small>(208,346 atoms)</small></p>
+  </div>
+  <div>
+  <a href="https://www.rcsb.org/structure/3J3Y"><img width="360" src="./public/models/viruses/hiv.webp" /></a>
+  <p align="middle"><i>HIV</i> <small>(2,116,800 atoms)</small></p>
+  </div>
+</p>
+<p align="middle">
+  <i>Click a virus to see it in the Protein DataBank!</i>
+</p>
 
-###### (497 atoms)
+Then, I used [react-three-fiber](https://github.com/pmndrs/react-three-fiber) and [@react-three/cannon](https://github.com/pmndrs/use-cannon) to render and simulate physical interactions.
 
-![Spiroplasma SPV4](./public/models/viruses/Spiroplasma_SPV4.webp)
-
-
-
-##### [*Human Papillomavirus (HPV)*](https://www.rcsb.org/structure/3J6R):
-
-###### (11,466 atoms)
-
-![HPV](./public/models/viruses/hpv.webp)
-
-
-
-##### [*Adenovirus*](https://www.rcsb.org/structure/6CGV):
-
-###### (99,723 atoms)
-
-![Adenovirus](./public/models/viruses/adenovirus.webp)
-
-
-
-##### [*Chicken Pox (Varicella Zoster)*](https://www.rcsb.org/structure/6LGN):
-
-###### (208,346 atoms)
-
-![Chicken Pox](./public/models/viruses/varicella_zoster.webp)
-
-
-
-##### [*HIV*](https://www.rcsb.org/structure/3J3Y):
-
-###### (2,116,800 atoms)
-
-![HIV](./public/models/viruses/hiv.webp)
-
-
-
-### Then, I used [react-three-fiber](https://github.com/pmndrs/react-three-fiber) and [@react-three/cannon](https://github.com/pmndrs/use-cannon) to rander and simulate physical interactions.
-
-molecule mass and size data sourced from PDB.
+Molecule mass and size data sourced from PDB.
 
 ### Other tools:
 
