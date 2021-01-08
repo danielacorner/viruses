@@ -12,6 +12,7 @@ import Spiroplasma_50 from "../components/GLTFs/viruses/Spiroplasma_50";
 import Sindbis_70 from "../components/GLTFs/viruses/Sindbis_70";
 import Poliovirus_50 from "../components/GLTFs/viruses/Poliovirus_50";
 import Denguevirus_50 from "../components/GLTFs/viruses/Denguevirus_50";
+import HPV_100 from "../components/GLTFs/viruses/HPV_100";
 // antibodies
 import Antibody_hiv from "../components/GLTFs/antibodies/Antibody_hiv";
 import Antibody_herpes from "../components/GLTFs/antibodies/Antibody_herpes";
@@ -46,7 +47,7 @@ type Protein = {
   type: string;
   /** weight in kDA. heavier = spins less & interacts more heavily with other objects */
   mass: number;
-  /** how many atoms? used to estimate particle radius */
+  /** ! is this accurate, or is it in the asymmetric unit only? e.g. Faustovirus seems too light how many atoms? used to estimate particle radius */
   atomCount: number /* TECHDEBT: can find actual particleRadius instead? */;
   /** how big is the rendered particle compared to the actual model size */
   scale?: number;
@@ -74,7 +75,8 @@ export const PROTEINS: Protein[] = [
     type: PROTEIN_TYPES.virus,
     PDBUrl: "https://www.rcsb.org/structure/6CGV",
     mass: 1532.27,
-    atomCount: 99723,
+    // atomCount: 99723, // PDB
+    atomCount: 200268, // ChimeraX ??
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/adenovirus_160_outer.glb",
     pathToImage: "/models/viruses/adenovirus.webp",
@@ -122,7 +124,8 @@ export const PROTEINS: Protein[] = [
     type: PROTEIN_TYPES.virus,
     PDBUrl: "https://www.rcsb.org/structure/5J7V",
     mass: 215.35,
-    atomCount: 14478,
+    // atomCount: 14478, // PDB
+    atomCount: 28956, // ChimeraX "select all"
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/faust_1200_1.glb",
     pathToImage: "/models/viruses/faustovirus.webp",
@@ -222,6 +225,18 @@ export const PROTEINS: Protein[] = [
     numIcosahedronFaces: 20,
     pathToGLTF: "/models/viruses/denguevirus_50.glb",
     pathToImage: "/models/viruses/denguevirus.webp",
+    interactive: true,
+  },
+  {
+    Component: HPV_100,
+    name: "Human Papillomavirus (HPV)",
+    type: PROTEIN_TYPES.virus,
+    PDBUrl: "https://www.rcsb.org/structure/3J6R",
+    mass: 1575,
+    atomCount: 424596,
+    numIcosahedronFaces: 12,
+    pathToGLTF: "/models/viruses/hpv_100.glb",
+    pathToImage: "/models/viruses/hpv.webp",
     interactive: true,
   },
   // ANTIBODIES
