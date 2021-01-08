@@ -6,7 +6,6 @@ Then, I used [react-three-fiber](https://github.com/pmndrs/react-three-fiber) an
 
 Molecule mass and size data sourced from PDB.
 
-
 <p align="middle">
   <a href="https://www.rcsb.org/structure/1KVP" target="_blank">
     <p align="middle"><i>Spiroplasma SPV4</i> <small>(497 atoms)</small></p>
@@ -48,7 +47,7 @@ Molecule mass and size data sourced from PDB.
 
 ### ChimeraX commands:
 
-In [ChimeraX](https://www.rbvi.ucsf.edu/chimerax/download.html), you can type commands in the terminal at the bottom.
+In ChimeraX, you can type commands in the terminal at the bottom.
 
 `color radial all palette Spectral-1` - colour all atoms radially, with the Spectral-1 [palette](https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/color.html#palette-options)
 `surface all resolution 6` = [surface-render](https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/surface.html) each atom with a sphere of radius 6 Angstroms (Å)
