@@ -13,6 +13,7 @@ import { useStoredControl } from "./useStoredControl";
 import { Water } from "./Water";
 import Cells from "./Cells";
 import { useControl } from "react-three-gui";
+import { useFrame } from "react-three-fiber";
 
 const Scene = () => {
 	const temperature = useStoredControl("temperature", {
@@ -49,8 +50,10 @@ const Scene = () => {
 				// tolerance={0.0001}
 				// allowSleep={false}
 				{...PHYSICS_PROPS}
-				iterations={paused ? 0 : 5}
+				step={paused ? 0 : 1 / 60}
 			>
+				{paused && <DisableRender />}
+
 				{PROTEINS.map(
 					// TODO: abstract / clean up
 					(protein) => {
@@ -75,3 +78,8 @@ PROTEINS.forEach(({ pathToGLTF }) => useGLTF.preload(pathToGLTF));
 // <instancedMesh args={[geometry, material, count]}>
 
 export default Scene;
+
+function DisableRender() {
+	useFrame(() => null, 1000);
+	return null;
+}
