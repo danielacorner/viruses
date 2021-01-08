@@ -36,7 +36,9 @@ Molecule mass and size data sourced from PDB.
     <img width="360" src="./public/models/viruses/hiv.webp" />
   </a>
 </p>
-
+<p align="middle">
+  <i>Click a virus to see it in the Protein DataBank!</i>
+</p>
 
 
 ### Other tools:
