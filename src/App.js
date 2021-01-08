@@ -11,7 +11,7 @@ function App() {
   const windowSize = useWindowSize();
   useMount(() => {
     render(
-      <MemoryStats corner="topRight" />,
+      <MemoryStats corner="topLeft" />,
       document.querySelector("#memoryStats")
     );
   });
