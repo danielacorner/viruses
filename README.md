@@ -6,11 +6,7 @@ Then, I used [react-three-fiber](https://github.com/pmndrs/react-three-fiber) an
 
 Molecule mass and size data sourced from PDB.
 
----
 
-<p align="middle">
-  <i>Click a virus to see it in the Protein DataBank!</i>
-</p>
 <p align="middle">
   <a href="https://www.rcsb.org/structure/1KVP" target="_blank">
     <p align="middle"><i>Spiroplasma SPV4</i> <small>(497 atoms)</small></p>
