@@ -2,7 +2,6 @@ import { useFrame } from "react-three-fiber";
 import { randBetween } from "../../utils/utils";
 import * as THREE from "three";
 import { useEffect } from "react";
-import { usePrevious } from "../../utils/hooks";
 import { usePhysicsProps } from "./usePhysicsProps";
 import { useStore } from "../../store";
 
@@ -16,14 +15,6 @@ export function useJitterInstanceParticle({
   numParticles,
   ref,
 }) {
-  // useMount(() => {
-  //   if (!ref.current) {
-  //     return;
-  //   }
-  //   dummy.position.set(0, 0, 0);
-  //   ref.current.setMatrixAt(0, dummy.matrix);
-  //   ref.current.instanceMatrix.needsUpdate = true;
-  // });
   useFrame((state) => {
     if (!ref.current) {
       return;
@@ -45,17 +36,18 @@ export function useJitterInstanceParticle({
     ref.current.instanceMatrix.needsUpdate = true;
   });
 }
+
 // type WorkerVec = {
 //   set: (x: number, y: number, z: number) => void;
 //   copy: ({ x, y, z }: THREE.Vector3 | THREE.Euler) => void;
 //   subscribe: (callback: (value: number[]) => void) => void;
 // };
+
 export function useJitterParticle({ mass, ref, api = {} as any }) {
   const { temperature, velocityByMass } = usePhysicsProps(mass);
   const set = useStore((s) => s.set);
   // ? ONLY when the temperature changes, change the velocity
   useEffect(() => {
-    // const [vx, vy, vz] = currentVelocity.current;
     let [newVx, newVy, newVz] =
       temperature === 0
         ? [0, 0, 0]

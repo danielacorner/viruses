@@ -90,12 +90,16 @@ function numberWithCommas(x) {
 }
 
 const TooltipStyles = styled.div`
-  opacity: ${(props) => (props.maximized ? 1 : 0.9)};
   position: fixed;
   bottom: 0;
   left: 0;
   width: ${(props) => props.width}px;
   height: ${(props) => props.height}px;
+  opacity: ${(props) => (props.maximized ? 1 : 0.5)};
+  @media (min-width: 500px) {
+    opacity: ${(props) => (props.maximized ? 1 : 0.9)};
+  }
+  pointer-events: none;
   .tooltipContent {
     box-sizing: border-box;
     color: black;
@@ -108,6 +112,7 @@ const TooltipStyles = styled.div`
       text-align: left;
       a {
         color: #14bcff;
+        pointer-events: auto;
       }
       .title {
         padding-bottom: 1em;
@@ -116,6 +121,7 @@ const TooltipStyles = styled.div`
     img {
       width: 100%;
       height: 100%;
+
       object-fit: contain;
       box-sizing: border-box;
     }
@@ -128,6 +134,7 @@ const TooltipStyles = styled.div`
       font-size: 32px;
       position: absolute;
       color: black;
+      pointer-events: auto;
     }
     .btnClose {
       top: 1em;

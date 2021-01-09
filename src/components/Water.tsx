@@ -3,13 +3,13 @@ import { useSphere } from "@react-three/cannon";
 import * as THREE from "three";
 import { getRandStartPosition } from "./Shapes/particleUtils";
 import { useStore } from "../store";
-import { useMount } from "../utils/utils";
 const RADIUS = 0.05;
 
 export function Water() {
   const worldRadius = useStore((state) => state.worldRadius);
+  const mass = 18.0153 / 1000; /* 18.0153 daltons */
   const [ref] = useSphere((index) => ({
-    mass: 18.0153 / 1000 /* 18.0153 daltons */,
+    mass,
     position: getRandStartPosition(worldRadius),
     args: 1,
   }));
