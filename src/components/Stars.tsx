@@ -16,18 +16,18 @@ export function Stars() {
 		group.current.scale.set(scale, scale, scale);
 	});
 	const [geo, mat, coords] = useMemo(() => {
-		const geo = new THREE.SphereBufferGeometry(1, 10, 10);
-		const mat = new THREE.MeshBasicMaterial({
+		const nGeo = new THREE.SphereBufferGeometry(1, 10, 10);
+		const nMat = new THREE.MeshBasicMaterial({
 			color: new THREE.Color("cornflowerblue"),
 		});
-		const coords = new Array(2000)
+		const nCoords = new Array(2000)
 			.fill(null)
 			.map((i) => [
 				Math.random() * 800 - 400,
 				Math.random() * 800 - 400,
 				Math.random() * 800 - 400,
 			]);
-		return [geo, mat, coords];
+		return [nGeo, nMat, nCoords];
 	}, []);
 
 	return (

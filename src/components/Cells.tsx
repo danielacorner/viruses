@@ -12,7 +12,7 @@ const CELLS = [
 ];
 const SCALE = 0.2;
 export default function Cells() {
-	const worldRadius = useStore(({ worldRadius }) => worldRadius);
+	const worldRadius = useStore((s) => s.worldRadius);
 	return (
 		<>
 			{CELLS.map(({ Component, ...rest }, idx) => {

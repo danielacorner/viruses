@@ -66,7 +66,7 @@ const InstancedParticle = ({
 				({ geometry, material, position }, idx) => (
 					<a.instancedMesh
 						ref={ref}
-						castShadow
+						castShadow={true}
 						key={idx}
 						onPointerOver={() => {
 							setActive(true);
@@ -80,8 +80,8 @@ const InstancedParticle = ({
 						position={position}
 					>
 						{/* ??? .scene works for SARSCov2 but not others? */}
-						<primitive object={usedgltf.scene} attach="geometry"></primitive>
-						<primitive object={material} attach="material"></primitive>
+						<primitive object={usedgltf.scene} attach="geometry" />
+						<primitive object={material} attach="material" />
 						{/* <instancedBufferGeometry
 						attach="geometry"
 						// args={[null, null, null]}

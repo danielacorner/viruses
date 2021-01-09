@@ -132,8 +132,9 @@ const Particle = ({
 
 	return instanced ? (
 		<>
-			{allGeometriesAndMaterials.map(({ geometry, material }) => (
+			{allGeometriesAndMaterials.map(({ geometry, material }, idx) => (
 				<a.instancedMesh
+					key={idx}
 					onPointerOver={() => {
 						setActive(true);
 					}}
@@ -144,7 +145,7 @@ const Particle = ({
 					args={[geometry, material, Math.ceil(numParticles)]}
 					renderOrder={2}
 					scale={springProps.scale}
-				></a.instancedMesh>
+				/>
 			))}
 		</>
 	) : (
