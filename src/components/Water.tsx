@@ -10,12 +10,13 @@ const NUM_INSTANCES = 50;
 export function Water() {
   const worldRadius = useStore((state) => state.worldRadius);
   const mass = 18.0153 / 1000; /* 18.0153 daltons */
+  const paused = useStore((s) => s.paused);
   const [ref, api] = useSphere((index) => ({
-    mass,
+    mass: paused ? 0 : mass,
     position: getRandStartPosition(worldRadius),
     args: 1,
     material: {
-      restitution: 0,
+      restitution: 0.0001,
     },
   }));
   // const scale = useStore(({ scale }) => scale * 500);
