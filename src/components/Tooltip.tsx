@@ -1,8 +1,19 @@
 import React, { useState } from "react";
 import { useStore } from "../store";
+import { BREAKPOINT_MOBILE } from "../utils/constants";
 import styled from "styled-components/macro";
-import { Close, Fullscreen, FullscreenExit } from "@material-ui/icons";
-import { ClickAwayListener, IconButton, Typography } from "@material-ui/core";
+import {
+  Close,
+  Fullscreen,
+  FullscreenExit,
+  OpenInNew,
+} from "@material-ui/icons";
+import {
+  ClickAwayListener,
+  IconButton,
+  Typography,
+  useMediaQuery,
+} from "@material-ui/core";
 import { useWindowSize } from "../utils/hooks";
 import { startCase } from "lodash";
 import { Protein } from "../utils/PROTEINS";
@@ -16,6 +27,7 @@ const Tooltip = () => {
   const set = useStore((s) => s.set);
   const [maximized, setMaximized] = useState(false);
   const windowSize = useWindowSize();
+  const isTabletOrLarger = useMediaQuery(`(min-width: ${BREAKPOINT_MOBILE}px)`);
   return selectedProtein ? (
     <ClickAwayListener onClickAway={() => setMaximized(false)}>
       <TooltipStyles
@@ -44,15 +56,27 @@ const Tooltip = () => {
           >
             <Close />
           </IconButton>
-          <IconButton
-            className="btnMaximize"
-            onClick={(e) => {
-              e.stopPropagation();
-              setMaximized((prev) => !prev);
-            }}
-          >
-            {maximized ? <FullscreenExit /> : <Fullscreen />}
-          </IconButton>
+          {isTabletOrLarger ? (
+            <IconButton
+              className="btnMaximize"
+              onClick={(e) => {
+                e.stopPropagation();
+                setMaximized((prev) => !prev);
+              }}
+            >
+              {maximized ? <FullscreenExit /> : <Fullscreen />}
+            </IconButton>
+          ) : (
+            <a
+              href={selectedProtein.pathToImage}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <IconButton className="btnMaximize btnOpenInNew">
+                <OpenInNew />
+              </IconButton>
+            </a>
+          )}
           <div className="titleSection">
             <Typography variant="subtitle1">{selectedProtein.type}</Typography>
             <a
@@ -95,7 +119,7 @@ const TooltipStyles = styled.div`
   left: 0;
   width: ${(props) => props.width}px;
   height: ${(props) => props.height}px;
-  opacity: ${(props) => (props.maximized ? 1 : 0.5)};
+  opacity: ${(props) => (props.maximized ? 1 : 0.9)};
   @media (min-width: 500px) {
     opacity: ${(props) => (props.maximized ? 1 : 0.9)};
   }

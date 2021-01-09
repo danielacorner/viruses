@@ -8,22 +8,21 @@ export function PauseControls() {
   const paused = useStore((s) => s.paused);
   const set = useStore((s) => s.set);
   return (
-    <PauseControlsStyles>
-      <Typography align="center" id="volume-slider" gutterBottom>
+    <PauseControlsStyles onClick={() => set({ paused: !paused })}>
+      <Typography align="center" id="volume-slider">
         {paused ? "Play" : "Pause"}
       </Typography>
       <Grid container spacing={2}>
         <Grid item>
-          <IconButton onClick={() => set({ paused: !paused })}>
-            {paused ? <PlayArrowOutlined /> : <Pause />}
-          </IconButton>
+          <IconButton>{paused ? <PlayArrowOutlined /> : <Pause />}</IconButton>
         </Grid>
       </Grid>
     </PauseControlsStyles>
   );
 }
 const PauseControlsStyles = styled.div`
+  cursor: pointer;
   position: fixed;
-  bottom: 0;
-  right: calc(50% - 16px);
+  bottom: 28px;
+  right: calc(200px + 2 * 32px);
 `;

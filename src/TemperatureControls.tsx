@@ -36,7 +36,7 @@ export function TemperatureControls() {
 }
 const TemperatureControlsStyles = styled.div`
   position: fixed;
-  bottom: 0;
-  right: 0;
+  bottom: 32px;
+  right: 32px;
   width: 200px;
 `;
