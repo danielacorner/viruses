@@ -12,26 +12,28 @@ export default function Model(props) {
   ) as any;
   return (
     <group ref={group} {...props} dispose={null}>
-      <mesh
-        material={
-          nodes.icosahedral_nanoparticlecif_assembly_1_B_Gaussian_surface
-            .material
-        }
-        geometry={
-          nodes.icosahedral_nanoparticlecif_assembly_1_B_Gaussian_surface
-            .geometry
-        }
-      />
-      <mesh
-        material={
-          nodes.icosahedral_nanoparticlecif_assembly_1_A_Gaussian_surface
-            .material
-        }
-        geometry={
-          nodes.icosahedral_nanoparticlecif_assembly_1_A_Gaussian_surface
-            .geometry
-        }
-      />
+      <group position={[-218.94, -186.88, -207.47]}>
+        <mesh
+          material={
+            nodes.icosahedral_nanoparticlecif_assembly_1_A_Gaussian_surface
+              .material
+          }
+          geometry={
+            nodes.icosahedral_nanoparticlecif_assembly_1_A_Gaussian_surface
+              .geometry
+          }
+        />
+        <mesh
+          material={
+            nodes.icosahedral_nanoparticlecif_assembly_1_B_Gaussian_surface
+              .material
+          }
+          geometry={
+            nodes.icosahedral_nanoparticlecif_assembly_1_B_Gaussian_surface
+              .geometry
+          }
+        />
+      </group>
     </group>
   );
 }
