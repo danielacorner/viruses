@@ -1,6 +1,6 @@
 export const PHYSICS_PROPS = {
   defaultContactMaterial: {
-    friction: 0.9,
+    friction: 0.0,
     restitution: 0.7,
     contactEquationStiffness: 1e7,
     contactEquationRelaxation: 1,

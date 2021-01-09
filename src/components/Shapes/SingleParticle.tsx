@@ -55,6 +55,7 @@ function InteractiveParticle(props) {
   useJitterParticle({
     mass,
     ref,
+    api,
   });
   const scale = useStore((state: GlobalStateType) => state.scale) as number;
   const set = useStore((state: GlobalStateType) => state.set);
