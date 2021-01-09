@@ -6,6 +6,7 @@ import { GlobalStateType, useStore } from "../../store";
 import { usePrevious } from "../../utils/hooks";
 import * as THREE from "three";
 import { usePauseUnpause } from "./usePauseUnpause";
+import { useChangeVelocityWhenTemperatureChanges } from "./useChangeVelocityWhenTemperatureChanges";
 
 export function SingleParticle(props) {
   // TODO: make NonInteractiveParticle instanced for better performance?
@@ -55,7 +56,6 @@ function InteractiveParticle(props) {
   });
 
   usePauseUnpause({
-    mass,
     api,
   });
 
@@ -64,6 +64,9 @@ function InteractiveParticle(props) {
     ref,
     api,
   });
+
+  useChangeVelocityWhenTemperatureChanges({ mass, api });
+
   const scale = useStore((state: GlobalStateType) => state.scale) as number;
   const set = useStore((state: GlobalStateType) => state.set);
 

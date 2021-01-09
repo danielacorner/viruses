@@ -8,8 +8,6 @@ import { useGLTF } from "@react-three/drei/useGLTF";
 export default function Model(props) {
   const group = useRef();
   const { nodes, materials } = useGLTF("/models/cells/eosinophil.glb") as any;
-  console.log("🌟🚨🌟🚨🌟🚨 ~ Model ~ nodes", nodes);
-  console.log("🌟🚨 ~ Model ~ materials", materials);
   return (
     <group ref={group} {...props} dispose={null}>
       <mesh

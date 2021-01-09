@@ -10,25 +10,25 @@ import { PHYSICS_PROPS } from "./utils/PHYSICS_PROPS";
 import { Walls } from "./components/Walls";
 
 export function CanvasAndSceneEmpty() {
-	const windowSize = useWindowSize();
+  const windowSize = useWindowSize();
 
-	return (
-		<Canvas
-			onCreated={({ gl }) => {
-				gl.shadowMap.enabled = true;
-				gl.shadowMap.type = THREE.PCFShadowMap;
-			}}
-			gl={{ antialias: false, alpha: false }}
-			style={{ height: windowSize.height, width: windowSize.width }}
-		>
-			<>
-				<OrbitControls />
-				<Lighting />
-				<Physics {...PHYSICS_PROPS}>
-					<Water />
-					<Walls />
-				</Physics>
-			</>
-		</Canvas>
-	);
+  return (
+    <Canvas
+      onCreated={({ gl }) => {
+        gl.shadowMap.enabled = true;
+        gl.shadowMap.type = THREE.PCFShadowMap;
+      }}
+      gl={{ antialias: false, alpha: false }}
+      style={{ height: windowSize.height, width: windowSize.width }}
+    >
+      <>
+        <OrbitControls />
+        <Lighting />
+        <Physics {...PHYSICS_PROPS}>
+          <Water />
+          <Walls />
+        </Physics>
+      </>
+    </Canvas>
+  );
 }

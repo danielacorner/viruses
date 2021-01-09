@@ -1,11 +1,8 @@
 import { useFrame } from "react-three-fiber";
 import { randBetween } from "../../utils/utils";
 import * as THREE from "three";
-import { useEffect } from "react";
 import { usePhysicsProps } from "./usePhysicsProps";
 import { useStore } from "../../store";
-
-export const VELOCITY_COEFF = 100;
 
 const dummy = new THREE.Object3D();
 
@@ -44,26 +41,9 @@ export function useJitterInstanceParticle({
 // };
 
 export function useJitterParticle({ mass, ref, api = {} as any }) {
-  const { temperature, velocityByMass } = usePhysicsProps(mass);
-  const set = useStore((s) => s.set);
+  const { temperature } = usePhysicsProps(mass);
+  const paused = useStore((s) => s.paused);
   // ? ONLY when the temperature changes, change the velocity
-  useEffect(() => {
-    let [newVx, newVy, newVz] =
-      temperature === 0
-        ? [0, 0, 0]
-        : [
-            velocityByMass * randBetween(-1, 1),
-            velocityByMass * randBetween(-1, 1),
-            velocityByMass * randBetween(-1, 1),
-          ];
-
-    api.velocity.set(newVx, newVy, newVz);
-
-    // unpause if it was paused
-    set({ paused: false });
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [temperature]);
 
   const jitterPosition = temperature * 0.001; // ???
   const jitterRotation = temperature * 0.005; // ???
@@ -71,6 +51,9 @@ export function useJitterParticle({ mass, ref, api = {} as any }) {
   const rRot = () => randBetween(-jitterRotation, jitterRotation);
 
   useFrame(() => {
+    if (paused) {
+      return;
+    }
     if (ref.current) {
       // jitter rotation
       ref.current.rotation.x = ref.current.rotation.x + rRot();

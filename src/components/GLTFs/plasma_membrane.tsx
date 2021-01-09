@@ -14,7 +14,6 @@ export default function Model(props) {
   const { nodes, materials } = useGLTF(
     "/models/plasma_membrane/scene.gltf"
   ) as any;
-  console.log("🌟🚨: Model -> nodes", nodes);
   return (
     <group ref={group} {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]}>

@@ -26,7 +26,6 @@ const Scene = () => {
 
   // audio track
   useAudioTrack();
-
   return (
     <>
       <OrbitControls />
@@ -36,6 +35,7 @@ const Scene = () => {
         // tolerance={0.0001}
         // allowSleep={false}
         {...PHYSICS_PROPS}
+        step={1 / 60 / 1}
       >
         {/* {paused && <DisableRender />} */}
 

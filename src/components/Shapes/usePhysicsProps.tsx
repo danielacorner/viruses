@@ -1,5 +1,6 @@
 import { useStore } from "../../store";
-import { VELOCITY_COEFF } from "./useJitterParticle";
+
+const VELOCITY_COEFF = 50;
 
 export function usePhysicsProps(mass: any) {
   const temperature = useStore((state) => state.temperature);
