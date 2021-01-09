@@ -1,8 +1,8 @@
-import React, { useRef,useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { useConvexPolyhedron } from "@react-three/cannon";
-import {useFrame}from 'react-three-fiber'
+import { useFrame } from "react-three-fiber";
 import { useJitterParticle } from "./useJitterParticle";
-import { useStore } from "../../store";
+import { GlobalStateType, useStore } from "../../store";
 import { usePrevious } from "../../utils/hooks";
 import * as THREE from "three";
 
@@ -27,7 +27,7 @@ function InteractiveParticle(props) {
     type,
     mass,
     numIcosahedronFaces,
-    paused
+    paused,
   } = props;
   // TODO:
   // const temperature=useStore(state=>state.temperature)
@@ -41,20 +41,23 @@ function InteractiveParticle(props) {
     // https://threejs.org/docs/scenes/geometry-browser.html#IcosahedronBufferGeometry
     args: new THREE.IcosahedronGeometry(1, detail),
   }));
-  const prevPosition = useRef([0, 0, 0])
-  useEffect(() => api.position.subscribe((p) => (prevPosition.current = p)), [])
-  useFrame(()=>{
-    if(paused&&prevPosition.current){
-      const [x,y,z] = prevPosition.current as any
-      api.position.set(x,y,z)
+  const prevPosition = useRef([0, 0, 0]);
+  useEffect(
+    () => api.position.subscribe((p) => (prevPosition.current = p)),
+    []
+  );
+  useFrame(() => {
+    if (paused && prevPosition.current) {
+      const [x, y, z] = prevPosition.current as any;
+      api.position.set(x, y, z);
     }
-  })
+  });
   useJitterParticle({
     mass,
     ref,
   });
-  const scale = useStore((state) => state.scale);
-  const set = useStore((state) => state.set);
+  const scale = useStore((state: GlobalStateType) => state.scale) as number;
+  const set = useStore((state: GlobalStateType) => state.set);
 
   return (
     <mesh

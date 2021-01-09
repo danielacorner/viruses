@@ -2,6 +2,7 @@ import { useFrame } from "react-three-fiber";
 import { randBetween } from "../../utils/utils";
 import * as THREE from "three";
 import { useStore } from "../../store";
+import { useEffect } from "react";
 
 const dummy = new THREE.Object3D();
 
@@ -47,6 +48,7 @@ export function useJitterParticle({ mass, ref }) {
   // https://courses.lumenlearning.com/boundless-chemistry/chapter/kinetic-molecular-theory/#:~:text=It%20is%20represented%20by%20the,is%20the%20temperature%20in%20Kelvin.
   // v =~ sqrt( temperature / mass )
   const velocity = (temperature / mass) ** 0.5 / 50;
+
   const jitterPosition = velocity;
   const jitterRotation = velocity * 10;
   const rPos = () => randBetween(-jitterPosition, jitterPosition);
