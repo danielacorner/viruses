@@ -29,82 +29,83 @@ const Tooltip = () => {
   const windowSize = useWindowSize();
   const isTabletOrLarger = useMediaQuery(`(min-width: ${BREAKPOINT_MOBILE}px)`);
   return selectedProtein ? (
-    <ClickAwayListener onClickAway={() => setMaximized(false)}>
-      <TooltipStyles
-        maximized={maximized}
-        onTouchStart={() => setMaximized(true)}
-        onClick={() => setMaximized(true)}
-        height={
-          maximized
-            ? Math.min(windowSize.width, windowSize.height)
-            : TOOLTIP.height
-        }
-        width={
-          maximized
-            ? Math.min(windowSize.width, windowSize.height)
-            : TOOLTIP.width
-        }
-      >
-        <div className="tooltipContent">
+    <TooltipStyles
+      maximized={maximized}
+      onTouchStart={() => setMaximized(true)}
+      onClick={() => setMaximized(true)}
+      height={
+        maximized
+          ? Math.min(windowSize.width, windowSize.height)
+          : TOOLTIP.height
+      }
+      width={
+        maximized
+          ? Math.min(windowSize.width, windowSize.height) -
+            (TOOLTIP.height - TOOLTIP.width)
+          : TOOLTIP.width
+      }
+    >
+      <div className="tooltipContent">
+        <IconButton
+          className="btnClose"
+          onClick={(e) => {
+            e.stopPropagation();
+            setMaximized(false);
+            set({ selectedProtein: null });
+          }}
+        >
+          <Close />
+        </IconButton>
+        {isTabletOrLarger ? (
           <IconButton
-            className="btnClose"
+            className="btnMaximize"
             onClick={(e) => {
               e.stopPropagation();
-              setMaximized(false);
-              set({ selectedProtein: null });
+              setMaximized((prev) => !prev);
             }}
           >
-            <Close />
+            {maximized ? <FullscreenExit /> : <Fullscreen />}
           </IconButton>
-          {isTabletOrLarger ? (
-            <IconButton
-              className="btnMaximize"
-              onClick={(e) => {
-                e.stopPropagation();
-                setMaximized((prev) => !prev);
-              }}
-            >
-              {maximized ? <FullscreenExit /> : <Fullscreen />}
+        ) : (
+          <a
+            href={selectedProtein.pathToImage}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <IconButton className="btnMaximize btnOpenInNew">
+              <OpenInNew />
             </IconButton>
-          ) : (
-            <a
-              href={selectedProtein.pathToImage}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <IconButton className="btnMaximize btnOpenInNew">
-                <OpenInNew />
-              </IconButton>
-            </a>
-          )}
-          <div className="titleSection">
-            <Typography variant="subtitle1">{selectedProtein.type}</Typography>
-            <a
-              href={selectedProtein.PDBUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Typography className="title" variant="body1">
-                {startCase(selectedProtein.name)}
-              </Typography>
-            </a>
-          </div>
+          </a>
+        )}
+        <div className="titleSection">
+          <Typography variant="subtitle1">{selectedProtein.type}</Typography>
+          <a
+            href={selectedProtein.PDBUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Typography className="title" variant="body1">
+              {startCase(selectedProtein.name)}
+            </Typography>
+          </a>
+        </div>
+        <ClickAwayListener onClickAway={() => setMaximized(false)}>
           <img src={selectedProtein.pathToImage} alt="" />
-          <div className="details">
-            <div className="weight">
-              {numberWithCommas(selectedProtein.mass)} kDa
-            </div>
-            <div className="atomCount">
-              {numberWithCommas(
-                selectedProtein.atomCount *
-                  selectedProtein.numIcosahedronFaces /* ! 12 for most icosahedral proteins? */
-              )}{" "}
-              atoms
-            </div>
+        </ClickAwayListener>
+        <div className="details">
+          <div className="weight">
+            {numberWithCommas(selectedProtein.mass)} kDa
+          </div>
+          <div className="atomCount">
+            {numberWithCommas(
+              selectedProtein.atomCount *
+                selectedProtein.numIcosahedronFaces /* ! 12 for most icosahedral proteins? */
+            )}{" "}
+            atoms
           </div>
         </div>
-      </TooltipStyles>
-    </ClickAwayListener>
+      </div>
+    </TooltipStyles>
   ) : null;
 };
 
@@ -119,11 +120,10 @@ const TooltipStyles = styled.div`
   left: 0;
   width: ${(props) => props.width}px;
   height: ${(props) => props.height}px;
-  opacity: ${(props) => (props.maximized ? 1 : 0.9)};
-  @media (min-width: 500px) {
-    opacity: ${(props) => (props.maximized ? 1 : 0.9)};
-  }
   pointer-events: none;
+  @media (min-width: ${BREAKPOINT_MOBILE}px) {
+    pointer-events: auto;
+  }
   .tooltipContent {
     box-sizing: border-box;
     color: black;
@@ -145,9 +145,9 @@ const TooltipStyles = styled.div`
     img {
       width: 100%;
       height: 100%;
-
       object-fit: contain;
       box-sizing: border-box;
+      opacity: ${(props) => (props.maximized ? 1 : 0.6)};
     }
     .details {
       display: grid;
@@ -162,11 +162,11 @@ const TooltipStyles = styled.div`
     }
     .btnClose {
       top: 1em;
-      right: ${(props) => (props.maximized ? 0.5 : -1)}em;
+      right: -1em;
     }
     .btnMaximize {
       top: 3em;
-      right: ${(props) => (props.maximized ? 2.5 : 1)}em;
+      right: 1em;
     }
   }
 `;
