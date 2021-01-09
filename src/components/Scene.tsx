@@ -1,19 +1,15 @@
 import React from "react";
 import { Physics } from "@react-three/cannon";
-import { OrbitControls, useGLTF } from "@react-three/drei";
+import { HTML, Line, OrbitControls, useGLTF } from "@react-three/drei";
 import { Lighting } from "./Lighting";
 import { Walls } from "./Walls";
 import ProteinGroup from "./ProteinGroup";
 import { PHYSICS_PROPS } from "../utils/PHYSICS_PROPS";
 import { PROTEINS } from "../utils/PROTEINS";
-import CellMembrane from "./CellMembrane";
 import { useAudioTrack } from "./useAudioTrack";
-import { ATPInstanced } from "./GLTFs/other/ATPInstanced";
 import { useStoredControl } from "./useStoredControl";
 import { Water } from "./Water";
-import Cells from "./Cells";
-import { useControl } from "react-three-gui";
-import { useFrame } from "react-three-fiber";
+import { useStore } from "../store";
 
 const Scene = () => {
   const scale = useStoredControl("scale", {
@@ -49,6 +45,7 @@ const Scene = () => {
         {/* TODO: ATP is inside the cell only? */}
         {/* <ATPInstanced /> */}
         <Walls />
+        <ScaleIndicator />
         {/* <CellMembrane /> */}
         {/* <Cells /> */}
       </Physics>
@@ -64,7 +61,38 @@ PROTEINS.forEach(({ pathToGLTF }) => useGLTF.preload(pathToGLTF));
 
 export default Scene;
 
-function DisableRender() {
-  useFrame(() => null, 1000);
-  return null;
+function ScaleIndicator() {
+  const wr = useStore((s) => s.worldRadius * 0.999);
+  const scale = useStore((s) => s.scale);
+  const commonProps = { color: "hsla(0,0%,50%,0.2)" };
+  return (
+    <>
+      {/* back bottom */}
+      <Line
+        {...commonProps}
+        points={[
+          [wr, -wr, -wr],
+          [-wr, -wr, -wr],
+        ]}
+      ></Line>
+      {/* right bottom */}
+      <Line
+        {...commonProps}
+        points={[
+          [wr, -wr, -wr],
+          [wr, -wr, wr],
+        ]}
+      ></Line>
+      {/* back right */}
+      <Line
+        {...commonProps}
+        points={[
+          [wr, -wr, -wr],
+          [wr, wr, -wr],
+        ]}
+      ></Line>
+      {/* against the back right edge, show a ruler that responds to the scale */}
+      {/* <HTML {...{ position: [wr, wr, -wr] }}>scale: {scale}</HTML> */}
+    </>
+  );
 }
