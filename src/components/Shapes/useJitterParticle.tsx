@@ -4,6 +4,7 @@ import * as THREE from "three";
 import { useEffect } from "react";
 import { usePrevious } from "../../utils/hooks";
 import { usePhysicsProps } from "./usePhysicsProps";
+import { useStore } from "../../store";
 
 export const VELOCITY_COEFF = 100;
 
@@ -51,7 +52,7 @@ export function useJitterInstanceParticle({
 // };
 export function useJitterParticle({ mass, ref, api = {} as any }) {
   const { temperature, velocityByMass } = usePhysicsProps(mass);
-
+  const set = useStore((s) => s.set);
   // ? ONLY when the temperature changes, change the velocity
   useEffect(() => {
     // const [vx, vy, vz] = currentVelocity.current;
@@ -65,6 +66,10 @@ export function useJitterParticle({ mass, ref, api = {} as any }) {
           ];
 
     api.velocity.set(newVx, newVy, newVz);
+
+    // unpause if it was paused
+    set({ paused: false });
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [temperature]);
 
