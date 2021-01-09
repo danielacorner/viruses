@@ -1,8 +1,11 @@
 import { useFrame } from "react-three-fiber";
-import { randBetween, useMount } from "../../utils/utils";
+import { randBetween } from "../../utils/utils";
 import * as THREE from "three";
-import { useStore } from "../../store";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
+import { usePrevious } from "../../utils/hooks";
+import { usePhysicsProps } from "./usePhysicsProps";
+
+export const VELOCITY_COEFF = 100;
 
 const dummy = new THREE.Object3D();
 
@@ -41,38 +44,27 @@ export function useJitterInstanceParticle({
     ref.current.instanceMatrix.needsUpdate = true;
   });
 }
-type WorkerVec = {
-  set: (x: number, y: number, z: number) => void;
-  copy: ({ x, y, z }: THREE.Vector3 | THREE.Euler) => void;
-  subscribe: (callback: (value: number[]) => void) => void;
-};
+// type WorkerVec = {
+//   set: (x: number, y: number, z: number) => void;
+//   copy: ({ x, y, z }: THREE.Vector3 | THREE.Euler) => void;
+//   subscribe: (callback: (value: number[]) => void) => void;
+// };
 export function useJitterParticle({ mass, ref, api = {} as any }) {
-  console.log("🌟🚨 ~ useJitterParticle ~ api", api);
-  const temperature = useStore((state) => state.temperature);
-  // based on the temperature, we can determine the velocity change
-  // https://courses.lumenlearning.com/boundless-chemistry/chapter/kinetic-molecular-theory/#:~:text=It%20is%20represented%20by%20the,is%20the%20temperature%20in%20Kelvin.
-  // v =~ sqrt( temperature / mass )
-  const velocity = (temperature / mass) ** 0.5;
-  const currentVelocity = useRef([0, 0, 0]);
-  useMount(() => api.velocity.subscribe((v) => (currentVelocity.current = v)));
-  console.log("🌟🚨 ~ useJitterParticle ~ currentVelocity", currentVelocity);
-  console.log("🌟🚨 ~ useJitterParticle ~ velocity", velocity);
+  const { temperature, velocityByMass } = usePhysicsProps(mass);
 
   // ? ONLY when the temperature changes, change the velocity
   useEffect(() => {
-    const [x, y, z] = currentVelocity.current;
-    const MAX_VELOCITY = 6;
-    const [newX, newY, newZ] = [
-      velocity * randBetween(-MAX_VELOCITY, MAX_VELOCITY),
-      velocity * randBetween(-MAX_VELOCITY, MAX_VELOCITY),
-      velocity * randBetween(-MAX_VELOCITY, MAX_VELOCITY),
-    ];
-    // const [newX, newY, newZ] = [
-    //   (x + temperature ** 2) * (1 + velocity),
-    //   (y + temperature ** 2) * (1 + velocity),
-    //   (z + temperature ** 2) * (1 + velocity),
-    // ];
-    api.velocity.set(newX, newY, newZ);
+    // const [vx, vy, vz] = currentVelocity.current;
+    let [newVx, newVy, newVz] =
+      temperature === 0
+        ? [0, 0, 0]
+        : [
+            velocityByMass * randBetween(-1, 1),
+            velocityByMass * randBetween(-1, 1),
+            velocityByMass * randBetween(-1, 1),
+          ];
+
+    api.velocity.set(newVx, newVy, newVz);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [temperature]);
 

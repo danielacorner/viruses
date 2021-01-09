@@ -16,59 +16,45 @@ import { useControl } from "react-three-gui";
 import { useFrame } from "react-three-fiber";
 
 const Scene = () => {
-	const temperature = useStoredControl("temperature", {
-		group: "Environment",
-		type: "number",
-		min: 0,
-		max: 100,
-		value: 1,
-	});
+  const scale = useStoredControl("scale", {
+    group: "Environment",
+    type: "number",
+    min: 0,
+    max: 0.002,
+    value: 0.001,
+  });
 
-	const scale = useStoredControl("scale", {
-		group: "Environment",
-		type: "number",
-		min: 0,
-		max: 0.002,
-		value: 0.001,
-	});
+  // audio track
+  useAudioTrack();
 
-	const paused = useControl("paused", {
-		group: "Environment",
-		type: "boolean",
-		value: false,
-	});
+  return (
+    <>
+      <OrbitControls />
+      <Lighting />
+      <Physics
+        // iterations={20}
+        // tolerance={0.0001}
+        // allowSleep={false}
+        {...PHYSICS_PROPS}
+      >
+        {/* {paused && <DisableRender />} */}
 
-	// audio track
-	useAudioTrack();
-
-	return (
-		<>
-			<OrbitControls />
-			<Lighting />
-			<Physics
-				// iterations={20}
-				// tolerance={0.0001}
-				// allowSleep={false}
-				{...PHYSICS_PROPS}
-			>
-				{/* {paused && <DisableRender />} */}
-
-				{PROTEINS.map(
-					// TODO: abstract / clean up
-					(protein) => {
-						return <ProteinGroup key={protein.name} {...protein} {...{paused}}/>;
-					}
-				)}
-				<Water />
-				{/* TODO: ATP is inside the cell only? */}
-				{/* <ATPInstanced /> */}
-				<Walls />
-				{/* <CellMembrane /> */}
-				{/* <Cells /> */}
-			</Physics>
-			{/* <Effects /> */}
-		</>
-	);
+        {PROTEINS.map(
+          // TODO: abstract / clean up
+          (protein) => {
+            return <ProteinGroup key={protein.name} {...protein} />;
+          }
+        )}
+        <Water />
+        {/* TODO: ATP is inside the cell only? */}
+        {/* <ATPInstanced /> */}
+        <Walls />
+        {/* <CellMembrane /> */}
+        {/* <Cells /> */}
+      </Physics>
+      {/* <Effects /> */}
+    </>
+  );
 };
 
 PROTEINS.forEach(({ pathToGLTF }) => useGLTF.preload(pathToGLTF));
@@ -79,6 +65,6 @@ PROTEINS.forEach(({ pathToGLTF }) => useGLTF.preload(pathToGLTF));
 export default Scene;
 
 function DisableRender() {
-	useFrame(() => null, 1000);
-	return null;
+  useFrame(() => null, 1000);
+  return null;
 }

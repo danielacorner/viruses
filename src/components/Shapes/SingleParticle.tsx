@@ -5,6 +5,7 @@ import { useJitterParticle } from "./useJitterParticle";
 import { GlobalStateType, useStore } from "../../store";
 import { usePrevious } from "../../utils/hooks";
 import * as THREE from "three";
+import { usePauseUnpause } from "./usePauseUnpause";
 
 export function SingleParticle(props) {
   // TODO: make NonInteractiveParticle instanced for better performance?
@@ -52,6 +53,12 @@ function InteractiveParticle(props) {
       api.position.set(x, y, z);
     }
   });
+
+  usePauseUnpause({
+    mass,
+    api,
+  });
+
   useJitterParticle({
     mass,
     ref,

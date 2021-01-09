@@ -4,6 +4,7 @@ import { Protein } from "./utils/PROTEINS";
 export type GlobalStateType = {
   worldRadius: number;
   temperature: number;
+  paused: boolean;
   // TODO: display scale on walls
   scale: number;
   selectedProtein: null | Protein;
@@ -13,6 +14,7 @@ export type GlobalStateType = {
 // with typescript https://react-tracked.js.org/docs/tutorial-zustand-01/
 export const useStore = create<GlobalStateType>(
   (set): GlobalStateType => ({
+    paused: false,
     worldRadius: 5,
     temperature: 1,
     // TODO: display scale on walls

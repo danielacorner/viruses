@@ -63,6 +63,7 @@ export type Protein = {
    *
    * typically "Icosahedral" meaning 20 sides - found in the PDB entry under "Global Symmetry" */
   numIcosahedronFaces: number;
+  numAsymmetricUnits: number;
 };
 
 export const PROTEINS: Protein[] = [
@@ -78,7 +79,9 @@ export const PROTEINS: Protein[] = [
     mass: 1532.27,
     // atomCount: 99723, // PDB
     atomCount: 200268, // ChimeraX ??
+
     numIcosahedronFaces: 20,
+    numAsymmetricUnits: 20,
     pathToGLTF: "/models/viruses/adenovirus_160_outer.glb",
     pathToImage: "/models/viruses/adenovirus.webp",
     interactive: true,
@@ -90,7 +93,9 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/6CGR",
     mass: 4031.74,
     atomCount: 219702,
+
     numIcosahedronFaces: 20,
+    numAsymmetricUnits: 20,
     pathToGLTF: "/models/viruses/Herpes_600.glb",
     pathToImage: "/models/viruses/herpes.png",
     interactive: true,
@@ -102,7 +107,9 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/6AB6",
     mass: 121.03,
     atomCount: 7256,
+
     numIcosahedronFaces: 20,
+    numAsymmetricUnits: 20,
     pathToGLTF: "/models/viruses/Penaeus vannamei nodavirus_40_radial.glb",
     pathToImage: "/models/viruses/Penaeus vannamei nodavirus_radial.png",
     interactive: true,
@@ -114,7 +121,9 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/6QT9",
     mass: 604.19,
     atomCount: 42370,
+
     numIcosahedronFaces: 20,
+    numAsymmetricUnits: 20,
     pathToGLTF: "/models/viruses/SH1_140.glb",
     pathToImage: "/models/viruses/SH1_hd.png",
     interactive: true,
@@ -127,7 +136,9 @@ export const PROTEINS: Protein[] = [
     mass: 215.35,
     // atomCount: 14478, // PDB
     atomCount: 28956, // ChimeraX "select all"
+
     numIcosahedronFaces: 20,
+    numAsymmetricUnits: 20,
     pathToGLTF: "/models/viruses/faust_1200_1.glb",
     pathToImage: "/models/viruses/faustovirus.webp",
     interactive: true,
@@ -139,7 +150,9 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/1UF2",
     mass: 889.08,
     atomCount: 58130,
+
     numIcosahedronFaces: 20,
+    numAsymmetricUnits: 20,
     pathToGLTF: "/models/viruses/Rice_dwarf_100.glb",
     pathToImage: "/models/viruses/Rice dwarf Virus (RDV).png",
     interactive: true,
@@ -151,7 +164,9 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/6H9C",
     mass: 648.0,
     atomCount: 43691,
+
     numIcosahedronFaces: 20,
+    numAsymmetricUnits: 20,
     pathToGLTF: "/models/viruses/Haloarcula_californiae_140.glb",
     pathToImage: "/models/viruses/Haloarcula hispanica.png",
     interactive: true,
@@ -163,7 +178,9 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/6LGL",
     mass: 3463.29,
     atomCount: 208346,
+
     numIcosahedronFaces: 20,
+    numAsymmetricUnits: 20,
     pathToGLTF: "/models/viruses/varicella_zoster_300.glb",
     pathToImage: "/models/viruses/varicella_zoster.webp",
     interactive: true,
@@ -175,7 +192,9 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/3J3Y",
     mass: 30226.13,
     atomCount: 2116800,
+
     numIcosahedronFaces: 20,
+    numAsymmetricUnits: 20,
     pathToGLTF: "/models/viruses/HIV_200.glb",
     pathToImage: "/models/viruses/hiv.webp",
     interactive: true,
@@ -187,7 +206,9 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/1KVP",
     mass: 55.83,
     atomCount: 497,
+
     numIcosahedronFaces: 20,
+    numAsymmetricUnits: 20,
     pathToGLTF: "/models/viruses/Spiroplasma_50.glb",
     pathToImage: "/models/viruses/Spiroplasma_SPV4.webp",
     interactive: true,
@@ -199,7 +220,9 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/1Z8Y",
     mass: 258.38,
     atomCount: 18071,
+
     numIcosahedronFaces: 20,
+    numAsymmetricUnits: 20,
     pathToGLTF: "/models/viruses/Sindbis_70.glb",
     pathToImage: "/models/viruses/sindbis.webp",
     interactive: true,
@@ -211,7 +234,9 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/1Z8Y",
     mass: 98.54,
     atomCount: 6688,
+
     numIcosahedronFaces: 20,
+    numAsymmetricUnits: 20,
     pathToGLTF: "/models/viruses/poliovirus_50.glb",
     pathToImage: "/models/viruses/poliovirus.webp",
     interactive: true,
@@ -223,7 +248,9 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/3J05",
     mass: 131.25,
     atomCount: 1128,
+
     numIcosahedronFaces: 20,
+    numAsymmetricUnits: 20,
     pathToGLTF: "/models/viruses/denguevirus_50.glb",
     pathToImage: "/models/viruses/denguevirus.webp",
     interactive: true,
@@ -235,7 +262,9 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/3J6R",
     mass: 1575,
     atomCount: 424596,
+
     numIcosahedronFaces: 12,
+    numAsymmetricUnits: 12,
     pathToGLTF: "/models/viruses/hpv_100.glb",
     pathToImage: "/models/viruses/hpv.webp",
     interactive: true,
@@ -251,7 +280,9 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/3RPI",
     mass: 96.41,
     atomCount: 6650,
+
     numIcosahedronFaces: 20,
+    numAsymmetricUnits: 1,
     pathToGLTF: "/models/antibodies/antibody_hiv.glb",
     pathToImage: "/models/antibodies/antibody_HIV.png",
     interactive: true,
@@ -263,7 +294,9 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/3W9E",
     mass: 81.86,
     atomCount: 5355,
+
     numIcosahedronFaces: 20,
+    numAsymmetricUnits: 1,
     pathToGLTF: "/models/antibodies/antibody_herpes.glb",
     pathToImage: "/models/antibodies/antibody_Herpes.png",
     interactive: true,
@@ -279,23 +312,27 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/3VDX",
     mass: 150.79,
     atomCount: 10149,
+
     numIcosahedronFaces: 20,
+    numAsymmetricUnits: 1,
     pathToGLTF: "/models/nanotech/protein_cage_20.glb",
     pathToImage: "/models/nanotech/protein_cage.webp",
     interactive: true,
   },
-  {
-    Component: Octahedral_nanoparticle_20,
-    name: "Octahedral nanoparticle",
-    type: PROTEIN_TYPES.nanotech,
-    PDBUrl: "https://www.rcsb.org/structure/6VFI",
-    mass: 36.55,
-    atomCount: 2437,
-    numIcosahedronFaces: 8,
-    pathToGLTF: "/models/nanotech/octahedral_nanoparticle_20.glb",
-    pathToImage: "/models/nanotech/octahedral_nanoparticle.webp",
-    interactive: true,
-  },
+  // {
+  //   Component: Octahedral_nanoparticle_20,
+  //   name: "Octahedral nanoparticle",
+  //   type: PROTEIN_TYPES.nanotech,
+  //   PDBUrl: "https://www.rcsb.org/structure/6VFI",
+  //   mass: 36.55,
+  //   atomCount: 2437,
+
+  //   numIcosahedronFaces: 8,
+  //   numAsymmetricUnits: 1,
+  //   pathToGLTF: "/models/nanotech/octahedral_nanoparticle_20.glb",
+  //   pathToImage: "/models/nanotech/octahedral_nanoparticle.webp",
+  //   interactive: true,
+  // },
   {
     Component: Octahedral_nanoparticle_10,
     name: "Octahedral nanoparticle",
@@ -303,7 +340,9 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/6VFI",
     mass: 36.55,
     atomCount: 2437,
+
     numIcosahedronFaces: 8,
+    numAsymmetricUnits: 1,
     pathToGLTF: "/models/nanotech/octahedral_nanoparticle_10.glb",
     pathToImage: "/models/nanotech/octahedral_nanoparticle.webp",
     interactive: true,
@@ -315,7 +354,9 @@ export const PROTEINS: Protein[] = [
   //   PDBUrl: "https://www.rcsb.org/structure/6VFH",
   //   mass: 45.55,
   //   atomCount: 3082,
+
   //   numIcosahedronFaces: 5,
+  // numAsymmetricUnits   numIcosahedronFaces: 5,
   //   pathToGLTF: "/models/nanotech/tetrahedral_nanoparticle_20.glb",
   //   pathToImage: "/models/nanotech/tetrahedral_nanoparticle.webp",
   //   interactive: true,
@@ -327,7 +368,9 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/6VFJ",
     mass: 32.57,
     atomCount: 2196,
+
     numIcosahedronFaces: 5,
+    numAsymmetricUnits: 1,
     pathToGLTF: "/models/nanotech/icosahedral_nanoparticle_20.glb",
     pathToImage: "/models/nanotech/icosahedral_nanoparticle.webp",
     interactive: true,
