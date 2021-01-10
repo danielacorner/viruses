@@ -9,15 +9,36 @@ type Tick = {
 
 export function ScaleIndicator() {
   const wr = useStore((s) => s.worldRadius * 0.999);
+  const wd = 2 * wr;
   const scale = useStore((s) => s.scale);
   const commonProps = { color: "hsla(0,0%,80%)" };
+  const scaled = scale / 0.002 / 4;
+  // create 10 big ticks, and 10 small ticks under the the bottom tick
+  const ticks: Tick[] = [...new Array(10)]
+    .map((_, idx) => ({
+      name: `${idx}000 Å`,
+      position: [wr, idx * scaled * wd - wr, -wr],
+    }))
+    .slice(1) as Tick[];
 
-  const ticks: Tick[] = [
-    {
-      name: "100 nm",
-      position: [wr, (scale / 0.002) * wr, -wr],
-    },
-  ];
+  // [
+  //   {
+  //     name: "3000 Å",
+  //     position: [wr, 3 * scaled * wd - wr, -wr],
+  //   },
+  //   {
+  //     name: "2000 Å",
+  //     position: [wr, 2 * scaled * wd - wr, -wr],
+  //   },
+  //   {
+  //     name: "1000 Å",
+  //     position: [wr, 1 * scaled * wd - wr, -wr],
+  //   },
+  //   {
+  //     name: "100 Å",
+  //     position: [wr, 0.2 * scaled * wd - wr, -wr],
+  //   },
+  // ];
 
   return (
     <>
@@ -25,7 +46,7 @@ export function ScaleIndicator() {
 
       <HTML {...{ position: [wr, wr * 1.25, -wr] }}>scale: {scale}</HTML>
 
-{/* TODO: compare virus radius to scale */}
+      {/* TODO: compare virus radius to scale */}
       {ticks.map((t) => (
         <>
           <Line
