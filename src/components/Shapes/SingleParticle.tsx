@@ -74,8 +74,7 @@ function InteractiveParticle(props) {
     <mesh
       ref={ref}
       scale={[scale, scale, scale]}
-      onPointerOver={() => set({ selectedProtein: props })}
-      // onPointerDown={() => set({ selectedProtein: { pathToImage } })}
+      onPointerOver={() => set({ selectedProtein: { ...props, api } })}
     >
       <Component />
     </mesh>

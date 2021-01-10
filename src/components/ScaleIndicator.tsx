@@ -29,24 +29,6 @@ export function ScaleIndicator() {
       side: "right",
     }))
     .slice(1) as Tick[];
-  // [
-  //   {
-  //     name: "3000 Å",
-  //     position: [wr, 3 * scaled * wd - wr, -wr],
-  //   },
-  //   {
-  //     name: "2000 Å",
-  //     position: [wr, 2 * scaled * wd - wr, -wr],
-  //   },
-  //   {
-  //     name: "1000 Å",
-  //     position: [wr, 1 * scaled * wd - wr, -wr],
-  //   },
-  //   {
-  //     name: "100 Å",
-  //     position: [wr, 0.2 * scaled * wd - wr, -wr],
-  //   },
-  // ];
 
   return (
     <>

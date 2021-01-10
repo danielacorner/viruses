@@ -9,6 +9,7 @@ import { PROTEINS } from "../utils/PROTEINS";
 import { useAudioTrack } from "./useAudioTrack";
 import { Water } from "./Water";
 import { ScaleIndicator } from "./ScaleIndicator";
+import { useStore } from "../store";
 
 const Scene = () => {
   // audio track
