@@ -22,7 +22,7 @@ const CanvasAndSceneLazy = React.lazy(() => import("./CanvasAndScene"));
 const ESTIMATED_LOAD_TIME = 60 * 1000;
 
 function LazyLoadedScene() {
-  const startsStarted = process.env.NODE_ENV === "development";
+  const startsStarted = false && process.env.NODE_ENV === "development";
 
   const [started, setStarted] = useState(startsStarted);
   const [loading, setLoading] = useState(!startsStarted);
@@ -53,7 +53,7 @@ function LazyLoadedScene() {
           minHeight: "100vh",
         }}
       >
-        <Typography variant="h3">
+        <Typography style={{textAlign:"center"}} variant="h3">
           Virus{" "}
           <span role="img" aria-label="">
             🦠

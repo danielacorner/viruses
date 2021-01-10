@@ -25,6 +25,7 @@ export function ScaleIndicator() {
 
       <HTML {...{ position: [wr, wr * 1.25, -wr] }}>scale: {scale}</HTML>
 
+{/* TODO: compare virus radius to scale */}
       {ticks.map((t) => (
         <>
           <Line

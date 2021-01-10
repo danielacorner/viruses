@@ -145,6 +145,7 @@ const TooltipStyles = styled.div`
     img {
       width: 100%;
       height: 100%;
+      min-height: 270px;
       object-fit: contain;
       box-sizing: border-box;
       opacity: ${(props) => (props.maximized ? 1 : 0.6)};

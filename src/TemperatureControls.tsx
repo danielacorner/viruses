@@ -4,6 +4,7 @@ import { Grid, Slider, Typography } from "@material-ui/core";
 import styled from "styled-components/macro";
 import { AcUnit, Whatshot } from "@material-ui/icons";
 
+const StyledDiv = styled.div``;
 export function TemperatureControls() {
   const temperature = useStore((s) => s.temperature);
   const set = useStore((s) => s.set);
@@ -12,11 +13,11 @@ export function TemperatureControls() {
       <Typography align="center" id="volume-slider" gutterBottom>
         Temperature
       </Typography>
-      <Grid container spacing={2}>
-        <Grid item>
+      <div className="grid">
+        <div className="grid-item">
           <AcUnit />
-        </Grid>
-        <Grid item xs>
+        </div>
+        <div className="grid-item">
           <Slider
             aria-labelledby="volume-slider"
             onChange={(event, newValue) => {
@@ -26,17 +27,23 @@ export function TemperatureControls() {
             max={100}
             value={temperature}
           />
-        </Grid>
-        <Grid item>
+        </div>
+        <div className="grid-item">
           <Whatshot />
-        </Grid>
-      </Grid>
+        </div>
+      </div>
     </TemperatureControlsStyles>
   );
 }
 const TemperatureControlsStyles = styled.div`
   position: fixed;
-  bottom: 32px;
+  bottom: 60px;
   right: 32px;
   width: 200px;
+  .grid {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    grid-gap: 1em;
+  }
 `;

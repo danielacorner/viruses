@@ -23,6 +23,6 @@ export function PauseControls() {
 const PauseControlsStyles = styled.div`
   cursor: pointer;
   position: fixed;
-  bottom: 28px;
+  bottom: 56px;
   right: calc(200px + 2 * 32px);
 `;
