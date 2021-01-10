@@ -31,7 +31,7 @@ export default function CanvasAndScene({ renderProteins = true }) {
         >
           <Scene />
         </Controls.Canvas>
-        <Controls />
+        <Controls anchor={"top_right"} />
       </Controls.Provider>
       <TemperatureControls />
       <PauseControls />

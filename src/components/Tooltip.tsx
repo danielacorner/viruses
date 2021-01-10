@@ -46,6 +46,47 @@ const Tooltip = () => {
       }
     >
       <div className="tooltipContent">
+        <div className="titleSection">
+          <a
+            href={selectedProtein.PDBUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Typography className="title" variant="body1">
+              {startCase(selectedProtein.name)}
+            </Typography>
+          </a>
+          <Typography variant="subtitle1" style={{ whiteSpace: "nowrap" }}>
+            {" "}
+            — {selectedProtein.type}
+          </Typography>
+        </div>
+
+        <div className="details">
+          <div className="measurement weight">
+            <div className="label">weight</div>
+            <div className="value">
+              {numberWithCommas(selectedProtein.mass)} kDa
+            </div>
+          </div>
+          <div className="measurement radius">
+            <div className="label">radius</div>
+            <div className="value">{Math.round(selectedProtein.radius)} Å</div>
+          </div>
+          <div className="measurement atomCount">
+            <div className="label"></div>
+            <div className="value">
+              {numberWithCommas(
+                selectedProtein.atomCount *
+                  selectedProtein.numIcosahedronFaces /* ! 12 for most icosahedral proteins? */
+              )}{" "}
+              atoms
+            </div>
+          </div>
+        </div>
+        <ClickAwayListener onClickAway={() => setMaximized(false)}>
+          <img src={selectedProtein.pathToImage} alt="" />
+        </ClickAwayListener>
         <IconButton
           className="btnClose"
           onClick={(e) => {
@@ -67,43 +108,19 @@ const Tooltip = () => {
             {maximized ? <FullscreenExit /> : <Fullscreen />}
           </IconButton>
         ) : (
-          <a
-            href={selectedProtein.pathToImage}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <IconButton className="btnMaximize btnOpenInNew">
+          <IconButton className="btnMaximize btnOpenInNew">
+            <a
+              href={selectedProtein.pathToImage}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+            >
               <OpenInNew />
-            </IconButton>
-          </a>
+            </a>
+          </IconButton>
         )}
-        <div className="titleSection">
-          <Typography variant="subtitle1">{selectedProtein.type}</Typography>
-          <a
-            href={selectedProtein.PDBUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Typography className="title" variant="body1">
-              {startCase(selectedProtein.name)}
-            </Typography>
-          </a>
-        </div>
-        <ClickAwayListener onClickAway={() => setMaximized(false)}>
-          <img src={selectedProtein.pathToImage} alt="" />
-        </ClickAwayListener>
-        <div className="details">
-          <div className="weight">
-            {numberWithCommas(selectedProtein.mass)} kDa
-          </div>
-          <div className="atomCount">
-            {numberWithCommas(
-              selectedProtein.atomCount *
-                selectedProtein.numIcosahedronFaces /* ! 12 for most icosahedral proteins? */
-            )}{" "}
-            atoms
-          </div>
-        </div>
       </div>
     </TooltipStyles>
   ) : null;
@@ -128,18 +145,47 @@ const TooltipStyles = styled.div`
     box-sizing: border-box;
     color: black;
     display: grid;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto auto 1fr;
     padding: 1em;
     height: 100%;
     position: relative;
     .titleSection {
       text-align: left;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      grid-gap: 0.5em;
+      h6 {
+        font-style: italic;
+        color: hsl(0, 0%, 50%);
+        line-height: 1em;
+      }
       a {
         color: #14bcff;
         pointer-events: auto;
       }
       .title {
-        padding-bottom: 1em;
+        font-size: 1.2em;
+      }
+    }
+    .details {
+      display: grid;
+      height: fit-content;
+      font-size: 0.8em;
+      grid-template-columns: 1.5fr 0.6fr 1.5fr;
+      margin-bottom: -2em;
+      .measurement {
+        display: grid;
+        grid-template-rows: auto auto;
+        align-items: flex-end;
+        justify-items: left;
+        &.atomCount .value {
+          justify-self: right;
+        }
+        .label {
+          color: hsl(0, 0%, 50%);
+          /* justify-self: right; */
+        }
       }
     }
     img {
@@ -149,10 +195,6 @@ const TooltipStyles = styled.div`
       object-fit: contain;
       box-sizing: border-box;
       opacity: ${(props) => (props.maximized ? 1 : 0.6)};
-    }
-    .details {
-      display: grid;
-      grid-template-columns: 1fr auto;
     }
 
     button {
@@ -167,7 +209,10 @@ const TooltipStyles = styled.div`
     }
     .btnMaximize {
       top: 3em;
-      right: 1em;
+      right: 0.6em;
+    }
+    .btnOpenInNew {
+      right: 0.7em;
     }
   }
 `;
