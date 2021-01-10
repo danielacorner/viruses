@@ -1,5 +1,5 @@
 import React from "react";
-import { HTML, Line } from "@react-three/drei";
+import { Line, Text } from "@react-three/drei";
 import { useStore } from "../store";
 
 type Tick = {
@@ -54,35 +54,40 @@ export function ScaleIndicator() {
       {/* TODO: compare virus radius to scale */}
       {[...ticksLeft, ...ticksRight].map((t) => (
         <React.Fragment key={t.name}>
-          <Line
-            {...commonProps}
-            points={[
-              t.position,
-              [
-                t.position[0] * (t.side === "left" ? 0.95 : 1),
-                t.position[1],
-                t.position[2] * (t.side === "right" ? 0.95 : 1),
-              ],
-            ]}
-          ></Line>
-          <HTML
-            {...{
-              position: [
-                t.position[0] * (t.side === "left" ? 0.925 : 1.175),
-                t.position[1] * 1.07,
-                t.position[2],
-              ],
-              style: {
-                whiteSpace: "nowrap",
-                ...(t.side === "left" ? {} : { color: "hsl(0,0%,70%)" }),
-                width: 0,
-                display: "flex",
-                justifyContent: "flex-end",
-              },
-            }}
-          >
-            {t.name}
-          </HTML>
+          <group>
+            <Line
+              {...commonProps}
+              points={[
+                t.position,
+                [
+                  t.position[0] * (t.side === "left" ? 0.95 : 1),
+                  t.position[1],
+                  t.position[2] * (t.side === "right" ? 0.95 : 1),
+                ],
+              ]}
+            ></Line>
+            <Text
+              rotation={[0, t.side === "left" ? 0 : -Math.PI / 2, 0]}
+              {...{
+                position: [
+                  t.position[0] * (t.side === "left" ? 0.91 : 1),
+                  t.position[1],
+                  t.position[2] * (t.side === "right" ? 0.91 : 1),
+                ],
+                // color: t.side === "left" ? "hsl(0,0%,0%)" : "hsl(0,0%,70%)",
+                color: "hsl(0,0%,0%)",
+                fontSize: 0.1,
+                style: {
+                  whiteSpace: "nowrap",
+                  width: 0,
+                  display: "flex",
+                  justifyContent: "flex-end",
+                },
+              }}
+            >
+              {t.name}
+            </Text>
+          </group>
         </React.Fragment>
       ))}
     </>
