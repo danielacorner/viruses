@@ -23,7 +23,7 @@ export function ScaleIndicator() {
     <>
       <EdgeLines {...{ commonProps }} />
 
-      {/* <HTML {...{ position: [wr, wr * 1.25, -wr] }}>scale: {scale}</HTML>
+      <HTML {...{ position: [wr, wr * 1.25, -wr] }}>scale: {scale}</HTML>
 
       {ticks.map((t) => (
         <>
@@ -52,7 +52,7 @@ export function ScaleIndicator() {
             {t.name}
           </HTML>
         </>
-      ))} */}
+      ))}
     </>
   );
 }

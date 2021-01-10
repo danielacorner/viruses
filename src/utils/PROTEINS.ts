@@ -50,6 +50,8 @@ export type Protein = {
   mass: number;
   /** ! is this accurate, or is it in the asymmetric unit only? e.g. Faustovirus seems too light how many atoms? used to estimate particle radius */
   atomCount: number /* TECHDEBT: can find actual particleRadius instead? */;
+  /** radius in Angstroms measured in ChimeraX using the Right Mouse > Distance annotation tool */
+  radius: number;
   /** how big is the rendered particle compared to the actual model size */
   scale?: number;
   /** path to the model's .gltf file (unused?) */
@@ -78,6 +80,7 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/6CGV",
     mass: 1532.27,
     // atomCount: 99723, // PDB
+    radius: 450, // measured using PDB 3d viewer e.g. https://www.rcsb.org/3d-view/6CGR/1
     atomCount: 200268, // ChimeraX ??
     numIcosahedronFaces: 20,
     numAsymmetricUnits: 20,
@@ -92,6 +95,7 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/6CGR",
     mass: 4031.74,
     atomCount: 219702,
+    radius: 525,  // measured using PDB 3d viewer e.g. https://www.rcsb.org/3d-view/6CGR/1
     numIcosahedronFaces: 20,
     numAsymmetricUnits: 20,
     pathToGLTF: "/models/viruses/Herpes_600.glb",
@@ -105,6 +109,7 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/6AB6",
     mass: 121.03,
     atomCount: 7256,
+    radius: 180,
     numIcosahedronFaces: 20,
     numAsymmetricUnits: 20,
     pathToGLTF: "/models/viruses/Penaeus vannamei nodavirus_40_radial.glb",
@@ -118,6 +123,7 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/6QT9",
     mass: 604.19,
     atomCount: 42370,
+    radius: 400,
     numIcosahedronFaces: 20,
     numAsymmetricUnits: 20,
     pathToGLTF: "/models/viruses/SH1_140.glb",
@@ -130,6 +136,7 @@ export const PROTEINS: Protein[] = [
     type: PROTEIN_TYPES.virus,
     PDBUrl: "https://www.rcsb.org/structure/5J7V",
     mass: 215.35,
+    radius: 1210, // measured in ChimeraX
     // atomCount: 14478, // PDB
     atomCount: 28956, // ChimeraX "select all"
     numIcosahedronFaces: 20,
@@ -145,6 +152,7 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/1UF2",
     mass: 889.08,
     atomCount: 58130,
+    radius: 360,
     numIcosahedronFaces: 20,
     numAsymmetricUnits: 20,
     pathToGLTF: "/models/viruses/Rice_dwarf_100.glb",
@@ -158,6 +166,7 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/6H9C",
     mass: 648.0,
     atomCount: 43691,
+    radius: 390,
     numIcosahedronFaces: 20,
     numAsymmetricUnits: 20,
     pathToGLTF: "/models/viruses/Haloarcula_californiae_140.glb",
@@ -171,6 +180,7 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/6LGL",
     mass: 3463.29,
     atomCount: 208346,
+    radius: 588,
     numIcosahedronFaces: 20,
     numAsymmetricUnits: 20,
     pathToGLTF: "/models/viruses/varicella_zoster_300.glb",
@@ -184,6 +194,7 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/3J3Y",
     mass: 30226.13,
     atomCount: 2116800,
+    radius: 540,
     numIcosahedronFaces: 20,
     numAsymmetricUnits: 20,
     pathToGLTF: "/models/viruses/HIV_200.glb",
@@ -197,6 +208,7 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/1KVP",
     mass: 55.83,
     atomCount: 497,
+    radius: 175,
     numIcosahedronFaces: 20,
     numAsymmetricUnits: 20,
     pathToGLTF: "/models/viruses/Spiroplasma_50.glb",
@@ -210,6 +222,7 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/1Z8Y",
     mass: 258.38,
     atomCount: 18071,
+    radius: 300,
     numIcosahedronFaces: 20,
     numAsymmetricUnits: 20,
     pathToGLTF: "/models/viruses/Sindbis_70.glb",
@@ -223,6 +236,7 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/1Z8Y",
     mass: 98.54,
     atomCount: 6688,
+    radius: 160,
     numIcosahedronFaces: 20,
     numAsymmetricUnits: 20,
     pathToGLTF: "/models/viruses/poliovirus_50.glb",
@@ -236,6 +250,7 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/3J05",
     mass: 131.25,
     atomCount: 1128,
+    radius: 285,
     numIcosahedronFaces: 20,
     numAsymmetricUnits: 20,
     pathToGLTF: "/models/viruses/denguevirus_50.glb",
@@ -249,6 +264,7 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/3J6R",
     mass: 1575,
     atomCount: 424596,
+    radius: 280,
     numIcosahedronFaces: 12,
     numAsymmetricUnits: 12,
     pathToGLTF: "/models/viruses/hpv_100.glb",
@@ -266,6 +282,7 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/3RPI",
     mass: 96.41,
     atomCount: 6650,
+    radius: 50,
     numIcosahedronFaces: 20,
     numAsymmetricUnits: 1,
     pathToGLTF: "/models/antibodies/antibody_hiv.glb",
@@ -279,6 +296,7 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/3W9E",
     mass: 81.86,
     atomCount: 5355,
+    radius: 45,
     numIcosahedronFaces: 20,
     numAsymmetricUnits: 1,
     pathToGLTF: "/models/antibodies/antibody_herpes.glb",
@@ -296,6 +314,7 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/3VDX",
     mass: 150.79,
     atomCount: 10149,
+    radius: 18,
     numIcosahedronFaces: 20,
     numAsymmetricUnits: 1,
     pathToGLTF: "/models/nanotech/protein_cage_20.glb",
@@ -309,6 +328,7 @@ export const PROTEINS: Protein[] = [
   //   PDBUrl: "https://www.rcsb.org/structure/6VFI",
   //   mass: 36.55,
   //   atomCount: 2437,
+  // radius: ,
 
   //   numIcosahedronFaces: 8,
   //   numAsymmetricUnits: 1,
@@ -323,6 +343,7 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/6VFI",
     mass: 36.55,
     atomCount: 2437,
+    radius: 100,
     numIcosahedronFaces: 8,
     numAsymmetricUnits: 1,
     pathToGLTF: "/models/nanotech/octahedral_nanoparticle_10.glb",
@@ -336,6 +357,7 @@ export const PROTEINS: Protein[] = [
   //   PDBUrl: "https://www.rcsb.org/structure/6VFH",
   //   mass: 45.55,
   //   atomCount: 3082,
+  // radius: ,
 
   //   numIcosahedronFaces: 5,
   // numAsymmetricUnits   numIcosahedronFaces: 5,
@@ -350,6 +372,7 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/6VFJ",
     mass: 32.57,
     atomCount: 2196,
+    radius: 120,
     numIcosahedronFaces: 5,
     numAsymmetricUnits: 1,
     pathToGLTF: "/models/nanotech/icosahedral_nanoparticle_20.glb",
@@ -367,6 +390,7 @@ export const PROTEINS: Protein[] = [
   //   PDBUrl: "https://en.wikipedia.org/wiki/Lymphocyte",
   //   mass: 5000,
   //   atomCount: 5000,
+  // radius: ,
   //   numIcosahedronFaces: 20,
   //   pathToGLTF: "/models/cells/lymphocyte.gltf",
   //   pathToImage: "/models/cells/lymphocyte.png",
@@ -379,6 +403,7 @@ export const PROTEINS: Protein[] = [
   //   PDBUrl: "https://en.wikipedia.org/wiki/Eosinophil",
   //   mass: 9999999,
   //   atomCount: 9999999,
+  // radius: ,
   //   numIcosahedronFaces: 20,
   //   pathToGLTF: "/models/cells/eosinophil.glb",
   //   pathToImage: "/models/cells/eosinophil.png",
@@ -391,6 +416,7 @@ export const PROTEINS: Protein[] = [
   //   PDBUrl: "https://en.wikipedia.org/wiki/Basophil",
   //   mass: 9999999,
   //   atomCount: 9999999,
+  // radius: ,
   //   numIcosahedronFaces: 20,
   //   pathToGLTF: "/models/cells/basophil.glb",
   //   pathToImage: "/models/cells/basophil.png",
@@ -403,6 +429,7 @@ export const PROTEINS: Protein[] = [
   //   PDBUrl: "https://en.wikipedia.org/wiki/Cell_membrane",
   //   mass: 9999999,
   //   atomCount: 9999999,
+  // radius: ,
   //   numIcosahedronFaces: 20,
   //   pathToGLTF: "/models/cells/cell_membrane.gltf",
   //   pathToImage: "/models/cells/cell_membrane.jpg",
