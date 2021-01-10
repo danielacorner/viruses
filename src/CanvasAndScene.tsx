@@ -7,6 +7,7 @@ import MemoryStats from "react-memorystats";
 import { render } from "react-dom";
 import { useMount } from "./utils/utils";
 import { TemperatureControls } from "./TemperatureControls";
+import { ScaleControls } from "./ScaleControls";
 import { PauseControls } from "./PauseControls";
 
 export default function CanvasAndScene({ renderProteins = true }) {
@@ -34,6 +35,7 @@ export default function CanvasAndScene({ renderProteins = true }) {
         <Controls anchor={"top_right"} />
       </Controls.Provider>
       <TemperatureControls />
+      <ScaleControls />
       <PauseControls />
     </>
   );

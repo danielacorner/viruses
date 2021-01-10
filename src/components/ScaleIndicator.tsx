@@ -51,12 +51,9 @@ export function ScaleIndicator() {
   return (
     <>
       <EdgeLines {...{ commonProps }} />
-
-      <HTML {...{ position: [wr, wr * 1.25, -wr] }}>scale: {scale}</HTML>
-
       {/* TODO: compare virus radius to scale */}
       {[...ticksLeft, ...ticksRight].map((t) => (
-        <>
+        <React.Fragment key={t.name}>
           <Line
             {...commonProps}
             points={[
@@ -86,7 +83,7 @@ export function ScaleIndicator() {
           >
             {t.name}
           </HTML>
-        </>
+        </React.Fragment>
       ))}
     </>
   );

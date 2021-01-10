@@ -7,19 +7,10 @@ import ProteinGroup from "./ProteinGroup";
 import { PHYSICS_PROPS } from "../utils/PHYSICS_PROPS";
 import { PROTEINS } from "../utils/PROTEINS";
 import { useAudioTrack } from "./useAudioTrack";
-import { useStoredControl } from "./useStoredControl";
 import { Water } from "./Water";
 import { ScaleIndicator } from "./ScaleIndicator";
 
 const Scene = () => {
-  const scale = useStoredControl("scale", {
-    group: "Environment",
-    type: "number",
-    min: 0,
-    max: 0.002,
-    value: 0.001,
-  });
-
   // audio track
   useAudioTrack();
   return (

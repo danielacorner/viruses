@@ -2,47 +2,57 @@ import React from "react";
 import { useStore } from "./store";
 import { Slider, Typography } from "@material-ui/core";
 import styled from "styled-components/macro";
-import { AcUnit, Whatshot } from "@material-ui/icons";
+import { ZoomOut, ZoomIn } from "@material-ui/icons";
 
-export function TemperatureControls() {
-  const temperature = useStore((s) => s.temperature);
+export function ScaleControls() {
+  const scale = useStore((s) => s.scale);
   const set = useStore((s) => s.set);
   return (
-    <TemperatureControlsStyles>
+    <ScaleeControlsStyles>
       <Typography align="center" id="volume-slider" gutterBottom>
-        Temperature
+        Scale
       </Typography>
       <div className="grid">
         <div className="grid-item">
-          <AcUnit />
+          <ZoomIn />
         </div>
         <div className="grid-item">
           <Slider
             valueLabelDisplay="auto"
+            orientation="vertical"
             aria-labelledby="volume-slider"
             onChange={(event, newValue) => {
-              set({ temperature: newValue });
+              set({ scale: newValue });
             }}
             min={0}
-            max={100}
-            value={temperature}
+            step={0.00005}
+            max={0.003}
+            value={scale}
           />
         </div>
         <div className="grid-item">
-          <Whatshot />
+          <ZoomOut />
         </div>
       </div>
-    </TemperatureControlsStyles>
+    </ScaleeControlsStyles>
   );
 }
-const TemperatureControlsStyles = styled.div`
+const ScaleeControlsStyles = styled.div`
   position: fixed;
-  bottom: 60px;
-  right: 32px;
-  width: 200px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  justify-items: center;
+  bottom: 164px;
+  right: 24px;
+  height: 200px;
   .grid {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    justify-items: center;
+    height: 100%;
+    .grid-item {
+      height: 100%;
+    }
+    grid-template-rows: auto 1fr auto;
     align-items: center;
     grid-gap: 1em;
   }
