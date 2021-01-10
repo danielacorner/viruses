@@ -77,7 +77,7 @@ export function ScaleIndicator() {
               ],
               style: {
                 whiteSpace: "nowrap",
-                ...(t.side === "left" ? {} : { color: "hsl(0,0%,50%)" }),
+                ...(t.side === "left" ? {} : { color: "hsl(0,0%,70%)" }),
                 width: 0,
                 display: "flex",
                 justifyContent: "flex-end",
