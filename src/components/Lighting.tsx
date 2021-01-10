@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useFrame } from "react-three-fiber";
 import { useControl } from "react-three-gui";
 import { useStore } from "../store";
+import * as THREE from "three";
 
 export function Lighting() {
   const spotlightIntensity = useControl("spotlight intensity", {
@@ -36,16 +37,18 @@ export function Lighting() {
     };
   }, [selectedProtein]);
 
-  const pointlightRef = useRef(null as any);
+  const spotlightRef = useRef(null as any);
 
   useFrame(() => {
     if (currentPosition.current?.[0]) {
       // find the selected protein and its coordinates to move/point the spotlight
-      // spotlightRef.current?.lookAt(
-      //   currentPosition.current[0],
-      //   currentPosition.current[1],
-      //   currentPosition.current[2]
-      // );
+      spotlightRef.current?.lookAt(
+        new THREE.Vector3(
+          currentPosition.current[0],
+          currentPosition.current[1],
+          currentPosition.current[2]
+        )
+      );
       setSelectedCoords({
         x: currentPosition.current[0],
         y: currentPosition.current[1],
@@ -53,19 +56,11 @@ export function Lighting() {
       });
     }
   });
-  if (selectedProtein) {
-    console.log("🌟🚨 ~ radius", selectedProtein.radius);
-    console.log("🌟🚨 ~ scale", scale);
-    console.log(
-      "🌟🚨 ~ Lighting ~ selectedProtein.radius * scale",
-      selectedProtein.radius * scale
-    );
-  }
   const mult = useControl("multiplier", {
     type: "number",
     min: 0,
-    max: 5,
-    value: 0.5,
+    max: 2,
+    value: 1,
   });
   return (
     <>
@@ -74,16 +69,19 @@ export function Lighting() {
       {/* <pointLight position={[10, 10, 10]} intensity={0.2} /> */}
       {selectedProtein ? (
         <spotLight
-          ref={pointlightRef}
+          ref={spotlightRef}
           position={[
-            selectedCoords.x * worldRadius,
-            selectedCoords.y * worldRadius,
-            selectedCoords.z * worldRadius,
+            -worldRadius * 2,
+            -worldRadius * 2,
+            worldRadius * 2,
+            // selectedCoords.x + worldRadius * 0.1 * mult,
+            // selectedCoords.y + worldRadius * 0.1 * mult,
+            // selectedCoords.z + worldRadius * 0.05 * mult,
           ]}
-          angle={0.5}
+          angle={0.2}
           intensity={1.3}
-          penumbra={0.2}
-          distance={worldRadius * 3}
+          penumbra={0.1}
+          distance={worldRadius * 5}
         />
       ) : (
         <>
