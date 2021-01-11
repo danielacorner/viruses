@@ -1,12 +1,12 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { useConvexPolyhedron } from "@react-three/cannon";
 import { useFrame } from "react-three-fiber";
 import { useJitterParticle } from "./useJitterParticle";
 import { GlobalStateType, useStore } from "../../store";
-import { usePrevious } from "../../utils/hooks";
 import * as THREE from "three";
 import { usePauseUnpause } from "./usePauseUnpause";
 import { useChangeVelocityWhenTemperatureChanges } from "./useChangeVelocityWhenTemperatureChanges";
+import { useMount } from "../../utils/utils";
 
 export function SingleParticle(props) {
   // TODO: make NonInteractiveParticle instanced for better performance?
@@ -44,10 +44,7 @@ function InteractiveParticle(props) {
     args: new THREE.IcosahedronGeometry(1, detail),
   }));
   const prevPosition = useRef([0, 0, 0]);
-  useEffect(
-    () => api.position.subscribe((p) => (prevPosition.current = p)),
-    []
-  );
+  useMount(() => api.position.subscribe((p) => (prevPosition.current = p)));
   useFrame(() => {
     if (paused && prevPosition.current) {
       const [x, y, z] = prevPosition.current as any;
@@ -70,11 +67,14 @@ function InteractiveParticle(props) {
   const scale = useStore((state: GlobalStateType) => state.scale) as number;
   const set = useStore((state: GlobalStateType) => state.set);
 
+  const handleSetSelectedProtein = () =>
+    set({ selectedProtein: { ...props, api } });
+  // const isTabletOrLarger = useMediaQuery(`(min-width: ${BREAKPOINT_MOBILE}px)`);
   return (
     <mesh
       ref={ref}
       scale={[scale, scale, scale]}
-      onPointerOver={() => set({ selectedProtein: { ...props, api } })}
+      onPointerDown={handleSetSelectedProtein}
     >
       <Component />
     </mesh>

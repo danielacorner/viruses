@@ -1,6 +1,6 @@
 import { useStore } from "../../store";
 
-const VELOCITY_COEFF = 50;
+const VELOCITY_COEFF = 30;
 
 export function usePhysicsProps(mass: any) {
   const temperature = useStore((state) => state.temperature);

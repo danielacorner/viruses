@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useFrame } from "react-three-fiber";
 import { useControl } from "react-three-gui";
 import { useStore } from "../store";
@@ -37,18 +37,8 @@ export function Lighting() {
     };
   }, [selectedProtein]);
 
-  const spotlightRef = useRef(null as any);
-
   useFrame(() => {
     if (currentPosition.current?.[0]) {
-      // find the selected protein and its coordinates to move/point the spotlight
-      spotlightRef.current?.lookAt(
-        new THREE.Vector3(
-          currentPosition.current[0],
-          currentPosition.current[1],
-          currentPosition.current[2]
-        )
-      );
       setSelectedCoords({
         x: currentPosition.current[0],
         y: currentPosition.current[1],
@@ -56,33 +46,33 @@ export function Lighting() {
       });
     }
   });
-  const mult = useControl("multiplier", {
-    type: "number",
-    min: 0,
-    max: 2,
-    value: 1,
-  });
+
+  const spotlight = useMemo(() => new THREE.SpotLight(0xffffff), []);
+  const rScaled = selectedProtein?.radius * scale;
+
   return (
     <>
       <color attach="background" args={["#ffffff"] as any} />
-      {/* pointLight does not cast shadow */}
-      {/* <pointLight position={[10, 10, 10]} intensity={0.2} /> */}
       {selectedProtein ? (
-        <spotLight
-          ref={spotlightRef}
-          position={[
-            -worldRadius * 2,
-            -worldRadius * 2,
-            worldRadius * 2,
-            // selectedCoords.x + worldRadius * 0.1 * mult,
-            // selectedCoords.y + worldRadius * 0.1 * mult,
-            // selectedCoords.z + worldRadius * 0.05 * mult,
-          ]}
-          angle={0.2}
-          intensity={1.3}
-          penumbra={0.1}
-          distance={worldRadius * 5}
-        />
+        <>
+          {/* src: https://spectrum.chat/react-three-fiber/general/how-to-set-spotlight-target~823340ea-433e-426a-a0dc-b9a333fc3f94 */}
+          <primitive
+            object={spotlight}
+            angle={0.12}
+            intensity={1.3}
+            penumbra={0.2}
+            distance={worldRadius * 15}
+            position={[
+              selectedCoords.x,
+              selectedCoords.y,
+              selectedCoords.z + 15 * rScaled,
+            ]}
+          />
+          <primitive
+            object={spotlight.target}
+            position={[selectedCoords.x, selectedCoords.y, selectedCoords.z]}
+          />
+        </>
       ) : (
         <>
           <ambientLight intensity={0.3} />

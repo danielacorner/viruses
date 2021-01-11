@@ -24,4 +24,11 @@ export function useChangeVelocityWhenTemperatureChanges({ mass, api }) {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [temperature]);
+
+  // set temperature low to start...
+  useMount(() => {
+    setTimeout(() => {
+      set({ temperature: 1 });
+    }, 1000);
+  });
 }
