@@ -2,7 +2,7 @@ import React from "react";
 import { TemperatureControls } from "./TemperatureControls";
 import { PauseControls } from "./PauseControls";
 import styled from "styled-components/macro";
-import { IconButton, useMediaQuery } from "@material-ui/core";
+import { IconButton, Typography, useMediaQuery } from "@material-ui/core";
 import { BREAKPOINT_MOBILE } from "./utils/constants";
 import { ShuffleOutlined } from "@material-ui/icons";
 import { useThree } from "react-three-fiber";
@@ -33,8 +33,20 @@ export default function BottomControls() {
 function ShuffleControls() {
   const set = useStore((s) => s.set);
   return (
-    <IconButton onClick={() => set({ shuffled: Math.random() })}>
-      <ShuffleOutlined />
-    </IconButton>
+    <div
+      style={{
+        display: "grid",
+        gridTemplateRows: "auto auto",
+        alignItems: "center",
+      }}
+    >
+      <Typography style={{ color: "lightgrey" }}>Shuffle</Typography>
+      <IconButton
+        disabled={true}
+        onClick={() => set({ shuffled: Math.random() })}
+      >
+        <ShuffleOutlined />
+      </IconButton>
+    </div>
   );
 }
