@@ -124,25 +124,25 @@ function EdgeLines({ commonProps }) {
     <>
       <Line
         {...commonProps}
-        //  back bottom
-        points={[
-          [wr, -wr, wr],
-          [-wr, -wr, wr],
-        ]}
-      ></Line>
-
-      <Line
-        {...commonProps}
         //  right bottom
         points={[
-          [wr, -wr, wr],
+          [wr, -wr, -wr],
           [wr, -wr, wr],
         ]}
       ></Line>
 
       <Line
         {...commonProps}
-        //  back right vertical
+        //  front bottom
+        points={[
+          [-wr, -wr, wr],
+          [wr, -wr, wr],
+        ]}
+      ></Line>
+
+      <Line
+        {...commonProps}
+        //  front right vertical
         points={[
           [wr, -wr, wr],
           [wr, wr, wr],
