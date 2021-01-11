@@ -79,7 +79,9 @@ function InteractiveParticle(props) {
       visible={!(tooBigToRender || tooSmallToRender)}
       ref={ref}
       scale={[scale, scale, scale]}
-      onPointerDown={handleSetSelectedProtein}
+      {...(tooBigToRender || tooSmallToRender
+        ? {}
+        : { onPointerDown: handleSetSelectedProtein })}
     >
       <Component />
     </mesh>
