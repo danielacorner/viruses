@@ -91,6 +91,7 @@ const Tooltip = () => {
                 maximized &&
                 // have 720p image for protein?
                 (selectedProtein.pathToImage.includes("adenovirus") ||
+                  selectedProtein.pathToImage.includes("rice_dwarf") ||
                   selectedProtein.pathToImage.includes("sindbis"))
                   ? /* add "_720" before .webp */ `${selectedProtein.pathToImage.slice(
                       0,
