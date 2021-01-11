@@ -14,7 +14,7 @@ export function ScaleIndicator() {
   const scale = useStore((s) => s.scale);
   const commonProps = { color: "hsla(0,0%,80%)" };
   const scaled = scale / 0.002 / 4;
-  // create 10 big ticks, and 10 small ticks under the the bottom tick
+  // create 10 big ticks
   const ticksLeft: Tick[] = [...new Array(10)]
     .map((_, idx) => ({
       name: `${idx}000 Å`,
@@ -30,11 +30,50 @@ export function ScaleIndicator() {
     }))
     .slice(1) as Tick[];
 
+  // create 10 bigger ticks above the top tick
+  const ticksLeftBig: Tick[] = [...new Array(scale < 0.0005 ? 10 : 0)]
+    .map((_, idx) => ({
+      name: `${idx}0000 Å`,
+      position: [wr, idx * 10 * scaled * wd - wr, -wr],
+      side: "left",
+    }))
+    .slice(1) as Tick[];
+  const ticksRightBig: Tick[] = [...new Array(scale < 0.0005 ? 10 : 0)]
+    .map((_, idx) => ({
+      name: `${idx}000 nm`,
+      position: [wr, idx * 10 * scaled * wd - wr, -wr],
+      side: "right",
+    }))
+    .slice(1) as Tick[];
+
+  // create 10 small ticks under the bottom tick
+  const ticksLeftSmall: Tick[] = [...new Array(scale > 0.001 ? 10 : 0)]
+    .map((_, idx) => ({
+      name: `${idx}00 Å`,
+      position: [wr, idx * 0.1 * scaled * wd - wr, -wr],
+      side: "left",
+    }))
+    .slice(1) as Tick[];
+  const ticksRightSmall: Tick[] = [...new Array(scale > 0.001 ? 10 : 0)]
+    .map((_, idx) => ({
+      name: `${idx}0 nm`,
+      position: [wr, idx * 0.1 * scaled * wd - wr, -wr],
+      side: "right",
+    }))
+    .slice(1) as Tick[];
+
   return (
     <>
       <EdgeLines {...{ commonProps }} />
       {/* TODO: compare virus radius to scale */}
-      {[...ticksLeft, ...ticksRight].map((t) => (
+      {[
+        ...ticksLeft,
+        ...ticksRight,
+        ...ticksLeftBig,
+        ...ticksRightBig,
+        ...ticksLeftSmall,
+        ...ticksRightSmall,
+      ].map((t) => (
         <React.Fragment key={t.name}>
           <group>
             <Line

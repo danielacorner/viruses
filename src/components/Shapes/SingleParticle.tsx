@@ -30,6 +30,7 @@ function InteractiveParticle(props) {
     mass,
     numIcosahedronFaces,
     paused,
+    radius,
   } = props;
   // TODO:
   // const temperature=useStore(state=>state.temperature)
@@ -64,14 +65,18 @@ function InteractiveParticle(props) {
 
   useChangeVelocityWhenTemperatureChanges({ mass, api });
 
-  const scale = useStore((state: GlobalStateType) => state.scale) as number;
+  const worldRadius = useStore((state: GlobalStateType) => state.worldRadius);
+  const scale = useStore((state: GlobalStateType) => state.scale);
   const set = useStore((state: GlobalStateType) => state.set);
 
   const handleSetSelectedProtein = () =>
     set({ selectedProtein: { ...props, api } });
   // const isTabletOrLarger = useMediaQuery(`(min-width: ${BREAKPOINT_MOBILE}px)`);
+  const tooBigToRender = scale * radius > worldRadius / 3;
+  const tooSmallToRender = scale * radius < worldRadius / 100;
   return (
     <mesh
+      visible={!(tooBigToRender || tooSmallToRender)}
       ref={ref}
       scale={[scale, scale, scale]}
       onPointerDown={handleSetSelectedProtein}

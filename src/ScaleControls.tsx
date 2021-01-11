@@ -26,7 +26,7 @@ export function ScaleControls() {
             }}
             min={0}
             step={0.00005}
-            max={0.003}
+            max={0.006}
             value={scale}
           />
         </div>

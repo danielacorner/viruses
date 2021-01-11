@@ -48,7 +48,7 @@ export function usePauseUnpause({ api, instanced = false, numInstances = 0 }) {
       api.angularVelocity.set(0, 0, 0, 0);
       api.linearDamping.set(1);
       api.angularDamping.set(1);
-    } else if (!paused && wasPaused) {
+    } else if (!paused && wasPaused && api) {
       // allow movement
       api.linearDamping.set(0);
       api.angularDamping.set(0);
