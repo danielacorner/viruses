@@ -12,6 +12,7 @@ export function ScaleIndicator() {
   const wr = useStore((s) => s.worldRadius * 0.999);
   const wd = 2 * wr;
   const scale = useStore((s) => s.scale);
+  const worldRadius = useStore((s) => s.worldRadius);
   const commonProps = { color: "hsla(0,0%,80%)" };
   const scaled = scale / 0.002 / 4;
   // create 10 big ticks
@@ -73,44 +74,46 @@ export function ScaleIndicator() {
         ...ticksRightBig,
         ...ticksLeftSmall,
         ...ticksRightSmall,
-      ].map((t) => (
-        <React.Fragment key={t.name}>
-          <group>
-            <Line
-              {...commonProps}
-              points={[
-                t.position,
-                [
-                  t.position[0] * (t.side === "left" ? 0.95 : 1),
-                  t.position[1],
-                  t.position[2] * (t.side === "right" ? 0.95 : 1),
-                ],
-              ]}
-            ></Line>
-            <Text
-              rotation={[0, t.side === "left" ? 0 : -Math.PI / 2, 0]}
-              {...{
-                position: [
-                  t.position[0] * (t.side === "left" ? 0.91 : 1),
-                  t.position[1],
-                  t.position[2] * (t.side === "right" ? 0.91 : 1),
-                ],
-                // color: t.side === "left" ? "hsl(0,0%,0%)" : "hsl(0,0%,70%)",
-                color: "hsl(0,0%,0%)",
-                fontSize: 0.1,
-                style: {
-                  whiteSpace: "nowrap",
-                  width: 0,
-                  display: "flex",
-                  justifyContent: "flex-end",
-                },
-              }}
-            >
-              {t.name}
-            </Text>
-          </group>
-        </React.Fragment>
-      ))}
+      ].map((t) =>
+        t.position[1] > worldRadius ? null : (
+          <React.Fragment key={t.name}>
+            <group>
+              <Line
+                {...commonProps}
+                points={[
+                  t.position,
+                  [
+                    t.position[0] * (t.side === "left" ? 0.95 : 1),
+                    t.position[1],
+                    t.position[2] * (t.side === "right" ? 0.95 : 1),
+                  ],
+                ]}
+              ></Line>
+              <Text
+                rotation={[0, t.side === "left" ? 0 : -Math.PI / 2, 0]}
+                {...{
+                  position: [
+                    t.position[0] * (t.side === "left" ? 0.91 : 1),
+                    t.position[1],
+                    t.position[2] * (t.side === "right" ? 0.91 : 1),
+                  ],
+                  // color: t.side === "left" ? "hsl(0,0%,0%)" : "hsl(0,0%,70%)",
+                  color: "hsl(0,0%,0%)",
+                  fontSize: 0.1,
+                  style: {
+                    whiteSpace: "nowrap",
+                    width: 0,
+                    display: "flex",
+                    justifyContent: "flex-end",
+                  },
+                }}
+              >
+                {t.name}
+              </Text>
+            </group>
+          </React.Fragment>
+        )
+      )}
     </>
   );
 }
@@ -121,6 +124,7 @@ function EdgeLines({ commonProps }) {
     <>
       <Line
         {...commonProps}
+        //  back bottom
         points={[
           [wr, -wr, wr],
           [-wr, -wr, wr],
@@ -129,6 +133,7 @@ function EdgeLines({ commonProps }) {
 
       <Line
         {...commonProps}
+        //  right bottom
         points={[
           [wr, -wr, wr],
           [wr, -wr, wr],
@@ -137,6 +142,7 @@ function EdgeLines({ commonProps }) {
 
       <Line
         {...commonProps}
+        //  back right vertical
         points={[
           [wr, -wr, wr],
           [wr, wr, wr],
