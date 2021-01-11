@@ -6,7 +6,8 @@ import { GlobalStateType, useStore } from "../../store";
 import * as THREE from "three";
 import { usePauseUnpause } from "./usePauseUnpause";
 import { useChangeVelocityWhenTemperatureChanges } from "./useChangeVelocityWhenTemperatureChanges";
-import { useMount } from "../../utils/utils";
+import { getRandStartPosition } from "./particleUtils";
+import { useShuffleParticle } from "./useShuffleParticle";
 
 export function SingleParticle(props) {
   // TODO: make NonInteractiveParticle instanced for better performance?
@@ -44,14 +45,7 @@ function InteractiveParticle(props) {
     // https://threejs.org/docs/scenes/geometry-browser.html#IcosahedronBufferGeometry
     args: new THREE.IcosahedronGeometry(1, detail),
   }));
-  const prevPosition = useRef([0, 0, 0]);
-  useMount(() => api.position.subscribe((p) => (prevPosition.current = p)));
-  useFrame(() => {
-    if (paused && prevPosition.current) {
-      const [x, y, z] = prevPosition.current as any;
-      api.position.set(x, y, z);
-    }
-  });
+  // usePrevPosition(api);
 
   usePauseUnpause({
     api,
@@ -62,6 +56,8 @@ function InteractiveParticle(props) {
     ref,
     api,
   });
+
+  useShuffleParticle({ ref, api });
 
   useChangeVelocityWhenTemperatureChanges({ mass, api });
 

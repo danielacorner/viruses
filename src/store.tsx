@@ -10,6 +10,7 @@ export type GlobalStateType = {
   worldRadius: number;
   temperature: number;
   paused: boolean;
+  shuffled: number; // random number to trigger useEffect
   scale: number;
   selectedProtein: null | SelectedProtein;
   set: (newState: any) => any;
@@ -21,6 +22,7 @@ export const useStore = create<GlobalStateType>(
     paused: false,
     worldRadius: 5,
     temperature: 2,
+    shuffled: 0,
     // TODO: display scale on walls
     // TODO: angstrom & nanometer https://www.google.com/search?q=angstrom+scale+vs+nanometer&rlz=1C1CHBF_enCA921CA921&oq=angstrom+scale+vs+nanometer&aqs=chrome..69i57j33i22i29i30.9447j0j1&sourceid=chrome&ie=UTF-8
     scale: 0.001,

@@ -86,7 +86,20 @@ const Tooltip = () => {
         </div>
         <ClickAwayListener onClickAway={() => setMaximized(false)}>
           <div className="imgWrapper">
-            <img src={selectedProtein.pathToImage} alt="" />
+            <img
+              src={
+                maximized &&
+                // have 720p image for protein?
+                (selectedProtein.pathToImage.includes("adenovirus") ||
+                  selectedProtein.pathToImage.includes("sindbis"))
+                  ? /* add "_720" before .webp */ `${selectedProtein.pathToImage.slice(
+                      0,
+                      -5
+                    )}_720.webp`
+                  : selectedProtein.pathToImage
+              }
+              alt=""
+            />
             <IconButton
               className="btnClose"
               onClick={(e) => {
