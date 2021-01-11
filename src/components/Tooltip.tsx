@@ -31,8 +31,8 @@ const Tooltip = () => {
   return selectedProtein ? (
     <TooltipStyles
       maximized={maximized}
-      onTouchStart={() => setMaximized(true)}
-      onClick={() => setMaximized(true)}
+      onTouchStart={() => setMaximized(!maximized)}
+      onClick={() => setMaximized(!maximized)}
       height={
         maximized
           ? Math.min(windowSize.width, windowSize.height)
@@ -85,42 +85,44 @@ const Tooltip = () => {
           </div>
         </div>
         <ClickAwayListener onClickAway={() => setMaximized(false)}>
-          <img src={selectedProtein.pathToImage} alt="" />
-        </ClickAwayListener>
-        <IconButton
-          className="btnClose"
-          onClick={(e) => {
-            e.stopPropagation();
-            setMaximized(false);
-            set({ selectedProtein: null });
-          }}
-        >
-          <Close />
-        </IconButton>
-        {isTabletOrLarger ? (
-          <IconButton
-            className="btnMaximize"
-            onClick={(e) => {
-              e.stopPropagation();
-              setMaximized((prev) => !prev);
-            }}
-          >
-            {maximized ? <FullscreenExit /> : <Fullscreen />}
-          </IconButton>
-        ) : (
-          <IconButton className="btnMaximize btnOpenInNew">
-            <a
-              href={selectedProtein.pathToImage}
-              target="_blank"
-              rel="noopener noreferrer"
+          <div className="imgWrapper">
+            <img src={selectedProtein.pathToImage} alt="" />
+            <IconButton
+              className="btnClose"
               onClick={(e) => {
                 e.stopPropagation();
+                setMaximized(false);
+                set({ selectedProtein: null });
               }}
             >
-              <OpenInNew />
-            </a>
-          </IconButton>
-        )}
+              <Close />
+            </IconButton>
+            {isTabletOrLarger ? (
+              <IconButton
+                className="btnMaximize"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setMaximized((prev) => !prev);
+                }}
+              >
+                {maximized ? <FullscreenExit /> : <Fullscreen />}
+              </IconButton>
+            ) : (
+              <IconButton className="btnOpenInNew">
+                <a
+                  href={selectedProtein.pathToImage}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                  }}
+                >
+                  <OpenInNew />
+                </a>
+              </IconButton>
+            )}
+          </div>
+        </ClickAwayListener>
       </div>
     </TooltipStyles>
   ) : null;
@@ -188,31 +190,35 @@ const TooltipStyles = styled.div`
         }
       }
     }
-    img {
-      width: 100%;
-      height: 100%;
+    .imgWrapper {
       min-height: 270px;
-      object-fit: contain;
-      box-sizing: border-box;
-      opacity: ${(props) => (props.maximized ? 1 : 0.6)};
-    }
+      position: relative;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        box-sizing: border-box;
+        opacity: ${(props) => (props.maximized ? 1 : 0.6)};
+      }
 
-    button {
-      font-size: 32px;
-      position: absolute;
-      color: black;
-      pointer-events: auto;
-    }
-    .btnClose {
-      top: 1em;
-      right: -1em;
-    }
-    .btnMaximize {
-      top: 3em;
-      right: 0.6em;
-    }
-    .btnOpenInNew {
-      right: 0.7em;
+      button {
+        font-size: 32px;
+        position: absolute;
+        color: black;
+        pointer-events: auto;
+      }
+      .btnClose {
+        top: 1em;
+        right: 0.2em;
+      }
+      .btnMaximize {
+        bottom: 1em;
+        right: 0.2em;
+      }
+      .btnOpenInNew {
+        top: 1em;
+        right: 0.2em;
+      }
     }
   }
 `;
