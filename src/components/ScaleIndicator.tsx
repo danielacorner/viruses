@@ -18,14 +18,14 @@ export function ScaleIndicator() {
   const ticksLeft: Tick[] = [...new Array(10)]
     .map((_, idx) => ({
       name: `${idx}000 Å`,
-      position: [wr, idx * scaled * wd - wr, -wr],
+      position: [wr, idx * scaled * wd - wr, wr],
       side: "left",
     }))
     .slice(1) as Tick[];
   const ticksRight: Tick[] = [...new Array(10)]
     .map((_, idx) => ({
       name: `${idx}00 nm`,
-      position: [wr, idx * scaled * wd - wr, -wr],
+      position: [wr, idx * scaled * wd - wr, wr],
       side: "right",
     }))
     .slice(1) as Tick[];
@@ -34,14 +34,14 @@ export function ScaleIndicator() {
   const ticksLeftBig: Tick[] = [...new Array(scale < 0.0005 ? 10 : 0)]
     .map((_, idx) => ({
       name: `${idx}0000 Å`,
-      position: [wr, idx * 10 * scaled * wd - wr, -wr],
+      position: [wr, idx * 10 * scaled * wd - wr, wr],
       side: "left",
     }))
     .slice(1) as Tick[];
   const ticksRightBig: Tick[] = [...new Array(scale < 0.0005 ? 10 : 0)]
     .map((_, idx) => ({
       name: `${idx}000 nm`,
-      position: [wr, idx * 10 * scaled * wd - wr, -wr],
+      position: [wr, idx * 10 * scaled * wd - wr, wr],
       side: "right",
     }))
     .slice(1) as Tick[];
@@ -50,14 +50,14 @@ export function ScaleIndicator() {
   const ticksLeftSmall: Tick[] = [...new Array(scale > 0.001 ? 10 : 0)]
     .map((_, idx) => ({
       name: `${idx}00 Å`,
-      position: [wr, idx * 0.1 * scaled * wd - wr, -wr],
+      position: [wr, idx * 0.1 * scaled * wd - wr, wr],
       side: "left",
     }))
     .slice(1) as Tick[];
   const ticksRightSmall: Tick[] = [...new Array(scale > 0.001 ? 10 : 0)]
     .map((_, idx) => ({
       name: `${idx}0 nm`,
-      position: [wr, idx * 0.1 * scaled * wd - wr, -wr],
+      position: [wr, idx * 0.1 * scaled * wd - wr, wr],
       side: "right",
     }))
     .slice(1) as Tick[];
@@ -122,15 +122,15 @@ function EdgeLines({ commonProps }) {
       <Line
         {...commonProps}
         points={[
-          [wr, -wr, -wr],
-          [-wr, -wr, -wr],
+          [wr, -wr, wr],
+          [-wr, -wr, wr],
         ]}
       ></Line>
 
       <Line
         {...commonProps}
         points={[
-          [wr, -wr, -wr],
+          [wr, -wr, wr],
           [wr, -wr, wr],
         ]}
       ></Line>
@@ -138,8 +138,8 @@ function EdgeLines({ commonProps }) {
       <Line
         {...commonProps}
         points={[
-          [wr, -wr, -wr],
-          [wr, wr, -wr],
+          [wr, -wr, wr],
+          [wr, wr, wr],
         ]}
       ></Line>
     </>

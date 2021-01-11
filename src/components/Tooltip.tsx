@@ -208,16 +208,16 @@ const TooltipStyles = styled.div`
         pointer-events: auto;
       }
       .btnClose {
-        top: 1em;
-        right: 0.2em;
+        top: 0.6em;
+        right: -0.3em;
       }
       .btnMaximize {
-        bottom: 1em;
-        right: 0.2em;
+        bottom: 0.6em;
+        right: -0.3em;
       }
       .btnOpenInNew {
-        top: 1em;
-        right: 0.2em;
+        top: 0.6em;
+        right: -0.3em;
       }
     }
   }

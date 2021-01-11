@@ -6,10 +6,9 @@ import * as THREE from "three";
 import MemoryStats from "react-memorystats";
 import { render } from "react-dom";
 import { useMount } from "./utils/utils";
-import { TemperatureControls } from "./TemperatureControls";
 import { ScaleControls } from "./ScaleControls";
-import { PauseControls } from "./PauseControls";
-
+// import { useFrame } from "react-three-fiber";
+import BottomControls from "./BottomControls";
 export default function CanvasAndScene({ renderProteins = true }) {
   useMount(() => {
     render(
@@ -19,6 +18,10 @@ export default function CanvasAndScene({ renderProteins = true }) {
   });
   const windowSize = useWindowSize();
 
+  //  // This one makes the camera move in and out
+  //  useFrame(({ clock, camera }) => {
+  //   camera.position.z = 50 + Math.sin(clock.getElapsedTime()) * 30
+  // })
   return (
     <>
       <Controls.Provider>
@@ -29,14 +32,14 @@ export default function CanvasAndScene({ renderProteins = true }) {
           }}
           gl={{ antialias: false, alpha: false }}
           style={{ height: windowSize.height, width: windowSize.width }}
+          camera={{ fov: 75, position: [0, 0, 15] }}
         >
           <Scene />
         </Controls.Canvas>
-        <Controls anchor={"top_right"} />
+        <Controls anchor={"top_right"} style={{ marginTop: -64 }} />
       </Controls.Provider>
-      <TemperatureControls />
       <ScaleControls />
-      <PauseControls />
+      <BottomControls />
     </>
   );
 }

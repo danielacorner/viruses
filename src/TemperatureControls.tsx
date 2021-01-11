@@ -36,10 +36,6 @@ export function TemperatureControls() {
   );
 }
 const TemperatureControlsStyles = styled.div`
-  position: fixed;
-  bottom: 60px;
-  right: 32px;
-  width: 200px;
   .grid {
     display: grid;
     grid-template-columns: auto 1fr auto;

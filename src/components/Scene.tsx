@@ -10,6 +10,7 @@ import { useAudioTrack } from "./useAudioTrack";
 import { Water } from "./Water";
 import { ScaleIndicator } from "./ScaleIndicator";
 import { useStore } from "../store";
+import { SelectedParticleDisplay } from "./SelectedParticleDisplay";
 
 const Scene = () => {
   // audio track
@@ -37,6 +38,7 @@ const Scene = () => {
         {/* TODO: ATP is inside the cell only? */}
         {/* <ATPInstanced /> */}
         <Walls />
+        <SelectedParticleDisplay />
         <ScaleIndicator />
         {/* <CellMembrane /> */}
         {/* <Cells /> */}

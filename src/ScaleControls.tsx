@@ -8,7 +8,7 @@ export function ScaleControls() {
   const scale = useStore((s) => s.scale);
   const set = useStore((s) => s.set);
   return (
-    <ScaleeControlsStyles>
+    <ScaleControlsStyles>
       <Typography align="center" id="volume-slider" gutterBottom>
         Scale
       </Typography>
@@ -18,14 +18,13 @@ export function ScaleControls() {
         </div>
         <div className="grid-item">
           <Slider
-            valueLabelDisplay="auto"
             orientation="vertical"
             aria-labelledby="volume-slider"
             onChange={(event, newValue) => {
               set({ scale: newValue });
             }}
             min={0}
-            step={0.00005}
+            step={0.00000001}
             max={0.006}
             value={scale}
           />
@@ -34,17 +33,17 @@ export function ScaleControls() {
           <ZoomOut />
         </div>
       </div>
-    </ScaleeControlsStyles>
+    </ScaleControlsStyles>
   );
 }
-const ScaleeControlsStyles = styled.div`
+const ScaleControlsStyles = styled.div`
   position: fixed;
   display: grid;
   grid-template-rows: auto 1fr;
   justify-items: center;
   bottom: 164px;
   right: 24px;
-  height: 200px;
+  height: 60vh;
   .grid {
     display: grid;
     justify-items: center;

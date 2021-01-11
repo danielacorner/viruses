@@ -1,24 +1,9 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { useFrame } from "react-three-fiber";
-import { useControl } from "react-three-gui";
+import { useFrame, useThree } from "react-three-fiber";
 import { useStore } from "../store";
 import * as THREE from "three";
 
 export function Lighting() {
-  const spotlightIntensity = useControl("spotlight intensity", {
-    group: "Lighting",
-    type: "number",
-    min: 0,
-    value: 2,
-    max: 3,
-  });
-  const baselightIntensity = useControl("baselight intensity", {
-    group: "Lighting",
-    type: "number",
-    min: 0,
-    value: 1,
-    max: 3,
-  });
   const selectedProtein = useStore((s) => s.selectedProtein);
   const worldRadius = useStore((s) => s.worldRadius);
   const scale = useStore((s) => s.scale);
@@ -53,6 +38,8 @@ export function Lighting() {
   return (
     <>
       <color attach="background" args={["#ffffff"] as any} />
+      <LightFollowsMouse />
+
       {selectedProtein ? (
         <>
           {/* src: https://spectrum.chat/react-three-fiber/general/how-to-set-spotlight-target~823340ea-433e-426a-a0dc-b9a333fc3f94 */}
@@ -76,15 +63,12 @@ export function Lighting() {
       ) : (
         <>
           <ambientLight intensity={0.3} />
-          <pointLight
-            position={[-10, -10, -10]}
-            intensity={baselightIntensity}
-          />
+          <pointLight position={[-10, -10, -10]} intensity={1} />
           <spotLight
             position={[10, 10, 10]}
             angle={0.5}
             penumbra={1}
-            intensity={spotlightIntensity}
+            intensity={2}
             castShadow
             shadow-mapSize-width={2048}
             shadow-mapSize-height={2048}
@@ -93,5 +77,25 @@ export function Lighting() {
         </>
       )}
     </>
+  );
+}
+
+function LightFollowsMouse() {
+  // useFrame(({clock})=>{
+
+  // })
+  const light = useRef(null as any);
+  const { viewport, mouse } = useThree();
+
+  useFrame((state) => {
+    // Makes the light follow the mouse
+    light.current?.position.set(
+      (mouse.x * viewport.width) / 2,
+      (mouse.y * viewport.height) / 2,
+      0
+    );
+  });
+  return (
+    <pointLight ref={light} distance={60} intensity={0.2} color="lightblue" />
   );
 }
