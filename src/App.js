@@ -1,12 +1,14 @@
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense, useEffect } from "react";
 import Tooltip from "./components/Tooltip";
 import { Button, LinearProgress, Typography } from "@material-ui/core";
 import WarningOutlined from "@material-ui/icons/WarningOutlined";
 import { CanvasAndSceneEmpty } from "./CanvasAndSceneEmpty";
+import { useStore } from "./store";
 
 function App() {
   return (
     <div className="App">
+      {/* <LoadingIndicator /> */}
       <LazyLoadedScene />
       <div id="memoryStats"></div>
       <Tooltip />
@@ -22,15 +24,15 @@ const CanvasAndSceneLazy = React.lazy(() => import("./CanvasAndScene"));
 const ESTIMATED_LOAD_TIME = 2 * 60 * 1000;
 
 function LazyLoadedScene() {
-  const startsStarted = /* false && */ process.env.NODE_ENV === "development";
+  const set = useStore((s) => s.set);
+  const loading = useStore((s) => s.loading);
+  const started = useStore((s) => s.started);
 
-  const [started, setStarted] = useState(startsStarted);
-  const [loading, setLoading] = useState(!startsStarted);
-
+  // stop loading after ~2min
   useEffect(() => {
     if (started) {
       window.setTimeout(() => {
-        setLoading(false);
+        set({ loading: false });
       }, ESTIMATED_LOAD_TIME);
     }
   }, [started]);
@@ -70,12 +72,15 @@ function LazyLoadedScene() {
         >
           <WarningOutlined />
           <Typography variant="body2">
-            Requirements: >200MB download, 1GB memory
+            Requirements: {">"}200MB download, 1GB memory
           </Typography>
         </div>
+        <Typography variant="subtitle2">
+          ( this could take a while... )
+        </Typography>
         <Button
           style={{ padding: "0.25em 3em", pointerEvents: "auto" }}
-          onClick={() => setStarted(true)}
+          onClick={() => set({ started: true })}
           variant="outlined"
         >
           Start

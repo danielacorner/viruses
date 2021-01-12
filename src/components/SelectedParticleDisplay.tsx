@@ -17,11 +17,8 @@ import { useControl } from "react-three-gui";
 //   const scale = useStore((s) => s.scale);
 //   const ref = useRef(null as any);
 //   // const camera = useCamera()
-//   console.log("🌟🚨 ~ SelectedParticleDisplay ~ camera", camera)
 //   // useFrame(({ camera }) => {
-//   //   console.log("🌟🚨 ~ useFrame ~ camera", camera);
 //   //   if (ref.current?.position) {
-//   //     console.log("🌟🚨 ~ useFrame ~ ref.current", ref.current);
 //   //     // ref.current.position = [
 //   //     //   camera.position.x,
 //   //     //   camera.position.y,

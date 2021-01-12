@@ -9,12 +9,12 @@ import { PROTEINS } from "../utils/PROTEINS";
 import { useAudioTrack } from "./useAudioTrack";
 import { Water } from "./Water";
 import { ScaleIndicator } from "./ScaleIndicator";
-import { useStore } from "../store";
 import { SelectedParticleDisplay } from "./SelectedParticleDisplay";
 
 const Scene = () => {
   // audio track
   useAudioTrack();
+
   return (
     <>
       <OrbitControls />
@@ -28,12 +28,9 @@ const Scene = () => {
       >
         {/* {paused && <DisableRender />} */}
 
-        {PROTEINS.map(
-          // TODO: abstract / clean up
-          (protein) => {
-            return <ProteinGroup key={protein.name} {...protein} />;
-          }
-        )}
+        {PROTEINS.map((protein) => {
+          return <ProteinGroup key={protein.name} {...protein} />;
+        })}
         <Water />
         {/* TODO: ATP is inside the cell only? */}
         {/* <ATPInstanced /> */}

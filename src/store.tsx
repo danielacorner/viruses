@@ -9,17 +9,24 @@ type SelectedProtein = Protein & {
 export type GlobalStateType = {
   worldRadius: number;
   temperature: number;
+  loading: boolean;
+  started: boolean;
   paused: boolean;
   shuffled: number; // random number to trigger useEffect
   scale: number;
   selectedProtein: null | SelectedProtein;
   set: (newState: any) => any;
 };
+
+const startsStarted = false && process.env.NODE_ENV === "development";
+
 // zustand https://github.com/pmndrs/zustand
 // with typescript https://react-tracked.js.org/docs/tutorial-zustand-01/
 export const useStore = create<GlobalStateType>(
   (set): GlobalStateType => ({
     paused: false,
+    started: startsStarted,
+    loading: !startsStarted,
     worldRadius: 5,
     temperature: 2,
     shuffled: 0,
