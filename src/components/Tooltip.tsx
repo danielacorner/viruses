@@ -172,10 +172,6 @@ const TooltipStyles = styled.div`
       : ""}
   width: ${(props) => props.width}px;
   height: ${(props) => props.height}px;
-  pointer-events: none;
-  @media (min-width: ${BREAKPOINT_MOBILE}px) {
-    pointer-events: auto;
-  }
   .tooltipContent {
     box-sizing: border-box;
     color: black;
@@ -199,10 +195,16 @@ const TooltipStyles = styled.div`
       }
       a {
         color: #14bcff;
-        pointer-events: auto;
       }
       .title {
         font-size: 1.2em;
+        line-height: 1.2em;
+        ${(props) =>
+          props.maximized
+            ? `
+        text-shadow: 0px -1px 4px white, 0px -1px 4px white, 0px -1px 4px white, 0px -1px 4px white, 0px -1px 4px white;
+        `
+            : ""}
       }
     }
     .details {
@@ -247,7 +249,6 @@ const TooltipStyles = styled.div`
       font-size: 32px;
       position: absolute;
       color: black;
-      pointer-events: auto;
     }
     .btnClose {
       position: absolute;

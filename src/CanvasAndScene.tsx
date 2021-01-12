@@ -36,7 +36,9 @@ export default function CanvasAndScene({ renderProteins = true }) {
         >
           <Scene />
         </Controls.Canvas>
-        <Controls anchor={"top_right"} style={{ marginTop: -64 }} />
+        {process.env.NODE_ENV === "development" ? (
+          <Controls anchor={"top_right"} style={{ marginTop: -64 }} />
+        ) : null}
       </Controls.Provider>
       <ScaleControls />
       <BottomControls />

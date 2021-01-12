@@ -19,7 +19,7 @@ export default App;
 const CanvasAndSceneLazy = React.lazy(() => import("./CanvasAndScene"));
 
 // TECHDEBT: could estimate load time by testing user's connection speed https://www.geeksforgeeks.org/how-to-detect-network-speed-using-javascript/
-const ESTIMATED_LOAD_TIME = 60 * 1000;
+const ESTIMATED_LOAD_TIME = 2 * 60 * 1000;
 
 function LazyLoadedScene() {
   const startsStarted = /* false && */ process.env.NODE_ENV === "development";
