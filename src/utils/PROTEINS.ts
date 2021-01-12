@@ -65,7 +65,7 @@ export type Protein = {
   /** does the particle bump into others? (may cost more CPU) */
   interactive: boolean;
   /** PubMed Abstract text */
-  pubmedAbstract?: string;
+  pubmedAbstract: string;
   /** if interactive, how many faces does the geometry have?
    * determined shape for physics interactions in useConvexPolyhedron
    *

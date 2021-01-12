@@ -19,7 +19,7 @@ import { useWindowSize } from "../utils/hooks";
 import { startCase } from "lodash";
 import { Protein } from "../utils/PROTEINS";
 const TOOLTIP = {
-  height: 390,
+  height: 420,
   width: 300,
 };
 
@@ -27,11 +27,19 @@ const Tooltip = () => {
   const [maximized, setMaximized] = useState(false);
   const windowSize = useWindowSize();
   const isTabletOrLarger = useMediaQuery(`(min-width: ${BREAKPOINT_MOBILE}px)`);
+  const selectedProtein = useStore((s) => s.selectedProtein as Protein);
+
   return selectedProtein ? (
     <>
       <Modal open={maximized}>
         <ClickAwayListener onClickAway={() => setMaximized(false)}>
-          <MaximizedTooltip />
+          <TooltipStyles
+            onTouchStart={() => setMaximized(!maximized)}
+            onClick={() => setMaximized(!maximized)}
+            maximized={true}
+          >
+            <TooltipContent {...{ maximized, setMaximized }} />
+          </TooltipStyles>
         </ClickAwayListener>
       </Modal>
       <TooltipStyles
@@ -56,8 +64,22 @@ function TooltipContent({
   const set = useStore((s) => s.set);
   const selectedProtein = useStore((s) => s.selectedProtein as Protein);
 
+  const BtnClose = () => (
+    <IconButton
+      className="btnClose"
+      onClick={(e) => {
+        e.stopPropagation();
+        setMaximized(false);
+        set({ selectedProtein: null });
+      }}
+    >
+      <Close />
+    </IconButton>
+  );
+
   return (
     <div className="tooltipContent">
+      {maximized ? <BtnClose /> : null}
       <div className="titleSection">
         <a
           href={selectedProtein.PDBUrl}
@@ -112,16 +134,7 @@ function TooltipContent({
           }
           alt=""
         />
-        <IconButton
-          className="btnClose"
-          onClick={(e) => {
-            e.stopPropagation();
-            setMaximized(false);
-            set({ selectedProtein: null });
-          }}
-        >
-          <Close />
-        </IconButton>
+        {maximized ? null : <BtnClose />}
         <IconButton
           className="btnMaximize"
           onClick={(e) => {
@@ -132,11 +145,14 @@ function TooltipContent({
           {maximized ? <FullscreenExit /> : <Fullscreen />}
         </IconButton>
       </div>
+      <div className="pubmedAbstract">
+        {selectedProtein.pubmedAbstract.length > 100 && !maximized
+          ? selectedProtein.pubmedAbstract.slice(0, 100) + "..."
+          : selectedProtein.pubmedAbstract}
+      </div>
     </div>
   );
 }
-
-function MaximizedTooltip() {}
 
 // https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
 function numberWithCommas(x) {
@@ -145,8 +161,15 @@ function numberWithCommas(x) {
 
 const TooltipStyles = styled.div`
   position: fixed;
-  bottom: 0;
-  left: 0;
+  ${(props) => (props.maximized ? "background: white;" : "")}
+  bottom: ${(props) => (props.maximized ? 32 : 12)}px;
+  left: ${(props) => (props.maximized ? 32 : 0)}px;
+  ${(props) =>
+    props.maximized
+      ? `
+    right:32px; top:32px;
+  `
+      : ""}
   width: ${(props) => props.width}px;
   height: ${(props) => props.height}px;
   pointer-events: none;
@@ -157,14 +180,16 @@ const TooltipStyles = styled.div`
     box-sizing: border-box;
     color: black;
     display: grid;
-    grid-template-rows: auto auto 1fr;
+    grid-template-rows: auto auto 1fr ${(props) => (props.maximized ? 12 : 3)}em;
     padding: 1em;
     height: 100%;
     position: relative;
     .titleSection {
       text-align: left;
       display: grid;
+      height: 1.5em;
       grid-template-columns: auto 1fr;
+      align-content: end;
       align-items: center;
       grid-gap: 0.5em;
       h6 {
@@ -185,7 +210,13 @@ const TooltipStyles = styled.div`
       height: fit-content;
       font-size: 0.8em;
       grid-template-columns: 1.5fr 0.6fr 1.5fr;
-      margin-bottom: -2em;
+      ${(props) =>
+        props.maximized
+          ? `
+      width: fit-content;
+      grid-gap: 1em;
+      `
+          : ""}
       .measurement {
         display: grid;
         grid-template-rows: auto auto;
@@ -203,6 +234,7 @@ const TooltipStyles = styled.div`
     .imgWrapper {
       min-height: 270px;
       position: relative;
+      background: white;
       img {
         width: 100%;
         height: 100%;
@@ -210,21 +242,31 @@ const TooltipStyles = styled.div`
         box-sizing: border-box;
         opacity: ${(props) => (props.maximized ? 1 : 0.6)};
       }
-
-      button {
-        font-size: 32px;
-        position: absolute;
-        color: black;
-        pointer-events: auto;
-      }
-      .btnClose {
-        top: 0.6em;
-        right: -0.3em;
-      }
-      .btnMaximize {
-        bottom: 0.6em;
-        right: -0.3em;
-      }
+    }
+    button {
+      font-size: 32px;
+      position: absolute;
+      color: black;
+      pointer-events: auto;
+    }
+    .btnClose {
+      position: absolute;
+      top: 0em;
+      right: 0em;
+    }
+    .btnMaximize {
+      bottom: 0em;
+      right: 0em;
+    }
+    .pubmedAbstract {
+      ${(props) =>
+        props.maximized
+          ? `
+      overflow: auto;
+      line-height: 1.5em;
+      padding: 0.5em;
+      `
+          : ""}
     }
   }
 `;
