@@ -11,6 +11,7 @@ import {
 import {
   ClickAwayListener,
   IconButton,
+  Modal,
   Typography,
   useMediaQuery,
 } from "@material-ui/core";
@@ -23,124 +24,119 @@ const TOOLTIP = {
 };
 
 const Tooltip = () => {
-  const selectedProtein = useStore((s) => s.selectedProtein as Protein);
-  const set = useStore((s) => s.set);
   const [maximized, setMaximized] = useState(false);
   const windowSize = useWindowSize();
   const isTabletOrLarger = useMediaQuery(`(min-width: ${BREAKPOINT_MOBILE}px)`);
   return selectedProtein ? (
-    <TooltipStyles
-      maximized={maximized}
-      onTouchStart={() => setMaximized(!maximized)}
-      onClick={() => setMaximized(!maximized)}
-      height={
-        maximized
-          ? Math.min(windowSize.width, windowSize.height)
-          : TOOLTIP.height
-      }
-      width={
-        maximized
-          ? Math.min(windowSize.width, windowSize.height) -
-            (TOOLTIP.height - TOOLTIP.width)
-          : TOOLTIP.width
-      }
-    >
-      <div className="tooltipContent">
-        <div className="titleSection">
-          <a
-            href={selectedProtein.PDBUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Typography className="title" variant="body1">
-              {startCase(selectedProtein.name)}
-            </Typography>
-          </a>
-          <Typography variant="subtitle1" style={{ whiteSpace: "nowrap" }}>
-            {" "}
-            — {selectedProtein.type}
-          </Typography>
-        </div>
-
-        <div className="details">
-          <div className="measurement weight">
-            <div className="label">weight</div>
-            <div className="value">
-              {numberWithCommas(selectedProtein.mass)} kDa
-            </div>
-          </div>
-          <div className="measurement radius">
-            <div className="label">radius</div>
-            <div className="value">{Math.round(selectedProtein.radius)} Å</div>
-          </div>
-          <div className="measurement atomCount">
-            <div className="label"></div>
-            <div className="value">
-              {numberWithCommas(
-                selectedProtein.atomCount *
-                  selectedProtein.numIcosahedronFaces /* ! 12 for most icosahedral proteins? */
-              )}{" "}
-              atoms
-            </div>
-          </div>
-        </div>
+    <>
+      <Modal open={maximized}>
         <ClickAwayListener onClickAway={() => setMaximized(false)}>
-          <div className="imgWrapper">
-            <img
-              src={
-                maximized &&
-                // have 720p image for protein?
-                (selectedProtein.pathToImage.includes("adenovirus") ||
-                  selectedProtein.pathToImage.includes("rice_dwarf") ||
-                  selectedProtein.pathToImage.includes("sindbis"))
-                  ? /* add "_720" before .webp */ `${selectedProtein.pathToImage.slice(
-                      0,
-                      -5
-                    )}_720.webp`
-                  : selectedProtein.pathToImage
-              }
-              alt=""
-            />
-            <IconButton
-              className="btnClose"
-              onClick={(e) => {
-                e.stopPropagation();
-                setMaximized(false);
-                set({ selectedProtein: null });
-              }}
-            >
-              <Close />
-            </IconButton>
-            {isTabletOrLarger ? (
-              <IconButton
-                className="btnMaximize"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setMaximized((prev) => !prev);
-                }}
-              >
-                {maximized ? <FullscreenExit /> : <Fullscreen />}
-              </IconButton>
-            ) : (
-              <IconButton className="btnOpenInNew">
-                <a
-                  href={selectedProtein.pathToImage}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                  }}
-                >
-                  <OpenInNew />
-                </a>
-              </IconButton>
-            )}
-          </div>
+          <MaximizedTooltip />
         </ClickAwayListener>
-      </div>
-    </TooltipStyles>
+      </Modal>
+      <TooltipStyles
+        onTouchStart={() => setMaximized(!maximized)}
+        onClick={() => setMaximized(!maximized)}
+        height={TOOLTIP.height}
+        width={TOOLTIP.width}
+      >
+        <TooltipContent {...{ maximized, setMaximized }} />
+      </TooltipStyles>
+    </>
   ) : null;
 };
+
+function TooltipContent({
+  maximized,
+  setMaximized,
+}: {
+  maximized: boolean;
+  setMaximized: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
+  const set = useStore((s) => s.set);
+  const selectedProtein = useStore((s) => s.selectedProtein as Protein);
+
+  return (
+    <div className="tooltipContent">
+      <div className="titleSection">
+        <a
+          href={selectedProtein.PDBUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Typography className="title" variant="body1">
+            {startCase(selectedProtein.name)}
+          </Typography>
+        </a>
+        <Typography variant="subtitle1" style={{ whiteSpace: "nowrap" }}>
+          {" "}
+          — {selectedProtein.type}
+        </Typography>
+      </div>
+
+      <div className="details">
+        <div className="measurement weight">
+          <div className="label">weight</div>
+          <div className="value">
+            {numberWithCommas(selectedProtein.mass)} kDa
+          </div>
+        </div>
+        <div className="measurement radius">
+          <div className="label">radius</div>
+          <div className="value">{Math.round(selectedProtein.radius)} Å</div>
+        </div>
+        <div className="measurement atomCount">
+          <div className="label"></div>
+          <div className="value">
+            {numberWithCommas(
+              selectedProtein.atomCount *
+                selectedProtein.numIcosahedronFaces /* ! 12 for most icosahedral proteins? */
+            )}{" "}
+            atoms
+          </div>
+        </div>
+      </div>
+      <div className="imgWrapper">
+        <img
+          src={
+            maximized &&
+            // have 720p image for protein?
+            (selectedProtein.pathToImage.includes("adenovirus") ||
+              selectedProtein.pathToImage.includes("rice_dwarf") ||
+              selectedProtein.pathToImage.includes("sindbis"))
+              ? /* add "_720" before .webp */ `${selectedProtein.pathToImage.slice(
+                  0,
+                  -5
+                )}_720.webp`
+              : selectedProtein.pathToImage
+          }
+          alt=""
+        />
+        <IconButton
+          className="btnClose"
+          onClick={(e) => {
+            e.stopPropagation();
+            setMaximized(false);
+            set({ selectedProtein: null });
+          }}
+        >
+          <Close />
+        </IconButton>
+        <IconButton
+          className="btnMaximize"
+          onClick={(e) => {
+            e.stopPropagation();
+            setMaximized((prev) => !prev);
+          }}
+        >
+          {maximized ? <FullscreenExit /> : <Fullscreen />}
+        </IconButton>
+      </div>
+    </div>
+  );
+}
+
+function MaximizedTooltip() {}
 
 // https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
 function numberWithCommas(x) {
@@ -227,10 +223,6 @@ const TooltipStyles = styled.div`
       }
       .btnMaximize {
         bottom: 0.6em;
-        right: -0.3em;
-      }
-      .btnOpenInNew {
-        top: 0.6em;
         right: -0.3em;
       }
     }
