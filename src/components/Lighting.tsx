@@ -81,9 +81,6 @@ export function Lighting() {
 }
 
 function LightFollowsMouse() {
-  // useFrame(({clock})=>{
-
-  // })
   const light = useRef(null as any);
   const { viewport, mouse } = useThree();
 
@@ -95,6 +92,7 @@ function LightFollowsMouse() {
       0
     );
   });
+
   return (
     <pointLight ref={light} distance={60} intensity={0.2} color="lightblue" />
   );

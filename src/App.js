@@ -21,7 +21,7 @@ export default App;
 const CanvasAndSceneLazy = React.lazy(() => import("./CanvasAndScene"));
 
 // TECHDEBT: could estimate load time by testing user's connection speed https://www.geeksforgeeks.org/how-to-detect-network-speed-using-javascript/
-const ESTIMATED_LOAD_TIME = 2 * 60 * 1000;
+const ESTIMATED_LOAD_TIME = 3 * 60 * 1000;
 
 function LazyLoadedScene() {
   const set = useStore((s) => s.set);
@@ -35,6 +35,7 @@ function LazyLoadedScene() {
         set({ loading: false });
       }, ESTIMATED_LOAD_TIME);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [started]);
 
   return !started ? (
@@ -90,7 +91,7 @@ function LazyLoadedScene() {
   ) : (
     <>
       {loading && <LinearProgress variant="indeterminate" />}
-      <Suspense fallback={<div>hang tight, this might take a while...</div>}>
+      <Suspense fallback={null}>
         <CanvasAndSceneLazy />
       </Suspense>
     </>
