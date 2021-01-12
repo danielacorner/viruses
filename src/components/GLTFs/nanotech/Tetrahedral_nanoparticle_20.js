@@ -12,14 +12,16 @@ export default function Model(props) {
   );
   return (
     <group ref={group} {...props} dispose={null}>
-      <mesh
-        material={nodes["6vfhcif_assembly_1_A_Gaussian_surface"].material}
-        geometry={nodes["6vfhcif_assembly_1_A_Gaussian_surface"].geometry}
-      />
-      <mesh
-        material={nodes["6vfhcif_assembly_1_B_Gaussian_surface"].material}
-        geometry={nodes["6vfhcif_assembly_1_B_Gaussian_surface"].geometry}
-      />
+      <group position={[-155.84, -152.84, -145.66]}>
+        <mesh
+          material={nodes["6vfhcif_assembly_1_A_Gaussian_surface"].material}
+          geometry={nodes["6vfhcif_assembly_1_A_Gaussian_surface"].geometry}
+        />
+        <mesh
+          material={nodes["6vfhcif_assembly_1_B_Gaussian_surface"].material}
+          geometry={nodes["6vfhcif_assembly_1_B_Gaussian_surface"].geometry}
+        />
+      </group>
     </group>
   );
 }
