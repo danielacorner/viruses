@@ -19,8 +19,11 @@ import Antibody_herpes from "../components/GLTFs/antibodies/Antibody_herpes";
 // nanotech
 import Protein_cage_20 from "../components/GLTFs/nanotech/Protein_cage_20";
 import Dna_origami_object_80 from "../components/GLTFs/nanotech/Dna_origami_object_80";
+import Six_fold_symmetric_dna_scaffold_10 from "../components/GLTFs/nanotech/Six_fold_symmetric_dna_scaffold_10";
+import Computationally_designed_mini_tetraloop_tetraloop_receptor_10 from "../components/GLTFs/nanotech/Computationally_designed_mini_tetraloop_tetraloop_receptor_10";
+import A_circularly_permuted_pdu_a_forming_an_icosahedral_cage_20 from "../components/GLTFs/nanotech/A_circularly_permuted_pdu_a_forming_an_icosahedral_cage_20";
+import Color_device_state_a_10 from "../components/GLTFs/nanotech/Color_device_state_a_10";
 import Octahedral_nanoparticle_20 from "../components/GLTFs/nanotech/Octahedral_nanoparticle_20";
-import Octahedral_nanoparticle_10 from "../components/GLTFs/nanotech/Octahedral_nanoparticle_10";
 import Tetrahedral_nanoparticle_20 from "../components/GLTFs/nanotech/Tetrahedral_nanoparticle_20";
 import Icosahedral_nanoparticle_20 from "../components/GLTFs/nanotech/Icosahedral_nanoparticle_20";
 // cells
@@ -343,6 +346,80 @@ export const PROTEINS: Protein[] = [
   // NANOTECH
   // NANOTECH
   {
+    Component: A_circularly_permuted_pdu_a_forming_an_icosahedral_cage_20,
+    name: "A circularly permuted PduA forming an icosahedral cage",
+    type: PROTEIN_TYPES.nanotech,
+    PDBUrl: "https://www.rcsb.org/structure/5HPN",
+    mass: 43.99,
+    // atomCount: 99723, // PDB
+    radius: 56, // measured using PDB 3d viewer e.g. https://www.rcsb.org/3d-view/6CGR/1
+    atomCount: 2890,
+    numIcosahedronFaces: 20,
+    numAsymmetricUnits: 12,
+    pathToGLTF:
+      "/models/nanotech/a_circularly_permuted_pdu_a_forming_an_icosahedral_cage_20.glb",
+    pathToImage:
+      "/models/nanotech/a_circularly_permuted_pdu_a_forming_an_icosahedral_cage.webp",
+    interactive: true,
+    pubmedAbstract:
+      "We report the crystal structure of a novel 60-subunit dodecahedral cage that results from self-assembly of a re-engineered version of a natural protein (PduA) from the Pdu microcompartment shell. Biophysical data illustrate the dependence of assembly on solution conditions, opening up new applications in microcompartment studies and nanotechnology.",
+  },
+  {
+    Component: Computationally_designed_mini_tetraloop_tetraloop_receptor_10,
+    name:
+      "Computationally designed mini tetraloop-tetraloop receptor by the RNAMake program",
+    type: PROTEIN_TYPES.nanotech,
+    PDBUrl: "https://www.rcsb.org/structure/6DVK",
+    mass: 30.93,
+    // atomCount: 99723, // PDB
+    radius: 35, // measured using PDB 3d viewer e.g. https://www.rcsb.org/3d-view/6CGR/1
+    atomCount: 2025,
+    numIcosahedronFaces: 5,
+    numAsymmetricUnits: 1,
+    pathToGLTF:
+      "/models/nanotech/computationally_designed_mini_tetraloop_tetraloop_receptor_10.glb",
+    pathToImage:
+      "/models/nanotech/computationally_designed_mini_tetraloop_tetraloop_receptor.webp",
+    interactive: true,
+    pubmedAbstract:
+      "RNA nanotechnology seeks to create nanoscale machines by repurposing natural RNA modules. The field is slowed by the current need for human intuition during three-dimensional structural design. Here, we demonstrate that three distinct problems in RNA nanotechnology can be reduced to a pathfinding problem and automatically solved through an algorithm called RNAMake. First, RNAMake discovers highly stable single-chain solutions to the classic problem of aligning a tetraloop and its sequence-distal receptor, with experimental validation from chemical mapping, gel electrophoresis, solution X-ray scattering and crystallography with 2.55 Å resolution. Second, RNAMake automatically generates structured tethers that integrate 16S and 23S ribosomal RNAs into single-chain ribosomal RNAs that remain uncleaved by ribonucleases and assemble onto messenger RNA. Third, RNAMake enables the automated stabilization of small-molecule binding RNAs, with designed tertiary contacts that improve the binding affinity of the ATP aptamer and improve the fluorescence and stability of the Spinach RNA in cell extracts and in living Escherichia coli cells.",
+  },
+  // ! broken
+  // {
+  //   Component: Six_fold_symmetric_dna_scaffold_10,
+  //   name: "Six-Fold Symmetric DNA Scaffold",
+  //   type: PROTEIN_TYPES.nanotech,
+  //   PDBUrl: "https://www.rcsb.org/structure/6DKL",
+  //   mass: 12.8,
+  //   // atomCount: 99723, // PDB
+  //   radius: 17, // measured using PDB 3d viewer e.g. https://www.rcsb.org/3d-view/6CGR/1
+  //   atomCount: 851,
+  //   numIcosahedronFaces: 5,
+  //   numAsymmetricUnits: 1,
+  //   pathToGLTF: "/models/nanotech/six_fold_symmetric_dna_scaffold_10.glb",
+  //   pathToImage: "/models/nanotech/six_fold_symmetric_dna_scaffold.webp",
+  //   interactive: true,
+  //   pubmedAbstract:
+  //     "Programming self-assembled designer DNA crystals with various lattices and functions is one of the most important goals for nanofabrication using nucleic acids. The resulting porous materials possess atomic precision for several potential applications that rely on crystalline lattices and cavities. Herein, we present a rationally designed and self-assembled 3D DNA crystal lattice with hexagonal symmetry. In our design, two 21-base oligonucleotides are used to form a duplex motif that further assembles into a 3D array. The interactions between the strands are programmed using Watson-Crick base-pairing. The six-fold symmetry, as well as the chirality, is directed by the Holliday junctions formed between the duplex motifs. The rationally designed DNA crystal provides a new avenue that could create self-assembled macromolecular 3D crystalline lattices with atomic precision. In addition, the structure contains a highly organized array of well-defined cavities that are suitable for future applications with immobilized guests.",
+  // },
+  {
+    Component: Color_device_state_a_10,
+    name: "Color device state A",
+    type: PROTEIN_TYPES.nanotech,
+    PDBUrl: "https://www.rcsb.org/structure/5I36",
+    mass: 40.16,
+    // atomCount: 99723, // PDB
+    radius: 35, // measured using PDB 3d viewer e.g. https://www.rcsb.org/3d-view/6CGR/1
+    atomCount: 2664,
+    numIcosahedronFaces: 5,
+    numAsymmetricUnits: 1,
+    pathToGLTF: "/models/nanotech/color_device_state_a_10.glb",
+    pathToImage: "/models/nanotech/color_device_state_a.webp",
+    interactive: true,
+    pubmedAbstract:
+      "Structural DNA nanotechnology finds applications in numerous areas, but the construction of objects, 2D and 3D crystalline lattices and devices is prominent among them. Each of these components has been developed individually, and most of them have been combined in pairs. However, to date there are no reports of independent devices contained within 3D crystals. Here we report a three-state 3D device whereby we change the colour of the crystals by diffusing strands that contain dyes in or out of the crystals through the mother-liquor component of the system. Each colouring strand is designed to pair with an extended triangle strand by Watson-Crick base pairing. The arm that contains the dyes is quite flexible, but it is possible to establish the presence of the duplex proximal to the triangle by X-ray crystallography. We modelled the transition between the red and blue states through a simple kinetic model.",
+  },
+  {
     Component: Dna_origami_object_80,
     name: "DNA-origami object",
     type: PROTEIN_TYPES.nanotech,
@@ -391,21 +468,6 @@ export const PROTEINS: Protein[] = [
     pubmedAbstract:
       "Multivalent presentation of viral glycoproteins can substantially increase the elicitation of antigen-specific antibodies. To enable a new generation of anti-viral vaccines, we designed self-assembling protein nanoparticles with geometries tailored to present the ectodomains of influenza, HIV, and RSV viral glycoprotein trimers. We first de novo designed trimers tailored for antigen fusion, featuring N-terminal helices positioned to match the C termini of the viral glycoproteins. Trimers that experimentally adopted their designed configurations were incorporated as components of tetrahedral, octahedral, and icosahedral nanoparticles, which were characterized by cryo-electron microscopy and assessed for their ability to present viral glycoproteins. Electron microscopy and antibody binding experiments demonstrated that the designed nanoparticles presented antigenically intact prefusion HIV-1 Env, influenza hemagglutinin, and RSV F trimers in the predicted geometries. This work demonstrates that antigen-displaying protein nanoparticles can be designed from scratch, and provides a systematic way to investigate the influence of antigen presentation geometry on the immune response to vaccination.",
   },
-  // {
-  //   Component: Octahedral_nanoparticle_10,
-  //   name: "Octahedral nanoparticle",
-  //   type: PROTEIN_TYPES.nanotech,
-  //   PDBUrl: "https://www.rcsb.org/structure/6VFI",
-  //   mass: 36.55,
-  //   atomCount: 2437,
-  //   radius: 100,
-  //   numIcosahedronFaces: 8,
-  //   numAsymmetricUnits: 1,
-  //   pathToGLTF: "/models/nanotech/octahedral_nanoparticle_10.glb",
-  //   pathToImage: "/models/nanotech/octahedral_nanoparticle.webp",
-  //   interactive: true,
-  //   pubmedAbstract:"",
-  // },
   // {
   //   Component: Tetrahedral_nanoparticle_20,
   //   name: "Tetrahedral nanoparticle",
