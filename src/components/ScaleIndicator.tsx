@@ -90,7 +90,7 @@ export function ScaleIndicator() {
                 ]}
               ></Line>
               <Text
-                rotation={[0, t.side === "left" ? 0 : -Math.PI / 2, 0]}
+                rotation={[0, t.side === "left" ? 0 : Math.PI / 2, 0]}
                 {...{
                   position: [
                     t.position[0] * (t.side === "left" ? 0.91 : 1),
