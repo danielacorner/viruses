@@ -146,9 +146,14 @@ function TooltipContent({
         </IconButton>
       </div>
       <div className="pubmedAbstract">
-        {selectedProtein.pubmedAbstract.length > 100 && !maximized
-          ? selectedProtein.pubmedAbstract.slice(0, 100) + "..."
-          : selectedProtein.pubmedAbstract}
+        {maximized ? (
+          <p className="authors">{selectedProtein.authors}</p>
+        ) : null}
+        <p>
+          {selectedProtein.pubmedAbstract.length > 100 && !maximized
+            ? selectedProtein.pubmedAbstract.slice(0, 100) + "..."
+            : selectedProtein.pubmedAbstract}
+        </p>
       </div>
     </div>
   );
@@ -268,6 +273,9 @@ const TooltipStyles = styled.div`
       padding: 0.5em;
       `
           : ""}
+      .authors {
+        font-style: italic;
+      }
     }
   }
 `;
