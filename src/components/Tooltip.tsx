@@ -1,21 +1,13 @@
 import React, { useState } from "react";
 import { useStore } from "../store";
-import { BREAKPOINT_MOBILE } from "../utils/constants";
 import styled from "styled-components/macro";
-import {
-  Close,
-  Fullscreen,
-  FullscreenExit,
-  OpenInNew,
-} from "@material-ui/icons";
+import { Close, Fullscreen, FullscreenExit } from "@material-ui/icons";
 import {
   ClickAwayListener,
   IconButton,
   Modal,
   Typography,
-  useMediaQuery,
 } from "@material-ui/core";
-import { useWindowSize } from "../utils/hooks";
 import { startCase } from "lodash";
 import { Protein } from "../utils/PROTEINS";
 const TOOLTIP = {
@@ -25,8 +17,6 @@ const TOOLTIP = {
 
 const Tooltip = () => {
   const [maximized, setMaximized] = useState(false);
-  const windowSize = useWindowSize();
-  const isTabletOrLarger = useMediaQuery(`(min-width: ${BREAKPOINT_MOBILE}px)`);
   const selectedProtein = useStore((s) => s.selectedProtein as Protein);
 
   return selectedProtein ? (
