@@ -34,8 +34,7 @@ const Tooltip = () => {
       <Modal open={maximized}>
         <ClickAwayListener onClickAway={() => setMaximized(false)}>
           <TooltipStyles
-            onTouchStart={() => setMaximized(!maximized)}
-            onClick={() => setMaximized(!maximized)}
+            // onTouchStart={() => setMaximized(!maximized)}
             maximized={true}
           >
             <TooltipContent {...{ maximized, setMaximized }} />
@@ -43,8 +42,12 @@ const Tooltip = () => {
         </ClickAwayListener>
       </Modal>
       <TooltipStyles
-        onTouchStart={() => setMaximized(!maximized)}
-        onClick={() => setMaximized(!maximized)}
+        // onTouchStart={() => setMaximized(!maximized)}
+        onClick={() => {
+          if (!maximized) {
+            setMaximized(true);
+          }
+        }}
         height={TOOLTIP.height}
         width={TOOLTIP.width}
       >
@@ -118,7 +121,14 @@ function TooltipContent({
           </div>
         </div>
       </div>
-      <div className="imgWrapper">
+      <div
+        className="imgWrapper"
+        onClick={() => {
+          if (maximized) {
+            setMaximized(false);
+          }
+        }}
+      >
         <img
           src={
             maximized &&
