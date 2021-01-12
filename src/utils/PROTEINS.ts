@@ -14,7 +14,7 @@ import Poliovirus_50 from "../components/GLTFs/viruses/Poliovirus_50";
 import Denguevirus_50 from "../components/GLTFs/viruses/Denguevirus_50";
 import HPV_100 from "../components/GLTFs/viruses/HPV_100";
 // antibodies
-import Antibody_hiv from "../components/GLTFs/antibodies/Antibody_hiv";
+import Antibody_hiv_10 from "../components/GLTFs/antibodies/Antibody_hiv_10";
 import Antibody_herpes from "../components/GLTFs/antibodies/Antibody_herpes";
 // nanotech
 import Protein_cage_20 from "../components/GLTFs/nanotech/Protein_cage_20";
@@ -261,7 +261,7 @@ export const PROTEINS: Protein[] = [
     Component: Poliovirus_50,
     name: "Poliovirus",
     type: PROTEIN_TYPES.virus,
-    PDBUrl: "https://www.rcsb.org/structure/1Z8Y",
+    PDBUrl: "https://www.rcsb.org/structure/1PO2",
     mass: 98.54,
     atomCount: 6688,
     radius: 160,
@@ -271,7 +271,7 @@ export const PROTEINS: Protein[] = [
     pathToImage: "/models/viruses/poliovirus.webp",
     interactive: true,
     pubmedAbstract:
-      "The 9 A resolution cryo-electron microscopy map of Sindbis virus presented here provides structural information on the polypeptide topology of the E2 protein, on the interactions between the E1 and E2 glycoproteins in the formation of a heterodimer, on the difference in conformation of the two types of trimeric spikes, on the interaction between the transmembrane helices of the E1 and E2 proteins, and on the conformational changes that occur when fusing with a host cell. The positions of various markers on the E2 protein established the approximate topology of the E2 structure. The largest conformational differences between the icosahedral surface spikes at icosahedral 3-fold and quasi-3-fold positions are associated with the monomers closest to the 5-fold axes. The long E2 monomers, containing the cell receptor recognition motif at their extremities, are shown to rotate by about 180 degrees and to move away from the center of the spikes during fusion.",
+      "Crystal structures of the Mahoney strain of type 1 poliovirus complexed with the antiviral compounds R80633 and R77975 were determined at 2.9 A resolution. These compounds block infection by preventing conformational changes required for viral uncoating. In various drug-poliovirus complexes reported earlier, no significant conformational changes were found in the structures of the capsid proteins. In the structures reported here, the strain of virus is relatively insensitive to these antivirals. Correspondingly, significant conformational changes are necessary to accommodate the drug. These conformational changes affect both the immediate vicinity of the drug binding site, and more distant loops located near the fivefold axis. In addition, small but concerted shifts of the centers of mass of the major capsid proteins consistently have been detected whose magnitudes are correlated inversely with the effectiveness of the drugs. Collectively, the drug complexes appear to sample the conformational repertoire of poliovirus near equilibrium, and thus provide a possible model for the earliest stages of viral uncoating during infection.",
   },
   {
     Component: Denguevirus_50,
@@ -310,7 +310,7 @@ export const PROTEINS: Protein[] = [
   // ANTIBODIES
   // ANTIBODIES
   {
-    Component: Antibody_hiv,
+    Component: Antibody_hiv_10,
     name: "anti-HIV Antibody",
     type: PROTEIN_TYPES.antibody,
     PDBUrl: "https://www.rcsb.org/structure/3RPI",
@@ -319,8 +319,8 @@ export const PROTEINS: Protein[] = [
     radius: 50,
     numIcosahedronFaces: 20,
     numAsymmetricUnits: 1,
-    pathToGLTF: "/models/antibodies/antibody_hiv.glb",
-    pathToImage: "/models/antibodies/antibody_HIV.png",
+    pathToGLTF: "/models/antibodies/antibody_hiv_10.glb",
+    pathToImage: "/models/antibodies/antibody_hiv.webp",
     interactive: true,
     pubmedAbstract:
       "Passive transfer of broadly neutralizing HIV antibodies can prevent infection, which suggests that vaccines that elicit such antibodies would be protective. Thus far, however, few broadly neutralizing HIV antibodies that occur naturally have been characterized. To determine whether these antibodies are part of a larger group of related molecules, we cloned 576 new HIV antibodies from four unrelated individuals. All four individuals produced expanded clones of potent broadly neutralizing CD4-binding-site antibodies that mimic binding to CD4. Despite extensive hypermutation, the new antibodies shared a consensus sequence of 68 immunoglobulin H (IgH) chain amino acids and arise independently from two related IgH genes. Comparison of the crystal structure of one of the antibodies to the broadly neutralizing antibody VRC01 revealed conservation of the contacts to the HIV spike.",
@@ -336,7 +336,7 @@ export const PROTEINS: Protein[] = [
     numIcosahedronFaces: 20,
     numAsymmetricUnits: 1,
     pathToGLTF: "/models/antibodies/antibody_herpes.glb",
-    pathToImage: "/models/antibodies/antibody_Herpes.png",
+    pathToImage: "/models/antibodies/anti_herpes_antibody.webp",
     interactive: true,
     pubmedAbstract:
       "Glycoprotein D (gD) of herpes simplex virus (HSV) binds to a host cell surface receptor, which is required to trigger membrane fusion for virion entry into the host cell. gD has become a validated anti-HSV target for therapeutic antibody development. The highly inhibitory human monoclonal antibody E317 (mAb E317) was previously raised against HSV gD for viral neutralization. To understand the structural basis of antibody neutralization, crystals of the gD ectodomain bound to the E317 Fab domain were obtained. The structure of the complex reveals that E317 interacts with gD mainly through the heavy chain, which covers a large area for epitope recognition on gD, with a flexible N-terminal and C-terminal conformation. The epitope core structure maps to the external surface of gD, corresponding to the binding sites of two receptors, herpesvirus entry mediator (HVEM) and nectin-1, which mediate HSV infection. E317 directly recognizes the gD-nectin-1 interface and occludes the HVEM contact site of gD to block its binding to either receptor. The binding of E317 to gD also prohibits the formation of the N-terminal hairpin of gD for HVEM recognition. The major E317-binding site on gD overlaps with either the nectin-1-binding residues or the neutralizing antigenic sites identified thus far (Tyr38, Asp215, Arg222 and Phe223). The epitopes of gD for E317 binding are highly conserved between two types of human herpesvirus (HSV-1 and HSV-2). This study enables the virus-neutralizing epitopes to be correlated with the receptor-binding regions. The results further strengthen the previously demonstrated therapeutic and diagnostic potential of the E317 antibody.",
@@ -379,29 +379,28 @@ export const PROTEINS: Protein[] = [
     pathToGLTF:
       "/models/nanotech/computationally_designed_mini_tetraloop_tetraloop_receptor_10.glb",
     pathToImage:
-      "/models/nanotech/computationally_designed_mini_tetraloop_tetraloop_receptor.webp",
+      "/models/nanotech/computationally_designed_mini_tetraloop_tetraloop_receptor_by_the_rna_make_program.webp",
     interactive: true,
     pubmedAbstract:
       "RNA nanotechnology seeks to create nanoscale machines by repurposing natural RNA modules. The field is slowed by the current need for human intuition during three-dimensional structural design. Here, we demonstrate that three distinct problems in RNA nanotechnology can be reduced to a pathfinding problem and automatically solved through an algorithm called RNAMake. First, RNAMake discovers highly stable single-chain solutions to the classic problem of aligning a tetraloop and its sequence-distal receptor, with experimental validation from chemical mapping, gel electrophoresis, solution X-ray scattering and crystallography with 2.55 Å resolution. Second, RNAMake automatically generates structured tethers that integrate 16S and 23S ribosomal RNAs into single-chain ribosomal RNAs that remain uncleaved by ribonucleases and assemble onto messenger RNA. Third, RNAMake enables the automated stabilization of small-molecule binding RNAs, with designed tertiary contacts that improve the binding affinity of the ATP aptamer and improve the fluorescence and stability of the Spinach RNA in cell extracts and in living Escherichia coli cells.",
   },
-  // ! broken
-  // {
-  //   Component: Six_fold_symmetric_dna_scaffold_10,
-  //   name: "Six-Fold Symmetric DNA Scaffold",
-  //   type: PROTEIN_TYPES.nanotech,
-  //   PDBUrl: "https://www.rcsb.org/structure/6DKL",
-  //   mass: 12.8,
-  //   // atomCount: 99723, // PDB
-  //   radius: 17, // measured using PDB 3d viewer e.g. https://www.rcsb.org/3d-view/6CGR/1
-  //   atomCount: 851,
-  //   numIcosahedronFaces: 5,
-  //   numAsymmetricUnits: 1,
-  //   pathToGLTF: "/models/nanotech/six_fold_symmetric_dna_scaffold_10.glb",
-  //   pathToImage: "/models/nanotech/six_fold_symmetric_dna_scaffold.webp",
-  //   interactive: true,
-  //   pubmedAbstract:
-  //     "Programming self-assembled designer DNA crystals with various lattices and functions is one of the most important goals for nanofabrication using nucleic acids. The resulting porous materials possess atomic precision for several potential applications that rely on crystalline lattices and cavities. Herein, we present a rationally designed and self-assembled 3D DNA crystal lattice with hexagonal symmetry. In our design, two 21-base oligonucleotides are used to form a duplex motif that further assembles into a 3D array. The interactions between the strands are programmed using Watson-Crick base-pairing. The six-fold symmetry, as well as the chirality, is directed by the Holliday junctions formed between the duplex motifs. The rationally designed DNA crystal provides a new avenue that could create self-assembled macromolecular 3D crystalline lattices with atomic precision. In addition, the structure contains a highly organized array of well-defined cavities that are suitable for future applications with immobilized guests.",
-  // },
+  {
+    Component: Six_fold_symmetric_dna_scaffold_10,
+    name: "Six-Fold Symmetric DNA Scaffold",
+    type: PROTEIN_TYPES.nanotech,
+    PDBUrl: "https://www.rcsb.org/structure/6DKL",
+    mass: 12.8,
+    // atomCount: 99723, // PDB
+    radius: 17, // measured using PDB 3d viewer e.g. https://www.rcsb.org/3d-view/6CGR/1
+    atomCount: 851,
+    numIcosahedronFaces: 5,
+    numAsymmetricUnits: 1,
+    pathToGLTF: "/models/nanotech/six_fold_symmetric_dna_scaffold_10.glb",
+    pathToImage: "/models/nanotech/six_fold_symmetric_dna_scaffold.webp",
+    interactive: true,
+    pubmedAbstract:
+      "Programming self-assembled designer DNA crystals with various lattices and functions is one of the most important goals for nanofabrication using nucleic acids. The resulting porous materials possess atomic precision for several potential applications that rely on crystalline lattices and cavities. Herein, we present a rationally designed and self-assembled 3D DNA crystal lattice with hexagonal symmetry. In our design, two 21-base oligonucleotides are used to form a duplex motif that further assembles into a 3D array. The interactions between the strands are programmed using Watson-Crick base-pairing. The six-fold symmetry, as well as the chirality, is directed by the Holliday junctions formed between the duplex motifs. The rationally designed DNA crystal provides a new avenue that could create self-assembled macromolecular 3D crystalline lattices with atomic precision. In addition, the structure contains a highly organized array of well-defined cavities that are suitable for future applications with immobilized guests.",
+  },
   {
     Component: Color_device_state_a_10,
     name: "Color device state A",
@@ -443,7 +442,7 @@ export const PROTEINS: Protein[] = [
     PDBUrl: "https://www.rcsb.org/structure/3VDX",
     mass: 150.79,
     atomCount: 10149,
-    radius: 18,
+    radius: 80,
     numIcosahedronFaces: 20,
     numAsymmetricUnits: 1,
     pathToGLTF: "/models/nanotech/protein_cage_20.glb",

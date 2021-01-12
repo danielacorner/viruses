@@ -70,7 +70,7 @@ function LazyLoadedScene() {
         >
           <WarningOutlined />
           <Typography variant="body2">
-            Requirements: 200MB download, 1GB memory
+            Requirements: >200MB download, 1GB memory
           </Typography>
         </div>
         <Button
@@ -85,7 +85,7 @@ function LazyLoadedScene() {
   ) : (
     <>
       {loading && <LinearProgress variant="indeterminate" />}
-      <Suspense fallback={null}>
+      <Suspense fallback={<div>hang tight, this might take a while...</div>}>
         <CanvasAndSceneLazy />
       </Suspense>
     </>
