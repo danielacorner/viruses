@@ -5,7 +5,6 @@ import styled from "styled-components/macro";
 import { IconButton, Typography, useMediaQuery } from "@material-ui/core";
 import { BREAKPOINT_MOBILE } from "./utils/constants";
 import { ShuffleOutlined } from "@material-ui/icons";
-import { useThree } from "react-three-fiber";
 import { useStore } from "./store";
 
 const StyledDiv = styled.div``;
@@ -19,12 +18,12 @@ export default function BottomControls() {
         left: 30vw;
         right: 32px;
         display: grid;
-        grid-template-columns: auto auto 1fr;
+        grid-template-columns: auto 1fr;
         align-items: center;
         grid-gap: 2em;
       `}
     >
-      <ShuffleControls />
+      {/* <ShuffleControls /> */}
       <PauseControls />
       <TemperatureControls />
     </StyledDiv>
