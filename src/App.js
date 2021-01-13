@@ -1,14 +1,15 @@
-import React, { Suspense, useEffect } from "react";
+import React, { Suspense } from "react";
 import Tooltip from "./components/Tooltip";
-import { Button, LinearProgress, Typography } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 import WarningOutlined from "@material-ui/icons/WarningOutlined";
 import { CanvasAndSceneEmpty } from "./CanvasAndSceneEmpty";
 import { useStore } from "./store";
+import { LoadingIndicator } from "./components/LoadingIndicator";
 
 function App() {
   return (
     <div className="App">
-      {/* <LoadingIndicator /> */}
+      <LoadingIndicator />
       <LazyLoadedScene />
       <div id="memoryStats"></div>
       <Tooltip />
@@ -20,25 +21,15 @@ export default App;
 
 const CanvasAndSceneLazy = React.lazy(() => import("./CanvasAndScene"));
 
-// TECHDEBT: could estimate load time by testing user's connection speed https://www.geeksforgeeks.org/how-to-detect-network-speed-using-javascript/
-const ESTIMATED_LOAD_TIME = 5 * 60 * 1000;
-
 function LazyLoadedScene() {
   const set = useStore((s) => s.set);
-  const loading = useStore((s) => s.loading);
   const started = useStore((s) => s.started);
 
-  // stop loading after ~2min
-  useEffect(() => {
-    if (started) {
-      window.setTimeout(() => {
-        set({ loading: false });
-      }, ESTIMATED_LOAD_TIME);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [started]);
-
-  return !started ? (
+  return started ? (
+    <Suspense fallback={null}>
+      <CanvasAndSceneLazy />
+    </Suspense>
+  ) : (
     <>
       <CanvasAndSceneEmpty />
       <div
@@ -87,13 +78,6 @@ function LazyLoadedScene() {
           Start
         </Button>
       </div>
-    </>
-  ) : (
-    <>
-      {loading && <LinearProgress variant="indeterminate" />}
-      <Suspense fallback={null}>
-        <CanvasAndSceneLazy />
-      </Suspense>
     </>
   );
 }

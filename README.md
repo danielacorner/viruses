@@ -1,10 +1,8 @@
 # Hey, welcome to my virus terrarium 🦠
 
-I used [ChimeraX](https://www.rbvi.ucsf.edu/chimerax/download.html) to visualize virus capsid data from the [Protein DataBank (PDB)](https://www.rcsb.org/)
+I used [ChimeraX](https://www.rbvi.ucsf.edu/chimerax/download.html) to visualize virus capsid data from the [Protein DataBank (PDB)](https://www.rcsb.org/), and export .glb files
 
-Then, I used [react-three-fiber](https://github.com/pmndrs/react-three-fiber) and [@react-three/cannon](https://github.com/pmndrs/use-cannon) to render and simulate physical interactions.
-
-Molecule mass and size data sourced from PDB.
+Then, I used [react-three-fiber](https://github.com/pmndrs/react-three-fiber) to render 3d components, [@react-three/cannon](https://github.com/pmndrs/use-cannon) to simulate physics, and [gltfjsx](https://github.com/pmndrs/gltfjsx) to turn .glb files into .jsx React components.
 
 <a href="https://www.rcsb.org/structure/1KVP">
   <p align="middle">
@@ -21,7 +19,7 @@ Molecule mass and size data sourced from PDB.
 <a href="https://www.rcsb.org/structure/6CGV">
   <p align="middle">
       <div align="middle"><i>Adenovirus</i></div>
-      <div align="middle"><img width="360" src="./public/models/viruses/adenovirus.webp" /></div>
+      <div align="middle"><img width="360" src="./public/models/viruses/adenovirus_720.webp" /></div>
   </p>
 </a>
 <a href="https://www.rcsb.org/structure/6LGN">
@@ -33,7 +31,7 @@ Molecule mass and size data sourced from PDB.
 <a href="https://www.rcsb.org/structure/5J7V">
   <p align="middle">
       <div align="middle"><i>Faustovirus</i></div>
-      <div align="middle"><img width="360" src="./public//models/viruses/faustovirus.webp" /></div>
+      <div align="middle"><img width="360" src="./public/models/viruses/faustovirus.webp" /></div>
   </p>
 </a>
 <a href="https://www.rcsb.org/structure/3J3Y">
@@ -46,10 +44,8 @@ Molecule mass and size data sourced from PDB.
   <i>Click a virus to see it in the Protein DataBank!</i>
 </p>
 
-
 ### Other tools:
 
-- [gltfjsx](https://github.com/pmndrs/gltfjsx) - transform .gltf or .glb files into .jsx React components
 - [react-three-gui](https://github.com/birkir/react-three-gui) - quick GUI controls for any variable
 - [zustand](https://github.com/pmndrs/zustand) - simple global state managemer
 
