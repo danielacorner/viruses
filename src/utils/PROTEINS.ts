@@ -19,6 +19,9 @@ import Antibody_herpes from "../components/GLTFs/antibodies/Antibody_herpes";
 // nanotech
 import Protein_cage_20 from "../components/GLTFs/nanotech/Protein_cage_20";
 import Dna_origami_object_80 from "../components/GLTFs/nanotech/Dna_origami_object_80";
+import Self_assembled_3d_dna_crystals_13 from "../components/GLTFs/nanotech/Self_assembled_3d_dna_crystals_13";
+import Co_assembling_protein_dna_nanowires_13 from "../components/GLTFs/nanotech/Co_assembling_protein_dna_nanowires_13";
+import Dna_origami_16_helix_bundle_50 from "../components/GLTFs/nanotech/Dna_origami_16_helix_bundle_50";
 import Six_fold_symmetric_dna_scaffold_10 from "../components/GLTFs/nanotech/Six_fold_symmetric_dna_scaffold_10";
 import Computationally_designed_mini_tetraloop_tetraloop_receptor_10 from "../components/GLTFs/nanotech/Computationally_designed_mini_tetraloop_tetraloop_receptor_10";
 import A_circularly_permuted_pdu_a_forming_an_icosahedral_cage_20 from "../components/GLTFs/nanotech/A_circularly_permuted_pdu_a_forming_an_icosahedral_cage_20";
@@ -443,7 +446,6 @@ export const PROTEINS: Protein[] = [
     type: PROTEIN_TYPES.nanotech,
     PDBUrl: "https://www.rcsb.org/structure/5I36",
     mass: 40.16,
-    // atomCount: 99723, // PDB
     radius: 35, // measured using PDB 3d viewer e.g. https://www.rcsb.org/3d-view/6CGR/1
     atomCount: 2664,
     numIcosahedronFaces: 5,
@@ -462,7 +464,6 @@ export const PROTEINS: Protein[] = [
     type: PROTEIN_TYPES.nanotech,
     PDBUrl: "https://www.rcsb.org/structure/4V5X",
     mass: 4692.02,
-    // atomCount: 99723, // PDB
     radius: 212, // measured using PDB 3d viewer e.g. https://www.rcsb.org/3d-view/6CGR/1
     atomCount: 294953,
     numIcosahedronFaces: 10,
@@ -473,6 +474,58 @@ export const PROTEINS: Protein[] = [
     authors: "Bai, X., Martin, T.G., Scheres, S.H.W., Dietz, H.",
     pubmedAbstract:
       "A key goal for nanotechnology is to design synthetic objects that may ultimately achieve functionalities known today only from natural macromolecular complexes. Molecular self-assembly with DNA has shown potential for creating user-defined 3D scaffolds, but the level of attainable positional accuracy has been unclear. Here we report the cryo-EM structure and a full pseudoatomic model of a discrete DNA object that is almost twice the size of a prokaryotic ribosome. The structure provides a variety of stable, previously undescribed DNA topologies for future use in nanotechnology and experimental evidence that discrete 3D DNA scaffolds allow the positioning of user-defined structural motifs with an accuracy that is similar to that observed in natural macromolecules. Thereby, our results indicate an attractive route to fabricate nanoscale devices that achieve complex functionalities by DNA-templated design steered by structural feedback.",
+  },
+  {
+    Component: Dna_origami_16_helix_bundle_50,
+    name: "DNA-origami 16 helix bundle",
+    type: PROTEIN_TYPES.nanotech,
+    PDBUrl: "https://www.rcsb.org/structure/7ARQ",
+    mass: 828.85,
+    radius: 140, // measured using PDB 3d viewer e.g. https://www.rcsb.org/3d-view/6CGR/1
+    atomCount: 54985,
+    numIcosahedronFaces: 10,
+    numAsymmetricUnits: 1,
+    pathToGLTF: "/models/nanotech/Dna_origami_16_helix_bundle_50.glb",
+    pathToImage: "/models/nanotech/Dna_origami_16_helix_bundle.webp",
+    interactive: true,
+    authors:
+      "Kube, M., Kohler, F., Feigl, E., Nagel-Yuksel, B., Willner, E.M., Funke, J.J., Gerling, T., Stommer, P., Honemann, M.N., Martin, T.G., Scheres, S.H.W., Dietz, H.",
+    pubmedAbstract:
+      "The methods of DNA nanotechnology enable the rational design of custom shapes that self-assemble in solution from sets of DNA molecules. DNA origami, in which a long template DNA single strand is folded by many short DNA oligonucleotides, can be employed to make objects comprising hundreds of unique DNA strands and thousands of base pairs, thus in principle providing many degrees of freedom for modelling complex objects of defined 3D shapes and sizes. Here, we address the problem of accurate structural validation of DNA objects in solution with cryo-EM based methodologies. By taking into account structural fluctuations, we can determine structures with improved detail compared to previous work. To interpret the experimental cryo-EM maps, we present molecular-dynamics-based methods for building pseudo-atomic models in a semi-automated fashion. Among other features, our data allows discerning details such as helical grooves, single-strand versus double-strand crossovers, backbone phosphate positions, and single-strand breaks. Obtaining this higher level of detail is a step forward that now allows designers to inspect and refine their designs with base-pair level interventions.",
+  },
+  {
+    Component: Self_assembled_3d_dna_crystals_13,
+    name: "Self-Assembled 3D DNA Crystals",
+    type: PROTEIN_TYPES.nanotech,
+    PDBUrl: "https://www.rcsb.org/structure/5W6W",
+    mass: 12.8,
+    radius: 30, // measured using PDB 3d viewer e.g. https://www.rcsb.org/3d-view/6CGR/1
+    atomCount: 859,
+    numIcosahedronFaces: 10,
+    numAsymmetricUnits: 1,
+    pathToGLTF: "/models/nanotech/self_assembled_3d_dna_crystals_13.glb",
+    pathToImage: "/models/nanotech/self_assembled_3d_dna_crystals.webp",
+    interactive: true,
+    authors:
+      "Hernandez, C., Birktoft, J.J., Seeman, N.C., Ohayon, Y.P., Chandrasekaran, A.R., Abdalla, H.O., Mohsen, M., Sha, R., Chenge, M., Lukeman, P.S., Chaikin, P., Ginell, S.L., Jong, M.A.",
+    pubmedAbstract: "To be published.",
+  },
+  {
+    Component: Co_assembling_protein_dna_nanowires_13,
+    name: "Co-assembling protein-DNA nanowires",
+    type: PROTEIN_TYPES.nanotech,
+    PDBUrl: "https://www.rcsb.org/structure/4QTR",
+    mass: 54.32,
+    radius: 30, // measured using PDB 3d viewer e.g. https://www.rcsb.org/3d-view/6CGR/1
+    atomCount: 2903,
+    numIcosahedronFaces: 10,
+    numAsymmetricUnits: 1,
+    pathToGLTF: "/models/nanotech/co_assembling_protein_dna_nanowires_13.glb",
+    pathToImage: "/models/nanotech/self_assembled_3d_dna_crystals.webp",
+    interactive: true,
+    authors: "Mou, Y., Yu, J.Y., Wannier, T.M., Guo, C.L., Mayo, S.L.",
+    pubmedAbstract:
+      "Biomolecular self-assemblies are of great interest to nanotechnologists because of their functional versatility and their biocompatibility. Over the past decade, sophisticated single-component nanostructures composed exclusively of nucleic acids, peptides and proteins have been reported, and these nanostructures have been used in a wide range of applications, from drug delivery to molecular computing. Despite these successes, the development of hybrid co-assemblies of nucleic acids and proteins has remained elusive. Here we use computational protein design to create a protein-DNA co-assembling nanomaterial whose assembly is driven via non-covalent interactions. To achieve this, a homodimerization interface is engineered onto the Drosophila Engrailed homeodomain (ENH), allowing the dimerized protein complex to bind to two double-stranded DNA (dsDNA) molecules. By varying the arrangement of protein-binding sites on the dsDNA, an irregular bulk nanoparticle or a nanowire with single-molecule width can be spontaneously formed by mixing the protein and dsDNA building blocks. We characterize the protein-DNA nanowire using fluorescence microscopy, atomic force microscopy and X-ray crystallography, confirming that the nanowire is formed via the proposed mechanism. This work lays the foundation for the development of new classes of protein-DNA hybrid materials. Further applications can be explored by incorporating DNA origami, DNA aptamers and/or peptide epitopes into the protein-DNA framework presented here.",
   },
   {
     Component: Protein_cage_20,

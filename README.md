@@ -7,13 +7,13 @@ Then, I used [react-three-fiber](https://github.com/pmndrs/react-three-fiber) to
 <a href="https://www.rcsb.org/structure/1KVP">
   <p align="middle">
       <div align="middle"><i>Spiroplasma SPV4</i></div>
-      <div align="middle"><img width="360" src="./public/models/viruses/Spiroplasma_SPV4.webp" /></div>
+      <div align="middle"><img width="360" src="./public/models/viruses/Spiroplasma_SPV4_720.webp" /></div>
   </p>
 </a>
 <a href="https://www.rcsb.org/structure/3J6R">
   <p align="middle">
       <div align="middle"><i>Human Papillomavirus (HPV)</i></div>
-      <div align="middle"><img width="360" src="./public/models/viruses/hpv.webp" /></div>
+      <div align="middle"><img width="360" src="./public/models/viruses/hpv_720.webp" /></div>
   </p>
 </a>
 <a href="https://www.rcsb.org/structure/6CGV">
