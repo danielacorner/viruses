@@ -18,7 +18,6 @@ export function TemperatureControls() {
         </div>
         <div className="grid-item">
           <Slider
-            valueLabelDisplay="auto"
             aria-labelledby="volume-slider"
             onChange={(event, newValue) => {
               set({ temperature: newValue });
