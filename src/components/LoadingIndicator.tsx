@@ -23,7 +23,7 @@ export function LoadingIndicator() {
   // if we've been here before and already fully loaded once,
   // start the loader in a nearly-complete state
   useMount(() => {
-    const hasPreviouslyFullyLoaded = percentLoaded === "100";
+    const hasPreviouslyFullyLoaded = Number(percentLoaded) >= 100;
     if (hasPreviouslyFullyLoaded) {
       setPercentLoaded("95");
     }
@@ -45,7 +45,7 @@ export function LoadingIndicator() {
 
   // increment up to 100
   useEffect(() => {
-    if (percentLoaded !== "100") {
+    if (Number(percentLoaded) < 100) {
       const timer = window.setTimeout(() => {
         setPercentLoaded((prev) => `${Number(prev) + 1}`);
       }, INTERVAL);
