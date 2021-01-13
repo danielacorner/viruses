@@ -1,40 +1,108 @@
+import React from "react";
+
 // viruses
-import Adenovirus_160_outer from "../components/GLTFs/viruses/Adenovirus_160_outer";
-import Herpes_600 from "../components/GLTFs/viruses/Herpes_600";
-import Rice_dwarf_100 from "../components/GLTFs/viruses/Rice_dwarf_100";
-import Faust_1200_1 from "../components/GLTFs/viruses/Faust_1200_1";
-import Nodavirus_40_radial from "../components/GLTFs/viruses/Nodavirus_40_radial";
-import SH1_140 from "../components/GLTFs/viruses/SH1_140";
-import Haloarcula_californiae_140 from "../components/GLTFs/viruses/Haloarcula_californiae_140";
-import Varicella_zoster_300 from "../components/GLTFs/viruses/Varicella_zoster_300";
-import HIV_200 from "../components/GLTFs/viruses/HIV_200";
-import Spiroplasma_50 from "../components/GLTFs/viruses/Spiroplasma_50";
-import Sindbis_70 from "../components/GLTFs/viruses/Sindbis_70";
-import Poliovirus_50 from "../components/GLTFs/viruses/Poliovirus_50";
-import Denguevirus_50 from "../components/GLTFs/viruses/Denguevirus_50";
-import HPV_100 from "../components/GLTFs/viruses/HPV_100";
+const Adenovirus_160_outer = React.lazy(
+  () => import("../components/GLTFs/viruses/Adenovirus_160_outer")
+);
+const Herpes_600 = React.lazy(
+  () => import("../components/GLTFs/viruses/Herpes_600")
+);
+const Rice_dwarf_100 = React.lazy(
+  () => import("../components/GLTFs/viruses/Rice_dwarf_100")
+);
+const Faust_1200_1 = React.lazy(
+  () => import("../components/GLTFs/viruses/Faust_1200_1")
+);
+const Nodavirus_40_radial = React.lazy(
+  () => import("../components/GLTFs/viruses/Nodavirus_40_radial")
+);
+const SH1_140 = React.lazy(() => import("../components/GLTFs/viruses/SH1_140"));
+const Haloarcula_californiae_140 = React.lazy(
+  () => import("../components/GLTFs/viruses/Haloarcula_californiae_140")
+);
+const Varicella_zoster_300 = React.lazy(
+  () => import("../components/GLTFs/viruses/Varicella_zoster_300")
+);
+const HIV_200 = React.lazy(() => import("../components/GLTFs/viruses/HIV_200"));
+const Spiroplasma_50 = React.lazy(
+  () => import("../components/GLTFs/viruses/Spiroplasma_50")
+);
+const Sindbis_70 = React.lazy(
+  () => import("../components/GLTFs/viruses/Sindbis_70")
+);
+const Poliovirus_50 = React.lazy(
+  () => import("../components/GLTFs/viruses/Poliovirus_50")
+);
+const Denguevirus_50 = React.lazy(
+  () => import("../components/GLTFs/viruses/Denguevirus_50")
+);
+const HPV_100 = React.lazy(() => import("../components/GLTFs/viruses/HPV_100"));
 // antibodies
-import Antibody_hiv_10 from "../components/GLTFs/antibodies/Antibody_hiv_10";
-import Antibody_herpes from "../components/GLTFs/antibodies/Antibody_herpes";
+const Antibody_hiv_10 = React.lazy(
+  () => import("../components/GLTFs/antibodies/Antibody_hiv_10")
+);
+const Antibody_herpes = React.lazy(
+  () => import("../components/GLTFs/antibodies/Antibody_herpes")
+);
 // nanotech
-import Protein_cage_20 from "../components/GLTFs/nanotech/Protein_cage_20";
-import Dna_origami_object_80 from "../components/GLTFs/nanotech/Dna_origami_object_80";
-import Self_assembled_3d_dna_crystals_13 from "../components/GLTFs/nanotech/Self_assembled_3d_dna_crystals_13";
-import Co_assembling_protein_dna_nanowires_13 from "../components/GLTFs/nanotech/Co_assembling_protein_dna_nanowires_13";
-import Dna_origami_16_helix_bundle_50 from "../components/GLTFs/nanotech/Dna_origami_16_helix_bundle_50";
-import Six_fold_symmetric_dna_scaffold_10 from "../components/GLTFs/nanotech/Six_fold_symmetric_dna_scaffold_10";
-import Computationally_designed_mini_tetraloop_tetraloop_receptor_10 from "../components/GLTFs/nanotech/Computationally_designed_mini_tetraloop_tetraloop_receptor_10";
-import A_circularly_permuted_pdu_a_forming_an_icosahedral_cage_20 from "../components/GLTFs/nanotech/A_circularly_permuted_pdu_a_forming_an_icosahedral_cage_20";
-import Color_device_state_a_10 from "../components/GLTFs/nanotech/Color_device_state_a_10";
-import Octahedral_nanoparticle_20 from "../components/GLTFs/nanotech/Octahedral_nanoparticle_20";
-import Tetrahedral_nanoparticle_20 from "../components/GLTFs/nanotech/Tetrahedral_nanoparticle_20";
-import Icosahedral_nanoparticle_20 from "../components/GLTFs/nanotech/Icosahedral_nanoparticle_20";
+const Protein_cage_20 = React.lazy(
+  () => import("../components/GLTFs/nanotech/Protein_cage_20")
+);
+const Dna_origami_object_80 = React.lazy(
+  () => import("../components/GLTFs/nanotech/Dna_origami_object_80")
+);
+const Self_assembled_3d_dna_crystals_13 = React.lazy(
+  () => import("../components/GLTFs/nanotech/Self_assembled_3d_dna_crystals_13")
+);
+const Co_assembling_protein_dna_nanowires_13 = React.lazy(
+  () =>
+    import(
+      "../components/GLTFs/nanotech/Co_assembling_protein_dna_nanowires_13"
+    )
+);
+const Dna_origami_16_helix_bundle_50 = React.lazy(
+  () => import("../components/GLTFs/nanotech/Dna_origami_16_helix_bundle_50")
+);
+const Six_fold_symmetric_dna_scaffold_10 = React.lazy(
+  () =>
+    import("../components/GLTFs/nanotech/Six_fold_symmetric_dna_scaffold_10")
+);
+const Computationally_designed_mini_tetraloop_tetraloop_receptor_10 = React.lazy(
+  () =>
+    import(
+      "../components/GLTFs/nanotech/Computationally_designed_mini_tetraloop_tetraloop_receptor_10"
+    )
+);
+const A_circularly_permuted_pdu_a_forming_an_icosahedral_cage_20 = React.lazy(
+  () =>
+    import(
+      "../components/GLTFs/nanotech/A_circularly_permuted_pdu_a_forming_an_icosahedral_cage_20"
+    )
+);
+const Color_device_state_a_10 = React.lazy(
+  () => import("../components/GLTFs/nanotech/Color_device_state_a_10")
+);
+const Octahedral_nanoparticle_20 = React.lazy(
+  () => import("../components/GLTFs/nanotech/Octahedral_nanoparticle_20")
+);
+const Tetrahedral_nanoparticle_20 = React.lazy(
+  () => import("../components/GLTFs/nanotech/Tetrahedral_nanoparticle_20")
+);
+const Icosahedral_nanoparticle_20 = React.lazy(
+  () => import("../components/GLTFs/nanotech/Icosahedral_nanoparticle_20")
+);
 // cells
-import Eosinophil from "../components/GLTFs/cells/Eosinophil";
-import Basophil from "../components/GLTFs/cells/Basophil";
-import Lymphocyte from "../components/GLTFs/cells/Lymphocyte";
+const Eosinophil = React.lazy(
+  () => import("../components/GLTFs/cells/Eosinophil")
+);
+const Basophil = React.lazy(() => import("../components/GLTFs/cells/Basophil"));
+const Lymphocyte = React.lazy(
+  () => import("../components/GLTFs/cells/Lymphocyte")
+);
 // other
-import Cell_membrane from "../components/GLTFs/other/Cell_membrane";
+const Cell_membrane = React.lazy(
+  () => import("../components/GLTFs/other/Cell_membrane")
+);
 
 export const PROTEIN_TYPES = {
   antibody: "antibody",

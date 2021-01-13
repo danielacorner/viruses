@@ -69,15 +69,15 @@ function InteractiveParticle(props) {
     set({ selectedProtein: { ...props, api } });
   // const isTabletOrLarger = useMediaQuery(`(min-width: ${BREAKPOINT_MOBILE}px)`);
   const tooBigToRender = scale * radius > worldRadius / 3;
-  const tooSmallToRender = scale * radius < worldRadius / 60;
+  const tooSmallToRender = scale * radius < worldRadius / 50;
+  const shouldRender = !(tooBigToRender || tooSmallToRender);
+  // TODO: lazy-load components?
   return (
     <mesh
       visible={!(tooBigToRender || tooSmallToRender)}
       ref={ref}
       scale={[scale, scale, scale]}
-      {...(tooBigToRender || tooSmallToRender
-        ? {}
-        : { onPointerDown: handleSetSelectedProtein })}
+      {...(shouldRender ? { onPointerDown: handleSetSelectedProtein } : {})}
     >
       <Component />
     </mesh>
