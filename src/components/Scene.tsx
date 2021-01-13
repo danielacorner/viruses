@@ -29,6 +29,7 @@ const Scene = () => {
         {/* {paused && <DisableRender />} */}
 
         {PROTEINS.map((protein) => {
+          // TODO: lazy-load proteins which are too small?
           return <ProteinGroup key={protein.name} {...protein} />;
         })}
         <Water />
