@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { LinearProgress } from "@material-ui/core";
 import { useProgress } from "@react-three/drei";
 import styled from "styled-components/macro";
+import { render } from "react-dom";
+import MemoryStats from "react-memorystats";
 
 const StyledDiv = styled.div``;
 export function LoadingIndicator() {
   const { active, progress, errors, item, loaded, total } = useProgress();
+
+  // show memorystats once we're done loading
+  const alreadyRendered = useRef(false);
+  useEffect(() => {
+    if (progress === 100 && !alreadyRendered.current) {
+      alreadyRendered.current = true;
+      render(
+        <MemoryStats corner="topLeft" />,
+        document.querySelector("#memoryStats")
+      );
+    }
+  }, [progress]);
 
   return errors.length > 0 ? (
     JSON.stringify(errors)
