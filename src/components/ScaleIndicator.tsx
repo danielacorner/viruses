@@ -63,6 +63,22 @@ export function ScaleIndicator() {
     }))
     .slice(1) as Tick[];
 
+  // create 10 smaller! ticks under the bottom tick
+  const ticksLeftSmaller: Tick[] = [...new Array(scale > 0.001 ? 10 : 0)]
+    .map((_, idx) => ({
+      name: `${idx}0 Å`,
+      position: [wr, idx * 0.01 * scaled * wd - wr, wr],
+      side: "left",
+    }))
+    .slice(1) as Tick[];
+  const ticksRightSmaller: Tick[] = [...new Array(scale > 0.001 ? 10 : 0)]
+    .map((_, idx) => ({
+      name: `${idx} nm`,
+      position: [wr, idx * 0.01 * scaled * wd - wr, wr],
+      side: "right",
+    }))
+    .slice(1) as Tick[];
+
   return (
     <>
       <EdgeLines {...{ commonProps }} />
@@ -74,8 +90,11 @@ export function ScaleIndicator() {
         ...ticksRightBig,
         ...ticksLeftSmall,
         ...ticksRightSmall,
+        ...ticksLeftSmaller,
+        ...ticksRightSmaller,
       ].map((t) =>
-        t.position[1] > worldRadius ? null : (
+        t.position[1] > worldRadius ||
+        t.position[1] < -worldRadius * 0.97 ? null : (
           <React.Fragment key={t.name}>
             <group>
               <Line
