@@ -1,10 +1,8 @@
 import { useMount } from "../../utils/utils";
 import { useStore } from "../../store";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { useFrame } from "react-three-fiber";
-
-type Vector = [number, number, number];
-type Quaternion = [number, number, number, number];
+import { Quaternion, Vector } from "../../types";
 
 export function usePauseUnpause({ api, instanced = false, numInstances = 0 }) {
   // current particle velocity

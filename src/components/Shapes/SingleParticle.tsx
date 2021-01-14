@@ -1,13 +1,14 @@
 import React, { useRef } from "react";
 import { useConvexPolyhedron } from "@react-three/cannon";
-import { useFrame } from "react-three-fiber";
 import { useJitterParticle } from "./useJitterParticle";
 import { GlobalStateType, useStore } from "../../store";
 import * as THREE from "three";
 import { usePauseUnpause } from "./usePauseUnpause";
-import { useChangeVelocityWhenTemperatureChanges } from "./useChangeVelocityWhenTemperatureChanges";
-import { getRandStartPosition } from "./particleUtils";
-import { useShuffleParticle } from "./useShuffleParticle";
+import {
+  useChangeVelocityWhenScaleChanges,
+  useChangeVelocityWhenTemperatureChanges,
+} from "./useChangeVelocityWhenTemperatureChanges";
+import { useMount } from "../../utils/utils";
 
 export function SingleParticle(props) {
   // TODO: make NonInteractiveParticle instanced for better performance?
@@ -33,8 +34,6 @@ function InteractiveParticle(props) {
     paused,
     radius,
   } = props;
-  // TODO:
-  // const temperature=useStore(state=>state.temperature)
 
   // https://codesandbox.io/s/r3f-convex-polyhedron-cnm0s?from-embed=&file=/src/index.js:1639-1642
 
@@ -45,7 +44,6 @@ function InteractiveParticle(props) {
     // https://threejs.org/docs/scenes/geometry-browser.html#IcosahedronBufferGeometry
     args: new THREE.IcosahedronGeometry(1, detail),
   }));
-  // usePrevPosition(api);
 
   usePauseUnpause({
     api,
@@ -57,9 +55,15 @@ function InteractiveParticle(props) {
     api,
   });
 
-  useShuffleParticle({ ref, api });
-
   useChangeVelocityWhenTemperatureChanges({ mass, api });
+  useChangeVelocityWhenScaleChanges({ mass, api });
+
+  // set temperature low to start...
+  useMount(() => {
+    setTimeout(() => {
+      set({ temperature: 0.001 });
+    }, 1000);
+  });
 
   const worldRadius = useStore((state: GlobalStateType) => state.worldRadius);
   const scale = useStore((state: GlobalStateType) => state.scale);

@@ -23,7 +23,8 @@ export function TemperatureControls() {
               set({ temperature: newValue });
             }}
             min={0}
-            max={100}
+            max={1}
+            step={0.0000001}
             value={temperature}
           />
         </div>

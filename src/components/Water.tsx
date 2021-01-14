@@ -9,6 +9,7 @@ const NUM_INSTANCES = 50;
 
 export function Water() {
   const worldRadius = useStore((state) => state.worldRadius);
+  const selectedProtein = useStore((state) => state.selectedProtein);
   const mass = 18.0153 / 1000; /* 18.0153 daltons */
   const paused = useStore((s) => s.paused);
   const [ref, api] = useSphere((index) => ({
@@ -33,7 +34,7 @@ export function Water() {
       <meshStandardMaterial
         color={new THREE.Color("#6f6dda")}
         transparent={true}
-        opacity={0.3}
+        opacity={selectedProtein ? 0.1 : 0.3}
       />
     </instancedMesh>
   );

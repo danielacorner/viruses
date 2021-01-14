@@ -34,36 +34,43 @@ export function useJitterInstanceParticle({
   });
 }
 
-// type WorkerVec = {
-//   set: (x: number, y: number, z: number) => void;
-//   copy: ({ x, y, z }: THREE.Vector3 | THREE.Euler) => void;
-//   subscribe: (callback: (value: number[]) => void) => void;
-// };
-
-export function useJitterParticle({ mass, ref, api = {} as any }) {
-  const { temperature } = usePhysicsProps(mass);
+// api
+type WorkerVec = {
+  set: (x: number, y: number, z: number) => void;
+  copy: ({ x, y, z }: THREE.Vector3 | THREE.Euler) => void;
+  subscribe: (callback: (value: number[]) => void) => void;
+};
+const ROTATION_JITTER_COEFF = 0.1;
+const POSITION_JITTER_COEFF = 100;
+export function useJitterParticle({ mass, ref, api = {} as any | WorkerVec }) {
+  const { velocity } = usePhysicsProps(mass);
   const paused = useStore((s) => s.paused);
+  const scale = useStore((s) => s.scale);
   // ? ONLY when the temperature changes, change the velocity
 
-  const jitterPosition = temperature * 0.001; // ???
-  const jitterRotation = temperature * 0.005; // ???
-  const rPos = () => randBetween(-jitterPosition, jitterPosition);
-  const rRot = () => randBetween(-jitterRotation, jitterRotation);
+  const jitterPosition = velocity * POSITION_JITTER_COEFF * scale ** 3; // position changes with scale^3
+  const jitterRotation = velocity * ROTATION_JITTER_COEFF; // rotation doesn't change with scale
+  const rPos = () => randBetween(-jitterPosition, jitterPosition, true);
+  const rRot = () => randBetween(-jitterRotation, jitterRotation, true);
 
   useFrame(() => {
-    if (paused) {
+    if (paused || !api.position) {
       return;
     }
     if (ref.current) {
-      // jitter rotation
-      ref.current.rotation.x = ref.current.rotation.x + rRot();
-      ref.current.rotation.y = ref.current.rotation.y + rRot();
-      ref.current.rotation.z = ref.current.rotation.z + rRot();
+      // jitter position
+      const { x, y, z } = ref.current.position;
+      api.position.set(...[x, y, z].map((p) => p + rPos()));
+      // ref.current.position.x = ref.current.position.x + rPos();
+      // ref.current.position.y = ref.current.position.y + rPos();
+      // ref.current.position.z = ref.current.position.z + rPos();
 
-      // // jitter position
-      ref.current.position.x = ref.current.position.x + rPos();
-      ref.current.position.y = ref.current.position.y + rPos();
-      ref.current.position.z = ref.current.position.z + rPos();
+      // jitter rotation
+      const { x: rx, y: ry, z: rz } = ref.current.position;
+      api.rotation.set(...[rx, ry, rz].map((r) => r + rRot()));
+      // ref.current.rotation.x = ref.current.rotation.x + rRot();
+      // ref.current.rotation.y = ref.current.rotation.y + rRot();
+      // ref.current.rotation.z = ref.current.rotation.z + rRot();
     }
   });
 }
