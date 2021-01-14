@@ -45,7 +45,11 @@ export function LoadingIndicator() {
         </div>{" "}
         <div>loading asset: {item}</div>
       </StyledDiv>
-      <LinearProgress variant="determinate" value={progress} />
+      <LinearProgress
+        {...(loaded === 0
+          ? { variant: "indeterminate" }
+          : { variant: "determinate", value: progress })}
+      />
     </>
   ) : null;
 }
