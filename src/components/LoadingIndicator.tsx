@@ -5,14 +5,17 @@ import styled from "styled-components/macro";
 import { render } from "react-dom";
 import MemoryStats from "react-memorystats";
 
-const StyledDiv = styled.div``;
 export function LoadingIndicator() {
   const { active, progress, errors, item, loaded, total } = useProgress();
 
   // show memorystats once we're done loading
   const alreadyRendered = useRef(false);
   useEffect(() => {
-    if (progress === 100 && !alreadyRendered.current) {
+    if (
+      process.env.NODE_ENV === "development" &&
+      progress === 100 &&
+      !alreadyRendered.current
+    ) {
       alreadyRendered.current = true;
       render(
         <MemoryStats corner="topLeft" />,
@@ -22,29 +25,19 @@ export function LoadingIndicator() {
   }, [progress]);
 
   return errors.length > 0 ? (
-    JSON.stringify(errors)
+    <div
+      style={{ maxWidth: "100vw", wordBreak: "break-all", padding: "0 6em" }}
+    >
+      {JSON.stringify(errors)}
+    </div>
   ) : active ? (
     <>
-      <StyledDiv
-        css={`
-          position: fixed;
-          top: 4px;
-          width: fit-content;
-          left: 0;
-          right: 0;
-          display: grid;
-          place-items: end;
-          place-content: center;
-          z-index: 999;
-          grid-template-columns: 20vw auto;
-          grid-gap: 10vw;
-        `}
-      >
+      <LoadingIndicatorStyles>
         <div>
           {loaded}/{total} models loaded
         </div>{" "}
         <div>loading asset: {item}</div>
-      </StyledDiv>
+      </LoadingIndicatorStyles>
       <LinearProgress
         {...(loaded === 0
           ? { variant: "indeterminate" }
@@ -53,6 +46,21 @@ export function LoadingIndicator() {
     </>
   ) : null;
 }
+
+const LoadingIndicatorStyles = styled.div`
+  position: fixed;
+  max-width: 100vw;
+  top: 4px;
+  width: fit-content;
+  left: 0;
+  right: 0;
+  display: grid;
+  place-items: end;
+  place-content: center;
+  z-index: 999;
+  grid-template-columns: 20vw auto;
+  grid-gap: 10vw;
+`;
 
 // function useInterval({ cb, interval }) {
 //   useMount(() => {
