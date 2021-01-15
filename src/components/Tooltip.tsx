@@ -149,11 +149,9 @@ function TooltipContent({
         {maximized ? (
           <p className="authors">{selectedProtein.authors}</p>
         ) : null}
-        <p>
-          {selectedProtein.pubmedAbstract.length > 100 && !maximized
-            ? selectedProtein.pubmedAbstract.slice(0, 100) + "..."
-            : selectedProtein.pubmedAbstract}
-        </p>
+        {selectedProtein.pubmedAbstract.length > 100 && !maximized
+          ? selectedProtein.pubmedAbstract.slice(0, 100) + "..."
+          : selectedProtein.pubmedAbstract}
       </div>
     </div>
   );
@@ -181,7 +179,8 @@ const TooltipStyles = styled.div`
     box-sizing: border-box;
     color: black;
     display: grid;
-    grid-template-rows: auto auto 1fr ${(props) => (props.maximized ? 12 : 3)}em;
+    grid-template-rows: auto auto 1fr ${(props) => (props.maximized ? 12 : 4)}em;
+    grid-gap: 0.5em;
     padding: 1em;
     height: 100%;
     position: relative;

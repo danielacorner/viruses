@@ -91,18 +91,18 @@ const Tetrahedral_nanoparticle_20 = React.lazy(
 const Icosahedral_nanoparticle_20 = React.lazy(
   () => import("../components/GLTFs/nanotech/Icosahedral_nanoparticle_20")
 );
-// cells
-const Eosinophil = React.lazy(
-  () => import("../components/GLTFs/cells/Eosinophil")
-);
-const Basophil = React.lazy(() => import("../components/GLTFs/cells/Basophil"));
-const Lymphocyte = React.lazy(
-  () => import("../components/GLTFs/cells/Lymphocyte")
-);
-// other
-const Cell_membrane = React.lazy(
-  () => import("../components/GLTFs/other/Cell_membrane")
-);
+// // cells
+// const Eosinophil = React.lazy(
+//   () => import("../components/GLTFs/cells/Eosinophil")
+// );
+// const Basophil = React.lazy(() => import("../components/GLTFs/cells/Basophil"));
+// const Lymphocyte = React.lazy(
+//   () => import("../components/GLTFs/cells/Lymphocyte")
+// );
+// // other
+// const Cell_membrane = React.lazy(
+//   () => import("../components/GLTFs/other/Cell_membrane")
+// );
 
 export const PROTEIN_TYPES = {
   antibody: "antibody",

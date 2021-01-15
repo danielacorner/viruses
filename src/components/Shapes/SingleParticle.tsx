@@ -21,18 +21,18 @@ export function SingleParticle(props) {
 /** interacts with other particles using @react-three/cannon */
 function InteractiveParticle(props) {
   const {
-    pathToGLTF,
     position,
-    atomCount,
-    PDBUrl,
     Component,
-    pathToImage,
-    name,
-    type,
     mass,
     numIcosahedronFaces,
-    paused,
     radius,
+    // pathToGLTF,
+    // atomCount,
+    // PDBUrl,
+    // pathToImage,
+    // name,
+    // type,
+    // paused,
   } = props;
 
   // https://codesandbox.io/s/r3f-convex-polyhedron-cnm0s?from-embed=&file=/src/index.js:1639-1642

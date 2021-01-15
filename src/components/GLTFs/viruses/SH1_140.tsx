@@ -7,7 +7,7 @@ import { useGLTF } from "@react-three/drei/useGLTF";
 
 export default function Model(props) {
   const group = useRef();
-  const { nodes, materials } = useGLTF("/models/viruses/SH1_140.glb") as any;
+  const { nodes } = useGLTF("/models/viruses/SH1_140.glb") as any;
   return (
     <group ref={group} {...props} dispose={null}>
       <group position={[-549.65, -485.95, -536.26]}>
