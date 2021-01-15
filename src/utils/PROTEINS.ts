@@ -20,9 +20,9 @@ const Nodavirus_40_radial = React.lazy(
   () => import("../components/GLTFs/viruses/Nodavirus_40_radial")
 );
 const SH1_140 = React.lazy(() => import("../components/GLTFs/viruses/SH1_140"));
-const Haloarcula_californiae_140 = React.lazy(
-  () => import("../components/GLTFs/viruses/Haloarcula_californiae_140")
-);
+// const Haloarcula_californiae_140 = React.lazy(
+//   () => import("../components/GLTFs/viruses/Haloarcula_californiae_140")
+// );
 const Varicella_zoster_300 = React.lazy(
   () => import("../components/GLTFs/viruses/Varicella_zoster_300")
 );
@@ -336,24 +336,24 @@ export const PROTEINS: Protein[] = [
     pubmedAbstract:
       "Rice dwarf virus (RDV), the causal agent of rice dwarf disease, is a member of the genus Phytoreovirus in the family Reoviridae. RDV is a double-shelled virus with a molecular mass of approximately 70 million Dalton. This virus is widely prevalent and is one of the viruses that cause the most economic damage in many Asian countries. The atomic structure of RDV was determined at 3.5 A resolution by X-ray crystallography. The double-shelled structure consists of two different proteins, the core protein P3 and the outer shell protein P8. The atomic structure shows structural and electrostatic complementarities between both homologous (P3-P3 and P8-P8) and heterologous (P3-P8) interactions, as well as overall conformational changes found in P3-P3 dimer caused by the insertion of amino-terminal loop regions of one of the P3 protein into the other. These interactions suggest how the 900 protein components are built into a higher-ordered virus core structure.",
   },
-  {
-    Component: Haloarcula_californiae_140,
-    name: "Haloarcula californiae",
-    type: PROTEIN_TYPES.virus,
-    PDBUrl: "https://www.rcsb.org/structure/6H9C",
-    mass: 648.0,
-    atomCount: 43691,
-    radius: 390,
-    numIcosahedronFaces: 20,
-    numAsymmetricUnits: 20,
-    pathToGLTF: "/models/viruses/Haloarcula_californiae_140.glb",
-    pathToImage: "/models/viruses/Haloarcula hispanica.png",
-    interactive: true,
-    authors:
-      "Santos-Perez, I., Charro, D., Gil-Carton, D., Azkargorta, M., Elortza, F., Bamford, D.H., Oksanen, H.M., Abrescia, N.G.A.",
-    pubmedAbstract:
-      "The vertical double β-barrel major capsid protein (MCP) fold, fingerprint of the PRD1-adeno viral lineage, is widespread in many viruses infecting organisms across the three domains of life. The discovery of PRD1-like viruses with two MCPs challenged the known assembly principles. Here, we present the cryo-electron microscopy (cryo-EM) structures of the archaeal, halophilic, internal membrane-containing Haloarcula californiae icosahedral virus 1 (HCIV-1) and Haloarcula hispanica icosahedral virus 2 (HHIV-2) at 3.7 and 3.8 Å resolution, respectively. Our structures reveal proteins located beneath the morphologically distinct two- and three-tower capsomers and homopentameric membrane proteins at the vertices that orchestrate the positioning of pre-formed vertical single β-barrel MCP heterodimers. The cryo-EM based structures together with the proteomics data provide insights into the assembly mechanism of this type of viruses and into those with membrane-less double β-barrel MCPs.",
-  },
+  // {
+  //   Component: Haloarcula_californiae_140,
+  //   name: "Haloarcula californiae",
+  //   type: PROTEIN_TYPES.virus,
+  //   PDBUrl: "https://www.rcsb.org/structure/6H9C",
+  //   mass: 648.0,
+  //   atomCount: 43691,
+  //   radius: 390,
+  //   numIcosahedronFaces: 20,
+  //   numAsymmetricUnits: 20,
+  //   pathToGLTF: "/models/viruses/Haloarcula_californiae_140.glb",
+  //   pathToImage: "/models/viruses/Haloarcula hispanica.png",
+  //   interactive: true,
+  //   authors:
+  //     "Santos-Perez, I., Charro, D., Gil-Carton, D., Azkargorta, M., Elortza, F., Bamford, D.H., Oksanen, H.M., Abrescia, N.G.A.",
+  //   pubmedAbstract:
+  //     "The vertical double β-barrel major capsid protein (MCP) fold, fingerprint of the PRD1-adeno viral lineage, is widespread in many viruses infecting organisms across the three domains of life. The discovery of PRD1-like viruses with two MCPs challenged the known assembly principles. Here, we present the cryo-electron microscopy (cryo-EM) structures of the archaeal, halophilic, internal membrane-containing Haloarcula californiae icosahedral virus 1 (HCIV-1) and Haloarcula hispanica icosahedral virus 2 (HHIV-2) at 3.7 and 3.8 Å resolution, respectively. Our structures reveal proteins located beneath the morphologically distinct two- and three-tower capsomers and homopentameric membrane proteins at the vertices that orchestrate the positioning of pre-formed vertical single β-barrel MCP heterodimers. The cryo-EM based structures together with the proteomics data provide insights into the assembly mechanism of this type of viruses and into those with membrane-less double β-barrel MCPs.",
+  // },
   {
     Component: Varicella_zoster_300,
     name: "Chicken Pox (Varicella Zoster)",

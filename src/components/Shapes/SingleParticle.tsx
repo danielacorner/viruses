@@ -65,20 +65,16 @@ function InteractiveParticle(props) {
     }, 1000);
   });
 
-  const worldRadius = useStore((state: GlobalStateType) => state.worldRadius);
   const scale = useStore((state: GlobalStateType) => state.scale);
   const set = useStore((state: GlobalStateType) => state.set);
 
   const handleSetSelectedProtein = () =>
     set({ selectedProtein: { ...props, api } });
-  // const isTabletOrLarger = useMediaQuery(`(min-width: ${BREAKPOINT_MOBILE}px)`);
-  const tooBigToRender = scale * radius > worldRadius / 3;
-  const tooSmallToRender = scale * radius < worldRadius / 50;
-  const shouldRender = !(tooBigToRender || tooSmallToRender);
+  const shouldRender = useShouldRenderParticle(radius);
   // TODO: lazy-load components?
   return (
     <mesh
-      visible={!(tooBigToRender || tooSmallToRender)}
+      visible={shouldRender}
       ref={ref}
       scale={[scale, scale, scale]}
       {...(shouldRender ? { onPointerDown: handleSetSelectedProtein } : {})}
@@ -86,6 +82,15 @@ function InteractiveParticle(props) {
       <Component />
     </mesh>
   );
+}
+
+function useShouldRenderParticle(radius: number) {
+  const scale = useStore((state: GlobalStateType) => state.scale);
+  const worldRadius = useStore((state: GlobalStateType) => state.worldRadius);
+
+  const tooBigToRender = scale * radius > worldRadius / 3;
+  const tooSmallToRender = scale * radius < worldRadius / 40;
+  return !(tooBigToRender || tooSmallToRender);
 }
 
 /** doesn't interact with other particles (passes through them) */
