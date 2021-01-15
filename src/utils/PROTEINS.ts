@@ -1,6 +1,9 @@
 import React from "react";
 
 // viruses
+// viruses
+// viruses
+// viruses
 const Adenovirus_160_outer = React.lazy(
   () => import("../components/GLTFs/viruses/Adenovirus_160_outer")
 );
@@ -37,6 +40,21 @@ const Denguevirus_50 = React.lazy(
   () => import("../components/GLTFs/viruses/Denguevirus_50")
 );
 const HPV_100 = React.lazy(() => import("../components/GLTFs/viruses/HPV_100"));
+const Bacteriophage_P68_120 = React.lazy(
+  () => import("../components/GLTFs/viruses/Bacteriophage_P68_120")
+);
+const Bacteriophage_phi29_prohead_80 = React.lazy(
+  () => import("../components/GLTFs/viruses/Bacteriophage_phi29_prohead_80")
+);
+const Virion_of_native_gene_transfer_agent_gta_particle_120 = React.lazy(
+  () =>
+    import(
+      "../components/GLTFs/viruses/Virion_of_native_gene_transfer_agent_gta_particle_120"
+    )
+);
+// antibodies
+// antibodies
+// antibodies
 // antibodies
 const Antibody_hiv_10 = React.lazy(
   () => import("../components/GLTFs/antibodies/Antibody_hiv_10")
@@ -44,6 +62,9 @@ const Antibody_hiv_10 = React.lazy(
 const Antibody_herpes = React.lazy(
   () => import("../components/GLTFs/antibodies/Antibody_herpes")
 );
+// nanotech
+// nanotech
+// nanotech
 // nanotech
 const Protein_cage_20 = React.lazy(
   () => import("../components/GLTFs/nanotech/Protein_cage_20")
@@ -153,12 +174,66 @@ export const PROTEINS: Protein[] = [
   // VIRUSES
   // VIRUSES
   {
+    Component: Virion_of_native_gene_transfer_agent_gta_particle_120,
+    name: "Bacteriophage phi29 prohead",
+    type: PROTEIN_TYPES.virus,
+    PDBUrl: "https://www.rcsb.org/structure/6TBA",
+    mass: 8765.99,
+    radius: 375, // measured using PDB 3d viewer e.g. https://www.rcsb.org/3d-view/6CGR/1
+    atomCount: 465916,
+    numIcosahedronFaces: 20,
+    numAsymmetricUnits: 20,
+    pathToGLTF:
+      "/models/viruses/virion_of_native_gene_transfer_agent_gta_particle_120.glb",
+    pathToImage:
+      "/models/viruses/virion_of_native_gene_transfer_agent_gta_particle.webp",
+    interactive: true,
+    authors:
+      "Bardy, P., Fuzik, T., Hrebik, D., Pantucek, R., Thomas Beatty, J., Plevka, P.",
+    pubmedAbstract:
+      "Alphaproteobacteria, which are the most abundant microorganisms of temperate oceans, produce phage-like particles called gene transfer agents (GTAs) that mediate lateral gene exchange. However, the mechanism by which GTAs deliver DNA into cells is unknown. Here we present the structure of the GTA of Rhodobacter capsulatus (RcGTA) and describe the conformational changes required for its DNA ejection. The structure of RcGTA resembles that of a tailed phage, but it has an oblate head shortened in the direction of the tail axis, which limits its packaging capacity to less than 4,500 base pairs of linear double-stranded DNA. The tail channel of RcGTA contains a trimer of proteins that possess features of both tape measure proteins of long-tailed phages from the family Siphoviridae and tail needle proteins of short-tailed phages from the family Podoviridae. The opening of a constriction within the RcGTA baseplate enables the ejection of DNA into bacterial periplasm.",
+  },
+  {
+    Component: Bacteriophage_phi29_prohead_80,
+    name: "Bacteriophage phi29 prohead",
+    type: PROTEIN_TYPES.virus,
+    PDBUrl: "https://www.rcsb.org/structure/6QVK",
+    mass: 16616.29,
+    radius: 415, // measured using PDB 3d viewer e.g. https://www.rcsb.org/3d-view/6CGR/1
+    atomCount: 1161605,
+    numIcosahedronFaces: 20,
+    numAsymmetricUnits: 20,
+    pathToGLTF: "/models/viruses/bacteriophage_phi29_prohead_80.glb",
+    pathToImage: "/models/viruses/bacteriophage_phi29_prohead.webp",
+    interactive: true,
+    authors: "Xu, J., Wang, D., Gui, M., Xiang, Y.",
+    pubmedAbstract:
+      "The mature virion of the tailed bacteriophage ϕ29 is an ~33 MDa complex that contains more than 450 subunits of seven structural proteins assembling into a prolate head and a short non-contractile tail. Here, we report the near-atomic structures of the ϕ29 pre-genome packaging head (prohead), the mature virion and the genome-emptied virion. Structural comparisons suggest local rotation or oscillation of the head-tail connector upon DNA packaging and release. Termination of the DNA packaging occurs through pressure-dependent correlative positional and conformational changes in the connector. The funnel-shaped tail lower collar attaches the expanded narrow end of the connector and has a 180-Å long, 24-strand β barrel narrow stem tube that undergoes conformational changes upon genome release. The appendages form an interlocked assembly attaching the tail around the collar. The membrane active long loops at the distal end of the tail knob exit during the late stage of infection and form the cone-shaped tip of a largely hydrophobic helix barrel, prepared for membrane penetration.",
+  },
+  {
+    Component: Bacteriophage_P68_120,
+    name: "Bacteriophage P68",
+    type: PROTEIN_TYPES.virus,
+    PDBUrl: "https://www.rcsb.org/structure/6Q3G",
+    mass: 20029.04,
+    radius: 300, // measured using PDB 3d viewer e.g. https://www.rcsb.org/3d-view/6CGR/1
+    atomCount: 1074183,
+    numIcosahedronFaces: 20,
+    numAsymmetricUnits: 20,
+    pathToGLTF: "/models/viruses/bacteriophage_P68_120.glb",
+    pathToImage: "/models/viruses/bacteriophage_P68.webp",
+    interactive: true,
+    authors:
+      "Hrebik, D., Stverakova, D., Skubnik, K., Fuzik, T., Pantucek, R., Plevka, P.",
+    pubmedAbstract:
+      "Phages infecting Staphylococcus aureus can be used as therapeutics against antibiotic-resistant bacterial infections. However, there is limited information about the mechanism of genome delivery of phages that infect Gram-positive bacteria. Here, we present the structures of native S. aureus phage P68, genome ejection intermediate, and empty particle. The P68 head contains 72 subunits of inner core protein, 15 of which bind to and alter the structure of adjacent major capsid proteins and thus specify attachment sites for head fibers. Unlike in the previously studied phages, the head fibers of P68 enable its virion to position itself at the cell surface for genome delivery. The unique interaction of one end of P68 DNA with one of the 12 portal protein subunits is disrupted before the genome ejection. The inner core proteins are released together with the DNA and enable the translocation of phage genome across the bacterial membrane into the cytoplasm.",
+  },
+  {
     Component: Adenovirus_160_outer,
     name: "Adenovirus",
     type: PROTEIN_TYPES.virus,
     PDBUrl: "https://www.rcsb.org/structure/6CGV",
     mass: 1532.27,
-    // atomCount: 99723, // PDB
     radius: 450, // measured using PDB 3d viewer e.g. https://www.rcsb.org/3d-view/6CGR/1
     atomCount: 200268, // ChimeraX ??
     numIcosahedronFaces: 20,
