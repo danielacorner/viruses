@@ -51,15 +51,6 @@ const ScaleControlsStyles = styled.div`
   bottom: 124px;
   height: calc(100vh - 248px);
   min-height: 50vh;
-  ${(props) =>
-    props.isLandscape
-      ? `
-    min-height: unset;
-    height: unset;
-    height: calc(100vw - 248px);
-    min-width: 50vh;
-    `
-      : ""}
   .grid {
     display: grid;
     justify-items: center;
