@@ -19,6 +19,9 @@ code {
   line-height: 1.3em;
   font-size: 1.2em;
 }
+.reactour__close {
+  transform: scale(1.5);
+}
 [data-tour-elem="controls"] {
   transform: scale(1.5);
   transform-origin: left;

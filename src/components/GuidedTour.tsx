@@ -132,11 +132,14 @@ const TOUR_STEPS = [
   {
     selector: "[class*='ScaleControlsStyles']",
     content: () => (
-      <div>
-        <div>
-          🔬 When you change the scale, different particles come into view ⚛
-        </div>
-        {/* <div style={{ fontSize: "1rem" }}>(they may need time to load)</div> */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "3em auto",
+        }}
+      >
+        <p>🔬⚛</p>
+        <div>When you change the scale, different particles come into view</div>
       </div>
     ),
   },
@@ -144,8 +147,8 @@ const TOUR_STEPS = [
     selector: "[class*='BottomControls']",
     content: () => (
       <div>
-        <div>Control the temperature 🔥</div>
-        <div>⏸ or pause the simulation </div>
+        <p>Control the temperature 🔥</p>
+        <div>or pause ⏸ the simulation </div>
       </div>
     ),
   },
@@ -155,6 +158,7 @@ const TOUR_STEPS = [
       const isTouchDevice = getIsTouchDevice();
       return (
         <div>
+          <p style={{ textAlign: "center" }}>👆➡</p>
           <div>Drag on scene to orbit, </div>
           <div>{isTouchDevice ? "pinch" : "scroll"} to zoom, </div>
           <div>
