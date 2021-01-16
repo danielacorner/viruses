@@ -105,7 +105,7 @@ function TooltipContent({
         // have 720p image for protein? -> add "_720" before .webp
         !selectedProtein.pathToImage.includes("faustovirus") &&
         !selectedProtein.pathToImage.includes("varicella") &&
-        !(selectedProtein.pathToImage === "hiv.webp") &&
+        !selectedProtein.pathToImage.includes("hiv.webp") &&
         !selectedProtein.pathToImage.includes("sh1")
           ? `${selectedProtein.pathToImage.slice(0, -5)}_720.webp`
           : selectedProtein.pathToImage
@@ -118,12 +118,18 @@ function TooltipContent({
     <div
       style={
         maximized && isDesktopOrLarger
-          ? { display: "grid", gridTemplateColumns: "calc(70vw - 128px) auto" }
+          ? {
+              display: "grid",
+              gridTemplateColumns: "calc(70vw - 128px) auto",
+              height: "100%",
+            }
           : {}
       }
     >
       {maximized && isDesktopOrLarger ? (
-        <ParticleImage style={{ width: "100%", height: "auto" }} />
+        <ParticleImage
+          style={{ width: "100%", height: "100%", objectFit: "contain" }}
+        />
       ) : null}
       <div className="tooltipContent">
         {maximized ? <BtnClose /> : null}
