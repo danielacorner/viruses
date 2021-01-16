@@ -6,6 +6,7 @@ import { IconButton, Typography, useMediaQuery } from "@material-ui/core";
 import { BREAKPOINT_MOBILE } from "./utils/constants";
 import { ShuffleOutlined } from "@material-ui/icons";
 import { useStore } from "./store";
+import { getIsTouchDevice } from "./getIsTouchDevice";
 
 const StyledDiv = styled.div``;
 export default function BottomControls() {
@@ -18,34 +19,34 @@ export default function BottomControls() {
         left: 30vw;
         right: 32px;
         display: grid;
-        grid-template-columns: auto 1fr;
+        grid-template-columns: 1fr auto;
         align-items: center;
         grid-gap: 2em;
       `}
     >
       {/* <ShuffleControls /> */}
-      <PauseControls />
       <TemperatureControls />
+      <PauseControls />
     </StyledDiv>
   );
 }
-function ShuffleControls() {
-  const set = useStore((s) => s.set);
-  return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateRows: "auto auto",
-        alignItems: "center",
-      }}
-    >
-      <Typography style={{ color: "lightgrey" }}>Shuffle</Typography>
-      <IconButton
-        disabled={true}
-        onClick={() => set({ shuffled: Math.random() })}
-      >
-        <ShuffleOutlined />
-      </IconButton>
-    </div>
-  );
-}
+// function ShuffleControls() {
+//   const set = useStore((s) => s.set);
+//   return (
+//     <div
+//       style={{
+//         display: "grid",
+//         gridTemplateRows: "auto auto",
+//         alignItems: "center",
+//       }}
+//     >
+//       <Typography style={{ color: "lightgrey" }}>Shuffle</Typography>
+//       <IconButton
+//         disabled={true}
+//         onClick={() => set({ shuffled: Math.random() })}
+//       >
+//         <ShuffleOutlined />
+//       </IconButton>
+//     </div>
+//   );
+// }

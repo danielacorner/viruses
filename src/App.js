@@ -5,6 +5,7 @@ import WarningOutlined from "@material-ui/icons/WarningOutlined";
 import { CanvasAndSceneEmpty } from "./CanvasAndSceneEmpty";
 import { useStore } from "./store";
 import { LoadingIndicator } from "./components/LoadingIndicator";
+import GuidedTour from "./components/GuidedTour";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <LazyLoadedScene />
       <div id="memoryStats"></div>
       <Tooltip />
+      <GuidedTour />
     </div>
   );
 }

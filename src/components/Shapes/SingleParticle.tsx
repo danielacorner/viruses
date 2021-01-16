@@ -8,11 +8,9 @@ import {
   useChangeVelocityWhenScaleChanges,
   useChangeVelocityWhenTemperatureChanges,
 } from "./useChangeVelocityWhenTemperatureChanges";
-import { useMount } from "../../utils/utils";
 
+/** Particle which can interact with others, or not (passes right through them) */
 export function SingleParticle(props) {
-  // TODO: make NonInteractiveParticle instanced for better performance?
-  // TODO: make InteractiveParticle instanced for better performance?
   const Particle = props.interactive
     ? InteractiveParticle
     : NonInteractiveParticle;
@@ -20,23 +18,11 @@ export function SingleParticle(props) {
 }
 /** interacts with other particles using @react-three/cannon */
 function InteractiveParticle(props) {
-  const {
-    position,
-    Component,
-    mass,
-    numIcosahedronFaces,
-    radius,
-    // pathToGLTF,
-    // atomCount,
-    // PDBUrl,
-    // pathToImage,
-    // name,
-    // type,
-    // paused,
-  } = props;
+  const { position, Component, mass, numIcosahedronFaces, radius } = props;
 
+  // each virus has a polyhedron shape, usually icosahedron (20 faces)
+  // this shape determines how it bumps into other particles
   // https://codesandbox.io/s/r3f-convex-polyhedron-cnm0s?from-embed=&file=/src/index.js:1639-1642
-
   const detail = Math.ceil(numIcosahedronFaces / 20);
   const [ref, api] = useConvexPolyhedron(() => ({
     mass,
@@ -58,29 +44,20 @@ function InteractiveParticle(props) {
   useChangeVelocityWhenTemperatureChanges({ mass, api });
   useChangeVelocityWhenScaleChanges({ mass, api });
 
-  // set temperature low to start...
-  useMount(() => {
-    setTimeout(() => {
-      set({ temperature: 0.001 });
-    }, 1000);
-  });
-
-  const scale = useStore((state: GlobalStateType) => state.scale);
-  const set = useStore((state: GlobalStateType) => state.set);
+  const scale = useStore((s) => s.scale);
+  const set = useStore((s) => s.set);
 
   const handleSetSelectedProtein = () =>
     set({ selectedProtein: { ...props, api } });
 
   const shouldRender = useShouldRenderParticle(radius);
 
-  // TODO: lazy-load components?
   return (
     <mesh
       // visible={shouldRender}
       ref={ref}
       scale={[scale, scale, scale]}
       onPointerDown={handleSetSelectedProtein}
-      // {...(shouldRender ? { onPointerDown: handleSetSelectedProtein } : {})}
     >
       {shouldRender ? <Component /> : null}
     </mesh>

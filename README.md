@@ -7,7 +7,7 @@ Then, I used [react-three-fiber](https://github.com/pmndrs/react-three-fiber) to
 <a href="https://www.rcsb.org/structure/1KVP">
   <p align="middle">
       <div align="middle"><i>Spiroplasma SPV4</i></div>
-      <div align="middle"><img width="360" src="./public/models/viruses/Spiroplasma_SPV4_720.webp" /></div>
+      <div align="middle"><img width="360" src="./public/models/viruses/spiroplasma_SPV4_720.webp" /></div>
   </p>
 </a>
 <a href="https://www.rcsb.org/structure/3J6R">

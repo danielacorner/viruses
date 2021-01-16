@@ -1,41 +1,34 @@
 import React from "react";
 import { Physics } from "@react-three/cannon";
-import { OrbitControls, useGLTF } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import { Lighting } from "./Lighting";
 import { Walls as Cube } from "./Walls";
 import ProteinGroup from "./ProteinGroup";
 import { PHYSICS_PROPS } from "../utils/PHYSICS_PROPS";
 import { PROTEINS } from "../utils/PROTEINS";
-import { useAudioTrack } from "./useAudioTrack";
 import { Water } from "./Water";
 import { ScaleIndicator } from "./ScaleIndicator";
 import { SelectedParticleDisplay } from "./SelectedParticleDisplay";
+import { useMount } from "../utils/utils";
+import { useStore } from "../store";
 
 const Scene = () => {
   // audio track
-  useAudioTrack();
+  // useAudioTrack();
 
+  useSetTemperatureLowInitially();
   return (
     <>
       <OrbitControls />
       <Lighting />
-      <Physics
-        // iterations={20}
-        // tolerance={0.0001}
-        // allowSleep={false}
-        {...PHYSICS_PROPS}
-        step={1 / 60 / 1}
-      >
+      <Physics {...PHYSICS_PROPS}>
         {PROTEINS.map((protein) => {
           return <ProteinGroup key={protein.name} {...protein} />;
         })}
         <Water />
-        {/* TODO: ATP is inside the cell only? */}
-        {/* <ATPInstanced /> */}
         <Cube />
         <SelectedParticleDisplay />
         <ScaleIndicator />
-        {/* <CellMembrane /> */}
         {/* <Cells /> */}
       </Physics>
       {/* <Effects /> */}
@@ -43,9 +36,16 @@ const Scene = () => {
   );
 };
 
-// PROTEINS.forEach(({ pathToGLTF }) => // useGLTF.preload(pathToGLTF));
+function useSetTemperatureLowInitially() {
+  const set = useStore((s) => s.set);
+  // set temperature low to start...
+  useMount(() => {
+    setTimeout(() => {
+      set({ temperature: 0.001 });
+    }, 1000);
+  });
+}
 
-// instance performance https://codesandbox.io/embed/r3f-instanced-colors-8fo01
-// <instancedMesh args={[geometry, material, count]}>
+// PROTEINS.forEach(({ pathToGLTF }) => // useGLTF.preload(pathToGLTF));
 
 export default Scene;

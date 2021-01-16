@@ -31,16 +31,7 @@ const Tooltip = () => {
           </TooltipStyles>
         </ClickAwayListener>
       </Modal>
-      <TooltipStyles
-        // onTouchStart={() => setMaximized(!maximized)}
-        onClick={() => {
-          if (!maximized) {
-            setMaximized(true);
-          }
-        }}
-        height={TOOLTIP.height}
-        width={TOOLTIP.width}
-      >
+      <TooltipStyles height={TOOLTIP.height} width={TOOLTIP.width}>
         <TooltipContent {...{ maximized, setMaximized }} />
       </TooltipStyles>
     </>
@@ -114,9 +105,7 @@ function TooltipContent({
       <div
         className="imgWrapper"
         onClick={() => {
-          if (maximized) {
-            setMaximized(false);
-          }
+          setMaximized((prev) => !prev);
         }}
       >
         <img
@@ -145,7 +134,14 @@ function TooltipContent({
           {maximized ? <FullscreenExit /> : <Fullscreen />}
         </IconButton>
       </div>
-      <div className="pubmedAbstract">
+      <div
+        className="pubmedAbstract"
+        onClick={() => {
+          if (!maximized) {
+            setMaximized(true);
+          }
+        }}
+      >
         {maximized ? (
           <p className="authors">{selectedProtein.authors}</p>
         ) : null}
