@@ -17,7 +17,7 @@ code {
 }
 .reactour__helper {
   line-height: 1.3em;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 [data-tour-elem="controls"] {
   transform: scale(1.5);
@@ -26,4 +26,11 @@ code {
 /* [data-tour-elem="badge"] { */
 #___reactour > div:nth-child(4) > div > span {
   font-size: 1rem;
+}
+#___reactour > div:nth-child(4) > div > div > button {
+  margin-right: 12px;
+}
+
+[data-tour-elem="right-arrow"] {
+  margin-left: 12px;
 }

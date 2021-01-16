@@ -36,6 +36,7 @@ const GuidedTour = () => {
       <ButtonStartTour {...{ setIsTourOpen }} />
       <LinkToGithub />
       <InitialTerrariumPositionStyles />
+      <FullScreenPositionStyles />
     </>
   );
 };
@@ -86,6 +87,15 @@ const ButtonStartTourStyles = styled.div`
 
 const SQUARE_WIDTH = 700;
 /** a square window to highlight the virus-containing cube's initial position */
+export const FullScreenPositionStyles = styled.div`
+  pointer-events: none;
+  position: fixed;
+  top: 32px;
+  bottom: 32px;
+  left: 32px;
+  right: 32px;
+`;
+/** a square window to highlight the draggable area */
 export const InitialTerrariumPositionStyles = styled.div`
   pointer-events: none;
   position: fixed;
@@ -140,13 +150,25 @@ const TOUR_STEPS = [
     ),
   },
   {
+    selector: "[class*='FullScreenPositionStyles']",
+    content: () => {
+      const isTouchDevice = getIsTouchDevice();
+      return (
+        <div>
+          Drag{isTouchDevice ? "" : " the cursor"} to orbit, or{" "}
+          {isTouchDevice ? "pinch" : "scroll"} to zoom 🔍
+        </div>
+      );
+    },
+  },
+  {
     selector: "[class*='InitialTerrariumPositionStyles']",
     content: () => {
       const isTouchDevice = getIsTouchDevice();
       return (
         <div>
-          👩‍🔬🔎 {isTouchDevice ? "Tap" : "Click"} on a particle to learn more
-          about it!
+          👩‍🔬 {isTouchDevice ? "Tap" : "Click"} on a particle to learn more about
+          it!
         </div>
       );
     },

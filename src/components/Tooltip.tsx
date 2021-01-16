@@ -172,7 +172,7 @@ const TooltipStyles = styled.div`
   width: ${(props) => props.width}px;
   height: ${(props) => props.height}px;
   .tooltipContent {
-    opacity: ${(props) => (props.maximized ? 1 : 0.6)};
+    opacity: ${(props) => (props.maximized ? 1 : 0.8)};
     box-sizing: border-box;
     color: black;
     display: grid;
