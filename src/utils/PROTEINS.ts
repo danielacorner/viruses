@@ -175,7 +175,7 @@ export const PROTEINS: Protein[] = [
   // VIRUSES
   {
     Component: Virion_of_native_gene_transfer_agent_gta_particle_120,
-    name: "Bacteriophage phi29 prohead",
+    name: "Virion of native gene transfer agent GTA particle",
     type: PROTEIN_TYPES.virus,
     PDBUrl: "https://www.rcsb.org/structure/6TBA",
     mass: 8765.99,

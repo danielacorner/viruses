@@ -38,4 +38,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/models/cells/monocyte.gltf");
+// useGLTF.preload("/models/cells/monocyte.gltf");

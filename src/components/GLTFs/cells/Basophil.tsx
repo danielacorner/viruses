@@ -94,4 +94,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/models/cells/basophil.gltf");
+// useGLTF.preload("/models/cells/basophil.gltf");

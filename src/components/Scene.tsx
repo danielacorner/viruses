@@ -2,7 +2,7 @@ import React from "react";
 import { Physics } from "@react-three/cannon";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Lighting } from "./Lighting";
-import { Walls } from "./Walls";
+import { Walls as Cube } from "./Walls";
 import ProteinGroup from "./ProteinGroup";
 import { PHYSICS_PROPS } from "../utils/PHYSICS_PROPS";
 import { PROTEINS } from "../utils/PROTEINS";
@@ -32,7 +32,7 @@ const Scene = () => {
         <Water />
         {/* TODO: ATP is inside the cell only? */}
         {/* <ATPInstanced /> */}
-        <Walls />
+        <Cube />
         <SelectedParticleDisplay />
         <ScaleIndicator />
         {/* <CellMembrane /> */}
@@ -43,7 +43,7 @@ const Scene = () => {
   );
 };
 
-PROTEINS.forEach(({ pathToGLTF }) => useGLTF.preload(pathToGLTF));
+// PROTEINS.forEach(({ pathToGLTF }) => // useGLTF.preload(pathToGLTF));
 
 // instance performance https://codesandbox.io/embed/r3f-instanced-colors-8fo01
 // <instancedMesh args={[geometry, material, count]}>

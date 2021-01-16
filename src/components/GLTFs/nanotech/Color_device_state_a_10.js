@@ -44,4 +44,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/models/nanotech/color_device_state_a_10.glb");
+// useGLTF.preload("/models/nanotech/color_device_state_a_10.glb");

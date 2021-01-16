@@ -2686,4 +2686,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/models/viruses/bacteriophage_P68_120.glb");
+// useGLTF.preload("/models/viruses/bacteriophage_P68_120.glb");

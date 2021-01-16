@@ -164,4 +164,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/models/nanotech/dna_origami_16_helix_bundle_50.glb");
+// useGLTF.preload("/models/nanotech/dna_origami_16_helix_bundle_50.glb");

@@ -20,6 +20,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload(
-  "/models/nanotech/computationally_designed_mini_tetraloop_tetraloop_receptor_10.glb"
-);
+// useGLTF.preload( "/models/nanotech/computationally_designed_mini_tetraloop_tetraloop_receptor_10.glb" );

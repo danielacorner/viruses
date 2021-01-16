@@ -38,4 +38,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/models/nanotech/icosahedral_nanoparticle_20.glb");
+// useGLTF.preload("/models/nanotech/icosahedral_nanoparticle_20.glb");

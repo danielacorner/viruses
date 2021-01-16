@@ -4720,4 +4720,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/models/viruses/HIV_200.glb");
+// useGLTF.preload("/models/viruses/HIV_200.glb");

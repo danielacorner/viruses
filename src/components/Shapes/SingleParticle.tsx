@@ -70,26 +70,29 @@ function InteractiveParticle(props) {
 
   const handleSetSelectedProtein = () =>
     set({ selectedProtein: { ...props, api } });
+
   const shouldRender = useShouldRenderParticle(radius);
+
   // TODO: lazy-load components?
   return (
     <mesh
-      visible={shouldRender}
+      // visible={shouldRender}
       ref={ref}
       scale={[scale, scale, scale]}
-      {...(shouldRender ? { onPointerDown: handleSetSelectedProtein } : {})}
+      onPointerDown={handleSetSelectedProtein}
+      // {...(shouldRender ? { onPointerDown: handleSetSelectedProtein } : {})}
     >
-      <Component />
+      {shouldRender ? <Component /> : null}
     </mesh>
   );
 }
 
-function useShouldRenderParticle(radius: number) {
+export function useShouldRenderParticle(radius: number) {
   const scale = useStore((state: GlobalStateType) => state.scale);
   const worldRadius = useStore((state: GlobalStateType) => state.worldRadius);
 
   const tooBigToRender = scale * radius > worldRadius / 3;
-  const tooSmallToRender = scale * radius < worldRadius / 40;
+  const tooSmallToRender = scale * radius < worldRadius / 25;
   return !(tooBigToRender || tooSmallToRender);
 }
 

@@ -28,4 +28,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/models/antibodies/antibody_herpes.glb");
+// useGLTF.preload("/models/antibodies/antibody_herpes.glb");

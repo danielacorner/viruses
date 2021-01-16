@@ -254,4 +254,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/models/other/cell_membrane.gltf");
+// useGLTF.preload("/models/other/cell_membrane.gltf");

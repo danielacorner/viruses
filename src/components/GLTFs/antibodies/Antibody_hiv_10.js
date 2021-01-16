@@ -32,4 +32,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/models/antibodies/antibody_hiv_10.glb");
+// useGLTF.preload("/models/antibodies/antibody_hiv_10.glb");

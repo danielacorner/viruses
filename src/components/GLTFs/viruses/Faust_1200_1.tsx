@@ -20,4 +20,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/models/viruses/faust_1200_1.glb");
+// useGLTF.preload("/models/viruses/faust_1200_1.glb");

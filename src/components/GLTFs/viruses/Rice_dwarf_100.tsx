@@ -176,4 +176,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/models/viruses/Rice_dwarf_100.glb");
+// useGLTF.preload("/models/viruses/Rice_dwarf_100.glb");

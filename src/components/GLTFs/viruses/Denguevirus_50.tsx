@@ -28,4 +28,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/models/viruses/denguevirus_50.glb");
+// useGLTF.preload("/models/viruses/denguevirus_50.glb");

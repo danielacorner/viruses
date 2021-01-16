@@ -24,4 +24,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/models/other/ATP.gltf");
+// useGLTF.preload("/models/other/ATP.gltf");

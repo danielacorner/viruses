@@ -258,6 +258,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload(
-  "/models/nanotech/a_circularly_permuted_pdu_a_forming_an_icosahedral_cage_20.glb"
-);
+// useGLTF.preload( "/models/nanotech/a_circularly_permuted_pdu_a_forming_an_icosahedral_cage_20.glb" );

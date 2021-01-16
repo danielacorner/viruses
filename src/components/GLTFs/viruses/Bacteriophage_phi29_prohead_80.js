@@ -1616,4 +1616,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/models/viruses/bacteriophage_phi29_prohead_80.glb");
+// useGLTF.preload("/models/viruses/bacteriophage_phi29_prohead_80.glb");

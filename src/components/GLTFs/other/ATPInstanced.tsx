@@ -33,4 +33,4 @@ export function ATPInstanced() {
     </instancedMesh>
   );
 }
-useGLTF.preload("/models/other/ATP.glb");
+// useGLTF.preload("/models/other/ATP.glb");

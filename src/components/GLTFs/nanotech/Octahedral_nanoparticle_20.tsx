@@ -26,4 +26,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/models/nanotech/octahedral_nanoparticle_20.glb");
+// useGLTF.preload("/models/nanotech/octahedral_nanoparticle_20.glb");

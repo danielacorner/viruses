@@ -48,4 +48,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/models/nanotech/co_assembling_protein_dna_nanowires_13.glb");
+// useGLTF.preload("/models/nanotech/co_assembling_protein_dna_nanowires_13.glb");

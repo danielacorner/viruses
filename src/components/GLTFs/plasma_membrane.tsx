@@ -257,4 +257,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/models/plasma_membrane/scene.gltf");
+// useGLTF.preload("/models/plasma_membrane/scene.gltf");

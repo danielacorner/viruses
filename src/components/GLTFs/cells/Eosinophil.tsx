@@ -32,4 +32,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/models/cells/eosinophil.glb");
+// useGLTF.preload("/models/cells/eosinophil.glb");

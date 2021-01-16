@@ -18,4 +18,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/models/other/ATP.glb");
+// useGLTF.preload("/models/other/ATP.glb");

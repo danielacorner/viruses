@@ -32,4 +32,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/models/nanotech/self_assembled_3d_dna_crystals_13.glb");
+// useGLTF.preload("/models/nanotech/self_assembled_3d_dna_crystals_13.glb");
