@@ -47,6 +47,24 @@ export function useChangeVelocityWhenTemperatureChanges({
   }, [temperature]);
 }
 
+export function useChangeTemperatureWhenScaleChanges() {
+  const set = useStore((s) => s.set);
+  const scale = useStore((s) => s.scale);
+  const temperature = useStore((s) => s.temperature);
+  const prevScale = usePrevious(scale);
+
+  useEffect(() => {
+    if (!prevScale) {
+      return;
+    }
+    // ? velocity randomly changes (including direction) whenever you change the temperature
+    const ratio = (scale / (prevScale || scale)) ** 3;
+    const newTemperature = temperature * ratio;
+    set({ temperature: newTemperature });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [temperature]);
+}
+
 export function useChangeVelocityWhenScaleChanges({
   mass,
   api,

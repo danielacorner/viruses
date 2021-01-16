@@ -1,10 +1,12 @@
 import { IconButton, Tooltip } from "@material-ui/core";
-import { Help } from "@material-ui/icons";
+import { GitHub, Help } from "@material-ui/icons";
 import React, { useState } from "react";
 import Tour from "reactour";
 import { useLocalStorageState } from "../utils/useLocalStorageState";
 import styled from "styled-components/macro";
 import { getIsTouchDevice } from "../getIsTouchDevice";
+import { useProgress } from "@react-three/drei";
+import { useStore } from "../store";
 
 // https://github.com/elrumordelaluz/reactour
 
@@ -17,7 +19,10 @@ const GuidedTour = () => {
   const [isTourOpen, setIsTourOpen] = useState(isFirstVisit === "true");
   console.log("🌟🚨 ~ GuidedTour ~ isFirstVisit", isFirstVisit);
 
-  return (
+  const { active, progress, errors, item, loaded, total } = useProgress();
+  console.log("🌟🚨 ~ GuidedTour ~ active", active);
+
+  return active ? null : (
     <>
       <Tour
         steps={TOUR_STEPS}
@@ -29,6 +34,7 @@ const GuidedTour = () => {
         badgeContent={(curr, tot) => `${curr}/${tot}`}
       />
       <ButtonStartTour {...{ setIsTourOpen }} />
+      <LinkToGithub />
       <InitialTerrariumPositionStyles />
     </>
   );
@@ -36,6 +42,31 @@ const GuidedTour = () => {
 
 export default GuidedTour;
 
+function LinkToGithub() {
+  const selectedProtein = useStore((s) => s.selectedProtein);
+  return (
+    <a
+      href="https://github.com/danielacorner/viruses"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <Tooltip title="GitHub repository">
+        <IconButton
+          size="small"
+          style={{
+            position: "fixed",
+            opacity: selectedProtein ? 0.2 : 0.6,
+            bottom: 8,
+            left: 8,
+            transform: "scale(0.9)",
+          }}
+        >
+          <GitHub />
+        </IconButton>
+      </Tooltip>
+    </a>
+  );
+}
 function ButtonStartTour({ setIsTourOpen }) {
   return (
     <ButtonStartTourStyles>

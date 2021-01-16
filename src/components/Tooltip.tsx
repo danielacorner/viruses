@@ -172,6 +172,7 @@ const TooltipStyles = styled.div`
   width: ${(props) => props.width}px;
   height: ${(props) => props.height}px;
   .tooltipContent {
+    opacity: ${(props) => (props.maximized ? 1 : 0.6)};
     box-sizing: border-box;
     color: black;
     display: grid;
@@ -236,13 +237,12 @@ const TooltipStyles = styled.div`
     .imgWrapper {
       min-height: 270px;
       position: relative;
-      background: white;
+      background: ${(props) => (props.maximized ? "white" : "none")};
       img {
         width: 100%;
         height: 100%;
         object-fit: contain;
         box-sizing: border-box;
-        opacity: ${(props) => (props.maximized ? 1 : 0.6)};
       }
     }
     button {

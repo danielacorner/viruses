@@ -5,6 +5,7 @@ import { GlobalStateType, useStore } from "../../store";
 import * as THREE from "three";
 import { usePauseUnpause } from "./usePauseUnpause";
 import {
+  useChangeTemperatureWhenScaleChanges,
   useChangeVelocityWhenScaleChanges,
   useChangeVelocityWhenTemperatureChanges,
 } from "./useChangeVelocityWhenTemperatureChanges";
@@ -42,7 +43,8 @@ function InteractiveParticle(props) {
   });
 
   useChangeVelocityWhenTemperatureChanges({ mass, api });
-  useChangeVelocityWhenScaleChanges({ mass, api });
+  useChangeTemperatureWhenScaleChanges();
+  // useChangeVelocityWhenScaleChanges({ mass, api });
 
   const scale = useStore((s) => s.scale);
   const set = useStore((s) => s.set);
