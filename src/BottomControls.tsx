@@ -2,22 +2,16 @@ import React from "react";
 import { TemperatureControls } from "./TemperatureControls";
 import { PauseControls } from "./PauseControls";
 import styled from "styled-components/macro";
-import { IconButton, Typography, useMediaQuery } from "@material-ui/core";
-import { BREAKPOINT_MOBILE } from "./utils/constants";
-import { ShuffleOutlined } from "@material-ui/icons";
-import { useStore } from "./store";
-import { getIsTouchDevice } from "./getIsTouchDevice";
 
 const StyledDiv = styled.div``;
 export default function BottomControls() {
-  const isTabletOrLarger = useMediaQuery(`(min-width: ${BREAKPOINT_MOBILE}px)`);
   return (
     <StyledDiv
       css={`
         position: fixed;
-        bottom: ${isTabletOrLarger ? 16 : 64}px;
+        bottom: 16px;
         left: 30vw;
-        right: 32px;
+        right: 16px;
         display: grid;
         grid-template-columns: 1fr auto;
         align-items: center;

@@ -1,14 +1,19 @@
 import React from "react";
 import { useStore } from "./store";
-import { Slider, Typography } from "@material-ui/core";
+import { Slider, Typography, useMediaQuery } from "@material-ui/core";
 import styled from "styled-components/macro";
 import { ZoomOut, ZoomIn } from "@material-ui/icons";
+import { getIsTouchDevice } from "./getIsTouchDevice";
 
 export function ScaleControls() {
   const scale = useStore((s) => s.scale);
   const set = useStore((s) => s.set);
+  const isTouchDevice = getIsTouchDevice();
+  const isLandscape =
+    useMediaQuery(`(orientation: landscape)`) && isTouchDevice;
+  console.log("🌟🚨 ~ ScaleControls ~ isLandscape", isLandscape);
   return (
-    <ScaleControlsStyles>
+    <ScaleControlsStyles isLandscape={isLandscape}>
       <Typography align="center" id="volume-slider" gutterBottom>
         Scale
       </Typography>
@@ -42,9 +47,19 @@ const ScaleControlsStyles = styled.div`
   display: grid;
   grid-template-rows: auto 1fr;
   justify-items: center;
-  bottom: 164px;
-  right: 24px;
-  height: 60vh;
+  right: 16px;
+  bottom: 124px;
+  height: calc(100vh - 248px);
+  min-height: 50vh;
+  ${(props) =>
+    props.isLandscape
+      ? `
+    min-height: unset;
+    height: unset;
+    height: calc(100vw - 248px);
+    min-width: 50vh;
+    `
+      : ""}
   .grid {
     display: grid;
     justify-items: center;
