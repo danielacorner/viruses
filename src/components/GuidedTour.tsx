@@ -11,18 +11,18 @@ import { useStore } from "../store";
 // https://github.com/elrumordelaluz/reactour
 
 const GuidedTour = () => {
+  // only show once we've started
+  const started = useStore((s) => s.started);
   // show the tour if it's our first time visiting the app
   const [isFirstVisit, setIsFirstVisit] = useLocalStorageState(
     "isFirstVisit",
     "true"
   );
   const [isTourOpen, setIsTourOpen] = useState(isFirstVisit === "true");
-  console.log("🌟🚨 ~ GuidedTour ~ isFirstVisit", isFirstVisit);
 
-  const { active, progress, errors, item, loaded, total } = useProgress();
-  console.log("🌟🚨 ~ GuidedTour ~ active", active);
+  const { active } = useProgress();
 
-  return active ? null : (
+  return active || !started ? null : (
     <>
       <Tour
         steps={TOUR_STEPS}
