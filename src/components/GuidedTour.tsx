@@ -5,7 +5,6 @@ import Tour from "reactour";
 import { useLocalStorageState } from "../utils/useLocalStorageState";
 import styled from "styled-components/macro";
 import { getIsTouchDevice } from "../getIsTouchDevice";
-import { useProgress } from "@react-three/drei";
 import { useStore } from "../store";
 
 // https://github.com/elrumordelaluz/reactour
@@ -20,9 +19,7 @@ const GuidedTour = () => {
   );
   const [isTourOpen, setIsTourOpen] = useState(isFirstVisit === "true");
 
-  const { active } = useProgress();
-
-  return active || !started ? null : (
+  return !started ? null : (
     <>
       <Tour
         steps={TOUR_STEPS}
@@ -68,9 +65,9 @@ function LinkToGithub() {
     </a>
   );
 }
-function ButtonStartTour({ setIsTourOpen }) {
+function ButtonStartTour({ setIsTourOpen, ...props }) {
   return (
-    <ButtonStartTourStyles>
+    <ButtonStartTourStyles {...props}>
       <Tooltip title="Tour">
         <IconButton size="small" onClick={() => setIsTourOpen(true)}>
           <Help />

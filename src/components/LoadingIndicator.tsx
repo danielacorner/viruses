@@ -51,15 +51,18 @@ const LoadingIndicatorStyles = styled.div`
   position: fixed;
   max-width: 100vw;
   top: 4px;
-  width: fit-content;
-  left: 0;
-  right: 0;
+  font-size: 0.8em;
   display: grid;
-  place-items: end;
   place-content: center;
+  justify-items: start;
+  align-items: start;
   z-index: 999;
-  grid-template-columns: 20vw auto;
-  grid-gap: 10vw;
+  right: 1em;
+  left: 4em;
+  width: calc(100vw - 5em);
+  grid-template-columns: 16vw 1fr;
+  grid-gap: 1em;
+  word-break: break-all;
 `;
 
 // function useInterval({ cb, interval }) {
