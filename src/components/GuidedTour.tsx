@@ -155,8 +155,11 @@ const TOUR_STEPS = [
       const isTouchDevice = getIsTouchDevice();
       return (
         <div>
-          Drag{isTouchDevice ? "" : " the cursor"} to orbit, or{" "}
-          {isTouchDevice ? "pinch" : "scroll"} to zoom 🔍
+          <div>Drag on scene to orbit, </div>
+          <div>{isTouchDevice ? "pinch" : "scroll"} to zoom, </div>
+          <div>
+            {isTouchDevice ? "two-finger-drag" : "right-click-drag"} to move.
+          </div>
         </div>
       );
     },
