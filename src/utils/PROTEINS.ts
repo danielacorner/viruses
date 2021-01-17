@@ -66,6 +66,18 @@ const Antibody_herpes = React.lazy(
 // nanotech
 // nanotech
 // nanotech
+const Self_assembling_dna_crystal_scaffold_with_rhombohedral_symmetry_6 = React.lazy(
+  () =>
+    import(
+      "../components/GLTFs/nanotech/Self_assembling_dna_crystal_scaffold_with_rhombohedral_symmetry_6"
+    )
+);
+const Dna_crystals_containing_a_torsionally_stressed_component_20 = React.lazy(
+  () =>
+    import(
+      "../components/GLTFs/nanotech/Dna_crystals_containing_a_torsionally_stressed_component_20"
+    )
+);
 const Protein_cage_20 = React.lazy(
   () => import("../components/GLTFs/nanotech/Protein_cage_20")
 );
@@ -523,6 +535,47 @@ export const PROTEINS: Protein[] = [
   // NANOTECH
   // NANOTECH
   // NANOTECH
+  {
+    Component: Self_assembling_dna_crystal_scaffold_with_rhombohedral_symmetry_6,
+    name: "Self-Assembling DNA Crystal Scaffold with Rhombohedral Symmetry",
+    type: PROTEIN_TYPES.nanotech,
+    PDBUrl: "https://www.rcsb.org/structure/6U40",
+    mass: 13.07,
+    // atomCount: 99723, // PDB
+    radius: 38, // measured using PDB 3d viewer e.g. https://www.rcsb.org/3d-view/6CGR/1
+    atomCount: 857,
+    numIcosahedronFaces: 1,
+    numAsymmetricUnits: 1,
+    pathToGLTF:
+      "/models/nanotech/self_assembling_dna_crystal_scaffold_with_rhombohedral_symmetry_6.glb",
+    pathToImage:
+      "/models/nanotech/self_assembling_dna_crystal_scaffold_with_rhombohedral_symmetry.webp",
+    interactive: true,
+    authors: "Simmons, C.R., MacCulloch, T., Stephanopoulos, N., Yan, H.",
+    pubmedAbstract: "To be published.",
+  },
+  {
+    Component: Dna_crystals_containing_a_torsionally_stressed_component_20,
+    name:
+      "Self-Assembling 3D DNA Crystals Containing a Torsionally Stressed Component",
+    type: PROTEIN_TYPES.nanotech,
+    PDBUrl: "https://www.rcsb.org/structure/5EOS",
+    mass: 12.8,
+    // atomCount: 99723, // PDB
+    radius: 38, // measured using PDB 3d viewer e.g. https://www.rcsb.org/3d-view/6CGR/1
+    atomCount: 858,
+    numIcosahedronFaces: 1,
+    numAsymmetricUnits: 1,
+    pathToGLTF:
+      "/models/nanotech/dna_crystals_containing_a_torsionally_stressed_component_20.glb",
+    pathToImage:
+      "/models/nanotech/dna_crystals_containing_a_torsionally_stressed_component.webp",
+    interactive: true,
+    authors:
+      "Hernandez, C., Birktoft, J.J., Ohayon, Y.P., Chandrasekaran, A.R., Abdallah, H., Sha, R., Stojanoff, V., Mao, C., Seeman, N.C.",
+    pubmedAbstract:
+      "We report the crystal structure of a novel 60-subunit dodecahedral cage that results from self-assembly of a re-engineered version of a natural protein (PduA) from the Pdu microcompartment shell. Biophysical data illustrate the dependence of assembly on solution conditions, opening up new applications in microcompartment studies and nanotechnology.",
+  },
   {
     Component: A_circularly_permuted_pdu_a_forming_an_icosahedral_cage_20,
     name: "A circularly permuted PduA forming an icosahedral cage",

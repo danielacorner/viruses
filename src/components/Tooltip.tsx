@@ -230,7 +230,7 @@ const TooltipStyles = styled.div`
   height: ${(props) => props.height}px;
   .tooltipContent {
     max-height: 90vh;
-    overflow: auto;
+    overflow: ${(props) => (props.maximized ? "auto" : "visible")};
     padding: 1em;
     ${(props) =>
       props.isHorizontalLayout
