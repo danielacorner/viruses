@@ -154,24 +154,15 @@ const TOUR_STEPS = [
     content: () => {
       const isTouchDevice = getIsTouchDevice();
       return (
-        <div>
-          👩‍🔬 {isTouchDevice ? "Tap" : "Click"} on a particle to learn more about
-          it!
-        </div>
-      );
-    },
-  },
-  {
-    selector: "[class*='FullScreenPositionStyles']",
-    content: () => {
-      const isTouchDevice = getIsTouchDevice();
-      return (
-        <div>
-          <p style={{ textAlign: "center" }}>👆➡</p>
-          <div>Drag on scene to orbit, </div>
-          <div>{isTouchDevice ? "pinch" : "scroll"} to zoom, </div>
+        <div style={{ lineHeight: "1.6em", textAlign: "center" }}>
+          <div>👆➡</div>
+          <div>Drag to orbit, </div>
+          <div>{isTouchDevice ? "Pinch" : "Scroll"} to zoom, </div>
           <div>
-            {isTouchDevice ? "two-finger-drag" : "right-click-drag"} to move.
+            {isTouchDevice ? "Two-finger-drag" : "Right-click-drag"} to move.
+          </div>
+          <div>
+            {isTouchDevice ? "Tap" : "Click"} a particle to learn more about it!
           </div>
         </div>
       );
