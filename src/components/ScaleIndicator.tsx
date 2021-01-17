@@ -102,9 +102,9 @@ export function ScaleIndicator() {
                 points={[
                   t.position,
                   [
-                    t.position[0] * (t.side === "left" ? 0.95 : 1),
+                    t.position[0] * (t.side === "left" ? 0.97 : 1),
                     t.position[1],
-                    t.position[2] * (t.side === "right" ? 0.95 : 1),
+                    t.position[2] * (t.side === "right" ? 0.97 : 1),
                   ],
                 ]}
               ></Line>
@@ -117,8 +117,8 @@ export function ScaleIndicator() {
                     t.position[2] * (t.side === "right" ? 0.91 : 1),
                   ],
                   // color: t.side === "left" ? "hsl(0,0%,0%)" : "hsl(0,0%,70%)",
-                  color: "hsl(0,0%,0%)",
-                  fontSize: 0.1,
+                  color: "hsl(0,0%,20%)",
+                  fontSize: 0.16,
                   style: {
                     whiteSpace: "nowrap",
                     width: 0,
