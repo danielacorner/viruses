@@ -4,36 +4,6 @@ import * as THREE from "three";
 import { usePhysicsProps } from "./usePhysicsProps";
 import { useStore } from "../../store";
 
-const dummy = new THREE.Object3D();
-
-export function useJitterInstanceParticle({
-  jitterRotation = 0.01,
-  jitterPosition = 0.01,
-  numParticles,
-  ref,
-}) {
-  useFrame((state) => {
-    if (!ref.current) {
-      return;
-    }
-    let i = 0;
-    const rPos = () => randBetween(-jitterPosition, jitterPosition);
-    const rRot = () => randBetween(-jitterRotation, jitterRotation);
-    for (let idx = 0; idx < numParticles; idx++) {
-      // jitter rotation
-      dummy.rotation.x = dummy.rotation.x + rRot();
-      dummy.rotation.y = dummy.rotation.y + rRot();
-      dummy.rotation.z = dummy.rotation.z + rRot();
-      // jitter position
-      const { x, y, z } = ref.current.position;
-      dummy.position.set(x + rPos(), y + rPos(), z + rPos());
-      dummy.updateMatrix();
-      ref.current.setMatrixAt(i++, dummy.matrix);
-    }
-    ref.current.instanceMatrix.needsUpdate = true;
-  });
-}
-
 // api
 type WorkerVec = {
   set: (x: number, y: number, z: number) => void;
@@ -72,5 +42,35 @@ export function useJitterParticle({ mass, ref, api = {} as any | WorkerVec }) {
       // ref.current.rotation.y = ref.current.rotation.y + rRot();
       // ref.current.rotation.z = ref.current.rotation.z + rRot();
     }
+  });
+}
+
+const dummy = new THREE.Object3D();
+
+export function useJitterInstanceParticle({
+  jitterRotation = 0.01,
+  jitterPosition = 0.01,
+  numParticles,
+  ref,
+}) {
+  useFrame((state) => {
+    if (!ref.current) {
+      return;
+    }
+    let i = 0;
+    const rPos = () => randBetween(-jitterPosition, jitterPosition);
+    const rRot = () => randBetween(-jitterRotation, jitterRotation);
+    for (let idx = 0; idx < numParticles; idx++) {
+      // jitter rotation
+      dummy.rotation.x = dummy.rotation.x + rRot();
+      dummy.rotation.y = dummy.rotation.y + rRot();
+      dummy.rotation.z = dummy.rotation.z + rRot();
+      // jitter position
+      const { x, y, z } = ref.current.position;
+      dummy.position.set(x + rPos(), y + rPos(), z + rPos());
+      dummy.updateMatrix();
+      ref.current.setMatrixAt(i++, dummy.matrix);
+    }
+    ref.current.instanceMatrix.needsUpdate = true;
   });
 }

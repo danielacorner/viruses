@@ -8,6 +8,7 @@ import {
   useChangeTemperatureWhenScaleChanges,
   useChangeVelocityWhenScaleChanges,
   useChangeVelocityWhenTemperatureChanges,
+  useSetVelocityLowInitially,
 } from "./useChangeVelocityWhenTemperatureChanges";
 
 /** Particle which can interact with others, or not (passes right through them) */
@@ -42,9 +43,10 @@ function InteractiveParticle(props) {
     api,
   });
 
-  useChangeVelocityWhenTemperatureChanges({ mass, api });
   useChangeTemperatureWhenScaleChanges();
+  useChangeVelocityWhenTemperatureChanges({ mass, api });
   // useChangeVelocityWhenScaleChanges({ mass, api });
+  useSetVelocityLowInitially({ mass, api });
 
   const scale = useStore((s) => s.scale);
   const set = useStore((s) => s.set);

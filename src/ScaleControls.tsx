@@ -11,7 +11,6 @@ export function ScaleControls() {
   const isTouchDevice = getIsTouchDevice();
   const isLandscape =
     useMediaQuery(`(orientation: landscape)`) && isTouchDevice;
-  console.log("🌟🚨 ~ ScaleControls ~ isLandscape", isLandscape);
   return (
     <ScaleControlsStyles isLandscape={isLandscape}>
       <Typography align="center" id="volume-slider" gutterBottom>

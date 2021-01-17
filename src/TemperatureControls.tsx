@@ -6,6 +6,8 @@ import { AcUnit, Whatshot } from "@material-ui/icons";
 
 export function TemperatureControls() {
   const temperature = useStore((s) => s.temperature);
+  const scale = useStore((s) => s.scale);
+  console.log("🌟🚨 ~ TemperatureControls ~ scale", scale);
   const set = useStore((s) => s.set);
   return (
     <TemperatureControlsStyles>
@@ -23,7 +25,7 @@ export function TemperatureControls() {
               set({ temperature: newValue });
             }}
             min={0}
-            max={1}
+            max={0.01 / scale}
             step={0.0000001}
             value={temperature}
           />

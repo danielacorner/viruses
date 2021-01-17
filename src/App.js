@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import Tooltip from "./components/Tooltip";
 import { Button, Typography } from "@material-ui/core";
 import WarningOutlined from "@material-ui/icons/WarningOutlined";
@@ -6,6 +6,8 @@ import { CanvasAndSceneEmpty } from "./CanvasAndSceneEmpty";
 import { useStore } from "./store";
 import { LoadingIndicator } from "./components/LoadingIndicator";
 import GuidedTour from "./components/GuidedTour";
+import { useLocalStorageState } from "./utils/useLocalStorageState";
+import { useMount } from "./utils/utils";
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
       <div id="memoryStats"></div>
       <Tooltip />
       <GuidedTour />
+      <SaveControlsSettingsToLocalStorage />
     </div>
   );
 }
@@ -82,4 +85,35 @@ function LazyLoadedScene() {
       </div>
     </>
   );
+}
+
+function SaveControlsSettingsToLocalStorage() {
+  const set = useStore((s) => s.set);
+  const scale = useStore((s) => s.scale);
+  const temperature = useStore((s) => s.temperature);
+
+  const [settings, setSettings] = useLocalStorageState("settings", {
+    temperature,
+    scale,
+  });
+  console.log("🌟🚨 ~ SaveControlsSettingsToLocalStorage ~ settings", settings);
+
+  // when app mounts, retrieve settings from local storage
+  useMount(() => {
+    if (!settings) {
+      return;
+    }
+    if (settings.temperature) {
+      set({ temperature: settings.temperature });
+    }
+    if (settings.scale) {
+      set({ scale: settings.scale });
+    }
+  });
+
+  useEffect(() => {
+    setSettings({ temperature, scale });
+  }, [temperature, scale, setSettings]);
+
+  return null;
 }

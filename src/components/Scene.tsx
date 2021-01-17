@@ -40,9 +40,10 @@ function useSetTemperatureLowInitially() {
   const set = useStore((s) => s.set);
   // set temperature low to start...
   useMount(() => {
-    setTimeout(() => {
-      set({ temperature: 0.001 });
-    }, 1000);
+    // setTimeout(() => {
+    //   console.log("🌟🚨 ~ setTimeout ~ setTimeout");
+    set({ temperature: 0.002 });
+    // }, 2000);
   });
 }
 

@@ -5,12 +5,15 @@ import { useStore } from "../../store";
 import { Quaternion, Vector } from "../../types";
 import { usePrevious } from "../../utils/hooks";
 
+const VELOCITY_PER_TEMP = 10;
+
 export function useChangeVelocityWhenTemperatureChanges({
   mass,
   api,
   instanced = false,
 }) {
   const { temperature, velocity } = usePhysicsProps(mass);
+  console.log("🌟🚨🌟🚨🌟🚨🌟🚨🌟🚨🌟🚨 ~ temperature", temperature);
   const set = useStore((s) => s.set);
   // current particle velocity
   const currentVelocity = useRef([0, 0, 0] as Vector);
@@ -45,6 +48,27 @@ export function useChangeVelocityWhenTemperatureChanges({
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [temperature]);
+}
+export function useSetVelocityLowInitially({ mass, api, instanced = false }) {
+  const { velocity } = usePhysicsProps(mass);
+  // current particle velocity
+
+  useMount(() => {
+    // set velocity low initially
+    setTimeout(() => {
+      const newVelocity = [...new Array(3)].map(
+        (_) => velocity * randBetween(-1, 1)
+      );
+      api.velocity.set(...newVelocity);
+
+      // set angular velocity low initially
+
+      const newAngularVelocity = [...new Array(3)].map(
+        (_) => velocity * randBetween(-1, 1)
+      );
+      api.angularVelocity.set(...newAngularVelocity);
+    }, 5000);
+  });
 }
 
 export function useChangeTemperatureWhenScaleChanges() {
