@@ -29,14 +29,14 @@ export function useChangeVelocityWhenTemperatureChanges({
     // ? velocity randomly changes (including direction) whenever you change the temperature
 
     const newVelocity = currentVelocity.current.map(
-      (v) => velocity * randBetween(-1, 1) * 10
+      (v) => velocity * randBetween(-1, 1)
     );
     api.velocity.set(...newVelocity);
 
     // ? angular velocity changes (including direction) whenever you change the temperature
 
     const newAngularVelocity = currentAngularVelocity.current.map(
-      (v) => velocity * randBetween(-1, 1) * 10
+      (v) => velocity * randBetween(-1, 1)
     );
     api.angularVelocity.set(...newAngularVelocity);
 

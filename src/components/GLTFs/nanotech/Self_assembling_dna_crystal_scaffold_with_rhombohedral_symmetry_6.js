@@ -12,22 +12,24 @@ export default function Model(props) {
   );
   return (
     <group ref={group} {...props} dispose={null}>
-      <mesh
-        material={nodes["6u40cif_B_Gaussian_surface"].material}
-        geometry={nodes["6u40cif_B_Gaussian_surface"].geometry}
-      />
-      <mesh
-        material={nodes["6u40cif_A_Gaussian_surface"].material}
-        geometry={nodes["6u40cif_A_Gaussian_surface"].geometry}
-      />
-      <mesh
-        material={nodes["6u40cif_C_Gaussian_surface"].material}
-        geometry={nodes["6u40cif_C_Gaussian_surface"].geometry}
-      />
-      <mesh
-        material={nodes["6u40cif_D_Gaussian_surface"].material}
-        geometry={nodes["6u40cif_D_Gaussian_surface"].geometry}
-      />
+      <group position={[-85.31, -103.05, 18.21]}>
+        <mesh
+          material={nodes["6u40cif_A_Gaussian_surface"].material}
+          geometry={nodes["6u40cif_A_Gaussian_surface"].geometry}
+        />
+        <mesh
+          material={nodes["6u40cif_B_Gaussian_surface"].material}
+          geometry={nodes["6u40cif_B_Gaussian_surface"].geometry}
+        />
+        <mesh
+          material={nodes["6u40cif_C_Gaussian_surface"].material}
+          geometry={nodes["6u40cif_C_Gaussian_surface"].geometry}
+        />
+        <mesh
+          material={nodes["6u40cif_D_Gaussian_surface"].material}
+          geometry={nodes["6u40cif_D_Gaussian_surface"].geometry}
+        />
+      </group>
     </group>
   );
 }
