@@ -56,3 +56,5 @@ In ChimeraX, you can type commands in the terminal at the bottom.
 - `color radial all palette Spectral-1` - colour all atoms radially, with the Spectral-1 [palette](https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/color.html#palette-options)
 - `surface all resolution 6` = [surface-render](https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/surface.html) each atom with a sphere of radius 6 Angstroms (Å)
 - `windowsize 640 640` - set viewport to 640 width and height
+
+inspired by [BioVisions - Inner Life of the Cell | Protein Packing](https://www.youtube.com/watch?v=VdmbpAo9JR4)
