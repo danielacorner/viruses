@@ -150,6 +150,18 @@ const TOUR_STEPS = [
     ),
   },
   {
+    selector: "[class*='InitialTerrariumPositionStyles']",
+    content: () => {
+      const isTouchDevice = getIsTouchDevice();
+      return (
+        <div>
+          👩‍🔬 {isTouchDevice ? "Tap" : "Click"} on a particle to learn more about
+          it!
+        </div>
+      );
+    },
+  },
+  {
     selector: "[class*='FullScreenPositionStyles']",
     content: () => {
       const isTouchDevice = getIsTouchDevice();
@@ -161,18 +173,6 @@ const TOUR_STEPS = [
           <div>
             {isTouchDevice ? "two-finger-drag" : "right-click-drag"} to move.
           </div>
-        </div>
-      );
-    },
-  },
-  {
-    selector: "[class*='InitialTerrariumPositionStyles']",
-    content: () => {
-      const isTouchDevice = getIsTouchDevice();
-      return (
-        <div>
-          👩‍🔬 {isTouchDevice ? "Tap" : "Click"} on a particle to learn more about
-          it!
         </div>
       );
     },
