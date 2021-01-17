@@ -27,7 +27,7 @@ export function ScaleControls() {
             onChange={(event, newValue) => {
               set({ scale: newValue });
             }}
-            min={0}
+            min={0.0005}
             step={0.00000001}
             scale={(x) => x ** 2}
             max={0.03}

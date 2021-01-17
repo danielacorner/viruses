@@ -90,10 +90,10 @@ function LazyLoadedScene() {
 function SaveControlsSettingsToLocalStorage() {
   const set = useStore((s) => s.set);
   const scale = useStore((s) => s.scale);
-  const temperature = useStore((s) => s.temperature);
+  // const temperature = useStore((s) => s.temperature);
 
   const [settings, setSettings] = useLocalStorageState("settings", {
-    temperature,
+    // temperature,
     scale,
   });
 
@@ -102,17 +102,17 @@ function SaveControlsSettingsToLocalStorage() {
     if (!settings) {
       return;
     }
-    if (settings.temperature) {
-      set({ temperature: settings.temperature });
-    }
+    // if (settings.temperature) {
+    //   set({ temperature: settings.temperature });
+    // }
     if (settings.scale) {
       set({ scale: settings.scale });
     }
   });
 
   useEffect(() => {
-    setSettings({ temperature, scale });
-  }, [temperature, scale, setSettings]);
+    setSettings({ scale });
+  }, [scale, setSettings]);
 
   return null;
 }

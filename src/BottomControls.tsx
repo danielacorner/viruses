@@ -24,23 +24,3 @@ export default function BottomControls() {
     </StyledDiv>
   );
 }
-// function ShuffleControls() {
-//   const set = useStore((s) => s.set);
-//   return (
-//     <div
-//       style={{
-//         display: "grid",
-//         gridTemplateRows: "auto auto",
-//         alignItems: "center",
-//       }}
-//     >
-//       <Typography style={{ color: "lightgrey" }}>Shuffle</Typography>
-//       <IconButton
-//         disabled={true}
-//         onClick={() => set({ shuffled: Math.random() })}
-//       >
-//         <ShuffleOutlined />
-//       </IconButton>
-//     </div>
-//   );
-// }

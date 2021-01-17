@@ -7,18 +7,26 @@ import { AcUnit, Whatshot } from "@material-ui/icons";
 export function TemperatureControls() {
   const temperature = useStore((s) => s.temperature);
   const scale = useStore((s) => s.scale);
-  console.log("🌟🚨 ~ TemperatureControls ~ scale", scale);
   const set = useStore((s) => s.set);
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     set({ temperature: 0.01 });
-  //     console.log("🌟🌟🌟🌟🌟🌟🌟🚨 ~ timer ~ timer", timer);
-  //   }, 2000);
-  //   return () => {
-  //     clearTimeout(timer);
-  //   };
-  // }, [set]);
+  // set temperature low initially
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      // const scaleStored = window.localStorage.getItem("settings")
+      //   ? JSON.parse(window.localStorage.getItem("settings")).scale
+      //   : scale;
+      // set temperature to something reasonable, based on the scale
+      // set({ temperature: 0.0000001 / scaleStored });
+      // set({ temperature: 0.01 });
+    }, 2000);
+    return () => {
+      clearTimeout(timer);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [set]);
+
+  const max = 0.005 / scale ** 2;
 
   return (
     <TemperatureControlsStyles>
@@ -36,7 +44,7 @@ export function TemperatureControls() {
               set({ temperature: newValue });
             }}
             min={0}
-            max={0.05 / scale}
+            max={max}
             step={0.0000001}
             value={temperature}
           />

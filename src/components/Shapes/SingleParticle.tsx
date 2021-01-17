@@ -8,9 +8,10 @@ import {
   useChangeTemperatureWhenScaleChanges,
   useChangeVelocityWhenScaleChanges,
   useChangeVelocityWhenTemperatureChanges,
-  useSetVelocityLowInitially,
 } from "./useChangeVelocityWhenTemperatureChanges";
 import { useMount } from "../../utils/utils";
+import { useFrame } from "react-three-fiber";
+import { Vector } from "../../types";
 
 /** Particle which can interact with others, or not (passes right through them) */
 export function SingleParticle(props) {
@@ -36,24 +37,21 @@ function InteractiveParticle(props) {
     mass,
     position,
     // https://threejs.org/docs/scenes/geometry-browser.html#IcosahedronBufferGeometry
-    args: new THREE.IcosahedronGeometry(shouldRender ? 1 : 0, detail),
+    args: new THREE.IcosahedronGeometry(1, detail),
   }));
 
-  // usePauseUnpause({
-  //   api,
-  // });
+  usePauseUnpause({
+    api,
+  });
 
-  // useJitterParticle({
-  //   mass,
-  //   ref,
-  //   api,
-  // });
+  useJitterParticle({
+    mass,
+    ref,
+    api,
+  });
 
-  // useChangeTemperatureWhenScaleChanges();
+  // when temperature changes, change particle velocity
   useChangeVelocityWhenTemperatureChanges({ mass, api });
-
-  // useChangeVelocityWhenScaleChanges({ mass, api });
-  // useSetVelocityLowInitially({ mass, api });
 
   const handleSetSelectedProtein = () =>
     set({ selectedProtein: { ...props, api } });

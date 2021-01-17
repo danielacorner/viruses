@@ -36,17 +36,6 @@ const Scene = () => {
   );
 };
 
-// function useSetTemperatureLowInitially() {
-//   const set = useStore((s) => s.set);
-//   // set temperature low to start...
-//   useMount(() => {
-//     setTimeout(() => {
-//     //   console.log("🌟🚨 ~ setTimeout ~ setTimeout");
-//     set({ temperature: 0.002 });
-//     }, 2000);
-//   });
-// }
-
 // PROTEINS.forEach(({ pathToGLTF }) => // useGLTF.preload(pathToGLTF));
 
 export default Scene;

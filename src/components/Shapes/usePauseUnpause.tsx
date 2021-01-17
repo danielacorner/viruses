@@ -6,6 +6,7 @@ import { Quaternion, Vector } from "../../types";
 
 export function usePauseUnpause({ api, instanced = false, numInstances = 0 }) {
   // current particle velocity
+  const scale = useStore((s) => s.scale);
   const currentVelocity = useRef([0, 0, 0] as Vector);
   useMount(
     () =>
@@ -29,6 +30,21 @@ export function usePauseUnpause({ api, instanced = false, numInstances = 0 }) {
     if (instanced) {
       return;
     }
+
+    // max velocity decreases when scale increases
+    const maxVelocity = 0.004 / scale ** 2;
+    // cap maximum particle velocity
+    if (
+      currentVelocity.current.find((v) => v < -maxVelocity || v > maxVelocity)
+    ) {
+      api.velocity.set(
+        ...currentVelocity.current.map((v) =>
+          // cap it at + or - maxVelocity
+          v > maxVelocity ? maxVelocity : v < -maxVelocity ? -maxVelocity : v
+        )
+      );
+    }
+
     const wasPaused = lastVelocity.current?.[0];
 
     if (paused && !wasPaused) {
@@ -69,4 +85,14 @@ export function usePauseUnpause({ api, instanced = false, numInstances = 0 }) {
   //   }
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [paused]);
+}
+
+function useCurrentVelocity(api, instanced = false) {
+  // current particle velocity
+  const currentVelocity = useRef([0, 0, 0] as Vector);
+  useMount(
+    () =>
+      !instanced && api.velocity.subscribe((v) => (currentVelocity.current = v))
+  );
+  return currentVelocity.current;
 }

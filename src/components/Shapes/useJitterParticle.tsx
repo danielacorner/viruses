@@ -10,7 +10,7 @@ type WorkerVec = {
   copy: ({ x, y, z }: THREE.Vector3 | THREE.Euler) => void;
   subscribe: (callback: (value: number[]) => void) => void;
 };
-const ROTATION_JITTER_COEFF = 0.1;
+const ROTATION_JITTER_COEFF = 0.05;
 const POSITION_JITTER_COEFF = 100;
 export function useJitterParticle({ mass, ref, api = {} as any | WorkerVec }) {
   const { velocity } = usePhysicsProps(mass);
