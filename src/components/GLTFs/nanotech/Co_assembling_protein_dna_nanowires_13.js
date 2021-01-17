@@ -12,40 +12,42 @@ export default function Model(props) {
   );
   return (
     <group ref={group} {...props} dispose={null}>
-      <mesh
-        material={nodes["4qtrcif_A_SES_surface"].material}
-        geometry={nodes["4qtrcif_A_SES_surface"].geometry}
-      />
-      <mesh
-        material={nodes["4qtrcif_B_SES_surface"].material}
-        geometry={nodes["4qtrcif_B_SES_surface"].geometry}
-      />
-      <mesh
-        material={nodes["4qtrcif_C_SES_surface"].material}
-        geometry={nodes["4qtrcif_C_SES_surface"].geometry}
-      />
-      <mesh
-        material={nodes["4qtrcif_D_SES_surface"].material}
-        geometry={nodes["4qtrcif_D_SES_surface"].geometry}
-      />
-      <mesh
-        material={nodes["4qtrcif_E_SES_surface"].material}
-        geometry={nodes["4qtrcif_E_SES_surface"].geometry}
-      />
-      <mesh
-        material={nodes["4qtrcif_G_SES_surface"].material}
-        geometry={nodes["4qtrcif_G_SES_surface"].geometry}
-      />
-      <mesh
-        material={nodes["4qtrcif_F_SES_surface"].material}
-        geometry={nodes["4qtrcif_F_SES_surface"].geometry}
-      />
-      <mesh
-        material={nodes["4qtrcif_H_SES_surface"].material}
-        geometry={nodes["4qtrcif_H_SES_surface"].geometry}
-      />
+      <group position={[-35.42, -69.03, -33.19]}>
+        <mesh
+          material={nodes["4qtrcif_A_SES_surface"].material}
+          geometry={nodes["4qtrcif_A_SES_surface"].geometry}
+        />
+        <mesh
+          material={nodes["4qtrcif_B_SES_surface"].material}
+          geometry={nodes["4qtrcif_B_SES_surface"].geometry}
+        />
+        <mesh
+          material={nodes["4qtrcif_C_SES_surface"].material}
+          geometry={nodes["4qtrcif_C_SES_surface"].geometry}
+        />
+        <mesh
+          material={nodes["4qtrcif_D_SES_surface"].material}
+          geometry={nodes["4qtrcif_D_SES_surface"].geometry}
+        />
+        <mesh
+          material={nodes["4qtrcif_E_SES_surface"].material}
+          geometry={nodes["4qtrcif_E_SES_surface"].geometry}
+        />
+        <mesh
+          material={nodes["4qtrcif_F_SES_surface"].material}
+          geometry={nodes["4qtrcif_F_SES_surface"].geometry}
+        />
+        <mesh
+          material={nodes["4qtrcif_G_SES_surface"].material}
+          geometry={nodes["4qtrcif_G_SES_surface"].geometry}
+        />
+        <mesh
+          material={nodes["4qtrcif_H_SES_surface"].material}
+          geometry={nodes["4qtrcif_H_SES_surface"].geometry}
+        />
+      </group>
     </group>
   );
 }
 
-// useGLTF.preload("/models/nanotech/co_assembling_protein_dna_nanowires_13.glb");
+useGLTF.preload("/models/nanotech/co_assembling_protein_dna_nanowires_13.glb");

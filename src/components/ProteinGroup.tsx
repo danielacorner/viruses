@@ -22,8 +22,39 @@ const ProteinGroup = (props) => {
     [...new Array(numParticles)].map(() => getRandStartPosition(worldRadius))
   );
 
-  // change the positions array when numParticles changes;
-  // do this manually so that existing particles don't re-render & maintain their positions
+  useRenderOnlyNewParticlesWhenCreated(
+    numParticles,
+    positionsArray,
+    setPositionsArray,
+    worldRadius
+  );
+
+  return (
+    <>
+      {positionsArray.map((position) => (
+        <SingleParticle
+          key={JSON.stringify(position)}
+          {...props}
+          position={position}
+        />
+      ))}
+    </>
+  );
+};
+
+export default ProteinGroup;
+
+/** change the positions array when numParticles changes;
+ * do this manually so that existing particles don't re-render & maintain their positions
+ */
+function useRenderOnlyNewParticlesWhenCreated(
+  numParticles: number,
+  positionsArray: [number, number, number][],
+  setPositionsArray: React.Dispatch<
+    React.SetStateAction<[number, number, number][]>
+  >,
+  worldRadius: number
+) {
   useEffect(() => {
     const numNewParticles = numParticles - positionsArray.length;
 
@@ -41,18 +72,4 @@ const ProteinGroup = (props) => {
       setPositionsArray((prev) => [...prev, ...newPositionsArray]);
     }
   }, [numParticles, positionsArray, worldRadius]);
-
-  return (
-    <>
-      {positionsArray.map((position) => (
-        <SingleParticle
-          key={JSON.stringify(position)}
-          {...props}
-          position={position}
-        />
-      ))}
-    </>
-  );
-};
-
-export default ProteinGroup;
+}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useStore } from "./store";
 import { Slider, Typography } from "@material-ui/core";
 import styled from "styled-components/macro";
@@ -9,6 +9,17 @@ export function TemperatureControls() {
   const scale = useStore((s) => s.scale);
   console.log("🌟🚨 ~ TemperatureControls ~ scale", scale);
   const set = useStore((s) => s.set);
+
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     set({ temperature: 0.01 });
+  //     console.log("🌟🌟🌟🌟🌟🌟🌟🚨 ~ timer ~ timer", timer);
+  //   }, 2000);
+  //   return () => {
+  //     clearTimeout(timer);
+  //   };
+  // }, [set]);
+
   return (
     <TemperatureControlsStyles>
       <Typography align="center" id="volume-slider" gutterBottom>
@@ -25,7 +36,7 @@ export function TemperatureControls() {
               set({ temperature: newValue });
             }}
             min={0}
-            max={0.01 / scale}
+            max={0.05 / scale}
             step={0.0000001}
             value={temperature}
           />

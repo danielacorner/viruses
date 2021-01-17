@@ -96,7 +96,6 @@ function SaveControlsSettingsToLocalStorage() {
     temperature,
     scale,
   });
-  console.log("🌟🚨 ~ SaveControlsSettingsToLocalStorage ~ settings", settings);
 
   // when app mounts, retrieve settings from local storage
   useMount(() => {
