@@ -8,9 +8,9 @@ export function useChangeVelocityWhenTemperatureChanges({
   mass,
   api,
   instanced = false,
+  numParticles = 0,
 }) {
   const { temperature, velocity } = useVelocity(mass);
-  console.log("🌟🚨 ~ velocity", velocity);
   const scale = useStore((s) => s.scale);
   // current particle velocity
 
@@ -31,10 +31,29 @@ export function useChangeVelocityWhenTemperatureChanges({
   // ? should velocity randomly change (including direction) whenever you change the temperature
   useEffect(() => {
     if (temperature === 0) {
+      if (instanced) {
+        return;
+        // for (let i = 0; i < numParticles; i++) {
+        //   const instanceApi = api.at(i);
+        //   instanceApi.velocity.set(0, 0, 0);
+        //   instanceApi.angularVelocity.set(0, 0, 0, 0);
+        // }
+      } else {
+        // disable movement
+        api.linearDamping.set(1);
+        api.angularDamping.set(1);
+
+        // stop
+        api.velocity.set(0, 0, 0);
+        api.angularVelocity.set(0, 0, 0, 0);
+      }
       return;
     }
+    // allow movement
+    api.linearDamping.set(0);
+    api.angularDamping.set(0);
+
     const newVelocity = [0, 0, 0].map(() => velocity * eitherOr(-1, 1));
-    console.log("🌟🚨 ~ useEffect ~ newVelocity", newVelocity);
     api.velocity.set(...newVelocity) as Vector;
 
     // ? should angular velocity change (including direction) whenever you change the temperature

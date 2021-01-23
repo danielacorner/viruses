@@ -1,5 +1,5 @@
 import create from "zustand";
-import { MIN_SCALE } from "./utils/constants";
+import { MAX_SCALE } from "./utils/constants";
 import { Protein } from "./utils/PROTEINS";
 
 type SelectedProtein = Protein & {
@@ -29,9 +29,9 @@ export const useStore = create<GlobalStateType>(
     started: startsStarted,
     loading: !startsStarted,
     worldRadius: 5,
-    temperature: 0,
+    temperature: 1,
     shuffled: 0,
-    scale: MIN_SCALE,
+    scale: MAX_SCALE,
     selectedProtein: null as null | SelectedProtein,
     set: (newState) => set((state) => ({ ...state, ...newState })),
   })

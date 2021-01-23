@@ -4,7 +4,6 @@ import { useJitterParticle } from "./useJitterParticle";
 import { useStore } from "../../store";
 import * as THREE from "three";
 import { useChangeVelocityWhenTemperatureChanges } from "./useChangeVelocityWhenTemperatureChanges";
-import { usePauseUnpauseParticleMovement } from "./usePauseUnpauseParticleMovement";
 
 /** Particle which can interact with others, or not (passes right through them) */
 export function SingleParticle(props) {
@@ -34,10 +33,6 @@ function InteractiveParticle(props) {
     // https://threejs.org/docs/scenes/geometry-browser.html#IcosahedronBufferGeometry
     args: new THREE.IcosahedronGeometry(1, detail),
   }));
-
-  usePauseUnpauseParticleMovement({
-    api,
-  });
 
   useJitterParticle({
     mass,

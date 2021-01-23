@@ -7,7 +7,6 @@ import { usePrevious } from "./utils/hooks";
 
 export function PauseControls() {
   const paused = useStore((s) => s.paused);
-  console.log("🌟🚨 ~ PauseControls ~ paused", paused);
   const set = useStore((s) => s.set);
 
   const handlePauseUnpause = () => {
