@@ -4,7 +4,7 @@ import { Slider, Typography, useMediaQuery } from "@material-ui/core";
 import styled from "styled-components/macro";
 import { ZoomOut, ZoomIn } from "@material-ui/icons";
 import { getIsTouchDevice } from "./getIsTouchDevice";
-
+import { MIN_SCALE, MAX_SCALE } from "./utils/constants";
 export function ScaleControls() {
   const scale = useStore((s) => s.scale);
   const set = useStore((s) => s.set);
@@ -27,10 +27,10 @@ export function ScaleControls() {
             onChange={(event, newValue) => {
               set({ scale: newValue });
             }}
-            min={0.0005}
+            min={MIN_SCALE}
             step={0.00000001}
             scale={(x) => x ** 2}
-            max={0.03}
+            max={MAX_SCALE}
             value={scale}
           />
         </div>

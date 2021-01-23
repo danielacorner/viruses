@@ -3,6 +3,7 @@ import { useStore } from "../../store";
 import { useRef } from "react";
 import { useFrame } from "react-three-fiber";
 import { Quaternion, Vector } from "../../types";
+import { MAX_SCALE, MIN_SCALE } from "../../utils/constants";
 
 export function usePauseUnpause({ api, instanced = false, numInstances = 0 }) {
   // current particle velocity
@@ -31,19 +32,27 @@ export function usePauseUnpause({ api, instanced = false, numInstances = 0 }) {
       return;
     }
 
-    // max velocity decreases when scale increases
-    const maxVelocity = 0.004 / scale ** 2;
+    //  when scale increases, max velocity decreases
+    const scalePct = (scale - MIN_SCALE) / (MAX_SCALE - MIN_SCALE);
+    const maxVelocity = 30 - scalePct ** 2;
+    console.log("🌟🚨 ~ useFrame ~ maxVelocity", maxVelocity);
     // cap maximum particle velocity
-    if (
-      currentVelocity.current.find((v) => v < -maxVelocity || v > maxVelocity)
-    ) {
-      api.velocity.set(
-        ...currentVelocity.current.map((v) =>
-          // cap it at + or - maxVelocity
-          v > maxVelocity ? maxVelocity : v < -maxVelocity ? -maxVelocity : v
-        )
-      );
-    }
+    currentVelocity.current.forEach((v) => {
+      if (v / maxVelocity > 0.8) {
+        console.log("🌟🚨 ~ useFrame ~ v", v);
+      }
+    });
+    if (currentVelocity.current)
+      if (
+        currentVelocity.current.find((v) => v < -maxVelocity || v > maxVelocity)
+      ) {
+        api.velocity.set(
+          ...currentVelocity.current.map((v) =>
+            // cap it at + or - maxVelocity
+            v > maxVelocity ? maxVelocity : v < -maxVelocity ? -maxVelocity : v
+          )
+        );
+      }
 
     const wasPaused = lastVelocity.current?.[0];
 
