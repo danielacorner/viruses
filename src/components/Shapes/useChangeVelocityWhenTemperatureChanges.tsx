@@ -1,4 +1,4 @@
-import { randBetween, useMount } from "../../utils/utils";
+import { eitherOr, useMount } from "../../utils/utils";
 import { useEffect, useRef } from "react";
 import { usePhysicsProps } from "./usePhysicsProps";
 import { useStore } from "../../store";
@@ -29,14 +29,14 @@ export function useChangeVelocityWhenTemperatureChanges({
     // ? velocity randomly changes (including direction) whenever you change the temperature
 
     const newVelocity = currentVelocity.current.map(
-      (v) => velocity * randBetween(-1, 1)
+      (v) => velocity * eitherOr(-1, 1)
     );
     api.velocity.set(...newVelocity);
 
     // ? angular velocity changes (including direction) whenever you change the temperature
 
     const newAngularVelocity = currentAngularVelocity.current.map(
-      (v) => velocity * randBetween(-1, 1)
+      (v) => velocity * eitherOr(-1, 1)
     );
     api.angularVelocity.set(...newAngularVelocity);
 
@@ -93,7 +93,7 @@ export function useChangeVelocityWhenScaleChanges({
     const ratio = (scale / (prevScale || scale)) ** 3;
     const newVelocity = currentVelocity.current.map(
       (v) => v * ratio
-      // (v) => velocity * randBetween(-1, 1) * 10
+      // (v) => velocity * eitherOr(-1, 1) * 10
     );
     api.velocity.set(...newVelocity);
 

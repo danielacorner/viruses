@@ -24,8 +24,13 @@ function InteractiveParticle(props) {
   // this shape determines how it bumps into other particles
   // https://codesandbox.io/s/r3f-convex-polyhedron-cnm0s?from-embed=&file=/src/index.js:1639-1642
   const detail = Math.ceil(numIcosahedronFaces / 20);
+  const volumeOfSphere = (4 / 3) * Math.PI * props.radius ** 3;
+  const mockMass = 10 ** -5 * volumeOfSphere;
+  console.log("🌟🚨 ~ InteractiveParticle ~ mockMass", mockMass);
+
   const [ref, api] = useConvexPolyhedron(() => ({
-    mass,
+    // TODO: accurate mass data from PDB --> need to multiply by number of residues or something else? doesn't seem right
+    mass: mockMass, // approximate mass using volume of a sphere equation
     position,
     // https://threejs.org/docs/scenes/geometry-browser.html#IcosahedronBufferGeometry
     args: new THREE.IcosahedronGeometry(1, detail),

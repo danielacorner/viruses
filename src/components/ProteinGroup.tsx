@@ -47,6 +47,10 @@ const ProteinGroup = (props) => {
 
 function SingleParticleIfVisibleAtScale(props) {
   const shouldRender = useShouldRenderParticle(props.radius);
+  console.log(
+    "🌟🚨 ~ SingleParticleIfVisibleAtScale ~ shouldRender",
+    shouldRender
+  );
 
   return shouldRender ? <SingleParticle {...props} /> : null;
 }

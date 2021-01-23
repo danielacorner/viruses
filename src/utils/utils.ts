@@ -17,6 +17,10 @@ export function randBetween(
   return (isNormalDist ? rand_normal() : Math.random()) * (max - min) + min;
 }
 
+export function eitherOr(num1, num2) {
+  return Math.random() > 0.5 ? num1 : num2;
+}
+
 // https://stackoverflow.com/questions/25582882/javascript-math-random-normal-distribution-gaussian-bell-curve
 // normal distribution
 function rand_normal() {
