@@ -5,10 +5,13 @@ import styled from "styled-components/macro";
 import { ZoomOut, ZoomIn } from "@material-ui/icons";
 import { getIsTouchDevice } from "./getIsTouchDevice";
 import { MIN_SCALE, MAX_SCALE } from "./utils/constants";
+import { useProgress } from "@react-three/drei";
 export function ScaleControls() {
   const scale = useStore((s) => s.scale);
   const set = useStore((s) => s.set);
   const isTouchDevice = getIsTouchDevice();
+  const { active: loading } = useProgress();
+
   const isLandscape =
     useMediaQuery(`(orientation: landscape)`) && isTouchDevice;
   return (
@@ -22,6 +25,7 @@ export function ScaleControls() {
         </div>
         <div className="grid-item">
           <Slider
+            disabled={loading}
             orientation="vertical"
             aria-labelledby="volume-slider"
             onChange={(event, newValue) => {
