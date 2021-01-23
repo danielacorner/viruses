@@ -4,6 +4,7 @@ import { useProgress } from "@react-three/drei";
 import styled from "styled-components/macro";
 import { useFrame } from "react-three-fiber";
 import { CanvasAndSceneEmpty } from "../CanvasAndSceneEmpty";
+import * as THREE from "three";
 // import { render } from "react-dom";
 // import MemoryStats from "react-memorystats";
 
@@ -32,7 +33,7 @@ export function LoadingIndicator() {
     >
       {JSON.stringify(errors)}
     </div>
-  ) : active ? (
+  ) : active || true ? (
     <>
       <LoadingIndicatorStyles>
         <div>
@@ -54,19 +55,23 @@ export function LoadingIndicator() {
 }
 
 function SpinningParticle() {
-  const ref = useRef(null as any);
-  useFrame(({ clock }) => {
-    const time = clock.getElapsedTime();
-    if (ref.current) {
-      ref.current.rotation.x = Math.sin(time / 4);
-      ref.current.rotation.y = Math.sin(time / 2);
-    }
-  });
+  // const ref = useRef(null as any);
+  // useFrame(({ clock }) => {
+  //   const time = clock.getElapsedTime();
+  //   if (ref.current) {
+  //     ref.current.rotation.x = Math.sin(time / 4);
+  //     ref.current.rotation.y = Math.sin(time / 2);
+  //   }
+  // });
 
   return (
-    <mesh ref={ref} position={[0, 0, 0]}>
-      <boxBufferGeometry attach="geometry" />
-      <meshBasicMaterial />
+    <mesh position={[0, 0, 0]}>
+      <icosahedronBufferGeometry />
+      <meshPhongMaterial
+        color="cornflowerblue"
+        attach="material"
+        wireframe={true}
+      />
     </mesh>
   );
 }

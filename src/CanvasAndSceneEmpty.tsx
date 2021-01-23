@@ -19,7 +19,6 @@ export function CanvasAndSceneEmpty({
   const SpinIfLoadingIndicator = isLoadingIndicator
     ? SpinScene
     : React.Fragment;
-
   return (
     <Canvas
       onCreated={({ gl }) => {
@@ -36,23 +35,29 @@ export function CanvasAndSceneEmpty({
       <SpinIfLoadingIndicator>
         <OrbitControls />
         <Physics {...PHYSICS_PROPS}>
-          <Water />
-          {children}
-          <Walls />
-          <ScaleIndicator />
+          <mesh scale={isLoadingIndicator ? [0.75, 0.75, 0.75] : [1, 1, 1]}>
+            <Water />
+            {children}
+            <Walls />
+            <ScaleIndicator />
+          </mesh>
         </Physics>
       </SpinIfLoadingIndicator>
     </Canvas>
   );
 }
 
+// const SPEED_X = 0.2;
+const SPEED_Y = 0.1;
+const AMPLITUDE_Y = 0.2;
+// const AMPLITUDE_X = 0.7;
 function SpinScene({ children }) {
   const ref = useRef(null as any);
   useFrame(({ clock }) => {
     const time = clock.getElapsedTime();
     if (ref.current) {
-      ref.current.rotation.x = -Math.sin(time / 4);
-      ref.current.rotation.y = -Math.sin(time / 2);
+      ref.current.rotation.x = -Math.sin(time * SPEED_Y) * AMPLITUDE_Y;
+      ref.current.rotation.y = ref.current.rotation.y + 0.0015;
     }
   });
   return <mesh ref={ref}>{children}</mesh>;
