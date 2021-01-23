@@ -35,7 +35,7 @@ export function LoadingIndicator() {
     >
       {JSON.stringify(errors)}
     </div>
-  ) : active || true ? (
+  ) : active ? (
     <>
       <LoadingIndicatorStyles>
         <div>
@@ -191,7 +191,7 @@ const StyledDiv = styled.div`
 function CenteredSpinner() {
   return (
     <StyledDiv>
-      <CircularProgress />
+      <CircularProgress size={100} />
     </StyledDiv>
   );
 }
