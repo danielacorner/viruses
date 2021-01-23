@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { LinearProgress } from "@material-ui/core";
+import { CircularProgress, LinearProgress } from "@material-ui/core";
 import { useProgress } from "@react-three/drei";
 import styled from "styled-components/macro";
 import { useFrame } from "react-three-fiber";
@@ -48,6 +48,7 @@ export function LoadingIndicator() {
       <CanvasAndSceneEmpty isLoadingIndicator={true}>
         <SpinningParticle />
       </CanvasAndSceneEmpty>
+      <CenteredSpinner />
     </>
   ) : null;
 }
@@ -94,3 +95,21 @@ const LoadingIndicatorStyles = styled.div`
 //     return () => window.clearInterval(timer);
 //   });
 // }
+
+const StyledDiv = styled.div`
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  place-items: center;
+`;
+function CenteredSpinner() {
+  return (
+    <StyledDiv>
+      <CircularProgress />
+    </StyledDiv>
+  );
+}
