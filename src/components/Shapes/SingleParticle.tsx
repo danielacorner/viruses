@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useConvexPolyhedron } from "@react-three/cannon";
 import { useJitterParticle } from "./useJitterParticle";
-import { GlobalStateType, useStore } from "../../store";
+import { useStore } from "../../store";
 import * as THREE from "three";
 import { usePauseUnpause } from "./usePauseUnpause";
 import { useChangeVelocityWhenTemperatureChanges } from "./useChangeVelocityWhenTemperatureChanges";
@@ -15,12 +15,10 @@ export function SingleParticle(props) {
 }
 /** interacts with other particles using @react-three/cannon */
 function InteractiveParticle(props) {
-  const { position, Component, mass, numIcosahedronFaces, radius } = props;
+  const { position, Component, mass, numIcosahedronFaces } = props;
 
   const set = useStore((s) => s.set);
   const scale = useStore((s) => s.scale);
-
-  const shouldRender = useShouldRenderParticle(radius);
 
   // each virus has a polyhedron shape, usually icosahedron (20 faces)
   // this shape determines how it bumps into other particles
@@ -53,19 +51,28 @@ function InteractiveParticle(props) {
     <mesh
       // visible={shouldRender}
       ref={ref}
-      scale={shouldRender ? [scale, scale, scale] : [0, 0, 0]}
+      scale={[scale, scale, scale]}
       onClick={handleSetSelectedProtein}
     >
-      {shouldRender ? <Component /> : null}
+      <Component />
+      {/* {shouldRender ? <Component /> : null} */}
     </mesh>
   );
 }
 
 /** hide particle if too big or too small */
 export function useShouldRenderParticle(radius: number) {
-  const scale = useStore((state: GlobalStateType) => state.scale);
-  const worldRadius = useStore((state: GlobalStateType) => state.worldRadius);
+  const scale = useStore((s) => s.scale);
+  const worldRadius = useStore((s) => s.worldRadius);
 
+  return getShouldRenderParticle(scale, radius, worldRadius);
+}
+
+export function getShouldRenderParticle(
+  scale: number,
+  radius: number,
+  worldRadius: number
+) {
   const tooBigToRender = scale * radius > worldRadius / 3;
   const tooSmallToRender = scale * radius < worldRadius / 20;
   return !(tooBigToRender || tooSmallToRender);

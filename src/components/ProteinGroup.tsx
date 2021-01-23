@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useControl } from "react-three-gui";
-import { SingleParticle } from "./Shapes/SingleParticle";
+import {
+  SingleParticle,
+  useShouldRenderParticle,
+} from "./Shapes/SingleParticle";
 import { getRandStartPosition } from "./Shapes/particleUtils";
 import { useStore } from "../store";
 import { PROTEIN_TYPES } from "../utils/PROTEINS";
@@ -32,7 +35,7 @@ const ProteinGroup = (props) => {
   return (
     <>
       {positionsArray.map((position) => (
-        <SingleParticle
+        <SingleParticleIfVisibleAtScale
           key={JSON.stringify(position)}
           {...props}
           position={position}
@@ -41,6 +44,12 @@ const ProteinGroup = (props) => {
     </>
   );
 };
+
+function SingleParticleIfVisibleAtScale(props) {
+  const shouldRender = useShouldRenderParticle(props.radius);
+
+  return shouldRender ? <SingleParticle {...props} /> : null;
+}
 
 export default ProteinGroup;
 

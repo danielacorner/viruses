@@ -9,14 +9,18 @@ import { PROTEINS } from "../utils/PROTEINS";
 import { Water } from "./Water";
 import { ScaleIndicator } from "./ScaleIndicator";
 import { SelectedParticleDisplay } from "./SelectedParticleDisplay";
+import { getShouldRenderParticle } from "./Shapes/SingleParticle";
+import { useStore } from "../store";
 
 const Scene = () => {
   // audio track
   // useAudioTrack();
 
   // useSetTemperatureLowInitially();
+  const numVisibleParticles = useNumVisibleParticles();
+  console.log("🌟🚨 ~ Scene ~ numVisibleParticles", numVisibleParticles);
   return (
-    <>
+    <React.Fragment key={numVisibleParticles}>
       <OrbitControls />
       <Lighting />
       <Physics {...PHYSICS_PROPS}>
@@ -30,10 +34,21 @@ const Scene = () => {
         {/* <Cells /> */}
       </Physics>
       {/* <Effects /> */}
-    </>
+    </React.Fragment>
   );
 };
 
 // PROTEINS.forEach(({ pathToGLTF }) => // useGLTF.preload(pathToGLTF));
 
 export default Scene;
+
+function useNumVisibleParticles() {
+  const scale = useStore((s) => s.scale);
+  const worldRadius = useStore((s) => s.worldRadius);
+
+  const shouldRenderParticles = PROTEINS.map((protein) =>
+    getShouldRenderParticle(scale, protein.radius, worldRadius)
+  );
+
+  return shouldRenderParticles.reduce((acc, cur) => acc + Number(cur), 0);
+}
