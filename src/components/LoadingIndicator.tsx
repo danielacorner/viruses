@@ -5,6 +5,8 @@ import styled from "styled-components/macro";
 import { useFrame } from "react-three-fiber";
 import { CanvasAndSceneEmpty } from "../CanvasAndSceneEmpty";
 import * as THREE from "three";
+import { useStore } from "../store";
+import { MAX_SCALE, MIN_SCALE } from "../utils/constants";
 // import { render } from "react-dom";
 // import MemoryStats from "react-memorystats";
 
@@ -64,15 +66,90 @@ function SpinningParticle() {
   //   }
   // });
 
+  const scale = useStore((s) => s.scale);
+  const scalePct = (scale - MIN_SCALE) / (MAX_SCALE - MIN_SCALE);
+
   return (
-    <mesh position={[0, 0, 0]}>
-      <icosahedronBufferGeometry />
-      <meshPhongMaterial
-        color="cornflowerblue"
-        attach="material"
-        wireframe={true}
-      />
-    </mesh>
+    <>
+      <mesh>
+        <tetrahedronBufferGeometry args={[scalePct * 0.25, 0]} />
+        <meshPhysicalMaterial
+          opacity={0.5}
+          transparent={true}
+          depthTest={false}
+          flatShading={true}
+          roughness={0.4}
+          vertexColors={true}
+          reflectivity={1}
+        />
+      </mesh>
+      <mesh>
+        <octahedronBufferGeometry args={[scalePct * 0.5, 0]} />
+        <meshPhysicalMaterial
+          opacity={0.4}
+          transparent={true}
+          depthTest={false}
+          flatShading={true}
+          roughness={0.4}
+          vertexColors={true}
+          reflectivity={1}
+        />
+      </mesh>
+      <mesh>
+        <icosahedronBufferGeometry args={[scalePct * 1, 0]} />
+        <meshPhysicalMaterial
+          // wireframe={true}
+          opacity={0.4}
+          transparent={true}
+          depthTest={false}
+          flatShading={true}
+          roughness={0.4}
+          vertexColors={true}
+          reflectivity={1}
+        />
+      </mesh>
+      <mesh>
+        <icosahedronBufferGeometry args={[scalePct * 5, 1]} />
+        <meshPhysicalMaterial
+          color="tomato"
+          // wireframe={true}
+          opacity={0.08}
+          transparent={true}
+          depthTest={false}
+          flatShading={true}
+          roughness={0.4}
+          vertexColors={true}
+          reflectivity={1}
+        />
+      </mesh>
+      <mesh>
+        <icosahedronBufferGeometry args={[scalePct * 10, 2]} />
+        <meshPhysicalMaterial
+          opacity={0.018}
+          transparent={true}
+          depthTest={false}
+          flatShading={true}
+          roughness={0.4}
+          vertexColors={true}
+          reflectivity={1}
+          // wireframe={true}
+        />
+      </mesh>
+      <mesh>
+        <icosahedronBufferGeometry args={[scalePct * 100, 5]} />
+        <meshPhysicalMaterial
+          color="rebeccapurple"
+          opacity={0.018}
+          transparent={true}
+          depthTest={false}
+          flatShading={true}
+          roughness={0.4}
+          vertexColors={true}
+          reflectivity={1}
+          wireframe={true}
+        />
+      </mesh>
+    </>
   );
 }
 
