@@ -14,6 +14,11 @@ export function usePauseUnpauseParticleMovement({
 }) {
   const budgeTemperature = useBudgeTemperature();
   const scale = useStore((s) => s.scale);
+  //  when scale increases, max velocity decreases
+  const scalePct = (scale - MIN_SCALE) / (MAX_SCALE - MIN_SCALE);
+  // cap maximum particle velocity
+  const maxVelocity = 30 - scalePct ** 2;
+  console.log("🌟🚨 ~ useFrame ~ maxVelocity", maxVelocity);
 
   // const currentVelocity = useRef([0, 0, 0] as Vector);
   // useMount(
@@ -40,11 +45,6 @@ export function usePauseUnpauseParticleMovement({
       return;
     }
 
-    //  when scale increases, max velocity decreases
-    const scalePct = (scale - MIN_SCALE) / (MAX_SCALE - MIN_SCALE);
-    // cap maximum particle velocity
-    const maxVelocity = 30 - scalePct ** 2;
-    console.log("🌟🚨 ~ useFrame ~ maxVelocity", maxVelocity);
     // console.log("🌟🚨 ~ useFrame ~ maxVelocity", maxVelocity);
     // currentVelocity.current.forEach((v) => {
     //   if (v / maxVelocity > 0.8) {
@@ -65,7 +65,7 @@ export function usePauseUnpauseParticleMovement({
 
     // const wasPaused = lastVelocity.current?.[0];
 
-    if (paused && !wasPaused) {
+    if (paused) {
       // memorize last non-zero velocity
       // if (
       //   currentVelocity.current?.[0] ||

@@ -11,7 +11,6 @@ export function useChangeVelocityWhenTemperatureChanges({
 }) {
   const { temperature, velocity } = useVelocity(mass);
   console.log("🌟🚨 ~ velocity", velocity);
-  const set = useStore((s) => s.set);
   const scale = useStore((s) => s.scale);
   // current particle velocity
 
@@ -31,6 +30,9 @@ export function useChangeVelocityWhenTemperatureChanges({
   // set particle velocity based on temperature
   // ? should velocity randomly change (including direction) whenever you change the temperature
   useEffect(() => {
+    if (temperature === 0) {
+      return;
+    }
     const newVelocity = [0, 0, 0].map(() => velocity * eitherOr(-1, 1));
     console.log("🌟🚨 ~ useEffect ~ newVelocity", newVelocity);
     api.velocity.set(...newVelocity) as Vector;
@@ -40,7 +42,6 @@ export function useChangeVelocityWhenTemperatureChanges({
     const newAngularVelocity = [0, 0, 0, 0].map(
       () => velocity * eitherOr(-1, 1)
     ) as Quaternion;
-    console.log("🌟🚨 ~ useEffect ~ newAngularVelocity", newAngularVelocity);
     api.angularVelocity.set(...newAngularVelocity);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -47,7 +47,7 @@ export function TemperatureControls() {
               if (newValue === 0 && !paused) {
                 set({ paused: true });
               } else if (newValue !== 0 && paused) {
-                set({ paused: true });
+                set({ paused: false });
               }
 
               set({ temperature: newValue });
