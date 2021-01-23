@@ -4,6 +4,8 @@ import { useJitterParticle } from "./useJitterParticle";
 import { useStore } from "../../store";
 import * as THREE from "three";
 import { useChangeVelocityWhenTemperatureChanges } from "./useChangeVelocityWhenTemperatureChanges";
+import styled from "styled-components/macro";
+import { HTML } from "@react-three/drei";
 
 /** Particle which can interact with others, or not (passes right through them) */
 export function SingleParticle(props) {
@@ -18,6 +20,9 @@ function InteractiveParticle(props) {
 
   const set = useStore((s) => s.set);
   const scale = useStore((s) => s.scale);
+  const selectedProtein = useStore((s) => s.selectedProtein);
+  const isSelectedProtein =
+    selectedProtein && selectedProtein.name === props.name;
 
   // each virus has a polyhedron shape, usually icosahedron (20 faces)
   // this shape determines how it bumps into other particles
@@ -60,15 +65,33 @@ function InteractiveParticle(props) {
 
   return (
     <mesh
-      // visible={shouldRender}
       ref={ref}
       scale={[scale, scale, scale]}
       onPointerDown={handlePointerDown}
       onPointerUp={handlePointerUp}
     >
+      {isSelectedProtein ? <HighlightParticle /> : null}
       <Component />
-      {/* {shouldRender ? <Component /> : null} */}
     </mesh>
+  );
+}
+
+const CircleOutline = styled.div`
+  border: 2px solid #ff4775;
+  box-sizing: border-box;
+  border-radius: 50%;
+  width: ${(props) => props.radius * 2}px;
+  height: ${(props) => props.radius * 2}px;
+  margin-left: ${(props) => -props.radius}px;
+  margin-top: ${(props) => -props.radius}px;
+`;
+function HighlightParticle() {
+  const selectedProtein = useStore((s) => s.selectedProtein);
+  const scale = useStore((s) => s.scale);
+  return (
+    <HTML>
+      <CircleOutline radius={selectedProtein.radius * scale * 70} />
+    </HTML>
   );
 }
 
