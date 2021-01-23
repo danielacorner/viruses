@@ -23,7 +23,7 @@ const Scene = () => {
         {PROTEINS.map((protein) => {
           return <ProteinGroup key={protein.name} {...protein} />;
         })}
-        <Water />
+        {/* <Water /> */}
         <Cube />
         <SelectedParticleDisplay />
         <ScaleIndicator />

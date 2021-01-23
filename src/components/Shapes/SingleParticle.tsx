@@ -1,17 +1,10 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { useConvexPolyhedron } from "@react-three/cannon";
 import { useJitterParticle } from "./useJitterParticle";
 import { GlobalStateType, useStore } from "../../store";
 import * as THREE from "three";
 import { usePauseUnpause } from "./usePauseUnpause";
-import {
-  useChangeTemperatureWhenScaleChanges,
-  useChangeVelocityWhenScaleChanges,
-  useChangeVelocityWhenTemperatureChanges,
-} from "./useChangeVelocityWhenTemperatureChanges";
-import { useMount } from "../../utils/utils";
-import { useFrame } from "react-three-fiber";
-import { Vector } from "../../types";
+import { useChangeVelocityWhenTemperatureChanges } from "./useChangeVelocityWhenTemperatureChanges";
 
 /** Particle which can interact with others, or not (passes right through them) */
 export function SingleParticle(props) {
@@ -61,7 +54,7 @@ function InteractiveParticle(props) {
       // visible={shouldRender}
       ref={ref}
       scale={shouldRender ? [scale, scale, scale] : [0, 0, 0]}
-      onPointerDown={handleSetSelectedProtein}
+      onClick={handleSetSelectedProtein}
     >
       {shouldRender ? <Component /> : null}
     </mesh>
