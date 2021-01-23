@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useStore } from "./store";
 import { Slider, Typography, useMediaQuery } from "@material-ui/core";
 import styled from "styled-components/macro";
@@ -14,6 +14,12 @@ export function ScaleControls() {
 
   const isLandscape =
     useMediaQuery(`(orientation: landscape)`) && isTouchDevice;
+
+  // remember the lowest scale we've hit so far
+  const lowestSoFar = useRef(scale);
+  useEffect(() => {
+    lowestSoFar.current = Math.min(scale, lowestSoFar.current);
+  }, [scale]);
   return (
     <ScaleControlsStyles isLandscape={isLandscape}>
       <Typography align="center" id="volume-slider" gutterBottom>
@@ -31,7 +37,7 @@ export function ScaleControls() {
             onChange={(event, newValue) => {
               set({ scale: newValue });
             }}
-            min={MIN_SCALE}
+            min={loading ? lowestSoFar.current : MIN_SCALE}
             step={0.00000001}
             scale={(x) => x ** 2}
             max={MAX_SCALE}

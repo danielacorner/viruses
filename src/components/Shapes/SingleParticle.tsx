@@ -46,12 +46,25 @@ function InteractiveParticle(props) {
   const handleSetSelectedProtein = () =>
     set({ selectedProtein: { ...props, api } });
 
+  const pointerDownTime = useRef(0);
+  // if we mousedown AND mouseup over the same particle very quickly, select it
+  const handlePointerDown = () => {
+    pointerDownTime.current = Date.now();
+  };
+  const handlePointerUp = () => {
+    const timeSincePointerDown = Date.now() - pointerDownTime.current;
+    if (timeSincePointerDown < 300) {
+      handleSetSelectedProtein();
+    }
+  };
+
   return (
     <mesh
       // visible={shouldRender}
       ref={ref}
       scale={[scale, scale, scale]}
-      onClick={handleSetSelectedProtein}
+      onPointerDown={handlePointerDown}
+      onPointerUp={handlePointerUp}
     >
       <Component />
       {/* {shouldRender ? <Component /> : null} */}
