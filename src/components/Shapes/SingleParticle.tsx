@@ -3,8 +3,8 @@ import { useConvexPolyhedron } from "@react-three/cannon";
 import { useJitterParticle } from "./useJitterParticle";
 import { useStore } from "../../store";
 import * as THREE from "three";
-import { usePauseUnpause } from "./usePauseUnpause";
 import { useChangeVelocityWhenTemperatureChanges } from "./useChangeVelocityWhenTemperatureChanges";
+import { usePauseUnpauseParticleMovement } from "./usePauseUnpauseParticleMovement";
 
 /** Particle which can interact with others, or not (passes right through them) */
 export function SingleParticle(props) {
@@ -23,10 +23,9 @@ function InteractiveParticle(props) {
   // each virus has a polyhedron shape, usually icosahedron (20 faces)
   // this shape determines how it bumps into other particles
   // https://codesandbox.io/s/r3f-convex-polyhedron-cnm0s?from-embed=&file=/src/index.js:1639-1642
-  const detail = Math.ceil(numIcosahedronFaces / 20);
+  const detail = Math.floor(numIcosahedronFaces / 20);
   const volumeOfSphere = (4 / 3) * Math.PI * props.radius ** 3;
   const mockMass = 10 ** -5 * volumeOfSphere;
-  console.log("🌟🚨 ~ InteractiveParticle ~ mockMass", mockMass);
 
   const [ref, api] = useConvexPolyhedron(() => ({
     // TODO: accurate mass data from PDB --> need to multiply by number of residues or something else? doesn't seem right
@@ -36,7 +35,7 @@ function InteractiveParticle(props) {
     args: new THREE.IcosahedronGeometry(1, detail),
   }));
 
-  usePauseUnpause({
+  usePauseUnpauseParticleMovement({
     api,
   });
 
@@ -73,13 +72,16 @@ export function useShouldRenderParticle(radius: number) {
   return getShouldRenderParticle(scale, radius, worldRadius);
 }
 
+const MIN_RADIUS = 5;
+const MAX_RADIUS = 20;
 export function getShouldRenderParticle(
   scale: number,
   radius: number,
   worldRadius: number
 ) {
-  const tooBigToRender = scale * radius > worldRadius / 3;
-  const tooSmallToRender = scale * radius < worldRadius / 20;
+  const particleSize = scale * radius;
+  const tooBigToRender = particleSize > worldRadius / MIN_RADIUS;
+  const tooSmallToRender = particleSize < worldRadius / MAX_RADIUS;
   return !(tooBigToRender || tooSmallToRender);
 }
 

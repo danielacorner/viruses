@@ -1,7 +1,7 @@
 import { useFrame } from "react-three-fiber";
 import { randBetween } from "../../utils/utils";
 import * as THREE from "three";
-import { usePhysicsProps } from "./usePhysicsProps";
+import { useVelocity } from "./useVelocity";
 import { useStore } from "../../store";
 
 // api
@@ -13,7 +13,7 @@ type WorkerVec = {
 const ROTATION_JITTER_COEFF = 0.05;
 const POSITION_JITTER_COEFF = 100;
 export function useJitterParticle({ mass, ref, api = {} as any | WorkerVec }) {
-  const { velocity } = usePhysicsProps(mass);
+  const { velocity } = useVelocity(mass);
   const paused = useStore((s) => s.paused);
   const scale = useStore((s) => s.scale);
   // ? ONLY when the temperature changes, change the velocity

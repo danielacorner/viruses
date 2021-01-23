@@ -1,102 +1,98 @@
-import { eitherOr, useMount } from "../../utils/utils";
-import { useEffect, useRef } from "react";
-import { usePhysicsProps } from "./usePhysicsProps";
+import { eitherOr } from "../../utils/utils";
+import { useEffect } from "react";
+import { useVelocity } from "./useVelocity";
 import { useStore } from "../../store";
 import { Quaternion, Vector } from "../../types";
-import { usePrevious } from "../../utils/hooks";
 
 export function useChangeVelocityWhenTemperatureChanges({
   mass,
   api,
   instanced = false,
 }) {
-  const { temperature, velocity } = usePhysicsProps(mass);
+  const { temperature, velocity } = useVelocity(mass);
+  console.log("🌟🚨 ~ velocity", velocity);
   const set = useStore((s) => s.set);
+  const scale = useStore((s) => s.scale);
   // current particle velocity
-  const currentVelocity = useRef([0, 0, 0] as Vector);
-  useMount(
-    () =>
-      !instanced && api.velocity.subscribe((v) => (currentVelocity.current = v))
-  );
-  const currentAngularVelocity = useRef([0, 0, 0, 0] as Quaternion);
-  useMount(
-    () =>
-      !instanced &&
-      api.angularVelocity.subscribe((q) => (currentAngularVelocity.current = q))
-  );
 
+  // ! api.subscribe causes errors when adding bodies https://github.com/pmndrs/use-cannon/issues/115
+  // const currentVelocity = useRef([0, 0, 0] as Vector);
+  // useMount(
+  //   () =>
+  //     !instanced && api.velocity.subscribe((v) => (currentVelocity.current = v))
+  // );
+  // const currentAngularVelocity = useRef([0, 0, 0, 0] as Quaternion);
+  // useMount(
+  //   () =>
+  //     !instanced &&
+  //     api.angularVelocity.subscribe((q) => (currentAngularVelocity.current = q))
+  // );
+
+  // set particle velocity based on temperature
+  // ? should velocity randomly change (including direction) whenever you change the temperature
   useEffect(() => {
-    // ? velocity randomly changes (including direction) whenever you change the temperature
+    const newVelocity = [0, 0, 0].map(() => velocity * eitherOr(-1, 1));
+    console.log("🌟🚨 ~ useEffect ~ newVelocity", newVelocity);
+    api.velocity.set(...newVelocity) as Vector;
 
-    const newVelocity = currentVelocity.current.map(
-      (v) => velocity * eitherOr(-1, 1)
-    );
-    api.velocity.set(...newVelocity);
+    // ? should angular velocity change (including direction) whenever you change the temperature
 
-    // ? angular velocity changes (including direction) whenever you change the temperature
-
-    const newAngularVelocity = currentAngularVelocity.current.map(
-      (v) => velocity * eitherOr(-1, 1)
-    );
+    const newAngularVelocity = [0, 0, 0, 0].map(
+      () => velocity * eitherOr(-1, 1)
+    ) as Quaternion;
+    console.log("🌟🚨 ~ useEffect ~ newAngularVelocity", newAngularVelocity);
     api.angularVelocity.set(...newAngularVelocity);
 
-    // unpause if it was paused
-    set({ paused: false });
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [temperature]);
+  }, [temperature, scale]);
 }
 
-export function useChangeTemperatureWhenScaleChanges() {
-  const set = useStore((s) => s.set);
-  const scale = useStore((s) => s.scale);
-  const temperature = useStore((s) => s.temperature);
-  const prevScale = usePrevious(scale);
+// function useChangeTemperatureWhenScaleChanges() {
+//   const set = useStore((s) => s.set);
+//   const scale = useStore((s) => s.scale);
+//   const temperature = useStore((s) => s.temperature);
+//   const prevScale = usePrevious(scale);
 
-  useEffect(() => {
-    if (!prevScale) {
-      return;
-    }
-    // ? velocity randomly changes (including direction) whenever you change the temperature
-    const ratio = (scale / (prevScale || scale)) ** 3;
-    const newTemperature = temperature * ratio;
-    set({ temperature: newTemperature });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [temperature]);
-}
+//   useEffect(() => {
+//     if (!prevScale) {
+//       return;
+//     }
+//     // ? velocity randomly changes (including direction) whenever you change the temperature
+//     const ratio = (scale / (prevScale || scale)) ** 3;
+//     const newTemperature = temperature * ratio;
+//     set({ temperature: newTemperature });
+//     // eslint-disable-next-line react-hooks/exhaustive-deps
+//   }, [temperature]);
+// }
 
-export function useChangeVelocityWhenScaleChanges({
-  mass,
-  api,
-  instanced = false,
-}) {
-  const scale = useStore((s) => s.scale);
-  // current particle velocity
-  const currentVelocity = useRef([0, 0, 0] as Vector);
-  useMount(
-    () =>
-      !instanced && api.velocity.subscribe((v) => (currentVelocity.current = v))
-  );
-  const currentAngularVelocity = useRef([0, 0, 0, 0] as Quaternion);
-  useMount(
-    () =>
-      !instanced &&
-      api.angularVelocity.subscribe((q) => (currentAngularVelocity.current = q))
-  );
-  const prevScale = usePrevious(scale);
+// function useChangeVelocityWhenScaleChanges({ mass, api, instanced = false }) {
+//   const scale = useStore((s) => s.scale);
+//   // current particle velocity
+//   const currentVelocity = useRef([0, 0, 0] as Vector);
+//   useMount(
+//     () =>
+//       !instanced && api.velocity.subscribe((v) => (currentVelocity.current = v))
+//   );
+//   const currentAngularVelocity = useRef([0, 0, 0, 0] as Quaternion);
+//   useMount(
+//     () =>
+//       !instanced &&
+//       api.angularVelocity.subscribe((q) => (currentAngularVelocity.current = q))
+//   );
+//   const prevScale = usePrevious(scale);
 
-  useEffect(() => {
-    if (!prevScale) {
-      return;
-    }
-    // increase velocity when zoom decreases (so we don't build up "pressure")
-    const ratio = (scale / (prevScale || scale)) ** 3;
-    const newVelocity = currentVelocity.current.map(
-      (v) => v * ratio
-      // (v) => velocity * eitherOr(-1, 1) * 10
-    );
-    api.velocity.set(...newVelocity);
+//   useEffect(() => {
+//     if (!prevScale) {
+//       return;
+//     }
+//     // increase velocity when zoom decreases (so we don't build up "pressure")
+//     const ratio = (scale / (prevScale || scale)) ** 3;
+//     const newVelocity = currentVelocity.current.map(
+//       (v) => v * ratio
+//       // (v) => velocity * eitherOr(-1, 1) * 10
+//     );
+//     api.velocity.set(...newVelocity);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [scale]);
-}
+//     // eslint-disable-next-line react-hooks/exhaustive-deps
+//   }, [scale]);
+// }

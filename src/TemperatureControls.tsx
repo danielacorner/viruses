@@ -8,6 +8,7 @@ export function TemperatureControls() {
   const temperature = useStore((s) => s.temperature);
   const scale = useStore((s) => s.scale);
   const set = useStore((s) => s.set);
+  const paused = useStore((s) => s.paused);
 
   // set temperature low initially
 
@@ -41,6 +42,14 @@ export function TemperatureControls() {
           <Slider
             aria-labelledby="volume-slider"
             onChange={(event, newValue) => {
+              // pause when temperature is moved to 0
+              // unpause when temperature is moved away from 0
+              if (newValue === 0 && !paused) {
+                set({ paused: true });
+              } else if (newValue !== 0 && paused) {
+                set({ paused: true });
+              }
+
               set({ temperature: newValue });
             }}
             min={0}

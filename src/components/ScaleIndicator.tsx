@@ -1,6 +1,7 @@
 import React from "react";
 import { Line, Text } from "@react-three/drei";
 import { useStore } from "../store";
+import { useIsTabletOrLarger } from "../utils/constants";
 
 type Tick = {
   name: string;
@@ -78,7 +79,7 @@ export function ScaleIndicator() {
       side: "right",
     }))
     .slice(1) as Tick[];
-
+  const isTabletOrLarger = useIsTabletOrLarger();
   return (
     <>
       <EdgeLines {...{ commonProps }} />
@@ -112,13 +113,16 @@ export function ScaleIndicator() {
                 rotation={[0, t.side === "left" ? 0 : Math.PI / 2, 0]}
                 {...{
                   position: [
-                    t.position[0] * (t.side === "left" ? 0.91 : 1),
+                    t.position[0] *
+                      (t.side === "left"
+                        ? 0.91 - (isTabletOrLarger ? 0 : 0.02)
+                        : 1),
                     t.position[1],
                     t.position[2] * (t.side === "right" ? 0.91 : 1),
                   ],
                   // color: t.side === "left" ? "hsl(0,0%,0%)" : "hsl(0,0%,70%)",
                   color: "hsl(0,0%,20%)",
-                  fontSize: 0.16,
+                  fontSize: isTabletOrLarger ? 0.16 : 0.24,
                   style: {
                     whiteSpace: "nowrap",
                     width: 0,

@@ -3,15 +3,33 @@ import { useStore } from "./store";
 import { Grid, IconButton, Typography } from "@material-ui/core";
 import styled from "styled-components/macro";
 import { Pause, PlayArrowOutlined } from "@material-ui/icons";
+import { usePrevious } from "./utils/hooks";
 
 export function PauseControls() {
   const paused = useStore((s) => s.paused);
+  console.log("🌟🚨 ~ PauseControls ~ paused", paused);
   const set = useStore((s) => s.set);
 
-  usePlayPauseOnSpacebar();
+  const handlePauseUnpause = () => {
+    const nextPaused = !paused;
+
+    // freeze or unfreeze the temperature
+    if (nextPaused === true && temperature !== 0) {
+      set({ temperature: 0 });
+    } else if (!nextPaused && temperature === 0) {
+      set({ temperature: prevTemp });
+    }
+
+    set({ paused: nextPaused });
+  };
+
+  usePlayPauseOnSpacebar(handlePauseUnpause);
+
+  const temperature = useStore((s) => s.temperature);
+  const prevTemp = usePrevious(temperature);
 
   return (
-    <PauseControlsStyles onClick={() => set({ paused: !paused })}>
+    <PauseControlsStyles onClick={handlePauseUnpause}>
       <Typography align="center" id="volume-slider">
         {paused ? "Play" : "Pause"}
       </Typography>
@@ -27,14 +45,11 @@ const PauseControlsStyles = styled.div`
   cursor: pointer;
 `;
 
-function usePlayPauseOnSpacebar() {
-  const paused = useStore((s) => s.paused);
-  const set = useStore((s) => s.set);
-
+function usePlayPauseOnSpacebar(handlePauseUnpause: Function) {
   useEffect(() => {
     const onKeydown = (event) => {
       if (event.key === " ") {
-        set({ paused: !paused });
+        handlePauseUnpause();
       }
     };
 
@@ -42,5 +57,5 @@ function usePlayPauseOnSpacebar() {
     return () => {
       window.removeEventListener("keydown", onKeydown);
     };
-  }, [paused, set]);
+  }, [handlePauseUnpause]);
 }

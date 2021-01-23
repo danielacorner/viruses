@@ -6,6 +6,7 @@ import * as THREE from "three";
 export function Lighting() {
   const selectedProtein = useStore((s) => s.selectedProtein);
   const worldRadius = useStore((s) => s.worldRadius);
+  const set = useStore((s) => s.set);
   const scale = useStore((s) => s.scale);
   const [selectedCoords, setSelectedCoords] = useState({ x: 0, y: 0, z: 0 });
 
@@ -13,14 +14,22 @@ export function Lighting() {
   const currentPosition = useRef(null as null | [number, number, number]);
   useEffect(() => {
     if (selectedProtein) {
-      selectedProtein.api.position.subscribe(
-        (p) => (currentPosition.current = p)
-      );
+      // selectedProtein.api.position.subscribe(
+      //   (p) => (currentPosition.current = p)
+      // );
     }
     return () => {
       currentPosition.current = null;
     };
   }, [selectedProtein]);
+
+  // https://github.com/pmndrs/use-cannon/issues/115
+  // when the scale changes, physics bodies are added/removed,
+  // which breaks the simulation if we have any active subscriptions
+  // so, unsubscribe when scale changes
+  // useEffect(() => {
+  //   set({ selectedProtein: null });
+  // }, [scale]);
 
   useFrame(() => {
     if (currentPosition.current?.[0]) {
