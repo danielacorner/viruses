@@ -31,13 +31,17 @@ export function ScaleControls() {
         </div>
         <div className="grid-item">
           <Slider
-            disabled={loading}
             orientation="vertical"
             aria-labelledby="volume-slider"
             onChange={(event, newValue) => {
+              // prevent going any lower while loading (can still go higher)
+              // because we start small and scale up, this ensures we load the minimum number of assets each time
+              if (loading && newValue < lowestSoFar.current) {
+                return;
+              }
               set({ scale: newValue });
             }}
-            min={loading ? lowestSoFar.current : MIN_SCALE}
+            min={MIN_SCALE}
             step={0.00000001}
             scale={(x) => x ** 2}
             max={MAX_SCALE}
