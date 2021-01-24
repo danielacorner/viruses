@@ -20,6 +20,7 @@ function InteractiveParticle(props) {
 
   const set = useStore((s) => s.set);
   const scale = useStore((s) => s.scale);
+  const isTooltipMaximized = useStore((s) => s.isTooltipMaximized);
   const selectedProtein = useStore((s) => s.selectedProtein);
   const isSelectedProtein =
     selectedProtein && selectedProtein.name === props.name;
@@ -70,7 +71,7 @@ function InteractiveParticle(props) {
       onPointerDown={handlePointerDown}
       onPointerUp={handlePointerUp}
     >
-      {isSelectedProtein ? <HighlightParticle /> : null}
+      {isSelectedProtein && !isTooltipMaximized ? <HighlightParticle /> : null}
       <Component />
     </mesh>
   );
@@ -88,11 +89,11 @@ const CircleOutline = styled.div`
 function HighlightParticle() {
   const selectedProtein = useStore((s) => s.selectedProtein);
   const scale = useStore((s) => s.scale);
-  return (
+  return selectedProtein ? (
     <HTML>
       <CircleOutline radius={selectedProtein.radius * scale * 70} />
     </HTML>
-  );
+  ) : null;
 }
 
 /** hide particle if too big or too small */

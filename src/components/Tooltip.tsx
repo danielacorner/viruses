@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useStore } from "../store";
 import styled from "styled-components/macro";
 import { Close, Fullscreen, FullscreenExit } from "@material-ui/icons";
@@ -10,7 +10,6 @@ import {
   useMediaQuery,
 } from "@material-ui/core";
 import { startCase } from "lodash";
-import { Protein } from "../utils/PROTEINS";
 import { BREAKPOINT_DESKTOP } from "../utils/constants";
 const TOOLTIP = {
   height: 432,
@@ -18,24 +17,27 @@ const TOOLTIP = {
 };
 
 const Tooltip = () => {
-  const [maximized, setMaximized] = useState(false);
-  const selectedProtein = useStore((s) => s.selectedProtein as Protein);
+  const isTooltipMaximized = useStore((s) => s.isTooltipMaximized);
+  const set = useStore((s) => s.set);
+  const selectedProtein = useStore((s) => s.selectedProtein);
   const isDesktopOrLarger = useMediaQuery(
     `(min-width: ${BREAKPOINT_DESKTOP}px)`
   );
-  const isHorizontalLayout = maximized && isDesktopOrLarger;
+  const isHorizontalLayout = isTooltipMaximized && isDesktopOrLarger;
 
   return selectedProtein ? (
     <>
-      <Modal open={maximized}>
-        <ClickAwayListener onClickAway={() => setMaximized(false)}>
+      <Modal open={isTooltipMaximized}>
+        <ClickAwayListener
+          onClickAway={() => set({ isTooltipMaximized: false })}
+        >
           <TooltipStyles
             // onTouchStart={() => setMaximized(!maximized)}
             maximized={true}
             isDesktopOrLarger={isDesktopOrLarger}
             isHorizontalLayout={isHorizontalLayout}
           >
-            <TooltipContent {...{ maximized, setMaximized }} />
+            <TooltipContent />
           </TooltipStyles>
         </ClickAwayListener>
       </Modal>
@@ -45,23 +47,29 @@ const Tooltip = () => {
         isDesktopOrLarger={isDesktopOrLarger}
         isHorizontalLayout={isHorizontalLayout}
       >
-        <TooltipContent {...{ maximized, setMaximized }} />
+        <TooltipContent />
       </TooltipStyles>
     </>
   ) : null;
 };
 
-function BtnMaximize(props) {
+function BtnMaximize() {
+  const isDesktopOrLarger = useMediaQuery(
+    `(min-width: ${BREAKPOINT_DESKTOP}px)`
+  );
+  const set = useStore((s) => s.set);
+  const isTooltipMaximized = useStore((s) => s.isTooltipMaximized);
+
   return (
     <IconButton
       className="btnMaximize"
       onClick={(e) => {
         e.stopPropagation();
-        props.setMaximized((prev) => !prev);
+        set({ isTooltipMaximized: !isTooltipMaximized });
       }}
     >
-      {props.maximized ? (
-        props.isDesktopOrLarger ? null : (
+      {isTooltipMaximized ? (
+        isDesktopOrLarger ? null : (
           <FullscreenExit />
         )
       ) : (
@@ -71,22 +79,17 @@ function BtnMaximize(props) {
   );
 }
 
-function TooltipContent({
-  maximized,
-  setMaximized,
-}: {
-  maximized: boolean;
-  setMaximized: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
+function TooltipContent() {
   const set = useStore((s) => s.set);
-  const selectedProtein = useStore((s) => s.selectedProtein as Protein);
+  const isTooltipMaximized = useStore((s) => s.isTooltipMaximized);
+  const selectedProtein = useStore((s) => s.selectedProtein);
 
   const BtnClose = () => (
     <IconButton
       className="btnClose"
       onClick={(e) => {
         e.stopPropagation();
-        setMaximized(false);
+        set({ isTooltipMaximized: false });
         set({ selectedProtein: null });
       }}
     >
@@ -101,7 +104,7 @@ function TooltipContent({
     <img
       {...props}
       src={
-        maximized &&
+        isTooltipMaximized &&
         // have 720p image for protein? -> add "_720" before .webp
         !selectedProtein.pathToImage.includes("faustovirus") &&
         !selectedProtein.pathToImage.includes("varicella") &&
@@ -113,11 +116,11 @@ function TooltipContent({
       alt=""
     />
   );
-  const isHorizontalLayout = maximized && isDesktopOrLarger;
+  const isHorizontalLayout = isTooltipMaximized && isDesktopOrLarger;
   return (
     <div
       style={
-        maximized && isDesktopOrLarger
+        isTooltipMaximized && isDesktopOrLarger
           ? {
               display: "grid",
               gridTemplateColumns: "calc(70vw - 128px) auto",
@@ -126,13 +129,13 @@ function TooltipContent({
           : {}
       }
     >
-      {maximized && isDesktopOrLarger ? (
+      {isTooltipMaximized && isDesktopOrLarger ? (
         <ParticleImage
           style={{ width: "100%", height: "100%", objectFit: "contain" }}
         />
       ) : null}
       <div className="tooltipContent">
-        {maximized ? <BtnClose /> : null}
+        {isTooltipMaximized ? <BtnClose /> : null}
         <div className="titleSection">
           <a
             href={selectedProtein.PDBUrl}
@@ -176,32 +179,26 @@ function TooltipContent({
           <div
             className="imgWrapper"
             onClick={() => {
-              setMaximized((prev) => !prev);
+              set({ isTooltipMaximized: !isTooltipMaximized });
             }}
           >
-            {maximized ? null : <BtnClose />}
+            {isTooltipMaximized ? null : <BtnClose />}
             <ParticleImage />
-            <BtnMaximize
-              {...{
-                maximized,
-                setMaximized,
-                isDesktopOrLarger,
-              }}
-            />
+            <BtnMaximize />
           </div>
         )}
         <div
           className="pubmedAbstract"
           onClick={() => {
-            if (!maximized) {
-              setMaximized(true);
+            if (!isTooltipMaximized) {
+              set({ isTooltipMaximized: true });
             }
           }}
         >
-          {maximized ? (
+          {isTooltipMaximized ? (
             <p className="authors">{selectedProtein.authors}</p>
           ) : null}
-          {selectedProtein.pubmedAbstract.length > 100 && !maximized
+          {selectedProtein.pubmedAbstract.length > 100 && !isTooltipMaximized
             ? selectedProtein.pubmedAbstract.slice(0, 100) + "..."
             : selectedProtein.pubmedAbstract}
         </div>

@@ -10,6 +10,7 @@ type SelectedProtein = Protein & {
 export type GlobalStateType = {
   worldRadius: number;
   temperature: number;
+  isTooltipMaximized: boolean;
   loading: boolean;
   started: boolean;
   paused: boolean;
@@ -25,6 +26,7 @@ const startsStarted = /* false && */ process.env.NODE_ENV === "development";
 // with typescript https://react-tracked.js.org/docs/tutorial-zustand-01/
 export const useStore = create<GlobalStateType>(
   (set): GlobalStateType => ({
+    isTooltipMaximized: false,
     paused: false,
     started: startsStarted,
     loading: !startsStarted,
