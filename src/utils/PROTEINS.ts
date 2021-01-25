@@ -72,6 +72,12 @@ const Self_assembling_dna_crystal_scaffold_with_rhombohedral_symmetry_6 = React.
       "../components/GLTFs/nanotech/Self_assembling_dna_crystal_scaffold_with_rhombohedral_symmetry_6"
     )
 );
+const Nanoparticle_COVID_19_vaccine_candidate_50 = React.lazy(
+  () =>
+    import(
+      "../components/GLTFs/nanotech/Nanoparticle_COVID_19_vaccine_candidate_50"
+    )
+);
 const Dna_crystals_containing_a_torsionally_stressed_component_20 = React.lazy(
   () =>
     import(
@@ -535,6 +541,26 @@ export const PROTEINS: Protein[] = [
   // NANOTECH
   // NANOTECH
   // NANOTECH
+  {
+    Component: Nanoparticle_COVID_19_vaccine_candidate_50,
+    name: "Nanoparticle for a COVID-19 vaccine candidate",
+    type: PROTEIN_TYPES.nanotech,
+    PDBUrl: "https://www.rcsb.org/structure/7B3Y",
+    mass: 36,
+    // atomCount: 99723, // PDB
+    radius: 118, // measured using PDB 3d viewer e.g. https://www.rcsb.org/3d-view/6CGR/1
+    atomCount: 1516,
+    numIcosahedronFaces: 20,
+    numAsymmetricUnits: 1,
+    pathToGLTF:
+      "/models/nanotech/nanoparticle_COVID_19_vaccine_candidate_50.glb",
+    pathToImage:
+      "/models/nanotech/nanoparticle_COVID_19_vaccine_candidate.webp",
+    interactive: true,
+    authors:
+      "Tiong, K.T., Rijal, P., Rahikainen, R., Keeble, A.H., Schimanski, L., Hussain, S., Harvey, R., Duyvesteyn, H.M.E., Hayes, J.W.P., Edwards, J.C., McLean, R.K., Martini, V., Pedrera, M., Thakur, N., Conceicao, C., Dietrich, I., Shelton, H., Ludi, A., Wilsden, G., Browning, C., Zagrajek, A.K., Bialy, D., Bhat, S., Stevenson-Leggett, P., Hollinghurst, P., Tully, M., Moffat, K., Chiu, C., Waters, R., Gray, A., Azhar, M., Mioulet, V., Newman, J., Amin, A.S., Burman, A., Crossley, S., Hammond, J.A., Tchilian, E., Charleston, B., Bailey, D., Tuthill, T.J., Graham, S.P., Malinauskas, T., Huo, J., Tree, J.A., Buttigieg, K.R., Owens, R.J., Caroll, M.W., Daniels, R.S., McCauley, J.W., Huang, K.A., Stuart, D.I., Howarth, M., Townsend, A.R.",
+    pubmedAbstract: "To be published.",
+  },
   {
     Component: Self_assembling_dna_crystal_scaffold_with_rhombohedral_symmetry_6,
     name: "Self-Assembling DNA Crystal Scaffold with Rhombohedral Symmetry",
