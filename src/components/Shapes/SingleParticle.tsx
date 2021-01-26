@@ -78,6 +78,7 @@ function InteractiveParticle(props) {
 }
 
 const CircleOutline = styled.div`
+  pointer-events: none;
   border: 2px solid #ff4775;
   box-sizing: border-box;
   border-radius: 50%;

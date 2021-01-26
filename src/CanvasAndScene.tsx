@@ -7,10 +7,11 @@ import * as THREE from "three";
 import { ScaleControls } from "./ScaleControls";
 // import { useFrame } from "react-three-fiber";
 import BottomControls from "./BottomControls";
-import { ScaleIndicator } from "./components/ScaleIndicator";
+import { useMediaQuery } from "@material-ui/core";
+import { BREAKPOINT_TABLET } from "./utils/constants";
 export default function CanvasAndScene({ renderProteins = true }) {
   const windowSize = useWindowSize();
-
+  const isTabletOrLarger = useMediaQuery(`(min-width: ${BREAKPOINT_TABLET}px)`);
   //  // This one makes the camera move in and out
   //  useFrame(({ clock, camera }) => {
   //   camera.position.z = 50 + Math.sin(clock.getElapsedTime()) * 30
@@ -29,7 +30,7 @@ export default function CanvasAndScene({ renderProteins = true }) {
         >
           <Scene />
         </Controls.Canvas>
-        {process.env.NODE_ENV === "development" ? (
+        {process.env.NODE_ENV === "development" && isTabletOrLarger ? (
           <Controls anchor={"top_right"} style={{ marginTop: -64 }} />
         ) : null}
       </Controls.Provider>

@@ -16,7 +16,7 @@ import {
   BREAKPOINT_TABLET,
 } from "../utils/constants";
 const TOOLTIP = {
-  height: 432,
+  height: 442,
   width: 300,
 };
 
@@ -235,6 +235,7 @@ const TooltipStyles = styled.div`
       : ""}
 
   .overflowWrapper {
+    overflow: ${(props) => (props.maximized ? "hidden" : "visible")};
     position: relative;
     pointer-events: none;
     ${(props) =>
@@ -283,7 +284,7 @@ const TooltipStyles = styled.div`
       grid-template-rows: auto ${(props) =>
           props.maximized && props.isHorizontalLayout ? 1.5 : 2}em ${(props) =>
           props.isHorizontalLayout ? "" : "auto "} ${(props) =>
-          props.maximized ? "1fr" : "4em"};
+          props.maximized ? "1fr" : "5em"};
       grid-gap: 0.5em;
       position: relative;
       text-shadow: 0px 1px 0px white, 0px 1px 0px white;
@@ -378,6 +379,7 @@ const TooltipStyles = styled.div`
         right: 0em;
       }
       .pubmedAbstract {
+        background: white;
         ${(props) =>
           props.maximized && !props.isDesktopOrLarger
             ? `
