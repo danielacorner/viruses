@@ -1,3 +1,4 @@
+import { useMatcapTexture } from "@react-three/drei";
 import React from "react";
 import { useStore } from "../store";
 import { ScaleIndicator } from "./ScaleIndicator";
@@ -52,6 +53,7 @@ export function Walls() {
     },
   ];
   const scalePct = useScalePercent();
+
   return (
     <>
       {walls.map((props, idx) => (
@@ -64,7 +66,7 @@ export function Walls() {
       ))}
       <mesh>
         <icosahedronBufferGeometry args={[scalePct * 100, 5]} />
-        <meshPhysicalMaterial
+        {/* <meshPhysicalMaterial
           color="rebeccapurple"
           opacity={0.014}
           transparent={true}
@@ -74,7 +76,7 @@ export function Walls() {
           vertexColors={true}
           reflectivity={1}
           wireframe={true}
-        />
+        /> */}
       </mesh>
       <ScaleIndicator />
     </>
