@@ -9,7 +9,7 @@ import { PROTEINS } from "../utils/PROTEINS";
 import { Water } from "./Water";
 import { ScaleIndicator } from "./ScaleIndicator";
 import { SelectedParticleDisplay } from "./SelectedParticleDisplay";
-import { SkyBox } from "./SkyBox/SkyBox";
+import CustomEffects from "./effects/CustomEffects";
 
 const Scene = () => {
   // audio track
@@ -38,7 +38,7 @@ const Scene = () => {
         <ScaleIndicator />
         {/* <Cells /> */}
       </Physics>
-      {/* <Effects /> */}
+      <CustomEffects />
     </React.Fragment>
   );
 };
