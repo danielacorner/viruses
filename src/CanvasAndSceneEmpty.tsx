@@ -39,7 +39,6 @@ export function CanvasAndSceneEmpty({
             <Water />
             {children}
             <Walls />
-            <ScaleIndicator />
           </mesh>
         </Physics>
       </SpinIfLoadingIndicator>

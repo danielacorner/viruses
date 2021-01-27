@@ -9,7 +9,6 @@ import { PROTEINS } from "../utils/PROTEINS";
 import { Water } from "./Water";
 import { ScaleIndicator } from "./ScaleIndicator";
 import { SelectedParticleDisplay } from "./SelectedParticleDisplay";
-import CustomEffects from "./effects/CustomEffects";
 
 const Scene = () => {
   // audio track
@@ -18,7 +17,7 @@ const Scene = () => {
   // useSetTemperatureLowInitially();
 
   return (
-    <React.Fragment /* key={rebootKey} */>
+    <>
       <OrbitControls />
       <Lighting />
       <Physics {...PHYSICS_PROPS}>
@@ -35,11 +34,10 @@ const Scene = () => {
         <Walls />
         {/* <SkyBox /> */}
         <SelectedParticleDisplay />
-        <ScaleIndicator />
         {/* <Cells /> */}
       </Physics>
-      <CustomEffects />
-    </React.Fragment>
+      {/* <CustomEffects /> */}
+    </>
   );
 };
 

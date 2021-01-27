@@ -1,12 +1,13 @@
 import React from "react";
 import { usePlane } from "@react-three/cannon";
+import { Reflector } from "@react-three/drei";
 
 export function Plane({
   width = 100,
   height = 100,
   widthSegments = 1,
   heightSegments = 1,
-  materialProps = {},
+  reflect = false,
   ...rest
 }) {
   const [ref] = usePlane(() => ({
@@ -17,10 +18,28 @@ export function Plane({
 
   return (
     <mesh ref={ref} /* receiveShadow */>
-      <planeGeometry
-        attach="geometry"
-        args={[width, height, widthSegments, heightSegments]}
-      />
+      {reflect ? (
+        <>
+          <Reflector>
+            <planeGeometry
+              attach="geometry"
+              args={[width, height, widthSegments, heightSegments]}
+            />
+          </Reflector>
+          <meshPhysicalMaterial
+            attach={"material"}
+            metalness={1}
+            roughness={0}
+          />
+        </>
+      ) : (
+        <>
+          <planeGeometry
+            attach="geometry"
+            args={[width, height, widthSegments, heightSegments]}
+          />
+        </>
+      )}
       {/*  <meshStandardMaterial
         attach="material"
         // depthTest={false}

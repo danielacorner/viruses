@@ -4,8 +4,7 @@ import { useProgress } from "@react-three/drei";
 import styled from "styled-components/macro";
 import { useFrame } from "react-three-fiber";
 import { CanvasAndSceneEmpty } from "../CanvasAndSceneEmpty";
-import { useStore } from "../store";
-import { MAX_SCALE, MIN_SCALE } from "../utils/constants";
+import { useScalePercent } from "./useScalePercent";
 // import { render } from "react-dom";
 // import MemoryStats from "react-memorystats";
 
@@ -43,8 +42,7 @@ const SPEED_X = 0.2;
 const AMPLITUDE_Y = 1;
 const AMPLITUDE_X_INV = 0.01;
 function SpinningParticle() {
-  const scale = useStore((s) => s.scale);
-  const scalePct = (scale - MIN_SCALE) / (MAX_SCALE - MIN_SCALE);
+  const scalePct = useScalePercent();
 
   const ref1 = useRef(null as any);
   const ref2 = useRef(null as any);
