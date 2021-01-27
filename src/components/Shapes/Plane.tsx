@@ -6,7 +6,7 @@ export function Plane({
   height = 100,
   widthSegments = 1,
   heightSegments = 1,
-  color,
+  materialProps = {},
   ...rest
 }) {
   const [ref] = usePlane(() => ({
@@ -14,20 +14,20 @@ export function Plane({
     ...rest,
     // position: [-100, -100, -100],
   }));
+
   return (
     <mesh ref={ref} /* receiveShadow */>
       <planeGeometry
         attach="geometry"
         args={[width, height, widthSegments, heightSegments]}
       />
-      {/* <meshStandardMaterial
-				attach="material"
-				color={color}
-				// roughness={0.7}
-				// metalness={0.5}
-				// opacity={0.5}
-				depthTest={false}
-			/> */}
+      {/*  <meshStandardMaterial
+        attach="material"
+        // depthTest={false}
+        opacity={0.5}
+        // reflectivity={1}
+        {...materialProps}
+      /> */}
     </mesh>
   );
 }

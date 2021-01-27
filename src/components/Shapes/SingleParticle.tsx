@@ -6,6 +6,7 @@ import * as THREE from "three";
 import { useChangeVelocityWhenTemperatureChanges } from "./useChangeVelocityWhenTemperatureChanges";
 import styled from "styled-components/macro";
 import { HTML } from "@react-three/drei";
+import { useLoader } from "react-three-fiber";
 
 /** Particle which can interact with others, or not (passes right through them) */
 export function SingleParticle(props) {
@@ -64,6 +65,34 @@ function InteractiveParticle(props) {
     }
   };
 
+  // https://codeworkshop.dev/blog/2020-11-05-displacement-maps-normal-maps-and-textures-in-react-three-fiber/
+  const displacementMap = useLoader(
+    THREE.TextureLoader,
+    "/images/maps/displacement-map.jpg"
+  );
+  const normalMap = useLoader(
+    THREE.TextureLoader,
+    "/images/maps/normal-map.jpg"
+  );
+  // apply texture on mount to all mesh nodes
+  const circleRef = useRef(null as any);
+  React.useEffect(() => {
+    if (ref.current) {
+      console.log("🌟🚨 ~ React.useEffect ~ ref.current", ref.current);
+      ref.current.traverse((node) => {
+        console.log("🌟🚨 ~ ref.current.traverse ~ node", node);
+        if ((node as any).material) {
+          (node as any).material.displacementMap = displacementMap;
+          (node as any).material.normalMap = normalMap;
+        }
+      });
+    }
+    if (circleRef.current) {
+      circleRef.current.material.map = displacementMap;
+      circleRef.current.material.displacementMap = displacementMap;
+      circleRef.current.material.normalMap = normalMap;
+    }
+  }, []);
   return (
     <mesh
       ref={ref}
@@ -73,6 +102,16 @@ function InteractiveParticle(props) {
     >
       {isSelectedProtein && !isTooltipMaximized ? <HighlightParticle /> : null}
       <Component />
+      <mesh ref={circleRef}>
+        <sphereBufferGeometry args={[10, 16, 16]} />
+        <meshStandardMaterial
+          attach="material"
+          color={"red"}
+          // map={displacementMap}
+          // displacementMap={displacementMap}
+          // normalMap={normalMap}
+        />
+      </mesh>
     </mesh>
   );
 }

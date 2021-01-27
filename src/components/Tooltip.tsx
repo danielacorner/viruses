@@ -287,7 +287,8 @@ const TooltipStyles = styled.div`
           props.maximized ? "1fr" : "5em"};
       grid-gap: 0.5em;
       position: relative;
-      text-shadow: 0px 1px 0px white, 0px 1px 0px white;
+      text-shadow: 0px 1px 4px white, 0px 1px 4px white, 0px 1px 4px white,
+        0px 1px 4px white;
       .titleSection {
         text-align: left;
         display: grid;
@@ -308,12 +309,6 @@ const TooltipStyles = styled.div`
         .title {
           font-size: 1.2em;
           line-height: 1.2em;
-          ${(props) =>
-            props.maximized
-              ? `
-        text-shadow: 0px -1px 4px white, 0px -1px 4px white, 0px -1px 4px white, 0px -1px 4px white, 0px -1px 4px white;
-        `
-              : ""}
         }
       }
       .details {

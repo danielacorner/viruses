@@ -9,14 +9,14 @@ import { PROTEINS } from "../utils/PROTEINS";
 import { Water } from "./Water";
 import { ScaleIndicator } from "./ScaleIndicator";
 import { SelectedParticleDisplay } from "./SelectedParticleDisplay";
+import { SkyBox } from "./SkyBox/SkyBox";
 
 const Scene = () => {
   // audio track
   // useAudioTrack();
 
   // useSetTemperatureLowInitially();
-  // when num particles changes, reboot physics
-  // const rebootKey = useRebootPhysicsWhenNewParticlesLoad();
+
   return (
     <React.Fragment /* key={rebootKey} */>
       <OrbitControls />
@@ -33,6 +33,7 @@ const Scene = () => {
         })}
         <Water />
         <Walls />
+        {/* <SkyBox /> */}
         <SelectedParticleDisplay />
         <ScaleIndicator />
         {/* <Cells /> */}
