@@ -66,7 +66,7 @@ export function Walls() {
         <icosahedronBufferGeometry args={[scalePct * 100, 5]} />
         <meshPhysicalMaterial
           color="rebeccapurple"
-          opacity={0.018}
+          opacity={0.014}
           transparent={true}
           depthTest={false}
           flatShading={true}
