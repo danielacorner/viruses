@@ -7,7 +7,7 @@ import { useGLTF } from "@react-three/drei/useGLTF";
 
 export default function Model(props) {
   const group = useRef();
-  const { nodes, materials } = useGLTF(
+  const { nodes } = useGLTF(
     "/models/nanotech/octahedral_nanoparticle_20.glb"
   ) as any;
   return (

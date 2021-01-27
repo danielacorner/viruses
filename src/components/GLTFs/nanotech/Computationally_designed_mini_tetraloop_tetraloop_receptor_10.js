@@ -7,7 +7,7 @@ import { useGLTF } from "@react-three/drei/useGLTF";
 
 export default function Model(props) {
   const group = useRef();
-  const { nodes, materials } = useGLTF(
+  const { nodes } = useGLTF(
     "/models/nanotech/computationally_designed_mini_tetraloop_tetraloop_receptor_10.glb"
   );
   return (

@@ -7,9 +7,7 @@ import { useGLTF } from "@react-three/drei/useGLTF";
 
 export default function Model(props) {
   const group = useRef();
-  const { nodes, materials } = useGLTF(
-    "/models/nanotech/color_device_state_a_10.glb"
-  );
+  const { nodes } = useGLTF("/models/nanotech/color_device_state_a_10.glb");
   return (
     <group ref={group} {...props} dispose={null}>
       <mesh
