@@ -14,7 +14,6 @@ export function ScaleIndicator() {
   const wd = 2 * wr;
   const scale = useStore((s) => s.scale);
   const worldRadius = useStore((s) => s.worldRadius);
-  const commonProps = { color: "hsla(0,0%,80%)" };
   const scaled = scale / 0.002 / 4;
   // create 10 big ticks
   const ticksLeft: Tick[] = [...new Array(10)]
@@ -82,7 +81,7 @@ export function ScaleIndicator() {
   const isTabletOrLarger = useIsTabletOrLarger();
   return (
     <>
-      <EdgeLines {...{ commonProps }} />
+      <EdgeLines />
       {/* TODO: compare virus radius to scale */}
       {[
         ...ticksLeft,
@@ -99,7 +98,7 @@ export function ScaleIndicator() {
           <React.Fragment key={t.name}>
             <group>
               <Line
-                {...commonProps}
+                color={"hsl(0,0%,50%)"}
                 points={[
                   t.position,
                   [
@@ -120,8 +119,7 @@ export function ScaleIndicator() {
                     t.position[1],
                     t.position[2] * (t.side === "right" ? 0.91 : 1),
                   ],
-                  // color: t.side === "left" ? "hsl(0,0%,0%)" : "hsl(0,0%,70%)",
-                  color: "hsl(0,0%,20%)",
+                  color: "hsl(0,0%,12%)",
                   fontSize: isTabletOrLarger ? 0.16 : 0.24,
                   style: {
                     whiteSpace: "nowrap",
@@ -140,13 +138,14 @@ export function ScaleIndicator() {
     </>
   );
 }
-function EdgeLines({ commonProps }) {
+const EDGE_COLOR = "hsla(0,0%,80%)";
+function EdgeLines() {
   const wr = useStore((s) => s.worldRadius * 0.999);
 
   return (
     <>
       <Line
-        {...commonProps}
+        {...{ color: EDGE_COLOR }}
         //  right bottom
         points={[
           [wr, -wr, -wr],
@@ -155,7 +154,7 @@ function EdgeLines({ commonProps }) {
       ></Line>
 
       <Line
-        {...commonProps}
+        {...{ color: EDGE_COLOR }}
         //  front bottom
         points={[
           [-wr, -wr, wr],
@@ -164,7 +163,7 @@ function EdgeLines({ commonProps }) {
       ></Line>
 
       <Line
-        {...commonProps}
+        {...{ color: EDGE_COLOR }}
         //  front right vertical
         points={[
           [wr, -wr, wr],

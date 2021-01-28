@@ -7,7 +7,6 @@ import ProteinGroup from "./ProteinGroup";
 import { PHYSICS_PROPS } from "../utils/PHYSICS_PROPS";
 import { PROTEINS } from "../utils/PROTEINS";
 import { Water } from "./Water";
-import { ScaleIndicator } from "./ScaleIndicator";
 import { SelectedParticleDisplay } from "./SelectedParticleDisplay";
 
 const Scene = () => {

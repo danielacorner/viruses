@@ -8,7 +8,6 @@ import { Physics } from "@react-three/cannon";
 import { Water } from "./components/Water";
 import { PHYSICS_PROPS } from "./utils/PHYSICS_PROPS";
 import { Walls } from "./components/Walls";
-import { ScaleIndicator } from "./components/ScaleIndicator";
 
 export function CanvasAndSceneEmpty({
   children = null,

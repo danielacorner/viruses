@@ -1,4 +1,3 @@
-import { useMatcapTexture } from "@react-three/drei";
 import React from "react";
 import { useStore } from "../store";
 import { ScaleIndicator } from "./ScaleIndicator";
