@@ -65,7 +65,7 @@ export function Walls() {
       ))}
       <mesh>
         <icosahedronBufferGeometry args={[scalePct * 100, 5]} />
-        {/* <meshPhysicalMaterial
+        <meshPhysicalMaterial
           color="rebeccapurple"
           opacity={0.014}
           transparent={true}
@@ -75,7 +75,7 @@ export function Walls() {
           vertexColors={true}
           reflectivity={1}
           wireframe={true}
-        /> */}
+        />
       </mesh>
       <ScaleIndicator />
     </>
