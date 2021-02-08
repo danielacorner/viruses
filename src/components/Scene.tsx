@@ -11,7 +11,7 @@ import { SelectedParticleDisplay } from "./SelectedParticleDisplay";
 
 const Scene = () => {
   // audio track
-  // useAudioTrack();
+  useAudioTrack();
 
   // useSetTemperatureLowInitially();
 
