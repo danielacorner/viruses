@@ -50,6 +50,7 @@ function LinkToGithub() {
     >
       <Tooltip title="GitHub repository">
         <IconButton
+          className="githubLink"
           size="small"
           style={{
             position: "fixed",
@@ -164,6 +165,68 @@ const TOUR_STEPS = [
           <div>
             {isTouchDevice ? "Tap" : "Click"} a particle to learn more about it!
           </div>
+        </div>
+      );
+    },
+  },
+  {
+    selector: ".githubLink",
+    content: () => {
+      return (
+        <div style={{ lineHeight: "1.6em", fontSize: "0.9em" }}>
+          <h2>Special Thanks</h2>
+          <p>
+            I started this project when Bob Novella on{" "}
+            <a
+              href="https://www.theskepticsguide.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              The Skeptic's Guide podcast
+            </a>{" "}
+            announced that{" "}
+            <a
+              href="https://deepmind.com/blog/article/alphafold-a-solution-to-a-50-year-old-grand-challenge-in-biology"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              DeepMind's AlphaFold had essentially solved the protein folding
+              problem
+            </a>{" "}
+            and a new era of biotechnology was about to be unlocked.
+          </p>
+          <p>
+            Protein physics inspired by{" "}
+            <a
+              href="https://www.youtube.com/watch?v=VdmbpAo9JR4"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              The Inner Life of the Cell - Protein Packing
+            </a>{" "}
+            by{" "}
+            <a
+              href="http://biovisions.mcb.harvard.edu/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              BioVisions at Harvard University
+            </a>
+          </p>
+          <p>
+            This project is open source,{" "}
+            <a
+              href="https://github.com/danielacorner/viruses"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              you can find the code here
+            </a>
+            .
+          </p>
+          <p>
+            Cheers! <span role="img">🍻</span>
+          </p>
         </div>
       );
     },
