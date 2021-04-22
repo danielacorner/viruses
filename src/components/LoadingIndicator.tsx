@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { CircularProgress, LinearProgress } from "@material-ui/core";
 import { useProgress } from "@react-three/drei";
 import styled from "styled-components/macro";
@@ -6,9 +6,27 @@ import { useFrame } from "react-three-fiber";
 import { CanvasAndSceneEmpty } from "../CanvasAndSceneEmpty";
 import { useScalePercent } from "./useScalePercent";
 import * as Sentry from "@sentry/react";
+import { useStore } from "../store";
 
 export function LoadingIndicator() {
   const { active, progress, errors, item, loaded, total } = useProgress();
+  const hasRunOutOfMemory = useStore((s) => s.hasRunOutOfMemory);
+  const set = useStore((s) => s.set);
+  // if it's been loading for 1+min, show it anyway
+  useEffect(() => {
+    let timer;
+
+    if (active) {
+      timer = setTimeout(() => {
+        set({ hasRunOutOfMemory: true });
+      }, 20 * 1000);
+    }
+
+    return () => {
+      set({ hasRunOutOfMemory: false });
+      clearTimeout(timer);
+    };
+  }, [active, set]);
 
   return errors.length > 0 ? (
     <div
@@ -16,7 +34,7 @@ export function LoadingIndicator() {
     >
       {JSON.stringify(errors)}
     </div>
-  ) : active ? (
+  ) : active && !hasRunOutOfMemory ? (
     <Sentry.ErrorBoundary
       fallback={() => {
         console.log(`🌟🚨 An error has occurred: LoadingIndicator`);

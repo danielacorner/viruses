@@ -5,10 +5,13 @@ import App from "./App";
 // import reportWebVitals from "./reportWebVitals";
 import "./errorReporting";
 import * as serviceWorker from "./serviceWorker";
+import { ErrorBoundary } from "@sentry/react";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ErrorBoundary>
+      <App />
+    </ErrorBoundary>
   </React.StrictMode>,
   document.getElementById("root")
 );

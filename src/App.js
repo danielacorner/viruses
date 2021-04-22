@@ -8,12 +8,12 @@ import { LoadingIndicator } from "./components/LoadingIndicator";
 import GuidedTour from "./components/GuidedTour";
 import { useLocalStorageState } from "./utils/useLocalStorageState";
 import { useMount } from "./utils/utils";
-import * as Sentry from "@sentry/react";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 function App() {
   return (
     <div className="App">
-      <Sentry.ErrorBoundary
+      <ErrorBoundary
         fallback={() => {
           console.log(`🌟🚨 An error has occurred: App`);
           return null;
@@ -25,7 +25,7 @@ function App() {
         <Tooltip />
         <GuidedTour />
         <SaveControlsSettingsToLocalStorage />
-      </Sentry.ErrorBoundary>
+      </ErrorBoundary>
     </div>
   );
 }
@@ -42,7 +42,7 @@ function LazyLoadedScene() {
       <CanvasAndSceneLazy />
     </Suspense>
   ) : (
-    <Sentry.ErrorBoundary
+    <ErrorBoundary
       fallback={() => {
         console.log(`🌟🚨 An error has occurred: LazyLoadedScene`);
         return null;
@@ -95,7 +95,7 @@ function LazyLoadedScene() {
           Start
         </Button>
       </div>
-    </Sentry.ErrorBoundary>
+    </ErrorBoundary>
   );
 }
 
