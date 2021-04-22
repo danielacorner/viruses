@@ -555,7 +555,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 1,
       pathToGLTF:
-        "/models/nanotech/nanoparticle_COVID_19_vaccine_candidate_50.glb",
+        "/models/nanotech/nanoparticle_COVID_19_vaccine_candidate_50_draco.glb",
       pathToImage:
         "/models/nanotech/nanoparticle_COVID_19_vaccine_candidate.webp",
       interactive: true,
@@ -575,7 +575,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       numIcosahedronFaces: 1,
       numAsymmetricUnits: 1,
       pathToGLTF:
-        "/models/nanotech/self_assembling_dna_crystal_scaffold_with_rhombohedral_symmetry_6.glb",
+        "/models/nanotech/self_assembling_dna_crystal_scaffold_with_rhombohedral_symmetry_6_draco.glb",
       pathToImage:
         "/models/nanotech/self_assembling_dna_crystal_scaffold_with_rhombohedral_symmetry.webp",
       interactive: true,
@@ -595,7 +595,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       numIcosahedronFaces: 1,
       numAsymmetricUnits: 1,
       pathToGLTF:
-        "/models/nanotech/dna_crystals_containing_a_torsionally_stressed_component_20.glb",
+        "/models/nanotech/dna_crystals_containing_a_torsionally_stressed_component_20_draco.glb",
       pathToImage:
         "/models/nanotech/dna_crystals_containing_a_torsionally_stressed_component.webp",
       interactive: true,
@@ -616,7 +616,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 12,
       pathToGLTF:
-        "/models/nanotech/a_circularly_permuted_pdu_a_forming_an_icosahedral_cage_20.glb",
+        "/models/nanotech/a_circularly_permuted_pdu_a_forming_an_icosahedral_cage_20_draco.glb",
       pathToImage:
         "/models/nanotech/a_circularly_permuted_pdu_a_forming_an_icosahedral_cage.webp",
       interactive: true,
@@ -637,7 +637,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       numIcosahedronFaces: 5,
       numAsymmetricUnits: 1,
       pathToGLTF:
-        "/models/nanotech/computationally_designed_mini_tetraloop_tetraloop_receptor_10.glb",
+        "/models/nanotech/computationally_designed_mini_tetraloop_tetraloop_receptor_10_draco.glb",
       pathToImage:
         "/models/nanotech/computationally_designed_mini_tetraloop_tetraloop_receptor_by_the_rna_make_program.webp",
       interactive: true,
@@ -657,7 +657,8 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       atomCount: 851,
       numIcosahedronFaces: 5,
       numAsymmetricUnits: 1,
-      pathToGLTF: "/models/nanotech/six_fold_symmetric_dna_scaffold_10.glb",
+      pathToGLTF:
+        "/models/nanotech/six_fold_symmetric_dna_scaffold_10_draco.glb",
       pathToImage: "/models/nanotech/six_fold_symmetric_dna_scaffold.webp",
       interactive: true,
       authors: "Zhang, F., Simmons, C.R., Gates, J., Liu, Y., Yan, H.",
@@ -674,7 +675,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       atomCount: 2664,
       numIcosahedronFaces: 5,
       numAsymmetricUnits: 1,
-      pathToGLTF: "/models/nanotech/color_device_state_a_10.glb",
+      pathToGLTF: "/models/nanotech/color_device_state_a_10_draco.glb",
       pathToImage: "/models/nanotech/color_device_state_a.webp",
       interactive: true,
       authors:
@@ -692,7 +693,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       atomCount: 294953,
       numIcosahedronFaces: 10,
       numAsymmetricUnits: 1,
-      pathToGLTF: "/models/nanotech/dna_origami_object_80.glb",
+      pathToGLTF: "/models/nanotech/dna_origami_object_80_draco.glb",
       pathToImage: "/models/nanotech/dna_origami_object.webp",
       interactive: true,
       authors: "Bai, X., Martin, T.G., Scheres, S.H.W., Dietz, H.",
@@ -709,7 +710,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       atomCount: 54985,
       numIcosahedronFaces: 10,
       numAsymmetricUnits: 1,
-      pathToGLTF: "/models/nanotech/Dna_origami_16_helix_bundle_50.glb",
+      pathToGLTF: "/models/nanotech/Dna_origami_16_helix_bundle_50_draco.glb",
       pathToImage: "/models/nanotech/Dna_origami_16_helix_bundle.webp",
       interactive: true,
       authors:
@@ -727,7 +728,8 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       atomCount: 859,
       numIcosahedronFaces: 10,
       numAsymmetricUnits: 1,
-      pathToGLTF: "/models/nanotech/self_assembled_3d_dna_crystals_13.glb",
+      pathToGLTF:
+        "/models/nanotech/self_assembled_3d_dna_crystals_13_draco.glb",
       pathToImage: "/models/nanotech/self_assembled_3d_dna_crystals.webp",
       interactive: true,
       authors:
@@ -744,7 +746,8 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       atomCount: 2903,
       numIcosahedronFaces: 10,
       numAsymmetricUnits: 1,
-      pathToGLTF: "/models/nanotech/co_assembling_protein_dna_nanowires_13.glb",
+      pathToGLTF:
+        "/models/nanotech/co_assembling_protein_dna_nanowires_13_draco.glb",
       pathToImage: "/models/nanotech/co_assembling_protein_dna_nanowires.webp",
       interactive: true,
       authors: "Mou, Y., Yu, J.Y., Wannier, T.M., Guo, C.L., Mayo, S.L.",
@@ -761,7 +764,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       radius: 80,
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 1,
-      pathToGLTF: "/models/nanotech/protein_cage_20.glb",
+      pathToGLTF: "/models/nanotech/protein_cage_20_draco.glb",
       pathToImage: "/models/nanotech/protein_cage.webp",
       interactive: true,
       authors: "Lai, Y.T., Cascio, D., Yeates, T.O.",
@@ -778,7 +781,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       radius: 100,
       numIcosahedronFaces: 8,
       numAsymmetricUnits: 1,
-      pathToGLTF: "/models/nanotech/octahedral_nanoparticle_20.glb",
+      pathToGLTF: "/models/nanotech/octahedral_nanoparticle_20_draco.glb",
       pathToImage: "/models/nanotech/octahedral_nanoparticle.webp",
       interactive: true,
       authors:
@@ -796,7 +799,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       radius: 75,
       numAsymmetricUnits: 5,
       numIcosahedronFaces: 5,
-      pathToGLTF: "/models/nanotech/tetrahedral_nanoparticle_20.glb",
+      pathToGLTF: "/models/nanotech/tetrahedral_nanoparticle_20_draco.glb",
       pathToImage: "/models/nanotech/tetrahedral_nanoparticle.webp",
       interactive: true,
       authors:
@@ -814,7 +817,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       radius: 120,
       numIcosahedronFaces: 5,
       numAsymmetricUnits: 1,
-      pathToGLTF: "/models/nanotech/icosahedral_nanoparticle_20.glb",
+      pathToGLTF: "/models/nanotech/icosahedral_nanoparticle_20_draco.glb",
       pathToImage: "/models/nanotech/icosahedral_nanoparticle.webp",
       interactive: true,
       authors:

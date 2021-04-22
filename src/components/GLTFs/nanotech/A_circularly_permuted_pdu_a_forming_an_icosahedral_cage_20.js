@@ -8,7 +8,7 @@ import { useGLTF } from "@react-three/drei/useGLTF";
 export default function Model(props) {
   const group = useRef();
   const { nodes } = useGLTF(
-    "/models/nanotech/a_circularly_permuted_pdu_a_forming_an_icosahedral_cage_20.glb"
+    "/models/nanotech/a_circularly_permuted_pdu_a_forming_an_icosahedral_cage_20_draco.glb"
   );
   return (
     <group ref={group} {...props} dispose={null}>
@@ -258,4 +258,4 @@ export default function Model(props) {
   );
 }
 
-// useGLTF.preload( "/models/nanotech/a_circularly_permuted_pdu_a_forming_an_icosahedral_cage_20.glb" );
+// useGLTF.preload( "/models/nanotech/a_circularly_permuted_pdu_a_forming_an_icosahedral_cage_20_draco.glb" );

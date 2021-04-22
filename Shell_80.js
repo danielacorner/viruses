@@ -7,7 +7,7 @@ import { useGLTF } from "@react-three/drei/useGLTF";
 
 export default function Model(props) {
   const group = useRef();
-  const { nodes, materials } = useGLTF("/Vault Shell_80.glb");
+  const { nodes, materials } = useGLTF("/Vault_Shell_80_draco.glb");
   return (
     <group ref={group} {...props} dispose={null}>
       <mesh
@@ -22,4 +22,4 @@ export default function Model(props) {
   );
 }
 
-// useGLTF.preload('/Vault Shell_80.glb')
+// useGLTF.preload('/Vault_Shell_80_draco.glb')

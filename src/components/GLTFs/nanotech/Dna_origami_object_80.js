@@ -7,7 +7,7 @@ import { useGLTF } from "@react-three/drei/useGLTF";
 
 export default function Model(props) {
   const group = useRef();
-  const { nodes } = useGLTF("/models/nanotech/dna_origami_object_80.glb");
+  const { nodes } = useGLTF("/models/nanotech/dna_origami_object_80_draco.glb");
   return (
     <group ref={group} {...props} dispose={null}>
       <group position={[-310.76, -318.26, -306.35]}>
@@ -664,4 +664,4 @@ export default function Model(props) {
   );
 }
 
-// useGLTF.preload("/models/nanotech/dna_origami_object_80.glb");
+// useGLTF.preload("/models/nanotech/dna_origami_object_80_draco.glb");

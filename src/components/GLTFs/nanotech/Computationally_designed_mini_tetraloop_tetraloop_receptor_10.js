@@ -8,7 +8,7 @@ import { useGLTF } from "@react-three/drei/useGLTF";
 export default function Model(props) {
   const group = useRef();
   const { nodes } = useGLTF(
-    "/models/nanotech/computationally_designed_mini_tetraloop_tetraloop_receptor_10.glb"
+    "/models/nanotech/computationally_designed_mini_tetraloop_tetraloop_receptor_10_draco.glb"
   );
   return (
     <group ref={group} {...props} dispose={null}>
@@ -20,4 +20,4 @@ export default function Model(props) {
   );
 }
 
-// useGLTF.preload( "/models/nanotech/computationally_designed_mini_tetraloop_tetraloop_receptor_10.glb" );
+// useGLTF.preload( "/models/nanotech/computationally_designed_mini_tetraloop_tetraloop_receptor_10_draco.glb" );

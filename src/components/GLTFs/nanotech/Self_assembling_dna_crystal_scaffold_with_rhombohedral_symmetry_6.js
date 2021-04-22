@@ -8,7 +8,7 @@ import { useGLTF } from "@react-three/drei/useGLTF";
 export default function Model(props) {
   const group = useRef();
   const { nodes } = useGLTF(
-    "/models/nanotech/self_assembling_dna_crystal_scaffold_with_rhombohedral_symmetry_6.glb"
+    "/models/nanotech/self_assembling_dna_crystal_scaffold_with_rhombohedral_symmetry_6_draco.glb"
   );
   return (
     <group ref={group} {...props} dispose={null}>
@@ -34,6 +34,6 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload(
-  "/models/nanotech/self_assembling_dna_crystal_scaffold_with_rhombohedral_symmetry_6.glb"
-);
+// useGLTF.preload(
+//   "/models/nanotech/self_assembling_dna_crystal_scaffold_with_rhombohedral_symmetry_6_draco.glb"
+// );

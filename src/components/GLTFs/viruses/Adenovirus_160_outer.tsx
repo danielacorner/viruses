@@ -117,4 +117,4 @@ export default function Model(props) {
   );
 }
 
-// useGLTF.preload("/models/viruses/adenovirus_160_outer.glb");
+// useGLTF.preload("/models/viruses/adenovirus_160_outer_draco.glb");

@@ -8,7 +8,7 @@ import { useGLTF } from "@react-three/drei/useGLTF";
 export default function Model(props) {
   const group = useRef();
   const { nodes } = useGLTF(
-    "/models/nanotech/octahedral_nanoparticle_20.glb"
+    "/models/nanotech/octahedral_nanoparticle_20_draco.glb"
   ) as any;
   return (
     <group ref={group} {...props} dispose={null}>
@@ -26,4 +26,4 @@ export default function Model(props) {
   );
 }
 
-// useGLTF.preload("/models/nanotech/octahedral_nanoparticle_20.glb");
+// useGLTF.preload("/models/nanotech/octahedral_nanoparticle_20_draco.glb");
