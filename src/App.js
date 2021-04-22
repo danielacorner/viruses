@@ -8,16 +8,24 @@ import { LoadingIndicator } from "./components/LoadingIndicator";
 import GuidedTour from "./components/GuidedTour";
 import { useLocalStorageState } from "./utils/useLocalStorageState";
 import { useMount } from "./utils/utils";
+import * as Sentry from "@sentry/react";
 
 function App() {
   return (
     <div className="App">
-      <LoadingIndicator />
-      <LazyLoadedScene />
-      <div id="memoryStats"></div>
-      <Tooltip />
-      <GuidedTour />
-      <SaveControlsSettingsToLocalStorage />
+      <Sentry.ErrorBoundary
+        fallback={() => {
+          console.log(`🌟🚨 An error has occurred: App`);
+          return null;
+        }}
+      >
+        <LoadingIndicator />
+        <LazyLoadedScene />
+        <div id="memoryStats"></div>
+        <Tooltip />
+        <GuidedTour />
+        <SaveControlsSettingsToLocalStorage />
+      </Sentry.ErrorBoundary>
     </div>
   );
 }
@@ -34,7 +42,12 @@ function LazyLoadedScene() {
       <CanvasAndSceneLazy />
     </Suspense>
   ) : (
-    <>
+    <Sentry.ErrorBoundary
+      fallback={() => {
+        console.log(`🌟🚨 An error has occurred: LazyLoadedScene`);
+        return null;
+      }}
+    >
       <CanvasAndSceneEmpty />
       <div
         style={{
@@ -82,7 +95,7 @@ function LazyLoadedScene() {
           Start
         </Button>
       </div>
-    </>
+    </Sentry.ErrorBoundary>
   );
 }
 

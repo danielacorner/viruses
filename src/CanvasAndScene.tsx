@@ -3,6 +3,7 @@ import { Controls } from "react-three-gui";
 import Scene from "./components/Scene";
 import { useWindowSize } from "./utils/hooks";
 import * as THREE from "three";
+import * as Sentry from "@sentry/react";
 
 import { ScaleControls } from "./ScaleControls";
 // import { useFrame } from "react-three-fiber";
@@ -17,7 +18,12 @@ export default function CanvasAndScene({ renderProteins = true }) {
   //   camera.position.z = 50 + Math.sin(clock.getElapsedTime()) * 30
   // })
   return (
-    <>
+    <Sentry.ErrorBoundary
+      fallback={() => {
+        console.log(`🌟🚨 An error has occurred: CanvasAndScene`);
+        return null;
+      }}
+    >
       <Controls.Provider>
         <Controls.Canvas
           onCreated={({ gl }) => {
@@ -36,6 +42,6 @@ export default function CanvasAndScene({ renderProteins = true }) {
       </Controls.Provider>
       <ScaleControls />
       <BottomControls />
-    </>
+    </Sentry.ErrorBoundary>
   );
 }

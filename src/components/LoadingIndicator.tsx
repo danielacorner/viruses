@@ -5,8 +5,7 @@ import styled from "styled-components/macro";
 import { useFrame } from "react-three-fiber";
 import { CanvasAndSceneEmpty } from "../CanvasAndSceneEmpty";
 import { useScalePercent } from "./useScalePercent";
-// import { render } from "react-dom";
-// import MemoryStats from "react-memorystats";
+import * as Sentry from "@sentry/react";
 
 export function LoadingIndicator() {
   const { active, progress, errors, item, loaded, total } = useProgress();
@@ -18,7 +17,12 @@ export function LoadingIndicator() {
       {JSON.stringify(errors)}
     </div>
   ) : active ? (
-    <>
+    <Sentry.ErrorBoundary
+      fallback={() => {
+        console.log(`🌟🚨 An error has occurred: LoadingIndicator`);
+        return null;
+      }}
+    >
       <LoadingIndicatorStyles>
         <div>
           {loaded}/{total} models loaded
@@ -34,7 +38,7 @@ export function LoadingIndicator() {
         <SpinningParticle />
       </CanvasAndSceneEmpty>
       <CenteredSpinner />
-    </>
+    </Sentry.ErrorBoundary>
   ) : null;
 }
 const SPEED_Y = 0.5;
