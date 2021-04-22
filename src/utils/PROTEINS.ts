@@ -511,7 +511,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       radius: 50,
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 1,
-      pathToGLTF: "/models/antibodies/antibody_hiv_10.glb",
+      pathToGLTF: "/models/antibodies/antibody_hiv_10_draco.glb",
       pathToImage: "/models/antibodies/antibody_hiv.webp",
       interactive: true,
       authors:
@@ -529,7 +529,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       radius: 45,
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 1,
-      pathToGLTF: "/models/antibodies/antibody_herpes.glb",
+      pathToGLTF: "/models/antibodies/antibody_herpes_draco.glb",
       pathToImage: "/models/antibodies/anti_herpes_antibody.webp",
       interactive: true,
       authors:
