@@ -69,7 +69,7 @@ function LazyLoadedScene() {
         >
           <WarningOutlined />
           <Typography variant="body2">
-            Requirements: {">"}50MB download, 1GB memory
+            Requirements: {">"}40MB download, 1GB memory
           </Typography>
         </div>
         <Typography variant="subtitle2">

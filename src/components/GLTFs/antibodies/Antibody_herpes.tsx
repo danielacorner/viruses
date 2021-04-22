@@ -7,7 +7,9 @@ import { useGLTF } from "@react-three/drei/useGLTF";
 
 export default function Model(props) {
   const group = useRef();
-  const { nodes } = useGLTF("/models/antibodies/antibody_herpes.glb") as any;
+  const { nodes } = useGLTF(
+    "/models/antibodies/antibody_herpes_draco.glb"
+  ) as any;
   return (
     <group ref={group} {...props} dispose={null}>
       <mesh
@@ -26,4 +28,4 @@ export default function Model(props) {
   );
 }
 
-// useGLTF.preload("/models/antibodies/antibody_herpes.glb");
+// useGLTF.preload("/models/antibodies/antibody_herpes_draco.glb");
