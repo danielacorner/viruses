@@ -7,7 +7,7 @@ import { useGLTF } from "@react-three/drei/useGLTF";
 
 export default function Model(props) {
   const group = useRef();
-  const { nodes } = useGLTF("/models/viruses/bacteriophage_P68_120.glb");
+  const { nodes } = useGLTF("/models/viruses/bacteriophage_P68_120_draco.glb");
   return (
     <group ref={group} {...props} dispose={null}>
       <mesh
@@ -2686,4 +2686,4 @@ export default function Model(props) {
   );
 }
 
-// useGLTF.preload("/models/viruses/bacteriophage_P68_120.glb");
+// useGLTF.preload("/models/viruses/bacteriophage_P68_120_draco.glb");

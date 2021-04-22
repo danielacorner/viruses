@@ -7,7 +7,7 @@ import { useGLTF } from "@react-three/drei/useGLTF";
 
 export default function Model(props) {
   const group = useRef();
-  const { nodes } = useGLTF("/models/viruses/varicella_zoster_300.glb");
+  const { nodes } = useGLTF("/models/viruses/varicella_zoster_300_draco.glb");
   return (
     <group ref={group} {...props} dispose={null}>
       <group position={[-340.85, -358.3, 290.54]}>
@@ -384,4 +384,4 @@ export default function Model(props) {
   );
 }
 
-// useGLTF.preload("/models/viruses/varicella_zoster_300.glb");
+// useGLTF.preload("/models/viruses/varicella_zoster_300_draco.glb");

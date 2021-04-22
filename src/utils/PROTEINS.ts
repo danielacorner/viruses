@@ -199,7 +199,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 20,
       pathToGLTF:
-        "/models/viruses/virion_of_native_gene_transfer_agent_gta_particle_120.glb",
+        "/models/viruses/virion_of_native_gene_transfer_agent_gta_particle_120_draco.glb",
       pathToImage:
         "/models/viruses/virion_of_native_gene_transfer_agent_gta_particle.webp",
       interactive: true,
@@ -218,7 +218,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       atomCount: 1161605,
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 20,
-      pathToGLTF: "/models/viruses/bacteriophage_phi29_prohead_80.glb",
+      pathToGLTF: "/models/viruses/bacteriophage_phi29_prohead_80_draco.glb",
       pathToImage: "/models/viruses/bacteriophage_phi29_prohead.webp",
       interactive: true,
       authors: "Xu, J., Wang, D., Gui, M., Xiang, Y.",
@@ -235,7 +235,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       atomCount: 1074183,
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 20,
-      pathToGLTF: "/models/viruses/bacteriophage_P68_120.glb",
+      pathToGLTF: "/models/viruses/bacteriophage_P68_120_draco.glb",
       pathToImage: "/models/viruses/bacteriophage_P68.webp",
       interactive: true,
       authors:
@@ -253,7 +253,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       atomCount: 200268, // ChimeraX ??
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 20,
-      pathToGLTF: "/models/viruses/adenovirus_160_outer.glb",
+      pathToGLTF: "/models/viruses/adenovirus_160_outer_draco.glb",
       pathToImage: "/models/viruses/adenovirus.webp",
       interactive: true,
       authors:
@@ -271,7 +271,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       radius: 525, // measured using PDB 3d viewer e.g. https://www.rcsb.org/3d-view/6CGR/1
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 20,
-      pathToGLTF: "/models/viruses/Herpes_600.glb",
+      pathToGLTF: "/models/viruses/Herpes_600_draco.glb",
       pathToImage: "/models/viruses/herpes.webp",
       interactive: true,
       authors: "Dai, X., Zhou, Z.H.",
@@ -288,7 +288,8 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       radius: 180,
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 20,
-      pathToGLTF: "/models/viruses/Penaeus_vannamei_nodavirus_40_radial.glb",
+      pathToGLTF:
+        "/models/viruses/Penaeus_vannamei_nodavirus_40_radial_draco.glb",
       pathToImage: "/models/viruses/Penaeus_vannamei_nodavirus_radial.png",
       interactive: true,
       authors:
@@ -306,7 +307,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       radius: 400,
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 20,
-      pathToGLTF: "/models/viruses/SH1_140.glb",
+      pathToGLTF: "/models/viruses/SH1_140_draco.glb",
       pathToImage: "/models/viruses/sh1.webp",
       interactive: true,
       authors:
@@ -325,7 +326,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       atomCount: 28956, // ChimeraX "select all"
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 20,
-      pathToGLTF: "/models/viruses/faust_1200_1.glb",
+      pathToGLTF: "/models/viruses/faust_1200_1_draco.glb",
       pathToImage: "/models/viruses/faustovirus.webp",
       interactive: true,
       authors:
@@ -343,7 +344,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       radius: 360,
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 20,
-      pathToGLTF: "/models/viruses/Rice_dwarf_100.glb",
+      pathToGLTF: "/models/viruses/Rice_dwarf_100_draco.glb",
       pathToImage: "/models/viruses/rice_dwarf_virus.webp",
       interactive: true,
       authors:
@@ -361,7 +362,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
     //   radius: 390,
     //   numIcosahedronFaces: 20,
     //   numAsymmetricUnits: 20,
-    //   pathToGLTF: "/models/viruses/Haloarcula_californiae_140.glb",
+    //   pathToGLTF: "/models/viruses/Haloarcula_californiae_140_draco.glb",
     //   pathToImage: "/models/viruses/Haloarcula hispanica.png",
     //   interactive: true,
     //   authors:
@@ -379,7 +380,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       radius: 588,
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 20,
-      pathToGLTF: "/models/viruses/varicella_zoster_300.glb",
+      pathToGLTF: "/models/viruses/varicella_zoster_300_draco.glb",
       pathToImage: "/models/viruses/varicella_zoster.webp",
       interactive: true,
       authors:
@@ -397,7 +398,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       radius: 540,
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 20,
-      pathToGLTF: "/models/viruses/HIV_200.glb",
+      pathToGLTF: "/models/viruses/HIV_200_draco.glb",
       pathToImage: "/models/viruses/hiv.webp",
       interactive: true,
       authors:
@@ -415,7 +416,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       radius: 175,
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 20,
-      pathToGLTF: "/models/viruses/Spiroplasma_50.glb",
+      pathToGLTF: "/models/viruses/Spiroplasma_50_draco.glb",
       pathToImage: "/models/viruses/Spiroplasma_SPV4.webp",
       interactive: true,
       authors:
@@ -433,7 +434,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       radius: 300,
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 20,
-      pathToGLTF: "/models/viruses/Sindbis_70.glb",
+      pathToGLTF: "/models/viruses/Sindbis_70_draco.glb",
       pathToImage: "/models/viruses/sindbis.webp",
       interactive: true,
       authors:
@@ -451,7 +452,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       radius: 160,
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 20,
-      pathToGLTF: "/models/viruses/poliovirus_50.glb",
+      pathToGLTF: "/models/viruses/poliovirus_50_draco.glb",
       pathToImage: "/models/viruses/poliovirus.webp",
       interactive: true,
       authors: "Hiremath, C.N., Filman, D.J., Grant, R.A., Hogle, J.M.",
@@ -468,7 +469,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       radius: 285,
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 20,
-      pathToGLTF: "/models/viruses/denguevirus_50.glb",
+      pathToGLTF: "/models/viruses/denguevirus_50_draco.glb",
       pathToImage: "/models/viruses/denguevirus.webp",
       interactive: true,
       authors:
@@ -486,7 +487,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       radius: 280,
       numIcosahedronFaces: 12,
       numAsymmetricUnits: 12,
-      pathToGLTF: "/models/viruses/hpv_100.glb",
+      pathToGLTF: "/models/viruses/hpv_100_draco.glb",
       pathToImage: "/models/viruses/hpv.webp",
       interactive: true,
       authors:

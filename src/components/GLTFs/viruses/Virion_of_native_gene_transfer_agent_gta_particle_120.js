@@ -8,7 +8,7 @@ import { useGLTF } from "@react-three/drei/useGLTF";
 export default function Model(props) {
   const group = useRef();
   const { nodes } = useGLTF(
-    "/models/viruses/virion_of_native_gene_transfer_agent_gta_particle_120.glb"
+    "/models/viruses/virion_of_native_gene_transfer_agent_gta_particle_120_draco.glb"
   );
   return (
     <group ref={group} {...props} dispose={null}>
@@ -1170,6 +1170,6 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload(
-  "/models/viruses/virion_of_native_gene_transfer_agent_gta_particle_120.glb"
-);
+// useGLTF.preload(
+//   "/models/viruses/virion_of_native_gene_transfer_agent_gta_particle_120_draco.glb"
+// );
