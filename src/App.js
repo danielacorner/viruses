@@ -4,7 +4,10 @@ import { Button, Typography } from "@material-ui/core";
 import WarningOutlined from "@material-ui/icons/WarningOutlined";
 import { CanvasAndSceneEmpty } from "./CanvasAndSceneEmpty";
 import { useStore } from "./store";
-import { LoadingIndicator } from "./components/LoadingIndicator";
+import {
+  HasRunOutOfMemory,
+  LoadingIndicator,
+} from "./components/LoadingIndicator";
 import GuidedTour from "./components/GuidedTour";
 import { useLocalStorageState } from "./utils/useLocalStorageState";
 import { useMount } from "./utils/utils";
@@ -25,6 +28,7 @@ function App() {
         <Tooltip />
         <GuidedTour />
         <SaveControlsSettingsToLocalStorage />
+        <HasRunOutOfMemory />
       </ErrorBoundary>
     </div>
   );

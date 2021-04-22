@@ -1,5 +1,10 @@
 import React, { useEffect, useRef } from "react";
-import { CircularProgress, LinearProgress } from "@material-ui/core";
+import {
+  Button,
+  CircularProgress,
+  LinearProgress,
+  Typography,
+} from "@material-ui/core";
 import { useProgress } from "@react-three/drei";
 import styled from "styled-components/macro";
 import { useFrame } from "react-three-fiber";
@@ -8,25 +13,31 @@ import { useScalePercent } from "./useScalePercent";
 import * as Sentry from "@sentry/react";
 import { useStore } from "../store";
 
-export function LoadingIndicator() {
-  const { active, progress, errors, item, loaded, total } = useProgress();
-  const hasRunOutOfMemory = useStore((s) => s.hasRunOutOfMemory);
+const TIME_BEFORE_SHOW_REFRESH_BTN = 20 * 1000;
+
+function useDetectStuckOnLoading() {
+  const { active, progress } = useProgress();
   const set = useStore((s) => s.set);
-  // if it's been loading for 1+min, show it anyway
+  // if it's been loading with the same progress for 30s, we'll show a refresh button
   useEffect(() => {
     let timer;
-
     if (active) {
       timer = setTimeout(() => {
         set({ hasRunOutOfMemory: true });
-      }, 20 * 1000);
+      }, TIME_BEFORE_SHOW_REFRESH_BTN);
     }
 
     return () => {
-      set({ hasRunOutOfMemory: false });
       clearTimeout(timer);
+      set({ hasRunOutOfMemory: false });
     };
-  }, [active, set]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [progress, active]);
+}
+
+export function LoadingIndicator() {
+  useDetectStuckOnLoading();
+  const { active, progress, errors, item, loaded, total } = useProgress();
 
   return errors.length > 0 ? (
     <div
@@ -34,7 +45,7 @@ export function LoadingIndicator() {
     >
       {JSON.stringify(errors)}
     </div>
-  ) : active && !hasRunOutOfMemory ? (
+  ) : active ? (
     <Sentry.ErrorBoundary
       fallback={() => {
         console.log(`🌟🚨 An error has occurred: LoadingIndicator`);
@@ -235,5 +246,35 @@ function CenteredSpinner() {
     <StyledDiv>
       <CircularProgress size={100} />
     </StyledDiv>
+  );
+}
+
+const SDiv = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  place-items: center;
+`;
+export function HasRunOutOfMemory() {
+  const hasRunOutOfMemory = useStore((s) => s.hasRunOutOfMemory);
+
+  return (
+    hasRunOutOfMemory && (
+      <SDiv>
+        <Typography variant="h6" className="oops">
+          Oops, looks like it's not loading... try again?
+        </Typography>
+        <Button
+          color="primary"
+          variant="contained"
+          onClick={() => window.location.reload()}
+        >
+          Refresh
+        </Button>
+      </SDiv>
+    )
   );
 }
