@@ -8,7 +8,7 @@ import { useGLTF } from "@react-three/drei/useGLTF";
 export default function Model(props) {
   const group = useRef();
   const { nodes } = useGLTF(
-    "/models/nanotech/3d_crystals_containing_a_torsionally_stressed_component_20.glb"
+    "/models/nanotech/3d_crystals_containing_a_torsionally_stressed_component_20_draco.glb"
   );
   return (
     <group ref={group} {...props} dispose={null}>
@@ -64,6 +64,6 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload(
-  "/models/nanotech/3d_crystals_containing_a_torsionally_stressed_component_20.glb"
-);
+// useGLTF.preload(
+//   "/models/nanotech/3d_crystals_containing_a_torsionally_stressed_component_20_draco.glb"
+// );

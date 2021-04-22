@@ -50,6 +50,6 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload(
-  "/models/nanotech/co_assembling_protein_dna_nanowires_13_draco.glb"
-);
+// useGLTF.preload(
+//   "/models/nanotech/co_assembling_protein_dna_nanowires_13_draco.glb"
+// );
