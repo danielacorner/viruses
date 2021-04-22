@@ -34,4 +34,4 @@ export default function Model(props) {
   );
 }
 
-// useGLTF.preload("/models/viruses/poliovirus_50_draco.glb");
+useGLTF.preload("/models/viruses/poliovirus_50_draco.glb");

@@ -250,4 +250,4 @@ export default function Model(props) {
   );
 }
 
-// useGLTF.preload("/models/viruses/Herpes_600_draco.glb");
+useGLTF.preload("/models/viruses/Herpes_600_draco.glb");

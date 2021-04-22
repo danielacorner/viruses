@@ -18,4 +18,4 @@ export default function Model(props) {
   );
 }
 
-// useGLTF.preload("/models/viruses/faust_1200_1_draco.glb");
+useGLTF.preload("/models/viruses/faust_1200_1_draco.glb");

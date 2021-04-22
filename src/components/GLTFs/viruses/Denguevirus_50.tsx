@@ -26,4 +26,4 @@ export default function Model(props) {
   );
 }
 
-// useGLTF.preload("/models/viruses/denguevirus_50_draco.glb");
+useGLTF.preload("/models/viruses/denguevirus_50_draco.glb");

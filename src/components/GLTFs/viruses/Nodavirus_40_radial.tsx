@@ -20,4 +20,6 @@ export default function Model(props) {
   );
 }
 
-// useGLTF.preload("/models/viruses/Penaeus_vannamei_nodavirus_40_radial_draco.glb");
+useGLTF.preload(
+  "/models/viruses/Penaeus_vannamei_nodavirus_40_radial_draco.glb"
+);

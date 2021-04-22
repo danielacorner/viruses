@@ -38,4 +38,4 @@ export default function Model(props) {
   );
 }
 
-// useGLTF.preload("/models/viruses/hpv_100_draco.glb");
+useGLTF.preload("/models/viruses/hpv_100_draco.glb");

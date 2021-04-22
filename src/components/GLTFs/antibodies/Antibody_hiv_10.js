@@ -30,4 +30,4 @@ export default function Model(props) {
   );
 }
 
-// useGLTF.preload("/models/antibodies/antibody_hiv_10_draco.glb");
+useGLTF.preload("/models/antibodies/antibody_hiv_10_draco.glb");

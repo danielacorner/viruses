@@ -664,4 +664,4 @@ export default function Model(props) {
   );
 }
 
-// useGLTF.preload("/models/nanotech/dna_origami_object_80_draco.glb");
+useGLTF.preload("/models/nanotech/dna_origami_object_80_draco.glb");

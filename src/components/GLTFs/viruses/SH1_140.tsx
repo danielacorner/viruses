@@ -136,4 +136,4 @@ export default function Model(props) {
   );
 }
 
-// useGLTF.preload("/models/viruses/SH1_140_draco.glb");
+useGLTF.preload("/models/viruses/SH1_140_draco.glb");

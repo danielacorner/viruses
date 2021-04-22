@@ -94,4 +94,4 @@ export default function Model(props) {
   );
 }
 
-// useGLTF.preload("/models/viruses/sindbis_70_draco.glb");
+useGLTF.preload("/models/viruses/sindbis_70_draco.glb");

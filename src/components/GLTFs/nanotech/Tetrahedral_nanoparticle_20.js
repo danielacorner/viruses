@@ -26,4 +26,4 @@ export default function Model(props) {
   );
 }
 
-// useGLTF.preload("/models/nanotech/tetrahedral_nanoparticle_20_draco.glb");
+useGLTF.preload("/models/nanotech/tetrahedral_nanoparticle_20_draco.glb");

@@ -18,4 +18,4 @@ export default function Model(props) {
   );
 }
 
-// useGLTF.preload("/models/viruses/Spiroplasma_50_draco.glb");
+useGLTF.preload("/models/viruses/Spiroplasma_50_draco.glb");

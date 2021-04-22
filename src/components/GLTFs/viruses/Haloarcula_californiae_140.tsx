@@ -144,4 +144,4 @@ export default function Model(props) {
   );
 }
 
-// useGLTF.preload("/models/viruses/Haloarcula_californiae_140_draco.glb");
+useGLTF.preload("/models/viruses/Haloarcula_californiae_140_draco.glb");

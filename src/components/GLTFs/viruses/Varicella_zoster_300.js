@@ -384,4 +384,4 @@ export default function Model(props) {
   );
 }
 
-// useGLTF.preload("/models/viruses/varicella_zoster_300_draco.glb");
+useGLTF.preload("/models/viruses/varicella_zoster_300_draco.glb");

@@ -28,4 +28,4 @@ export default function Model(props) {
   );
 }
 
-// useGLTF.preload("/models/nanotech/protein_cage_20_draco.glb");
+useGLTF.preload("/models/nanotech/protein_cage_20_draco.glb");
