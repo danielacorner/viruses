@@ -288,8 +288,8 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       radius: 180,
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 20,
-      pathToGLTF: "/models/viruses/Penaeus vannamei nodavirus_40_radial.glb",
-      pathToImage: "/models/viruses/Penaeus vannamei nodavirus_radial.png",
+      pathToGLTF: "/models/viruses/Penaeus_vannamei_nodavirus_40_radial.glb",
+      pathToImage: "/models/viruses/Penaeus_vannamei_nodavirus_radial.png",
       interactive: true,
       authors:
         "Chen, N.C., Yoshimura, M., Miyazaki, N., Guan, H.H., Chuankhayan, P., Lin, C.C., Chen, S.K., Lin, P.J., Huang, Y.C., Iwasaki, K., Nakagawa, A., Chan, S.I., Chen, C.J.",

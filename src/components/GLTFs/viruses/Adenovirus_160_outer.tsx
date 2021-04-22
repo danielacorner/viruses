@@ -7,7 +7,9 @@ import { useGLTF } from "@react-three/drei/useGLTF";
 
 export default function Model(props) {
   const group = useRef();
-  const { nodes } = useGLTF("/models/viruses/adenovirus_160_outer.glb") as any;
+  const { nodes } = useGLTF(
+    "/models/viruses/adenovirus_160_outer_draco.glb"
+  ) as any;
 
   return (
     <group ref={group} {...props} dispose={null}>
