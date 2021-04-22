@@ -8,7 +8,7 @@ import { getRandStartPosition } from "./Shapes/particleUtils";
 import { useStore } from "../store";
 import { PROTEIN_TYPES } from "../utils/PROTEINS";
 
-/** a set of proteins of the same species -- each species of protein can be rendered multiple times */
+/** a set of proteins of the same species (each species of protein can be rendered multiple times) */
 const ProteinGroup = (props) => {
   const numParticlesFloat: number = useControl(props.name, {
     group: `Particles - ${props.type}`,

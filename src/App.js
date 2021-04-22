@@ -29,7 +29,6 @@ const CanvasAndSceneLazy = React.lazy(() => import("./CanvasAndScene"));
 function LazyLoadedScene() {
   const set = useStore((s) => s.set);
   const started = useStore((s) => s.started);
-
   return started ? (
     <Suspense fallback={null}>
       <CanvasAndSceneLazy />

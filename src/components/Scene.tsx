@@ -9,6 +9,7 @@ import { PROTEINS } from "../utils/PROTEINS";
 import { Water } from "./Water";
 import { SelectedParticleDisplay } from "./SelectedParticleDisplay";
 import { useAudioTrack } from "./useAudioTrack";
+import * as Sentry from "@sentry/react";
 
 const Scene = () => {
   // audio track
@@ -21,14 +22,18 @@ const Scene = () => {
       <OrbitControls />
       <Lighting />
       <Physics {...PHYSICS_PROPS}>
-        {PROTEINS.viruses.map((protein) => {
-          return <ProteinGroup key={protein.name} {...protein} />;
-        })}
-        {PROTEINS.antibodies.map((protein) => {
-          return <ProteinGroup key={protein.name} {...protein} />;
-        })}
-        {PROTEINS.nanotech.map((protein) => {
-          return <ProteinGroup key={protein.name} {...protein} />;
+        {[
+          ...PROTEINS.viruses,
+          ...PROTEINS.antibodies,
+          ...PROTEINS.nanotech,
+        ].map((protein) => {
+          return (
+            <Sentry.ErrorBoundary
+              fallback={`An error has occurred: ${protein.type} particle - ${protein.name}`}
+            >
+              <ProteinGroup key={protein.name} {...protein} />;
+            </Sentry.ErrorBoundary>
+          );
         })}
         <Water />
         <Walls />
