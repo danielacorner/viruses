@@ -21,7 +21,7 @@ export type GlobalStateType = {
   set: (newState: any) => any;
 };
 
-const startsStarted = /* false && */ process.env.NODE_ENV === "development";
+const startsStarted = false && process.env.NODE_ENV === "development";
 
 // zustand https://github.com/pmndrs/zustand
 // with typescript https://react-tracked.js.org/docs/tutorial-zustand-01/

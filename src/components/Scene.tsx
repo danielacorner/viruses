@@ -8,12 +8,8 @@ import { PHYSICS_PROPS } from "../utils/PHYSICS_PROPS";
 import { PROTEINS } from "../utils/PROTEINS";
 import { Water } from "./Water";
 import { SelectedParticleDisplay } from "./SelectedParticleDisplay";
-import { useAudioTrack } from "./useAudioTrack";
 
 const Scene = () => {
-  // audio track
-  useAudioTrack();
-
   // useSetTemperatureLowInitially();
 
   return (

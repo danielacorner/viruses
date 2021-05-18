@@ -43,3 +43,15 @@ fsExtra.readdir(pathToModels, (err, files) => {
   });
   process.exit(0);
 });
+
+const bigOak = {
+  readStorage: (databaseEntryName) => {
+    return new Promise((resolve, reject) => {
+      // go to database...
+      // once database returns us the data,
+      resolve(data);
+    });
+  },
+};
+
+// bigOak.readStorage("some key").

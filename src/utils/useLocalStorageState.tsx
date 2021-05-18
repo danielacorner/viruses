@@ -10,7 +10,7 @@ import * as React from "react";
 
 export function useLocalStorageState(
   key: string,
-  defaultValue: string | Function = "",
+  defaultValue: any = "",
   { serialize = JSON.stringify, deserialize = JSON.parse }: any = {}
 ) {
   const [state, setState] = React.useState(() => {

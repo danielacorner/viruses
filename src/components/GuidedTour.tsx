@@ -176,7 +176,7 @@ const TOUR_STEPS = [
         <div style={{ lineHeight: "1.6em", fontSize: "0.9em" }}>
           <h2>Special Thanks</h2>
           <p>
-            I started this project when Bob Novella on{" "}
+            I started this project when{" "}
             <a
               href="https://www.theskepticsguide.org/"
               target="_blank"

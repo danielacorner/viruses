@@ -12,6 +12,7 @@ import GuidedTour from "./components/GuidedTour";
 import { useLocalStorageState } from "./utils/useLocalStorageState";
 import { useMount } from "./utils/utils";
 import ErrorBoundary from "./components/ErrorBoundary";
+import AudioTrack from "./components/AudioTrack";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <div id="memoryStats"></div>
         <Tooltip />
         <GuidedTour />
+        <AudioTrack />
         <SaveControlsSettingsToLocalStorage />
         <HasRunOutOfMemory />
       </ErrorBoundary>
