@@ -14,6 +14,7 @@ import {
   BREAKPOINT_DESKTOP,
   BREAKPOINT_MOBILE,
   BREAKPOINT_TABLET,
+  CUSTOM_SCROLLBAR_CSS,
 } from "../utils/constants";
 const TOOLTIP = {
   height: 442,
@@ -136,9 +137,17 @@ function TooltipContent() {
       }
     >
       {isTooltipMaximized && isDesktopOrLarger ? (
-        <ParticleImage
-          style={{ width: "100%", height: "100%", objectFit: "contain" }}
-        />
+        <div className="imgWrapper">
+          <ParticleImage
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
+              padding: 32,
+              boxSizing: "border-box",
+            }}
+          />
+        </div>
       ) : null}
       <div className="tooltipContent">
         {isTooltipMaximized ? <BtnClose /> : null}
@@ -219,22 +228,26 @@ function numberWithCommas(x) {
 const TooltipStyles = styled.div`
   width: ${(props) => props.width}px;
   height: ${(props) => props.height}px;
+  border-radius: 4px;
   @media (min-width: ${BREAKPOINT_MOBILE}px) {
     transform: unset;
   }
   position: fixed;
+  overflow: ${(props) => (props.maximized ? "hidden" : "visible")};
   ${(props) => (props.maximized ? "background: white;" : "")}
   bottom: ${(props) => (props.maximized ? 32 : 12)}px;
   left: ${(props) => (props.maximized ? 32 : 0)}px;
   ${(props) =>
     props.maximized
       ? `
+    box-shadow: 0px 4px 9px 0px #0000005c;
     right:32px;
     top:32px;
   `
       : ""}
 
   .overflowWrapper {
+    height: 100%;
     overflow: ${(props) => (props.maximized ? "hidden" : "visible")};
     position: relative;
     pointer-events: none;
@@ -260,14 +273,14 @@ const TooltipStyles = styled.div`
 
     .tooltipContent {
       pointer-events: auto;
-      max-height: 90vh;
+      max-height: calc(100vh - 64px);
       ${(props) =>
         props.maximized
           ? `
-
+          ${CUSTOM_SCROLLBAR_CSS}
     `
-          : ""}
-      overflow: ${(props) => (props.maximized ? "auto" : "visible")};
+          : "overflow: visible;"}
+
       padding: 1em;
       ${(props) =>
         props.isHorizontalLayout
@@ -343,6 +356,9 @@ const TooltipStyles = styled.div`
       .imgWrapper {
         position: relative;
         background: ${(props) => (props.maximized ? "white" : "none")};
+        max-height: 800px;
+        max-width: 800px;
+        margin: auto;
         img {
           width: 100%;
           height: 100%;
