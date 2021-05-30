@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useStore } from "./store";
 import { Slider, Typography } from "@material-ui/core";
 import styled from "styled-components/macro";
@@ -8,26 +8,27 @@ export function TemperatureControls() {
   const temperature = useStore((s) => s.temperature);
   const scale = useStore((s) => s.scale);
   const set = useStore((s) => s.set);
+  const setTemperature = useStore((s) => s.setTemperature);
   const paused = useStore((s) => s.paused);
 
   // set temperature low initially
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      // const scaleStored = window.localStorage.getItem("settings")
-      //   ? JSON.parse(window.localStorage.getItem("settings")).scale
-      //   : scale;
-      // set temperature to something reasonable, based on the scale
-      // set({ temperature: 0.0000001 / scaleStored });
-      // set({ temperature: 0.01 });
-    }, 2000);
-    return () => {
-      clearTimeout(timer);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [set]);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     // const scaleStored = window.localStorage.getItem("settings")
+  //     //   ? JSON.parse(window.localStorage.getItem("settings")).scale
+  //     //   : scale;
+  //     // set temperature to something reasonable, based on the scale
+  //     // set({ temperature: 0.0000001 / scaleStored });
+  //     // set({ temperature: 0.01 });
+  //   }, 2000);
+  //   return () => {
+  //     clearTimeout(timer);
+  //   };
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [set]);
 
-  const max = 0.005 / scale ** 2;
+  const max = 0.003 / scale ** 2;
 
   return (
     <TemperatureControlsStyles>
@@ -50,7 +51,8 @@ export function TemperatureControls() {
                 set({ paused: false });
               }
 
-              set({ temperature: newValue });
+              setTemperature(Number(newValue));
+              // set({ temperature: newValue });
             }}
             min={0}
             max={max}

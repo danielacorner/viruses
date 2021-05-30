@@ -19,6 +19,7 @@ export type GlobalStateType = {
   scale: number;
   selectedProtein: null | SelectedProtein;
   set: (newState: any) => any;
+  setTemperature: (newT: number) => any;
 };
 
 const startsStarted = false && process.env.NODE_ENV === "development";
@@ -38,5 +39,6 @@ export const useStore = create<GlobalStateType>(
     scale: MAX_SCALE,
     selectedProtein: null as null | SelectedProtein,
     set: (newState) => set((state) => ({ ...state, ...newState })),
+    setTemperature: (newT) => set(() => ({ temperature: newT })),
   })
 );

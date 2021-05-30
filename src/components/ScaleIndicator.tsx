@@ -94,7 +94,7 @@ export function ScaleIndicator() {
         ...ticksRightSmaller,
       ].map((t) =>
         t.position[1] > worldRadius ||
-        t.position[1] < -worldRadius * 0.97 ? null : (
+        t.position[1] < -worldRadius * 0.95 ? null : (
           <React.Fragment key={t.name}>
             <group>
               <Line
