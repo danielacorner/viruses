@@ -51,13 +51,14 @@ export function TemperatureControls() {
                 set({ paused: false });
               }
 
-              setTemperature(Number(newValue));
+              const newT = Number(newValue) ** POW;
+              setTemperature(newT);
               // set({ temperature: newValue });
             }}
+            value={temperature ** (1 / POW)}
             min={0}
             max={max}
             step={0.0000001}
-            value={temperature}
           />
         </div>
         <div className="grid-item">
@@ -67,6 +68,9 @@ export function TemperatureControls() {
     </TemperatureControlsStyles>
   );
 }
+
+const POW = 0.5;
+
 const TemperatureControlsStyles = styled.div`
   .grid {
     display: grid;
