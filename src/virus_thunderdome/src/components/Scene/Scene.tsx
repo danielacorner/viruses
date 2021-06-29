@@ -1,5 +1,5 @@
-import React, { Suspense, useEffect } from "react";
-import { Physics } from "@react-three/cannon";
+import { Suspense } from "react";
+import { Physics, Debug } from "@react-three/cannon";
 import { OrbitControls } from "@react-three/drei";
 import { Lighting } from "./Lighting";
 import { Walls } from "./Walls";
@@ -33,14 +33,24 @@ function PhysicsSceneMovable() {
   return (
     <a.group position={springDownOnWaveChange.position}>
       <Physics {...PHYSICS_PROPS}>
-        <Walls />
-        <Water />
-        <ScaleIndicator />
-        <Game />
-        <SelectedParticleDisplay />
-        <CellsModels />
+        <Debugger>
+          <Walls />
+          <Water />
+          <ScaleIndicator />
+          <Game />
+          <SelectedParticleDisplay />
+          <CellsModels />
+        </Debugger>
       </Physics>
     </a.group>
+  );
+}
+
+function Debugger({ children }) {
+  return process.env.NODE_ENV === "development" ? (
+    <Debug color="black">{children}</Debug>
+  ) : (
+    <>{children}</>
   );
 }
 

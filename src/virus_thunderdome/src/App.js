@@ -44,7 +44,7 @@ function LazyLoadedScene() {
   const started = useStore((s) => s.started);
 
   return started ? (
-    <Suspense fallback={null}>
+    <Suspense component={null}>
       <CanvasAndSceneLazy />
     </Suspense>
   ) : (

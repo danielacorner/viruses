@@ -11,6 +11,9 @@ import { useStore } from "../store";
 
 const AudioTrack = () => {
   const [isSoundOnLS, setIsSoundOnLS] = useLocalStorageState("isSoundOn", true);
+
+  // don't play before we press start?
+  // do we need a start button???????????
   const started = useStore((s) => s.started);
 
   useAudioTrack(started && isSoundOnLS);

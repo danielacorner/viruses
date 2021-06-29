@@ -8,10 +8,12 @@ import { Physics } from "@react-three/cannon";
 import { Water } from "./components/Water";
 import { PHYSICS_PROPS } from "./utils/PHYSICS_PROPS";
 import { Walls } from "./components/Walls";
+import { DeviceOrientationOrbitControls } from "./components/DeviceOrientationOrbitControls";
 
 export function CanvasAndSceneEmpty({
   children = null,
   isLoadingIndicator = false,
+  isStartPage = false,
 }) {
   const windowSize = useWindowSize();
 
@@ -32,7 +34,7 @@ export function CanvasAndSceneEmpty({
     >
       <Lighting />
       <SpinIfLoadingIndicator>
-        <OrbitControls />
+        {isStartPage ? <DeviceOrientationOrbitControls /> : <OrbitControls />}
         <Physics {...PHYSICS_PROPS}>
           <mesh scale={isLoadingIndicator ? [0.75, 0.75, 0.75] : [1, 1, 1]}>
             <Water />

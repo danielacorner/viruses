@@ -55,9 +55,10 @@ const InstancedParticle = ({
   const springProps = useSpring({
     scale: [scaleActual, scaleActual, scaleActual],
   });
-  const randPos = useMemo(() => getRandStartPosition(worldRadius), [
-    worldRadius,
-  ]);
+  const randPos = useMemo(
+    () => getRandStartPosition(worldRadius),
+    [worldRadius]
+  );
   return (
     <mesh position={randPos}>
       {allGeometriesAndMaterials.map(
@@ -102,7 +103,7 @@ const InstancedParticle = ({
   //   // onPointerMove={(e) => setHovered(e.instanceId)}
   //   // onPointerOut={(e) => setHovered(undefined)}
   // >
-  //   {/* <Suspense fallback={null}>
+  //   {/* <Suspense component={null}>
   //     <ChildParticle scale={[scale, scale, scale]} />
   //   </Suspense> */}
   //   <boxBufferGeometry attach="geometry" />

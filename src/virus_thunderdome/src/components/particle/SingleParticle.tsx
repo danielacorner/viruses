@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useRef, useState } from "react";
+import React, { ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { useConvexPolyhedron } from "@react-three/cannon";
 import { useJitterParticle } from "../Physics/useJitterParticle";
 import { useStore } from "../../store";
@@ -8,6 +8,7 @@ import { useMount } from "../../utils/utils";
 import { useSpring, a } from "react-spring/three";
 import { Protein, PROTEINS, PROTEIN_TYPES } from "../../utils/PROTEINS";
 import { FloatingHtmlOverlay } from "./FloatingHtmlOverlay";
+import { toConvexProps } from "../../../../components/Shapes/toConvexProps";
 
 export type ParticleProps = Protein & {
   position: [number, number, number];
@@ -65,14 +66,18 @@ function InteractiveParticle(props: ParticleProps) {
       }, 0);
     }
   }, [virusHp, isVirus, isDecaying]);
-
+  const RADIUS = 1;
+  const geo = useMemo(
+    () => toConvexProps(new THREE.IcosahedronBufferGeometry(RADIUS, detail)),
+    [detail]
+  );
   const [ref, api] = useConvexPolyhedron(() => ({
     // TODO: accurate mass data from PDB --> need to multiply by number of residues or something else? doesn't seem right
     mass: mockMass, // approximate mass using volume of a sphere equation
     position,
     onCollide: handleCollide(unmount, setVirusHp),
     // https://threejs.org/docs/scenes/geometry-browser.html#IcosahedronBufferGeometry
-    args: new THREE.IcosahedronGeometry(1, detail),
+    args: geo as any,
   }));
 
   // start decaying after lifespan elapses,

@@ -157,7 +157,7 @@ const Particle = ({
   //   // onPointerMove={(e) => setHovered(e.instanceId)}
   //   // onPointerOut={(e) => setHovered(undefined)}
   // >
-  //   {/* <Suspense fallback={null}>
+  //   {/* <Suspense component={null}>
   //     <ChildParticle scale={[scale, scale, scale]} />
   //   </Suspense> */}
   //   <boxBufferGeometry attach="geometry" />

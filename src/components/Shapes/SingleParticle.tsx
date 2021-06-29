@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useMemo, useRef } from "react";
 import { useConvexPolyhedron } from "@react-three/cannon";
 import { useJitterParticle } from "./useJitterParticle";
 import { useStore } from "../../store";
@@ -6,6 +6,7 @@ import * as THREE from "three";
 import { useChangeVelocityWhenTemperatureChanges } from "./useChangeVelocityWhenTemperatureChanges";
 import styled from "styled-components/macro";
 import { HTML } from "@react-three/drei";
+import { toConvexProps } from "./toConvexProps";
 
 /** Particle which can interact with others, or not (passes right through them) */
 export function SingleParticle(props) {
@@ -31,13 +32,18 @@ function InteractiveParticle(props) {
   const detail = Math.floor(numIcosahedronFaces / 20);
   const volumeOfSphere = (4 / 3) * Math.PI * props.radius ** 3;
   const mockMass = 10 ** -5 * volumeOfSphere;
+  const RADIUS = 1;
+  const geo = useMemo(
+    () => toConvexProps(new THREE.IcosahedronBufferGeometry(RADIUS, detail)),
+    [detail]
+  );
 
   const [ref, api] = useConvexPolyhedron(() => ({
     // TODO: accurate mass data from PDB --> need to multiply by number of residues or something else? doesn't seem right
     mass: mockMass, // approximate mass using volume of a sphere equation
     position,
     // https://threejs.org/docs/scenes/geometry-browser.html#IcosahedronBufferGeometry
-    args: new THREE.IcosahedronGeometry(1, detail),
+    args: geo as any,
   }));
 
   useJitterParticle({

@@ -1,0 +1,78 @@
+{
+  "root": true,
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "env": {
+    "browser": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": { "jsx": true }
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "prettier",
+    "react",
+    "react-hooks",
+    "import"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/no-unused-vars": 0,
+    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "react/require-default-props": 0,
+    "react/display-name": 0,
+    "react/react-in-jsx-scope": 0,
+    "react/jsx-uses-react": 1,
+    "react/prop-types": 0,
+    "react/jsx-filename-extension": [
+      1,
+      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+    ],
+    "@typescript-eslint/ban-types": 0,
+    "import/no-cycle": 2,
+    "ban": 0,
+    "curly": 2,
+    "no-var": 0,
+    "@typescript-eslint/no-inferrable-types": 0,
+    "eofline": 0,
+    "jsx-no-lambda": 0,
+    "jsx-no-multiline-js": 0,
+    "no-identical-functions": 0,
+    "no-bitwise": 2,
+    "no-commented-code": 0,
+    "prettier/prettier": 0,
+    "no-console": [
+      0,
+      "log",
+      "error",
+      "debug",
+      "info",
+      "time",
+      "timeEnd",
+      "trace"
+    ],
+    "no-debugger": 2,
+    "no-empty": 2,
+    "no-eval": 2,
+    "no-trailing-whitespace": 0,
+    "radix": 2,
+    "trailing-comma": [0],
+    "variable-name": [
+      0,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore",
+      "allow-pascal-case"
+    ]
+  }
+}

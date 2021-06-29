@@ -3,9 +3,8 @@ import { GitHub } from "@material-ui/icons";
 import React, { useState } from "react";
 import styled from "styled-components/macro";
 
+// shows on iconbutton click
 export function AttributionLinks() {
-  // TODO: show when you finish the levels
-  // TODO: show on iconbutton click
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
 
