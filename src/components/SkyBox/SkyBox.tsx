@@ -1,4 +1,4 @@
-import { useLoader, useThree } from "react-three-fiber";
+import { useLoader, useThree } from "@react-three/fiber";
 import { CubeTextureLoader } from "three";
 const SKYBOX_IMAGES = [
   "/images/skybox/cryo-em.jpg",

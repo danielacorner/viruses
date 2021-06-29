@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useWindowSize } from "./utils/hooks";
 import * as THREE from "three";
-import { Canvas, useFrame } from "react-three-fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { Lighting } from "./components/Lighting";
 import { Physics } from "@react-three/cannon";
@@ -33,7 +33,7 @@ export function CanvasAndSceneEmpty({
       style={{ height: windowSize.height, width: windowSize.width }}
     >
       <Lighting />
-      <SpinIfLoadingIndicator>
+      {/* <SpinIfLoadingIndicator>
         {isStartPage ? <DeviceOrientationOrbitControls /> : <OrbitControls />}
         <Physics {...PHYSICS_PROPS}>
           <mesh scale={isLoadingIndicator ? [0.75, 0.75, 0.75] : [1, 1, 1]}>
@@ -42,7 +42,7 @@ export function CanvasAndSceneEmpty({
             <Walls />
           </mesh>
         </Physics>
-      </SpinIfLoadingIndicator>
+      </SpinIfLoadingIndicator> */}
     </Canvas>
   );
 }

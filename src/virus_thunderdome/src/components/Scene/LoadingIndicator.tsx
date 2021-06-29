@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { CircularProgress, LinearProgress } from "@material-ui/core";
 import { useProgress } from "@react-three/drei";
 import styled from "styled-components/macro";
-import { useFrame } from "react-three-fiber";
+import { useFrame } from "@react-three/fiber";
 import { CanvasAndSceneEmpty } from "../../CanvasAndSceneEmpty";
 import { useStore } from "../../store";
 import { MAX_SCALE, MIN_SCALE } from "../../utils/constants";

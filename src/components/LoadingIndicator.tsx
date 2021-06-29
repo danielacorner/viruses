@@ -7,7 +7,7 @@ import {
 } from "@material-ui/core";
 import { useProgress } from "@react-three/drei";
 import styled from "styled-components/macro";
-import { useFrame } from "react-three-fiber";
+import { useFrame } from "@react-three/fiber";
 import { CanvasAndSceneEmpty } from "../CanvasAndSceneEmpty";
 import { useScalePercent } from "./useScalePercent";
 import * as Sentry from "@sentry/react";

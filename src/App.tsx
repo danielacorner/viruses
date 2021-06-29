@@ -15,7 +15,7 @@ import { StartPage } from "./StartPage";
 function App() {
   return (
     <div className="App">
-      <ErrorBoundary component={<>❌ An error has occurred: App</>}>
+      <ErrorBoundary boundaryTitle="App">
         <LoadingIndicator />
         <LazyLoadedScene />
         <div id="memoryStats"></div>

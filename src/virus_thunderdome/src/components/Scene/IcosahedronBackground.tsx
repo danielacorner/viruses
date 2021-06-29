@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useStore } from "../../store";
 import { useScalePercent } from "../useScalePercent";
-import { useFrame } from "react-three-fiber";
+import { useFrame } from "@react-three/fiber";
 
 // slow down rotation time
 const mu = 0.8;

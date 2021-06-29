@@ -1,7 +1,7 @@
 import { useMount } from "../../utils/utils";
 import { useStore } from "../../store";
 import { useEffect, useRef } from "react";
-import { useFrame } from "react-three-fiber";
+import { useFrame } from "@react-three/fiber";
 import { Quaternion, Vector } from "../../types";
 import { MAX_SCALE, MIN_SCALE } from "../../utils/constants";
 import { usePrevious } from "../../utils/hooks";

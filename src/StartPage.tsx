@@ -6,17 +6,12 @@ import { useStore } from "./store";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { DeviceOrientationOrbitControls } from "./components/DeviceOrientationOrbitControls";
 import { useHoverAnimation } from "./components/effects/useHoverAnimation";
+import ReactJson from "react-json-view";
 
 export function StartPage() {
   const set = useStore((s) => s.set);
   return (
-    <ErrorBoundary
-      component={(err) => {
-        console.log("🌟🚨 ~ StartPage ~ err", err);
-        console.log(`🌟🚨 An error has occurred: LazyLoadedScene`);
-        return <>❌ StartPage : {JSON.stringify(err)}</>;
-      }}
-    >
+    <ErrorBoundary boundaryTitle={"Start Page"}>
       <CanvasAndSceneEmpty isStartPage={true} />
       <div
         style={{

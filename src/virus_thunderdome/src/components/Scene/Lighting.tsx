@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { useFrame, useThree } from "react-three-fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 
 export function Lighting() {
   return (

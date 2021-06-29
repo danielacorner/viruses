@@ -1,4 +1,4 @@
-import { useFrame } from "react-three-fiber";
+import { useFrame } from "@react-three/fiber";
 import { randBetween } from "../../utils/utils";
 import * as THREE from "three";
 import { useVelocity } from "./useVelocity";

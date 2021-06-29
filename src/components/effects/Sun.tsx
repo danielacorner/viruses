@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import { useFrame } from "react-three-fiber";
+import { useFrame } from "@react-three/fiber";
 
 // https://codesandbox.io/s/postprocessing-godrays-i8vkz?file=/src/index.js:759-1174
 export const Sun = forwardRef(function Sun(props, forwardRef: any) {

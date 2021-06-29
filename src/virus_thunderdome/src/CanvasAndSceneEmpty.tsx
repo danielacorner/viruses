@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useWindowSize } from "./utils/hooks";
 import * as THREE from "three";
-import { Canvas, useFrame } from "react-three-fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { Lighting } from "./components/Scene/Lighting";
 import { Physics } from "@react-three/cannon";

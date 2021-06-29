@@ -1,6 +1,6 @@
 import { Scene, Matrix4 } from "three";
 import React, { useRef, useMemo } from "react";
-import { useFrame, useThree, createPortal, Vector3 } from "react-three-fiber";
+import { useFrame, useThree, createPortal, Vector3 } from "@react-three/fiber";
 import { OrthographicCamera, useCamera } from "@react-three/drei";
 
 /** displays a set of 3d components in a fixed position based on Viewcube https://codesandbox.io/s/react-three-fiber-viewcube-py4db */

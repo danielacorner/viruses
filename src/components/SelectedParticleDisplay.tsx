@@ -1,7 +1,7 @@
 import { useStore } from "../store";
 import { Scene, Matrix4 } from "three";
 import React, { useRef, useMemo } from "react";
-import { useFrame, useThree, createPortal } from "react-three-fiber";
+import { useFrame, useThree, createPortal } from "@react-three/fiber";
 import { OrthographicCamera, useCamera } from "@react-three/drei";
 
 /** based on Viewcube https://codesandbox.io/s/react-three-fiber-viewcube-py4db */

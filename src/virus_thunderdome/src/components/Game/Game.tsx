@@ -4,7 +4,7 @@ import { useStore } from "../../store";
 import { randBetween } from "../../utils/utils";
 import { WAVES, Wave } from "./WAVES";
 import { SHOT_TYPES } from "../CellAndAntibodyButtons/CellAndAntibodyButtons";
-import { useFrame } from "react-three-fiber";
+import { useFrame } from "@react-three/fiber";
 import { useProgress } from "@react-three/drei";
 
 const VIRUS_SPAWN_START_DELAY = 1 * 1000;

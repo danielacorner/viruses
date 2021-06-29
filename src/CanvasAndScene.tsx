@@ -6,10 +6,12 @@ import * as THREE from "three";
 import * as Sentry from "@sentry/react";
 
 import { ScaleControls } from "./ScaleControls";
-// import { useFrame } from "react-three-fiber";
+// import { useFrame } from "@react-three/fiber";
 import BottomControls from "./BottomControls";
 import { useMediaQuery } from "@material-ui/core";
 import { BREAKPOINT_TABLET } from "./utils/constants";
+import { Canvas } from "@react-three/fiber";
+
 export default function CanvasAndScene({ renderProteins = true }) {
   const windowSize = useWindowSize();
   const isTabletOrLarger = useMediaQuery(`(min-width: ${BREAKPOINT_TABLET}px)`);
@@ -25,7 +27,7 @@ export default function CanvasAndScene({ renderProteins = true }) {
       }}
     >
       <Controls.Provider>
-        <Controls.Canvas
+        <Canvas
           onCreated={({ gl }) => {
             gl.shadowMap.enabled = true;
             gl.shadowMap.type = THREE.PCFShadowMap;
@@ -35,7 +37,7 @@ export default function CanvasAndScene({ renderProteins = true }) {
           camera={{ fov: 75, position: [0, 0, 15] }}
         >
           <Scene />
-        </Controls.Canvas>
+        </Canvas>
         {process.env.NODE_ENV === "development" && isTabletOrLarger ? (
           <Controls anchor={"top_right"} style={{ marginTop: -64 }} />
         ) : null}
