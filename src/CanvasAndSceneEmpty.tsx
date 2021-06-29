@@ -17,9 +17,6 @@ export function CanvasAndSceneEmpty({
 }) {
   const windowSize = useWindowSize();
 
-  const SpinIfLoadingIndicator = isLoadingIndicator
-    ? SpinScene
-    : React.Fragment;
   return (
     <Canvas
       onCreated={({ gl }) => {

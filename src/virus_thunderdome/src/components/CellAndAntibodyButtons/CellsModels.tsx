@@ -18,25 +18,6 @@ const SCALE = 0.09;
 export default function CellsModels() {
   const cellsFiltered = useCellsFiltered();
 
-  // const cx = useControl("CELLSx", {
-  //   type: "number",
-  //   min: -Math.PI,
-  //   max: Math.PI,
-  //   value: 0,
-  // });
-  // const cy = useControl("CELLSy", {
-  //   type: "number",
-  //   min: -Math.PI,
-  //   max: Math.PI,
-  //   value: 0,
-  // });
-  // const cz = useControl("CELLSz", {
-  //   type: "number",
-  //   min: -Math.PI,
-  //   max: Math.PI,
-  //   value: 0,
-  // });
-
   return (
     <>
       <HUD position={[0, 0, 0]}>

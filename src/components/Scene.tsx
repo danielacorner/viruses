@@ -7,27 +7,27 @@ import ProteinGroup from "./ProteinGroup";
 import { PHYSICS_PROPS } from "../utils/PHYSICS_PROPS";
 import { PROTEINS } from "../utils/PROTEINS";
 import { Water } from "./Water";
-import { SelectedParticleDisplay } from "./SelectedParticleDisplay";
 
 const Scene = () => {
   // useSetTemperatureLowInitially();
 
+  const proteins = [
+    ...PROTEINS.viruses,
+    ...PROTEINS.antibodies,
+    ...PROTEINS.nanotech,
+  ];
   return (
     <>
       <OrbitControls />
       <Lighting />
       <Physics {...PHYSICS_PROPS}>
-        {[
-          ...PROTEINS.viruses,
-          ...PROTEINS.antibodies,
-          ...PROTEINS.nanotech,
-        ].map((protein) => {
+        {/* {proteins.map((protein) => {
           return <ProteinGroup key={protein.name} {...protein} />;
-        })}
-        <Water />
-        <Walls />
+        })} */}
+        {/* <Water />
+        <Walls /> */}
         {/* <SkyBox /> */}
-        <SelectedParticleDisplay />
+        {/* <SelectedParticleDisplay /> */}
         {/* <Cells /> */}
       </Physics>
       {/* <CustomEffects /> */}

@@ -6,7 +6,6 @@ import { Walls } from "./Walls";
 import { PHYSICS_PROPS } from "../../utils/PHYSICS_PROPS";
 import { Water } from "./Water";
 import { ScaleIndicator } from "../Sliders/ScaleIndicator";
-import { SelectedParticleDisplay } from "../SelectedParticle/SelectedParticleDisplay";
 import CellsModels from "../CellAndAntibodyButtons/CellsModels";
 import Game from "../Game/Game";
 import { useAudioTrack } from "../music/useAudioTrack";
@@ -38,7 +37,7 @@ function PhysicsSceneMovable() {
           <Water />
           <ScaleIndicator />
           <Game />
-          <SelectedParticleDisplay />
+          {/* <SelectedParticleDisplay /> */}
           <CellsModels />
         </Debugger>
       </Physics>

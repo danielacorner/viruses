@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useControl } from "react-three-gui";
 import {
   SingleParticle,
   useShouldRenderParticle,
@@ -10,14 +9,15 @@ import { PROTEIN_TYPES } from "../utils/PROTEINS";
 
 /** a set of proteins of the same species (each species of protein can be rendered multiple times) */
 const ProteinGroup = (props) => {
-  const numParticlesFloat: number = useControl(props.name, {
-    group: `Particles - ${props.type}`,
-    type: "number",
-    min: 0,
-    max: props.type === PROTEIN_TYPES.antibody ? 100 : 20,
-    value: 1,
-  });
-  const numParticles = Math.ceil(numParticlesFloat);
+  // const numParticlesFloat: number = useControl(props.name, {
+  //   group: `Particles - ${props.type}`,
+  //   type: "number",
+  //   min: 0,
+  //   max: props.type === PROTEIN_TYPES.antibody ? 100 : 20,
+  //   value: 1,
+  // });
+  // const numParticles = Math.ceil(numParticlesFloat);
+  const numParticles = 1;
 
   const worldRadius = useStore((state) => state.worldRadius);
 

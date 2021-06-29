@@ -36,7 +36,7 @@ export function SelectedParticleDisplay() {
       />
       <mesh
         ref={ref}
-        raycast={useCamera(virtualCam)}
+        // raycast={useCamera(virtualCam)}
         position={[size.width / 2 - 80, size.height / 2 - 80, 0]}
         scale={[scale, scale, scale]}
       >
