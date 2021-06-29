@@ -25,11 +25,22 @@ export function Plane({
     <mesh ref={ref} /* receiveShadow */>
       {reflect ? (
         <>
-          <Reflector>
-            <planeGeometry
-              attach="geometry"
-              args={[width, height, widthSegments, heightSegments]}
-            />
+          {/* https://github.com/pmndrs/drei#reflector */}
+          <Reflector mirror={0.5}>
+            {(Material, props) => (
+              <>
+                <Material
+                  mirror={0.5}
+                  color="#ddd"
+                  metalness={0}
+                  roughnessMap={1}
+                  roughness={1}
+                  normalMap={1}
+                  normalScale={1}
+                  {...props}
+                />
+              </>
+            )}
           </Reflector>
         </>
       ) : (

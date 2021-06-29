@@ -265,7 +265,7 @@ export function HasRunOutOfMemory() {
     hasRunOutOfMemory && (
       <SDiv>
         <Typography variant="h6" className="oops">
-          Oops, looks like it's not loading... try again?
+          Oops, looks like it{"'"}s not loading... try again?
         </Typography>
         <Button
           color="primary"

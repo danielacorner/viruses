@@ -111,6 +111,7 @@ export function ScaleIndicator() {
           <React.Fragment key={name}>
             <group>
               <Line
+                isShaderMaterial={false}
                 {...commonProps}
                 points={[
                   position,

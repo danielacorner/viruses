@@ -48,9 +48,9 @@ export function StartPage() {
             Requirements: {">"}40MB download, 1GB memory
           </Typography>
         </div>
-        <Typography variant="subtitle2">
+        {/* <Typography variant="subtitle2">
           ( this could take a while... )
-        </Typography>
+        </Typography> */}
         <Button
           style={{ padding: "0.25em 3em", pointerEvents: "auto" }}
           onClick={() => set({ started: true })}

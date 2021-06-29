@@ -5,7 +5,7 @@ import { useStore } from "../../store";
 import * as THREE from "three";
 import { useChangeVelocityWhenTemperatureChanges } from "./useChangeVelocityWhenTemperatureChanges";
 import styled from "styled-components/macro";
-import { HTML } from "@react-three/drei";
+import { Html } from "@react-three/drei";
 import { toConvexProps } from "./toConvexProps";
 
 /** Particle which can interact with others, or not (passes right through them) */
@@ -135,9 +135,9 @@ function HighlightParticle() {
   const selectedProtein = useStore((s) => s.selectedProtein);
   const scale = useStore((s) => s.scale);
   return selectedProtein ? (
-    <HTML>
+    <Html>
       <CircleOutline radius={selectedProtein.radius * scale * 70} />
-    </HTML>
+    </Html>
   ) : null;
 }
 

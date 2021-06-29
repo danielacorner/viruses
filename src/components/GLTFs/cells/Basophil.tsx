@@ -7,7 +7,7 @@ title: Basophil
 */
 
 import React, { useRef } from "react";
-import { useGLTF } from "@react-three/drei/useGLTF";
+import { useGLTF } from "@react-three/drei";
 
 export default function Model(props) {
   const group = useRef();

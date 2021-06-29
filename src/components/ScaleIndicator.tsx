@@ -98,6 +98,7 @@ export function ScaleIndicator() {
           <React.Fragment key={t.name}>
             <group>
               <Line
+                isShaderMaterial={false}
                 color={"hsl(0,0%,50%)"}
                 points={[
                   t.position,
@@ -145,6 +146,7 @@ function EdgeLines() {
   return (
     <>
       <Line
+        isShaderMaterial={false}
         {...{ color: EDGE_COLOR }}
         //  right bottom
         points={[
@@ -154,6 +156,7 @@ function EdgeLines() {
       ></Line>
 
       <Line
+        isShaderMaterial={false}
         {...{ color: EDGE_COLOR }}
         //  front bottom
         points={[
@@ -163,6 +166,7 @@ function EdgeLines() {
       ></Line>
 
       <Line
+        isShaderMaterial={false}
         {...{ color: EDGE_COLOR }}
         //  front right vertical
         points={[

@@ -41,7 +41,7 @@
     "@typescript-eslint/ban-types": 0,
     "import/no-cycle": 2,
     "ban": 0,
-    "curly": 2,
+    "curly": 0,
     "no-var": 0,
     "@typescript-eslint/no-inferrable-types": 0,
     "eofline": 0,

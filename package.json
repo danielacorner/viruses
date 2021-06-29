@@ -8,7 +8,7 @@
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.58",
     "@react-three/cannon": "^2.4.0",
-    "@react-three/drei": "^2.2.12",
+    "@react-three/drei": "^7.0.2",
     "@react-three/fiber": "^7.0.1",
     "@react-three/postprocessing": "^1.5.1",
     "@react-three/xr": "^2.0.0",
