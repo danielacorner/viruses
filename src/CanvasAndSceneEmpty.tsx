@@ -16,7 +16,9 @@ export function CanvasAndSceneEmpty({
   isStartPage = false,
 }) {
   const windowSize = useWindowSize();
-
+  const SpinIfLoadingIndicator = isLoadingIndicator
+    ? SpinScene
+    : React.Fragment;
   return (
     <Canvas
       onCreated={({ gl }) => {
@@ -30,7 +32,7 @@ export function CanvasAndSceneEmpty({
       style={{ height: windowSize.height, width: windowSize.width }}
     >
       <Lighting />
-      {/* <SpinIfLoadingIndicator>
+      <SpinIfLoadingIndicator>
         {isStartPage ? <DeviceOrientationOrbitControls /> : <OrbitControls />}
         <Physics {...PHYSICS_PROPS}>
           <mesh scale={isLoadingIndicator ? [0.75, 0.75, 0.75] : [1, 1, 1]}>
@@ -39,7 +41,7 @@ export function CanvasAndSceneEmpty({
             <Walls />
           </mesh>
         </Physics>
-      </SpinIfLoadingIndicator> */}
+      </SpinIfLoadingIndicator>
     </Canvas>
   );
 }

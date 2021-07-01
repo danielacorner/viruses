@@ -64,6 +64,11 @@ const ScaleControlsStyles = styled.div`
   bottom: 124px;
   height: calc(100vh - 248px);
   min-height: 50vh;
+  color: white;
+  text-shadow: 0px 1px 4px black;
+  .MuiSlider-root {
+    color: white;
+  }
   .grid {
     display: grid;
     justify-items: center;

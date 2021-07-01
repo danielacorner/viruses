@@ -38,8 +38,8 @@ export default function CanvasAndScene({ renderProteins = true }) {
           <Controls anchor={"top_right"} style={{ marginTop: -64 }} />
         ) : null}
       </Controls.Provider> */}
-      {/* <ScaleControls />
-      <BottomControls /> */}
+      <ScaleControls />
+      <BottomControls />
     </Sentry.ErrorBoundary>
   );
 }

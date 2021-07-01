@@ -67,6 +67,7 @@
     "no-trailing-whitespace": 0,
     "radix": 2,
     "trailing-comma": [0],
+    "no-irregular-whitespace": 0,
     "variable-name": [
       0,
       "ban-keywords",

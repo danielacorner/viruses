@@ -44,6 +44,7 @@ export function PlayerHpBarAndFloor({
         attach="geometry"
         args={[width, height, widthSegments, heightSegments]}
       />
+
       <Html>
         <HPIndicatorStyles
           {...{

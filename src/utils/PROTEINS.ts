@@ -66,12 +66,13 @@ const Antibody_herpes = React.lazy(
 // nanotech
 // nanotech
 // nanotech
-const Self_assembling_dna_crystal_scaffold_with_rhombohedral_symmetry_6 = React.lazy(
-  () =>
-    import(
-      "../components/GLTFs/nanotech/Self_assembling_dna_crystal_scaffold_with_rhombohedral_symmetry_6"
-    )
-);
+const Self_assembling_dna_crystal_scaffold_with_rhombohedral_symmetry_6 =
+  React.lazy(
+    () =>
+      import(
+        "../components/GLTFs/nanotech/Self_assembling_dna_crystal_scaffold_with_rhombohedral_symmetry_6"
+      )
+  );
 const Nanoparticle_COVID_19_vaccine_candidate_50 = React.lazy(
   () =>
     import(
@@ -106,12 +107,13 @@ const Six_fold_symmetric_dna_scaffold_10 = React.lazy(
   () =>
     import("../components/GLTFs/nanotech/Six_fold_symmetric_dna_scaffold_10")
 );
-const Computationally_designed_mini_tetraloop_tetraloop_receptor_10 = React.lazy(
-  () =>
-    import(
-      "../components/GLTFs/nanotech/Computationally_designed_mini_tetraloop_tetraloop_receptor_10"
-    )
-);
+const Computationally_designed_mini_tetraloop_tetraloop_receptor_10 =
+  React.lazy(
+    () =>
+      import(
+        "../components/GLTFs/nanotech/Computationally_designed_mini_tetraloop_tetraloop_receptor_10"
+      )
+  );
 const A_circularly_permuted_pdu_a_forming_an_icosahedral_cage_20 = React.lazy(
   () =>
     import(
@@ -564,7 +566,8 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       pubmedAbstract: "To be published.",
     },
     {
-      Component: Self_assembling_dna_crystal_scaffold_with_rhombohedral_symmetry_6,
+      Component:
+        Self_assembling_dna_crystal_scaffold_with_rhombohedral_symmetry_6,
       name: "Self-Assembling DNA Crystal Scaffold with Rhombohedral Symmetry",
       type: PROTEIN_TYPES.nanotech,
       PDBUrl: "https://www.rcsb.org/structure/6U40",
@@ -584,8 +587,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
     },
     {
       Component: Dna_crystals_containing_a_torsionally_stressed_component_20,
-      name:
-        "Self-Assembling 3D DNA Crystals Containing a Torsionally Stressed Component",
+      name: "Self-Assembling 3D DNA Crystals Containing a Torsionally Stressed Component",
       type: PROTEIN_TYPES.nanotech,
       PDBUrl: "https://www.rcsb.org/structure/5EOS",
       mass: 12.8,
@@ -626,8 +628,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
     },
     {
       Component: Computationally_designed_mini_tetraloop_tetraloop_receptor_10,
-      name:
-        "Computationally designed mini tetraloop-tetraloop receptor by the RNAMake program",
+      name: "Computationally designed mini tetraloop-tetraloop receptor by the RNAMake program",
       type: PROTEIN_TYPES.nanotech,
       PDBUrl: "https://www.rcsb.org/structure/6DVK",
       mass: 30.93,

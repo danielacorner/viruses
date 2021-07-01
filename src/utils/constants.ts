@@ -9,6 +9,7 @@ export const MAX_SCALE = 0.03;
 export const useIsTabletOrLarger = () =>
   useMediaQuery(`(min-width: ${BREAKPOINT_TABLET}px)`);
 
+export const DISTORTION_TEXTURE = "/images/textures/texture-distortion-map.jpg";
 export const CUSTOM_SCROLLBAR_CSS = `
 @supports (overflow: overlay){
   overflow: overlay;

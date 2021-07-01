@@ -120,7 +120,7 @@ export function ScaleIndicator() {
                     t.position[1],
                     t.position[2] * (t.side === "right" ? 0.91 : 1),
                   ],
-                  color: "hsl(0,0%,12%)",
+                  color: "#f0ecec",
                   fontSize: isTabletOrLarger ? 0.16 : 0.24,
                   style: {
                     whiteSpace: "nowrap",
@@ -139,41 +139,38 @@ export function ScaleIndicator() {
     </>
   );
 }
-const EDGE_COLOR = "hsla(0,0%,80%)";
+const LINE_PROPS = { color: "hsla(0,0%,60%)", isShaderMaterial: true };
 function EdgeLines() {
   const wr = useStore((s) => s.worldRadius * 0.999);
 
   return (
     <>
       <Line
-        isShaderMaterial={false}
-        {...{ color: EDGE_COLOR }}
+        {...LINE_PROPS}
         //  right bottom
         points={[
           [wr, -wr, -wr],
           [wr, -wr, wr],
         ]}
-      ></Line>
+      />
 
       <Line
-        isShaderMaterial={false}
-        {...{ color: EDGE_COLOR }}
+        {...LINE_PROPS}
         //  front bottom
         points={[
           [-wr, -wr, wr],
           [wr, -wr, wr],
         ]}
-      ></Line>
+      />
 
       <Line
-        isShaderMaterial={false}
-        {...{ color: EDGE_COLOR }}
+        {...LINE_PROPS}
         //  front right vertical
         points={[
           [wr, -wr, wr],
           [wr, wr, wr],
         ]}
-      ></Line>
+      />
     </>
   );
 }

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { INITIAL_PLAYER_HP, useStore } from "../../store";
 import styled from "styled-components/macro";
-import { Button } from "@material-ui/core";
+import { Typography, Button } from "@material-ui/core";
 import {
   SpringScaleToTarget,
   SpringTemperatureToTarget,
@@ -50,6 +50,7 @@ export function BtnStartNextWave() {
       {isWaveComplete ? (
         <>
           <NextWaveAssets />
+          {currentWaveIdx === 0 ? <WelcomeText /> : null}
           <Button
             style={{
               padding: "0.5em 2em",
@@ -76,6 +77,58 @@ export function BtnStartNextWave() {
     </NextWaveStyles>
   );
 }
+
+function WelcomeText() {
+  return (
+    <WelcomeTextStyles>
+      <Typography style={{ textAlign: "center" }} variant="h3">
+        virus
+        <div className="logo">
+          <div className="l">🦠</div>
+          <div className="r">⚡</div>
+        </div>
+        thunderdome
+      </Typography>
+    </WelcomeTextStyles>
+  );
+}
+
+const WelcomeTextStyles = styled.div`
+  pointer-events: auto;
+  color: black;
+  font-size: 1.4em;
+  .logo {
+    display: grid;
+    align-content: center;
+    font-size: 0.7em;
+    position: relative;
+    .l {
+      opacity: 0.8;
+    }
+    .r {
+      position: absolute;
+      top: -8px;
+      right: -7px;
+      font-size: 0.8em;
+      opacity: 0.7;
+    }
+  }
+  h3 {
+    display: grid;
+    grid-auto-flow: column;
+    font-size: 2.4em;
+    .left {
+      display: flex;
+      margin-top: 0.6ch;
+      margin-right: -1.4ch;
+    }
+    .right {
+      margin-bottom: 0.5ch;
+      font-size: 0.8em;
+    }
+  }
+`;
+
 const NextWaveStyles = styled.div`
   font-size: 2em;
   color: #f0461b;

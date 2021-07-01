@@ -22,6 +22,7 @@ export type GlobalStateType = {
   setTemperature: (newT: number) => any;
 };
 
+// const startsStarted = true;
 const startsStarted = false && process.env.NODE_ENV === "development";
 
 // zustand https://github.com/pmndrs/zustand

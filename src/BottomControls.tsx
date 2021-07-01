@@ -16,6 +16,11 @@ export default function BottomControls() {
         grid-template-columns: 1fr auto;
         align-items: center;
         grid-gap: 2em;
+        color: white;
+        text-shadow: 0px 1px 4px black;
+        .MuiSlider-root {
+          color: white;
+        }
       `}
     >
       {/* <ShuffleControls /> */}

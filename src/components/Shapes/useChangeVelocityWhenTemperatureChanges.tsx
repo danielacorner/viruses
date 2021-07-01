@@ -40,28 +40,28 @@ export function useChangeVelocityWhenTemperatureChanges({
         // }
       } else {
         // disable movement
-        api.linearDamping.set(1);
-        api.angularDamping.set(1);
+        api?.linearDamping.set(1);
+        api?.angularDamping.set(1);
 
         // stop
-        api.velocity.set(0, 0, 0);
-        api.angularVelocity.set(0, 0, 0, 0);
+        api?.velocity.set(0, 0, 0);
+        api?.angularVelocity.set(0, 0, 0, 0);
       }
       return;
     }
     // allow movement
-    api.linearDamping.set(0);
-    api.angularDamping.set(0);
+    api?.linearDamping.set(0);
+    api?.angularDamping.set(0);
 
     const newVelocity = [0, 0, 0].map(() => velocity * eitherOr(-1, 1));
-    api.velocity.set(...newVelocity) as Vector;
+    api?.velocity.set(...newVelocity) as Vector;
 
     // ? should angular velocity change (including direction) whenever you change the temperature
 
     const newAngularVelocity = [0, 0, 0, 0].map(
       () => velocity * eitherOr(-1, 1)
     ) as Quaternion;
-    api.angularVelocity.set(...newAngularVelocity);
+    api?.angularVelocity.set(...newAngularVelocity);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [temperature, scale]);

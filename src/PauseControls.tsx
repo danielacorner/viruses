@@ -43,4 +43,7 @@ export function PauseControls() {
 }
 const PauseControlsStyles = styled.div`
   cursor: pointer;
+  .MuiIconButton-root {
+    color: white;
+  }
 `;
