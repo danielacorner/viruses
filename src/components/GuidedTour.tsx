@@ -1,23 +1,19 @@
-import { IconButton, Tooltip } from "@material-ui/core";
+import { IconButton, Tooltip, Badge } from "@material-ui/core";
 import { GitHub, Help } from "@material-ui/icons";
 import React, { useState } from "react";
 import Tour from "reactour";
-import { useLocalStorageState } from "../utils/useLocalStorageState";
 import styled from "styled-components/macro";
 import { getIsTouchDevice } from "../getIsTouchDevice";
 import { useStore } from "../store";
-
+import { atomWithStorage } from "jotai/utils";
 // https://github.com/elrumordelaluz/reactour
 
 const GuidedTour = () => {
   // only show once we've started
   const started = useStore((s) => s.started);
   // show the tour if it's our first time visiting the app
-  const [isFirstVisit, setIsFirstVisit] = useLocalStorageState(
-    "isFirstVisit",
-    "true"
-  );
-  const [isTourOpen, setIsTourOpen] = useState(isFirstVisit === "true");
+  const [isFirstVisit, setIsFirstVisit] = useState(true);
+  const [isTourOpen, setIsTourOpen] = useState(false);
 
   return !started ? null : (
     <>
@@ -26,11 +22,12 @@ const GuidedTour = () => {
         isOpen={isTourOpen}
         onRequestClose={() => {
           setIsTourOpen(false);
-          setIsFirstVisit("false");
+          setIsFirstVisit(false);
         }}
         badgeContent={(curr, tot) => `${curr}/${tot}`}
       />
-      <ButtonStartTour {...{ setIsTourOpen }} />
+
+      <ButtonStartTour {...{ setIsTourOpen, isFirstVisit }} />
       <LinkToGithub />
       <InitialTerrariumPositionStyles />
       <FullScreenPositionStyles />
@@ -66,12 +63,14 @@ function LinkToGithub() {
     </a>
   );
 }
-function ButtonStartTour({ setIsTourOpen, ...props }) {
+function ButtonStartTour({ setIsTourOpen, isFirstVisit, ...props }) {
   return (
     <ButtonStartTourStyles {...props}>
       <Tooltip title="Tour">
         <IconButton size="small" onClick={() => setIsTourOpen(true)}>
-          <Help />
+          <Badge badgeContent={isFirstVisit ? 1 : null} color="error">
+            <Help />
+          </Badge>
         </IconButton>
       </Tooltip>
     </ButtonStartTourStyles>
