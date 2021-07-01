@@ -32,16 +32,19 @@ function InteractiveParticle(props) {
   const detail = Math.floor(numIcosahedronFaces / 20);
   const volumeOfSphere = (4 / 3) * Math.PI * props.radius ** 3;
   const mockMass = 10 ** -5 * volumeOfSphere;
-  const RADIUS = 1;
+  // const RADIUS = 1;
   const geo = useMemo(
-    () => toConvexProps(new THREE.IcosahedronBufferGeometry(RADIUS, detail)),
-    [detail]
+    () =>
+      toConvexProps(
+        new THREE.IcosahedronBufferGeometry(props.radius * 0.001, detail)
+      ),
+    [props.radius, detail]
   );
 
   const [ref, api] = useConvexPolyhedron(() => ({
     // TODO: accurate mass data from PDB --> need to multiply by number of residues or something else? doesn't seem right
     mass: mockMass, // approximate mass using volume of a sphere equation
-    position,
+    // position,
     // https://threejs.org/docs/scenes/geometry-browser.html#IcosahedronBufferGeometry
     args: geo as any,
   }));
@@ -149,16 +152,17 @@ export function useShouldRenderParticle(radius: number) {
   return getShouldRenderParticle(scale, radius, worldRadius);
 }
 
-const MIN_RADIUS = 5;
-const MAX_RADIUS = 20;
+// particle must appear within this radius range at the current scale
+const MIN_RADIUS_TO_APPEAR_AT = 10;
+const MAX_RADIUS_TO_APPEAR_AT = 20;
 export function getShouldRenderParticle(
   scale: number,
   radius: number,
   worldRadius: number
 ) {
   const particleSize = scale * radius;
-  const tooBigToRender = particleSize > worldRadius / MIN_RADIUS;
-  const tooSmallToRender = particleSize < worldRadius / MAX_RADIUS;
+  const tooBigToRender = particleSize > worldRadius / MIN_RADIUS_TO_APPEAR_AT;
+  const tooSmallToRender = particleSize < worldRadius / MAX_RADIUS_TO_APPEAR_AT;
   return !(tooBigToRender || tooSmallToRender);
 }
 

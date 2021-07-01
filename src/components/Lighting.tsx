@@ -5,11 +5,11 @@ export function Lighting() {
   return (
     <>
       <color attach="background" args={["#ffffff"] as any} />
-      <LightFollowsMouse />
+      {/* <LightFollowsMouse /> */}
 
       {/* <SpotLightOnSelectedProtein /> */}
       <ambientLight intensity={0.3} />
-      <pointLight position={[-10, -10, -10]} intensity={1} />
+      {/* <pointLight position={[-10, -10, -10]} intensity={1} /> */}
       <spotLight
         position={[10, 10, 10]}
         angle={0.5}

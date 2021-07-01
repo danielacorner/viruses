@@ -25,20 +25,26 @@ const Scene = () => {
         {proteins.map((protein) => {
           return <ProteinGroup key={protein.name} {...protein} />;
         })}
-        <Water />
+        {/* <Water /> */}
         <Walls />
         <Environment
           background={true}
           files={[
-            "posx.jpg",
-            "negx.jpg",
-            "posy.jpg",
-            "negy.jpg",
-            "posz.jpg",
-            "negz.jpg",
+            "scene_r.jpg",
+            "scene_l.jpg",
+            "scene_u.jpg",
+            "scene_d.jpg",
+            "scene_f.jpg",
+            "scene_b.jpg",
+            // "posx.jpg",
+            // "negx.jpg",
+            // "posy.jpg",
+            // "negy.jpg",
+            // "posz.jpg",
+            // "negz.jpg",
           ]}
-          path={`/images/textures/Storforsen${randIdx}/`}
-          // preset={"forest"}
+          path={`/images/textures/atmosphere/`}
+          // preset={"night"}
           scene={undefined} // adds the ability to pass a custom THREE.Scene
         />
         <SelectedParticleDisplay />

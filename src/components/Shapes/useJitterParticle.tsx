@@ -10,11 +10,51 @@ type WorkerVec = {
   copy: ({ x, y, z }: THREE.Vector3 | THREE.Euler) => void;
   subscribe: (callback: (value: number[]) => void) => void;
 };
+export function useJitterParticle({ mass, ref, api = {} as any | WorkerVec }) {
+  const paused = useStore((s) => s.paused);
+  // ? ONLY when the temperature changes, change the velocity
+
+  // const { rPos, rRot } = useGetJitterPositions(mass);
+
+  useFrame(() => {
+    if (paused || !api.position) {
+      return;
+    }
+    if (ref.current) {
+      const impulseAmount = Math.random() * 0.1;
+      const impulse = [
+        Math.random() * impulseAmount - impulseAmount,
+        Math.random() * impulseAmount - impulseAmount,
+        Math.random() * impulseAmount - impulseAmount,
+      ];
+      const worldPoint = [
+        ref.current.position.x + (Math.random() - 0.5) * 0.01,
+        ref.current.position.y + (Math.random() - 0.5) * 0.01,
+        ref.current.position.z + (Math.random() - 0.5) * 0.01,
+      ];
+      api.applyImpulse(impulse, worldPoint);
+      // jitter position
+      // const { x, y, z } = ref.current.position;
+      // api.position.set(...[x, y, z].map((p) => p + rPos()));
+      // ref.current.position.x = ref.current.position.x + rPos();
+      // ref.current.position.y = ref.current.position.y + rPos();
+      // ref.current.position.z = ref.current.position.z + rPos();
+
+      // jitter rotation
+      // const { x: rx, y: ry, z: rz } = ref.current.position;
+      // api.rotation.set(...[rx, ry, rz].map((r) => r + rRot()));
+      // ref.current.rotation.x = ref.current.rotation.x + rRot();
+      // ref.current.rotation.y = ref.current.rotation.y + rRot();
+      // ref.current.rotation.z = ref.current.rotation.z + rRot();
+    }
+  });
+}
+
 const ROTATION_JITTER_COEFF = 0.05;
 const POSITION_JITTER_COEFF = 100;
-export function useJitterParticle({ mass, ref, api = {} as any | WorkerVec }) {
+
+function useGetJitterPositions(mass) {
   const { velocity } = useVelocity(mass);
-  const paused = useStore((s) => s.paused);
   const scale = useStore((s) => s.scale);
   // ? ONLY when the temperature changes, change the velocity
 
@@ -22,27 +62,7 @@ export function useJitterParticle({ mass, ref, api = {} as any | WorkerVec }) {
   const jitterRotation = velocity * ROTATION_JITTER_COEFF; // rotation doesn't change with scale
   const rPos = () => randBetween(-jitterPosition, jitterPosition, true);
   const rRot = () => randBetween(-jitterRotation, jitterRotation, true);
-
-  useFrame(() => {
-    if (paused || !api.position) {
-      return;
-    }
-    if (ref.current) {
-      // jitter position
-      const { x, y, z } = ref.current.position;
-      api.position.set(...[x, y, z].map((p) => p + rPos()));
-      // ref.current.position.x = ref.current.position.x + rPos();
-      // ref.current.position.y = ref.current.position.y + rPos();
-      // ref.current.position.z = ref.current.position.z + rPos();
-
-      // jitter rotation
-      const { x: rx, y: ry, z: rz } = ref.current.position;
-      api.rotation.set(...[rx, ry, rz].map((r) => r + rRot()));
-      // ref.current.rotation.x = ref.current.rotation.x + rRot();
-      // ref.current.rotation.y = ref.current.rotation.y + rRot();
-      // ref.current.rotation.z = ref.current.rotation.z + rRot();
-    }
-  });
+  return { rPos, rRot };
 }
 
 const dummy = new THREE.Object3D();

@@ -58,10 +58,10 @@ export function useChangeVelocityWhenTemperatureChanges({
 
     // ? should angular velocity change (including direction) whenever you change the temperature
 
-    const newAngularVelocity = [0, 0, 0, 0].map(
-      () => velocity * eitherOr(-1, 1)
-    ) as Quaternion;
-    api?.angularVelocity.set(...newAngularVelocity);
+    // const newAngularVelocity = [0, 0, 0, 0].map(
+    //   () => velocity * eitherOr(-1, 1)
+    // ) as Quaternion;
+    // api?.angularVelocity.set(...newAngularVelocity);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [temperature, scale]);
