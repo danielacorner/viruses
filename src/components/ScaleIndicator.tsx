@@ -120,8 +120,8 @@ export function ScaleIndicator() {
                     t.position[1],
                     t.position[2] * (t.side === "right" ? 0.91 : 1),
                   ],
-                  color: "#f0ecec",
-                  fontSize: isTabletOrLarger ? 0.16 : 0.24,
+                  color: "#ffffff",
+                  fontSize: 0.22,
                   style: {
                     whiteSpace: "nowrap",
                     width: 0,
@@ -129,6 +129,11 @@ export function ScaleIndicator() {
                     justifyContent: "flex-end",
                   },
                 }}
+                outlineOffsetX={"0%"}
+                outlineOffsetY={"0%"}
+                outlineBlur={"30%"}
+                outlineOpacity={0.6}
+                outlineColor="black"
               >
                 {t.name}
               </Text>

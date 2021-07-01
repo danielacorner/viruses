@@ -80,7 +80,7 @@ function InteractiveParticle(props) {
   //   "/images/maps/normal-map.jpg"
   // );
   // // apply texture on mount to all mesh nodes
-  // const circleRef = useRef(null as any);
+  const circleRef = useRef(null as any);
   // React.useEffect(() => {
   //   if (ref.current) {
   //     console.log("🌟🚨 ~ React.useEffect ~ ref.current", ref.current);
@@ -106,8 +106,8 @@ function InteractiveParticle(props) {
       onPointerUp={handlePointerUp}
     >
       {isSelectedProtein && !isTooltipMaximized ? <HighlightParticle /> : null}
-      <Component />
-      {/* <mesh ref={circleRef}>
+      {/* <Component /> */}
+      <mesh ref={circleRef}>
         <sphereBufferGeometry args={[10, 16, 16]} />
         <meshStandardMaterial
           attach="material"
@@ -116,7 +116,7 @@ function InteractiveParticle(props) {
           // displacementMap={displacementMap}
           // normalMap={normalMap}
         />
-      </mesh> */}
+      </mesh>
     </mesh>
   );
 }

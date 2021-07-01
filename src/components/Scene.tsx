@@ -1,4 +1,3 @@
-import React from "react";
 import { Physics } from "@react-three/cannon";
 import { Environment, OrbitControls } from "@react-three/drei";
 import { Lighting } from "./Lighting";
@@ -7,6 +6,8 @@ import ProteinGroup from "./ProteinGroup";
 import { PHYSICS_PROPS } from "../utils/PHYSICS_PROPS";
 import { PROTEINS } from "../utils/PROTEINS";
 import { Water } from "./Water";
+import { SelectedParticleDisplay } from "./SelectedParticleDisplay";
+
 const randIdx = Math.ceil(Math.random() * 4);
 const Scene = () => {
   // useSetTemperatureLowInitially();
@@ -21,9 +22,9 @@ const Scene = () => {
       <OrbitControls />
       <Lighting />
       <Physics {...PHYSICS_PROPS}>
-        {/* {proteins.map((protein) => {
+        {proteins.map((protein) => {
           return <ProteinGroup key={protein.name} {...protein} />;
-        })} */}
+        })}
         <Water />
         <Walls />
         <Environment
@@ -40,7 +41,7 @@ const Scene = () => {
           // preset={"forest"}
           scene={undefined} // adds the ability to pass a custom THREE.Scene
         />
-        {/* <SelectedParticleDisplay /> */}
+        <SelectedParticleDisplay />
         {/* <Cells /> */}
       </Physics>
       {/* <CustomEffects /> */}
