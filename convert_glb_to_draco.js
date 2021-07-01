@@ -1,4 +1,6 @@
 // convert .glb files in the public folder to "_draco.glb" equivalent draco-compressed files
+// line running e.g.:
+// $ gltf-pipeline -i C:\code\viruses\public\models\nanotech\dna_origami_object_80.glb -o C:\code\viruses\public\models\nanotech\dna_origami_object_80_draco.glb -d
 const options = {
   dracoOptions: {
     compressMeshes: true,
