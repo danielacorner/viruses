@@ -24,15 +24,15 @@ export function StartPage() {
       <CanvasAndSceneEmpty isStartPage={true}>
         <SingleParticle
           {...bacteriophage_phi29_prohead}
-          position={[-r * 0.08, r * 0.15, r * 0.7]}
+          position={[-r * 0.08, r * 0.15, r * 0.6]}
         />
         <SingleParticle
           {...bacteriophage_p68}
-          position={[0, -r * 0.11, r * 0.64]}
+          position={[0, -r * 0.11, r * 0.5]}
         />
         <SingleParticle
           {...virion_of_native_gene_transfer_agent_gta_particle}
-          position={[r * 0.11, r * 0.1, r * 0.8]}
+          position={[r * 0.11, r * 0.1, r * 0.7]}
         />
       </CanvasAndSceneEmpty>
       <div

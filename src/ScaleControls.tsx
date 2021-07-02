@@ -32,6 +32,8 @@ export function ScaleControls() {
         </div>
         <div className="grid-item">
           <Slider
+            valueLabelDisplay="auto"
+            valueLabelFormat={(x) => Number(x * 10000).toFixed(2)}
             orientation="vertical"
             aria-labelledby="volume-slider"
             onChange={(event, newValue) => {

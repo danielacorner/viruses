@@ -29,7 +29,6 @@ export function TemperatureControls() {
   // }, [set]);
 
   const max = 0.000005 / scale ** 3;
-  console.log("🌟🚨 ~ TemperatureControls ~ max", max);
 
   return (
     <TemperatureControlsStyles>
@@ -43,7 +42,7 @@ export function TemperatureControls() {
         <div className="grid-item">
           <Slider
             valueLabelDisplay="auto"
-            valueLabelFormat={(x) => Number(x).toFixed(2)}
+            valueLabelFormat={(x) => Number(x / 1000).toFixed(2)}
             aria-labelledby="volume-slider"
             onChange={(event, newValue) => {
               // pause when temperature is moved to 0
