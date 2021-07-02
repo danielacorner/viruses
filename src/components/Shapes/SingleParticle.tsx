@@ -45,8 +45,12 @@ export function InteractiveParticle(props) {
     // TODO: accurate mass data from PDB --> need to multiply by number of residues or something else? doesn't seem right
     mass: mockMass, // approximate mass using volume of a sphere equation
     position,
+    // type: !paused ? "Dynamic" : "Static",
     // https://threejs.org/docs/scenes/geometry-browser.html#IcosahedronBufferGeometry
     args: geo as any,
+    // material: {
+    //   restitution: 1,
+    // },
   }));
 
   useJitterParticle({

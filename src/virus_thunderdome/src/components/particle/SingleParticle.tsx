@@ -78,9 +78,9 @@ function InteractiveParticle(props: ParticleProps) {
     onCollide: handleCollide(unmount, setVirusHp),
     // https://threejs.org/docs/scenes/geometry-browser.html#IcosahedronBufferGeometry
     args: geo as any,
-    material: {
-      restitution: 0,
-    },
+    // material: {
+    //   restitution: 0,
+    // },
   }));
 
   // start decaying after lifespan elapses,

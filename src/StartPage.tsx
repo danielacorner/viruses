@@ -68,7 +68,11 @@ export function StartPage() {
           <Typography variant="body2">Requirements: 40MB download</Typography>
         </div>
         <Button
-          style={{ padding: "0.25em 3em", pointerEvents: "auto" }}
+          style={{
+            padding: "0.25em 3em",
+            pointerEvents: "auto",
+            background: "hsl(0,0%,85%)",
+          }}
           onClick={() => set({ started: true })}
           variant="outlined"
         >

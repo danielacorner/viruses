@@ -28,7 +28,8 @@ export function TemperatureControls() {
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [set]);
 
-  const max = 0.003 / scale ** 2;
+  const max = 0.000005 / scale ** 3;
+  console.log("🌟🚨 ~ TemperatureControls ~ max", max);
 
   return (
     <TemperatureControlsStyles>
@@ -42,6 +43,7 @@ export function TemperatureControls() {
         <div className="grid-item">
           <Slider
             valueLabelDisplay="auto"
+            valueLabelFormat={(x) => Number(x).toFixed(2)}
             aria-labelledby="volume-slider"
             onChange={(event, newValue) => {
               // pause when temperature is moved to 0

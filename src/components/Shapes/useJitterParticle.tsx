@@ -1,8 +1,13 @@
-import { useFrame } from "@react-three/fiber";
-import { randBetween } from "../../utils/utils";
+import { Quaternion, useFrame } from "@react-three/fiber";
+import { randBetween, useMount } from "../../utils/utils";
 import * as THREE from "three";
 import { useVelocity } from "./useVelocity";
 import { useStore } from "../../store";
+import { useRef } from "react";
+
+const FORCE = 0.0000005;
+const distanceFromParticle = 0;
+const MAX_ANGULAR_VELOCITY = 8;
 
 // api
 type WorkerVec = {
@@ -14,26 +19,41 @@ export function useJitterParticle({ mass, ref, api = {} as any | WorkerVec }) {
   const paused = useStore((s) => s.paused);
   // ? ONLY when the temperature changes, change the velocity
 
-  // const { rPos, rRot } = useGetJitterPositions(mass);
+  const { rPos, rRot } = useGetJitterPositions(mass);
+
+  const currentAngularVelocity = useRef([0, 0, 0, 0] as Quaternion);
+  useMount(() =>
+    api.angularVelocity.subscribe((q) => (currentAngularVelocity.current = q))
+  );
 
   useFrame(() => {
     if (paused || !api.position) {
       return;
     }
     if (ref.current) {
-      const impulseAmount = Math.random() * 0.1;
+      const impulseAmount = Math.random() * FORCE;
       const impulse = [
-        Math.random() * impulseAmount - impulseAmount,
-        Math.random() * impulseAmount - impulseAmount,
-        Math.random() * impulseAmount - impulseAmount,
+        (Math.random() - 0.5) * impulseAmount,
+        (Math.random() - 0.5) * impulseAmount,
+        (Math.random() - 0.5) * impulseAmount,
       ];
       const worldPoint = [
-        ref.current.position.x + (Math.random() - 0.5) * 0.01,
-        ref.current.position.y + (Math.random() - 0.5) * 0.01,
-        ref.current.position.z + (Math.random() - 0.5) * 0.01,
+        ref.current.position.x + (Math.random() - 0.5) * distanceFromParticle,
+        ref.current.position.y + (Math.random() - 0.5) * distanceFromParticle,
+        ref.current.position.z + (Math.random() - 0.5) * distanceFromParticle,
       ];
-      api.applyImpulse(impulse, worldPoint);
+
+      // clamp angular velocity
+      api.angularVelocity.set(
+        //     // ...currentAngularVelocity.current.map((q) => q)
+        ...currentAngularVelocity.current.map((q) =>
+          Math.max(-MAX_ANGULAR_VELOCITY, Math.min(MAX_ANGULAR_VELOCITY, q))
+        )
+      );
+
       // jitter position
+      api.applyForce(impulse, worldPoint);
+      // api.applyImpulse(impulse, worldPoint);
       // const { x, y, z } = ref.current.position;
       // api.position.set(...[x, y, z].map((p) => p + rPos()));
       // ref.current.position.x = ref.current.position.x + rPos();
