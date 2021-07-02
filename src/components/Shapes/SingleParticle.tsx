@@ -156,17 +156,18 @@ export function useShouldRenderParticle(radius: number) {
   return getShouldRenderParticle(scale, radius, worldRadius);
 }
 
-// particle must appear within this radius range at the current scale
-const MIN_RADIUS_TO_APPEAR_AT = 10;
-const MAX_RADIUS_TO_APPEAR_AT = 20;
+// particle must be within this radius range at the current scale
+const BIGGEST_PARTICLE_RADIUS = 0.2;
+const SMALLEST_PARTICLE_RADIUS = 0.05;
 export function getShouldRenderParticle(
   scale: number,
   radius: number,
   worldRadius: number
 ) {
   const particleSize = scale * radius;
-  const tooBigToRender = particleSize > worldRadius / MIN_RADIUS_TO_APPEAR_AT;
-  const tooSmallToRender = particleSize < worldRadius / MAX_RADIUS_TO_APPEAR_AT;
+  const tooBigToRender = particleSize > worldRadius * BIGGEST_PARTICLE_RADIUS;
+  const tooSmallToRender =
+    particleSize < worldRadius * SMALLEST_PARTICLE_RADIUS;
   return !(tooBigToRender || tooSmallToRender);
 }
 
