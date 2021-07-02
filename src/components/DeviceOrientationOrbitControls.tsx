@@ -175,6 +175,7 @@ class OrbitControls extends EventDispatcher {
     ////////////
     // internals
 
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     var scope = this;
 
     var EPS = 0.000001;

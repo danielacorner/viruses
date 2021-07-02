@@ -30,6 +30,7 @@ export function Plane({
         <>
           {/* https://github.com/pmndrs/drei#reflector */}
           <Reflector
+            {...({} as any)}
             args={[1, 1]} // PlaneBufferGeometry arguments
             resolution={256} // Off-buffer resolution, lower=faster, higher=better quality
             mirror={0.5} // Mirror environment, 0 = texture colors, 1 = pick up env colors

@@ -33,6 +33,7 @@ export function SelectedParticleDisplay() {
         ref={virtualCam}
         makeDefault={false}
         position={[0, 0, 100]}
+        {...({} as any)}
       />
       <mesh
         ref={ref}

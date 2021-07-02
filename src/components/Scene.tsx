@@ -19,7 +19,7 @@ const Scene = () => {
   ];
   return (
     <>
-      <OrbitControls />
+      <OrbitControls {...({} as any)} />
       <Lighting />
       <Physics {...PHYSICS_PROPS}>
         {proteins.map((protein) => {

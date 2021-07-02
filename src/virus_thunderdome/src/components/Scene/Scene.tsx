@@ -17,7 +17,7 @@ const Scene = () => {
   return (
     <Suspense fallback={null}>
       <AudioTrack />
-      <OrbitControls />
+      <OrbitControls {...({} as any)} />
       <PhysicsSceneMovable />
       <Lighting />
     </Suspense>

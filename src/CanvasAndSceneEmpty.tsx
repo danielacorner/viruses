@@ -33,7 +33,11 @@ export function CanvasAndSceneEmpty({
     >
       <Lighting />
       <SpinIfLoadingIndicator>
-        {isStartPage ? <DeviceOrientationOrbitControls /> : <OrbitControls />}
+        {isStartPage ? (
+          <DeviceOrientationOrbitControls />
+        ) : (
+          <OrbitControls {...({} as any)} />
+        )}
         <Physics {...PHYSICS_PROPS}>
           <mesh scale={isLoadingIndicator ? [0.75, 0.75, 0.75] : [1, 1, 1]}>
             <Water />

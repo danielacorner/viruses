@@ -23,7 +23,7 @@ export function Plane({
     <mesh ref={ref} /* receiveShadow */>
       {reflect ? (
         <>
-          <Reflector mirror={0.5}>
+          <Reflector {...({} as any)} mirror={0.5}>
             {(Material, props) => (
               <Material
                 color="#ddd"

@@ -35,7 +35,7 @@ export function CanvasAndSceneEmpty({
     >
       <Lighting />
       <SpinIfLoadingIndicator>
-        <OrbitControls />
+        <OrbitControls {...({} as any)} />
         <Physics {...PHYSICS_PROPS}>
           <mesh
             rotation={[0, started ? Math.PI / 2 : -Math.PI, 0]}

@@ -26,6 +26,7 @@ const HUD = ({ children, position }) => {
   return createPortal(
     <>
       <OrthographicCamera
+        {...({} as any)}
         ref={virtualCam}
         makeDefault={false}
         position={position}
