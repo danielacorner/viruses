@@ -2,7 +2,7 @@ import { Button, Typography } from "@material-ui/core";
 import { CanvasAndSceneEmpty } from "./CanvasAndSceneEmpty";
 import { useStore } from "./store";
 import ErrorBoundary from "./components/ErrorBoundary";
-import { SingleParticle } from "./components/shapes/SingleParticle";
+import { SingleParticle } from "./components/Shapes/SingleParticle";
 import { PROTEINS } from "./utils/PROTEINS";
 
 export function StartPage() {

@@ -1,9 +1,9 @@
 import React from "react";
 import { useSphere } from "@react-three/cannon";
 import * as THREE from "three";
-import { getRandPosition } from "./shapes/particleUtils";
+import { getRandPosition } from "./Shapes/particleUtils";
 import { useStore } from "../store";
-import { useChangeVelocityWhenTemperatureChanges } from "./shapes/useChangeVelocityWhenTemperatureChanges";
+import { useChangeVelocityWhenTemperatureChanges } from "./Shapes/useChangeVelocityWhenTemperatureChanges";
 const RADIUS = 0.05;
 const NUM_INSTANCES = 50;
 

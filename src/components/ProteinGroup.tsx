@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import {
   SingleParticle,
   useShouldRenderParticle,
-} from "./shapes/SingleParticle";
-import { getRandPosition } from "./shapes/particleUtils";
+} from "./Shapes/SingleParticle";
+import { getRandPosition } from "./Shapes/particleUtils";
 import { useStore } from "../store";
 import { PROTEIN_TYPES } from "../utils/PROTEINS";
 

@@ -8,7 +8,7 @@ import { useMount } from "../../utils/utils";
 import { useSpring, a } from "react-spring/three";
 import { Protein, PROTEINS, PROTEIN_TYPES } from "../../utils/PROTEINS";
 import { FloatingHtmlOverlay } from "./FloatingHtmlOverlay";
-import { toConvexProps } from "../../../../components/shapes/toConvexProps";
+import { toConvexProps } from "../../../../components/Shapes/toConvexProps";
 
 export type ParticleProps = Protein & {
   position: [number, number, number];

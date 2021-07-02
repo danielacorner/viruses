@@ -1,7 +1,7 @@
 import React from "react";
 import { useStore } from "../store";
 import { ScaleIndicator } from "./ScaleIndicator";
-import { Plane } from "./shapes/Plane";
+import { Plane } from "./Shapes/Plane";
 import { useScalePercent } from "./useScalePercent";
 // const colors = niceColors[17];
 const colors = ["#69d2e7", "#a7dbd8", "#e0e4cc", "#f38630", "#fa6900"];
