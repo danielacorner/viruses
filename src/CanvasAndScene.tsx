@@ -8,6 +8,9 @@ import BottomControls from "./BottomControls";
 import { useMediaQuery } from "@material-ui/core";
 import { BREAKPOINT_TABLET } from "./utils/constants";
 import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import { getIsTouchDevice } from "./getIsTouchDevice";
+import { DeviceOrientationOrbitControls } from "./components/DeviceOrientationOrbitControls";
 
 export default function CanvasAndScene({ renderProteins = true }) {
   const windowSize = useWindowSize();
@@ -32,6 +35,11 @@ export default function CanvasAndScene({ renderProteins = true }) {
         style={{ height: windowSize.height, width: windowSize.width }}
         camera={{ fov: 75, position: [0, 0, 15] }}
       >
+        {getIsTouchDevice() ? (
+          <DeviceOrientationOrbitControls />
+        ) : (
+          <OrbitControls {...({} as any)} />
+        )}{" "}
         <Scene />
       </Canvas>
       {/* {process.env.NODE_ENV === "development" && isTabletOrLarger ? (

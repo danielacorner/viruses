@@ -8,7 +8,7 @@ import { useMount } from "../../utils/utils";
 import { useSpring, a } from "react-spring/three";
 import { Protein, PROTEINS, PROTEIN_TYPES } from "../../utils/PROTEINS";
 import { FloatingHtmlOverlay } from "./FloatingHtmlOverlay";
-import { toConvexProps } from "../../../../components/Shapes/toConvexProps";
+import { toConvexProps } from "../../../../components/shapes/toConvexProps";
 
 export type ParticleProps = Protein & {
   position: [number, number, number];
@@ -78,6 +78,9 @@ function InteractiveParticle(props: ParticleProps) {
     onCollide: handleCollide(unmount, setVirusHp),
     // https://threejs.org/docs/scenes/geometry-browser.html#IcosahedronBufferGeometry
     args: geo as any,
+    material: {
+      restitution: 0,
+    },
   }));
 
   // start decaying after lifespan elapses,

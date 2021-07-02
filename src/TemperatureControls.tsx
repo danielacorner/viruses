@@ -41,6 +41,7 @@ export function TemperatureControls() {
         </div>
         <div className="grid-item">
           <Slider
+            valueLabelDisplay="auto"
             aria-labelledby="volume-slider"
             onChange={(event, newValue) => {
               // pause when temperature is moved to 0

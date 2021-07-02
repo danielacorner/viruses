@@ -6,7 +6,8 @@ source: https://sketchfab.com/models/b3564ec834f84397a3188edab5e5acd9
 title: Cell membrane
 */
 
-import { useGLTF } from "@react-three/drei";
+import { useGLTF } from "../utils/useGltf";
+
 import React, { useRef } from "react";
 
 export default function Model(props) {

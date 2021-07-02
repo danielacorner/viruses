@@ -1,18 +1,40 @@
-import React from "react";
 import { Button, Typography } from "@material-ui/core";
-import WarningOutlined from "@material-ui/icons/WarningOutlined";
 import { CanvasAndSceneEmpty } from "./CanvasAndSceneEmpty";
 import { useStore } from "./store";
 import ErrorBoundary from "./components/ErrorBoundary";
-import { DeviceOrientationOrbitControls } from "./components/DeviceOrientationOrbitControls";
-import { useHoverAnimation } from "./components/effects/useHoverAnimation";
-import ReactJson from "react-json-view";
+import { SingleParticle } from "./components/shapes/SingleParticle";
+import { PROTEINS } from "./utils/PROTEINS";
+import { getRandPosition } from "./virus_thunderdome/src/components/Shapes/particleUtils";
 
 export function StartPage() {
   const set = useStore((s) => s.set);
+  const r = useStore((s) => s.worldRadius);
+  const bacteriophage_phi29_prohead = PROTEINS.viruses.find(
+    (p) => p.name === "Bacteriophage phi29 prohead"
+  );
+  const bacteriophage_p68 = PROTEINS.viruses.find(
+    (p) => p.name === "Bacteriophage P68"
+  );
+  const virion_of_native_gene_transfer_agent_gta_particle =
+    PROTEINS.viruses.find(
+      (p) => p.name === "Virion of native gene transfer agent GTA particle"
+    );
   return (
     <ErrorBoundary boundaryTitle={"Start Page"}>
-      <CanvasAndSceneEmpty isStartPage={true} />
+      <CanvasAndSceneEmpty isStartPage={true}>
+        <SingleParticle
+          {...bacteriophage_phi29_prohead}
+          position={[-r * 0.08, r * 0.15, r * 0.7]}
+        />
+        <SingleParticle
+          {...bacteriophage_p68}
+          position={[0, -r * 0.11, r * 0.64]}
+        />
+        <SingleParticle
+          {...virion_of_native_gene_transfer_agent_gta_particle}
+          position={[r * 0.11, r * 0.1, r * 0.8]}
+        />
+      </CanvasAndSceneEmpty>
       <div
         style={{
           pointerEvents: "none",
@@ -45,9 +67,6 @@ export function StartPage() {
         >
           <Typography variant="body2">Requirements: 40MB download</Typography>
         </div>
-        {/* <Typography variant="subtitle2">
-          ( this could take a while... )
-        </Typography> */}
         <Button
           style={{ padding: "0.25em 3em", pointerEvents: "auto" }}
           onClick={() => set({ started: true })}

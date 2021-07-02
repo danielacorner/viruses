@@ -16,7 +16,7 @@ export function SingleParticle(props) {
   return <Particle {...props} />;
 }
 /** interacts with other particles using @react-three/cannon */
-function InteractiveParticle(props) {
+export function InteractiveParticle(props) {
   const { position, Component, mass, numIcosahedronFaces } = props;
 
   const set = useStore((s) => s.set);
@@ -44,7 +44,7 @@ function InteractiveParticle(props) {
   const [ref, api] = useConvexPolyhedron(() => ({
     // TODO: accurate mass data from PDB --> need to multiply by number of residues or something else? doesn't seem right
     mass: mockMass, // approximate mass using volume of a sphere equation
-    // position,
+    position,
     // https://threejs.org/docs/scenes/geometry-browser.html#IcosahedronBufferGeometry
     args: geo as any,
   }));

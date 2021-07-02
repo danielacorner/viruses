@@ -1,6 +1,7 @@
 import React from "react";
 import { useSphere } from "@react-three/cannon";
-import { useGLTF } from "@react-three/drei";
+import { useGLTF } from "../../../utils/useGltf";
+
 import * as THREE from "three";
 
 const tempColor = new THREE.Color();

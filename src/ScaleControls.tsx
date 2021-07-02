@@ -6,6 +6,7 @@ import { ZoomOut, ZoomIn } from "@material-ui/icons";
 import { getIsTouchDevice } from "./getIsTouchDevice";
 import { MIN_SCALE, MAX_SCALE } from "./utils/constants";
 import { useProgress } from "@react-three/drei";
+import { darkText, darkTextShadow } from "./utils/colors";
 export function ScaleControls() {
   const scale = useStore((s) => s.scale);
   const set = useStore((s) => s.set);
@@ -64,10 +65,10 @@ const ScaleControlsStyles = styled.div`
   bottom: 124px;
   height: calc(100vh - 248px);
   min-height: 50vh;
-  color: white;
-  text-shadow: 0px 1px 4px black;
+  color: ${darkText};
+  text-shadow: ${darkTextShadow};
   .MuiSlider-root {
-    color: white;
+    color: hsl(0, 0%, 30%);
   }
   .grid {
     display: grid;

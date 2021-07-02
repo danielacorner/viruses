@@ -3,8 +3,9 @@ import { useSphere } from "@react-three/cannon";
 import { useSpring, a } from "react-spring/three";
 import * as THREE from "three";
 // https://discourse.threejs.org/t/there-is-no-gltfloader-in-three-module/16117/4
-import { useGLTF } from "@react-three/drei";
-import { getRandStartPosition } from "../particleUtils";
+import { useGLTF } from "../../../utils/useGltf";
+
+import { getRandPosition } from "../particleUtils";
 import { useStore } from "../../../store";
 // import * as antibody from "./models/1bv1/scene.gltf";
 
@@ -30,7 +31,7 @@ const Particle = ({
   const [sphereRef, sphereApi] = useSphere((index) => ({
     // rotation: [-Math.PI / 2, 0, 0],
     mass: 1,
-    position: getRandStartPosition(worldRadius),
+    position: getRandPosition(worldRadius),
     args: 1, // ? https://codesandbox.io/s/r3f-cannon-instanced-physics-devf8?file=/src/index.js
   }));
   // random start positions: instanced
@@ -40,7 +41,7 @@ const Particle = ({
   //   }
   //   let i = 0;
   //   for (let idx = 0; idx < numParticles; idx++) {
-  //     const [x, y, z] = getRandStartPosition( worldRadius);
+  //     const [x, y, z] = getRandPosition( worldRadius);
   //     dummy.position.x = x;
   //     dummy.position.x = y;
   //     dummy.position.x = z;
@@ -59,7 +60,7 @@ const Particle = ({
   //   if (instanced) {
   //     return;
   //   }
-  //   const [x, y, z] = getRandStartPosition(worldRadius);
+  //   const [x, y, z] = getRandPosition(worldRadius);
   //   // https://codesandbox.io/s/r3f-cannon-instanced-physics-devf8
   //   sphereApi.position.set(x, y, z);
   // });

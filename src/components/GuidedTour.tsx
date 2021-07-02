@@ -6,13 +6,14 @@ import styled from "styled-components/macro";
 import { getIsTouchDevice } from "../getIsTouchDevice";
 import { useStore } from "../store";
 import { atomWithStorage } from "jotai/utils";
-// https://github.com/elrumordelaluz/reactour
+import { useAtom } from "jotai";
+const isFirstVisitAtom = atomWithStorage("isFirstVisit", true);
 
 const GuidedTour = () => {
   // only show once we've started
   const started = useStore((s) => s.started);
   // show the tour if it's our first time visiting the app
-  const [isFirstVisit, setIsFirstVisit] = useState(true);
+  const [isFirstVisit, setIsFirstVisit] = useAtom(isFirstVisitAtom);
   const [isTourOpen, setIsTourOpen] = useState(false);
 
   return !started ? null : (

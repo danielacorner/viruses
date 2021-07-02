@@ -3,8 +3,9 @@ import { useSphere } from "@react-three/cannon";
 import { useSpring, a } from "react-spring/three";
 import { useJitterInstanceParticle } from "../Physics/useJitterParticle";
 // https://discourse.threejs.org/t/there-is-no-gltfloader-in-three-module/16117/4
-import { useGLTF } from "@react-three/drei";
-import { getRandStartPosition } from "./particleUtils";
+import { useGLTF } from "../../../utils/useGltf";
+
+import { getRandPosition } from "./particleUtils";
 import { useStore } from "../../store";
 // import * as antibody from "./models/1bv1/scene.gltf";
 
@@ -23,7 +24,7 @@ const InstancedParticle = ({
   const [ref] = useSphere(() => ({
     // rotation: [-Math.PI / 2, 0, 0],
     mass: 1,
-    position: getRandStartPosition(worldRadius),
+    position: getRandPosition(worldRadius),
     args: 1, // ? https://codesandbox.io/s/r3f-cannon-instanced-physics-devf8?file=/src/index.js
   }));
 
@@ -46,9 +47,7 @@ const InstancedParticle = ({
   const springProps = useSpring({
     scale: [scaleActual, scaleActual, scaleActual],
   });
-  const randPos = useMemo(() => getRandStartPosition(worldRadius), [
-    worldRadius,
-  ]);
+  const randPos = useMemo(() => getRandPosition(worldRadius), [worldRadius]);
   return (
     <mesh position={randPos}>
       {allGeometriesAndMaterials.map(

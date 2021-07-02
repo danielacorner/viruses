@@ -1,7 +1,7 @@
 import React from "react";
 import { useSphere } from "@react-three/cannon";
 import * as THREE from "three";
-import { getRandStartPosition } from "../Shapes/particleUtils";
+import { getRandPosition } from "../Shapes/particleUtils";
 import { useStore } from "../../store";
 import { useChangeVelocityWhenTemperatureChanges } from "../Physics/useChangeVelocityWhenTemperatureChanges";
 const RADIUS = 0.05;
@@ -14,7 +14,7 @@ export function Water() {
   const paused = useStore((s) => s.paused);
   const [ref, api] = useSphere((index) => ({
     mass: paused ? 0 : mass,
-    position: getRandStartPosition(worldRadius),
+    position: getRandPosition(worldRadius),
     args: 1,
     material: {
       restitution: 0.0001,

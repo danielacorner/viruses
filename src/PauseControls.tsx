@@ -4,6 +4,7 @@ import { Grid, IconButton, Typography } from "@material-ui/core";
 import styled from "styled-components/macro";
 import { Pause, PlayArrowOutlined } from "@material-ui/icons";
 import { useEventListener, usePreviousIf } from "./utils/hooks";
+import { darkText, darkTextShadow } from "./utils/colors";
 
 export function PauseControls() {
   const paused = useStore((s) => s.paused);
@@ -43,7 +44,6 @@ export function PauseControls() {
 }
 const PauseControlsStyles = styled.div`
   cursor: pointer;
-  .MuiIconButton-root {
-    color: white;
-  }
+  color: ${darkText};
+  text-shadow: ${darkTextShadow};
 `;

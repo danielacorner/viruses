@@ -1,5 +1,5 @@
 import { Physics } from "@react-three/cannon";
-import { Environment, OrbitControls } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import { Lighting } from "./Lighting";
 import { Walls } from "./Walls";
 import ProteinGroup from "./ProteinGroup";
@@ -19,15 +19,14 @@ const Scene = () => {
   ];
   return (
     <>
-      <OrbitControls {...({} as any)} />
       <Lighting />
       <Physics {...PHYSICS_PROPS}>
         {proteins.map((protein) => {
           return <ProteinGroup key={protein.name} {...protein} />;
         })}
-        {/* <Water /> */}
+        <Water />
         <Walls />
-        <Environment
+        {/* <Environment
           background={true}
           files={[
             "scene_r.jpg",
@@ -46,7 +45,7 @@ const Scene = () => {
           path={`/images/textures/atmosphere/`}
           // preset={"night"}
           scene={undefined} // adds the ability to pass a custom THREE.Scene
-        />
+        /> */}
         <SelectedParticleDisplay />
         {/* <Cells /> */}
       </Physics>

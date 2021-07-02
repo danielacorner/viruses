@@ -22,7 +22,7 @@ export function Plane({
   );
   // TODO: useNormalTexture https://github.com/pmndrs/drei#usenormaltexture
 
-  const distortionTexture = useTexture(DISTORTION_TEXTURE);
+  // const distortionTexture = useTexture(DISTORTION_TEXTURE);
 
   return (
     <mesh ref={ref} /* receiveShadow */>
@@ -41,7 +41,7 @@ export function Plane({
             maxDepthThreshold={1} // Upper edge for the depthTexture interpolation (default = 0)
             depthToBlurRatioBias={0.25} // Adds a bias factor to the depthTexture before calculating the blur amount [blurFactor = blurTexture * (depthTexture + bias)]. It accepts values between 0 and 1, default is 0.25. An amount > 0 of bias makes sure that the blurTexture is not too sharp because of the multiplication with the depthTexture
             distortion={0} // Amount of distortion based on the distortionMap texture
-            distortionMap={distortionTexture} // The red channel of this texture is used as the distortion map. Default is null
+            // distortionMap={distortionTexture} // The red channel of this texture is used as the distortion map. Default is null
             debug={
               0
             } /* Depending on the assigned value, one of the following channels is shown:

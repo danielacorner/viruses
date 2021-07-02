@@ -9,12 +9,15 @@ import { Water } from "./components/Water";
 import { PHYSICS_PROPS } from "./utils/PHYSICS_PROPS";
 import { Walls } from "./components/Walls";
 import { DeviceOrientationOrbitControls } from "./components/DeviceOrientationOrbitControls";
+import { getIsTouchDevice } from "./getIsTouchDevice";
 
 export function CanvasAndSceneEmpty({
   children = null,
   isLoadingIndicator = false,
   isStartPage = false,
 }) {
+  const isTouchDevice = getIsTouchDevice();
+  console.log("🌟🚨 ~ isTouchDevice", isTouchDevice);
   const windowSize = useWindowSize();
   const SpinIfLoadingIndicator = isLoadingIndicator
     ? SpinScene
@@ -33,7 +36,7 @@ export function CanvasAndSceneEmpty({
     >
       <Lighting />
       <SpinIfLoadingIndicator>
-        {isStartPage ? (
+        {isStartPage || isTouchDevice ? (
           <DeviceOrientationOrbitControls />
         ) : (
           <OrbitControls {...({} as any)} />

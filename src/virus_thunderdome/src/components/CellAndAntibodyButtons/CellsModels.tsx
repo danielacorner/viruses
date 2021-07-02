@@ -1,5 +1,6 @@
 import React from "react";
-import { useGLTF } from "@react-three/drei";
+import { useGLTF } from "../../../utils/useGltf";
+
 import HUD from "./HUD";
 import { useCellsFiltered } from "../useCellsFiltered";
 import { CELLS_GAP } from "./CellAndAntibodyButtons";

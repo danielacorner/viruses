@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { SingleParticle, useShouldRenderParticle } from "./SingleParticle";
-import { getRandStartPosition } from "../Shapes/particleUtils";
+import { getRandPosition } from "../Shapes/particleUtils";
 import { useStore } from "../../store";
 import { PROTEIN_TYPES } from "../../utils/PROTEINS";
 
@@ -19,7 +19,7 @@ const ProteinGroup = (props) => {
   const worldRadius = useStore((state) => state.worldRadius);
 
   const [positionsArray, setPositionsArray] = useState(() =>
-    [...new Array(numParticles)].map(() => getRandStartPosition(worldRadius))
+    [...new Array(numParticles)].map(() => getRandPosition(worldRadius))
   );
 
   useRenderOnlyNewParticlesWhenCreated(
@@ -73,7 +73,7 @@ function useRenderOnlyNewParticlesWhenCreated(
     } else if (numNewParticles > 0) {
       // or populate any missing
       const newPositionsArray = [...new Array(numNewParticles)].map(() =>
-        getRandStartPosition(worldRadius)
+        getRandPosition(worldRadius)
       );
       setPositionsArray((prev) => [...prev, ...newPositionsArray]);
     }

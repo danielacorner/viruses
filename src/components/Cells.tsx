@@ -1,6 +1,6 @@
 import React from "react";
 import { useStore, GlobalStateType } from "../store";
-import { useGLTF } from "@react-three/drei";
+import { useGLTF } from "../utils/useGltf";
 
 const CELLS = [
   { Component: Lymphocyte },
