@@ -2,19 +2,18 @@ import { VolumeUp, VolumeMute } from "@material-ui/icons";
 import { IconButton, Tooltip } from "@material-ui/core";
 import ReactPlayer from "react-player";
 import styled from "styled-components/macro";
-import { useLocalStorageState } from "../../utils/useLocalStorageState";
+import { atomWithStorage } from "jotai/utils";
+import { useAtom } from "jotai";
+import { BREAKPOINT_MOBILE } from "../../utils/constants";
+const isAudioPlayingAtom = atomWithStorage("isAudioPlaying", false); // As of Chrome 66, videos must be muted in order to play automatically https://www.npmjs.com/package/react-player
 
 /** show or hide the info overlay */
 export default function AudioSoundButton() {
-  const [isAudioPlaying, setIsAudioPlaying] = useLocalStorageState(
-    // const [isAudioPlaying, setIsAudioPlaying] = useState(
-    "isAudioPlaying",
-    false // As of Chrome 66, videos must be muted in order to play automatically https://www.npmjs.com/package/react-player
-  );
+  const [isAudioPlaying, setIsAudioPlaying] = useAtom(isAudioPlayingAtom);
 
   const music = {
-    title: "The Inner Life of the Cell - Protein Packing [Narrated]",
-    href: "https://www.youtube.com/watch?v=VdmbpAo9JR4",
+    title: "Inner Life of the Cell - Protein Packing",
+    href: "https://www.youtube.com/watch?v=uHeTQLNFTgU",
   };
   return (
     <>
@@ -22,13 +21,13 @@ export default function AudioSoundButton() {
         <Tooltip title={isAudioPlaying ? "mute 🔈" : "unmute 🔊"}>
           <IconButton onClick={() => setIsAudioPlaying(!isAudioPlaying)}>
             {isAudioPlaying ? <VolumeUp /> : <VolumeMute />}
+            <div className="soundInfo">
+              <a href={music.href} target="_blank" rel="noopener noreferrer">
+                {music.title}
+              </a>
+            </div>
           </IconButton>
         </Tooltip>
-        <div className="soundInfo">
-          <a href={music.href} target="_blank" rel="noopener noreferrer">
-            {music.title}
-          </a>
-        </div>
       </SoundButtonStyles>
       <ReactPlayer
         style={{ visibility: "hidden", position: "fixed" }}
@@ -39,17 +38,27 @@ export default function AudioSoundButton() {
   );
 }
 const SoundButtonStyles = styled.div`
+  position: fixed;
+  top: 0px;
+  right: 0px;
   height: 48px;
   width: 48px;
   white-space: nowrap;
   display: flex;
   align-items: center;
   .MuiButtonBase-root {
-    color: hsla(0, 100%, 100%, 0.5);
+    color: hsla(0, 100%, 0%, 0.5);
+    position: relative;
   }
   .soundInfo {
+    font-size: 16px;
+    @media (min-width: ${BREAKPOINT_MOBILE}px) {
+      font-size: 18px;
+    }
+    position: absolute;
+    right: 48px;
     a {
-      color: white;
+      color: hsla(0, 100%, 0%, 0.5);
     }
     opacity: 0;
   }
