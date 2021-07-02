@@ -43,10 +43,7 @@ export function StartPage() {
             gridGap: "0.25em",
           }}
         >
-          <WarningOutlined />
-          <Typography variant="body2">
-            Requirements: {">"}40MB download, 1GB memory
-          </Typography>
+          <Typography variant="body2">Requirements: 40MB download</Typography>
         </div>
         {/* <Typography variant="subtitle2">
           ( this could take a while... )
