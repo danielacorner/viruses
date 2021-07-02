@@ -3,8 +3,8 @@ import { useWindowSize } from "./utils/hooks";
 import * as THREE from "three";
 import * as Sentry from "@sentry/react";
 
-import { ScaleControls } from "./ScaleControls";
-import BottomControls from "./BottomControls";
+import { ScaleControls } from "./components/controls/ScaleControls";
+import BottomControls from "./components/controls/BottomControls";
 import { useMediaQuery } from "@material-ui/core";
 import { BREAKPOINT_TABLET } from "./utils/constants";
 import { Canvas } from "@react-three/fiber";

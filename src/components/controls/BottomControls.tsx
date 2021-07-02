@@ -1,8 +1,8 @@
 import React from "react";
-import { TemperatureControls } from "./TemperatureControls";
-import { PauseControls } from "./PauseControls";
+import { TemperatureControls } from "../../TemperatureControls";
+import { PauseControls } from "../../PauseControls";
 import styled from "styled-components/macro";
-import { darkText, darkTextShadow } from "./utils/colors";
+import { darkText, darkTextShadow } from "../../utils/colors";
 
 const StyledDiv = styled.div``;
 export default function BottomControls() {

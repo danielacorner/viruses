@@ -4,7 +4,6 @@ import { useStore } from "./store";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { SingleParticle } from "./components/shapes/SingleParticle";
 import { PROTEINS } from "./utils/PROTEINS";
-import { getRandPosition } from "./virus_thunderdome/src/components/Shapes/particleUtils";
 
 export function StartPage() {
   const set = useStore((s) => s.set);

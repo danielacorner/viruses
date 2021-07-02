@@ -4,7 +4,7 @@ import * as THREE from "three";
 import { useVelocity } from "./useVelocity";
 import { useStore } from "../../store";
 import { useRef } from "react";
-
+let frameIdx = 0;
 const FORCE = 0.0000005;
 const distanceFromParticle = 0;
 const MAX_ANGULAR_VELOCITY = 8;
@@ -21,12 +21,13 @@ export function useJitterParticle({ mass, ref, api = {} as any | WorkerVec }) {
 
   const { rPos, rRot } = useGetJitterPositions(mass);
 
-  const currentAngularVelocity = useRef([0, 0, 0, 0] as Quaternion);
-  useMount(() =>
-    api.angularVelocity.subscribe((q) => (currentAngularVelocity.current = q))
-  );
+  // const currentAngularVelocity = useRef([0, 0, 0, 0] as Quaternion);
+  // useMount(() =>
+  //   api.angularVelocity.subscribe((q) => (currentAngularVelocity.current = q))
+  // );
 
   useFrame(() => {
+    frameIdx++;
     if (paused || !api.position) {
       return;
     }
@@ -43,13 +44,28 @@ export function useJitterParticle({ mass, ref, api = {} as any | WorkerVec }) {
         ref.current.position.z + (Math.random() - 0.5) * distanceFromParticle,
       ];
 
+      // TODO every so often, clamp the angular velocity
+      // if (frameIdx % 60 === 0) {
+      //   console.log(
+      //     "🌟🚨 ~ useFrame ~ api.angularVelocity",
+      //     api.angularVelocity.copy()
+      //   );
+      //   api.angularVelocity.set(
+      //     //     // ...currentAngularVelocity.current.map((q) => q)
+      //     ...api.angularVelocity
+      //       .copy()
+      //       .map((q) =>
+      //         Math.max(-MAX_ANGULAR_VELOCITY, Math.min(MAX_ANGULAR_VELOCITY, q))
+      //       )
+      //   );
+      // }
       // clamp angular velocity
-      api.angularVelocity.set(
-        //     // ...currentAngularVelocity.current.map((q) => q)
-        ...currentAngularVelocity.current.map((q) =>
-          Math.max(-MAX_ANGULAR_VELOCITY, Math.min(MAX_ANGULAR_VELOCITY, q))
-        )
-      );
+      // api.angularVelocity.set(
+      //   //     // ...currentAngularVelocity.current.map((q) => q)
+      //   ...currentAngularVelocity.current.map((q) =>
+      //     Math.max(-MAX_ANGULAR_VELOCITY, Math.min(MAX_ANGULAR_VELOCITY, q))
+      //   )
+      // );
 
       // jitter position
       api.applyForce(impulse, worldPoint);

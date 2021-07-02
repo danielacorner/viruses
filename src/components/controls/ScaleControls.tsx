@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from "react";
-import { useStore } from "./store";
+import { useStore } from "../../store";
 import { Slider, Typography, useMediaQuery } from "@material-ui/core";
 import styled from "styled-components/macro";
 import { ZoomOut, ZoomIn } from "@material-ui/icons";
-import { getIsTouchDevice } from "./getIsTouchDevice";
-import { MIN_SCALE, MAX_SCALE } from "./utils/constants";
+import { getIsTouchDevice } from "../../getIsTouchDevice";
+import { MIN_SCALE, MAX_SCALE } from "../../utils/constants";
 import { useProgress } from "@react-three/drei";
-import { darkText, darkTextShadow } from "./utils/colors";
+import { darkText, darkTextShadow } from "../../utils/colors";
 export function ScaleControls() {
   const scale = useStore((s) => s.scale);
   const set = useStore((s) => s.set);
