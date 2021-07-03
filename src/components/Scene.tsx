@@ -1,10 +1,9 @@
 import { Physics } from "@react-three/cannon";
-import { OrbitControls } from "@react-three/drei";
 import { Lighting } from "./Lighting";
 import { Walls } from "./Walls";
 import ProteinGroup from "./ProteinGroup";
 import { PHYSICS_PROPS } from "../utils/PHYSICS_PROPS";
-import { PROTEINS } from "../utils/PROTEINS";
+import { ALL_PROTEINS } from "../utils/PROTEINS";
 import { Water } from "./Water";
 import { SelectedParticleDisplay } from "./SelectedParticleDisplay";
 
@@ -12,16 +11,11 @@ const randIdx = Math.ceil(Math.random() * 4);
 const Scene = () => {
   // useSetTemperatureLowInitially();
 
-  const proteins = [
-    ...PROTEINS.viruses,
-    ...PROTEINS.antibodies,
-    ...PROTEINS.nanotech,
-  ];
   return (
     <>
       <Lighting />
       <Physics {...PHYSICS_PROPS}>
-        {proteins.map((protein) => {
+        {ALL_PROTEINS.map((protein) => {
           return <ProteinGroup key={protein.name} {...protein} />;
         })}
         <Water />

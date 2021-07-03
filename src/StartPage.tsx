@@ -2,37 +2,40 @@ import { Button, Typography } from "@material-ui/core";
 import { CanvasAndSceneEmpty } from "./CanvasAndSceneEmpty";
 import { useStore } from "./store";
 import ErrorBoundary from "./components/ErrorBoundary";
-import { SingleParticle } from "./components/Shapes/SingleParticle";
-import { PROTEINS } from "./utils/PROTEINS";
+import {
+  getShouldRenderParticle,
+  SingleParticle,
+} from "./components/Shapes/SingleParticle";
+import { ALL_PROTEINS, PROTEINS } from "./utils/PROTEINS";
 
 export function StartPage() {
   const set = useStore((s) => s.set);
   const r = useStore((s) => s.worldRadius);
-  const bacteriophage_phi29_prohead = PROTEINS.viruses.find(
-    (p) => p.name === "Bacteriophage phi29 prohead"
-  );
-  const bacteriophage_p68 = PROTEINS.viruses.find(
-    (p) => p.name === "Bacteriophage P68"
-  );
-  const virion_of_native_gene_transfer_agent_gta_particle =
-    PROTEINS.viruses.find(
-      (p) => p.name === "Virion of native gene transfer agent GTA particle"
-    );
+  const scale = useStore((s) => s.scale);
+  const worldRadius = useStore((s) => s.worldRadius);
+
+  const [protein1, protein2, protein3] = ALL_PROTEINS.filter((p) =>
+    getShouldRenderParticle(scale, p.radius, worldRadius)
+  ).slice(0, 3);
+
   return (
     <ErrorBoundary boundaryTitle={"Start Page"}>
       <CanvasAndSceneEmpty isStartPage={true}>
-        <SingleParticle
-          {...bacteriophage_phi29_prohead}
-          position={[-r * 0.08, r * 0.15, r * 0.6]}
-        />
-        <SingleParticle
-          {...bacteriophage_p68}
-          position={[0, -r * 0.11, r * 0.5]}
-        />
-        <SingleParticle
-          {...virion_of_native_gene_transfer_agent_gta_particle}
-          position={[r * 0.11, r * 0.1, r * 0.7]}
-        />
+        {protein1 && (
+          <SingleParticle
+            {...protein1}
+            position={[-r * 0.08, r * 0.15, r * 0.6]}
+          />
+        )}
+        {protein2 && (
+          <SingleParticle {...protein2} position={[0, -r * 0.11, r * 0.5]} />
+        )}
+        {protein3 && (
+          <SingleParticle
+            {...protein3}
+            position={[r * 0.11, r * 0.1, r * 0.7]}
+          />
+        )}
       </CanvasAndSceneEmpty>
       <div
         style={{

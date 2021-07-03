@@ -884,3 +884,9 @@ export const PROTEINS: { [type: string]: Protein[] } = {
 //   pathToImage: "/models/cells/cell_membrane.jpg",
 //   interactive: true,
 // },
+
+export const ALL_PROTEINS = [
+  ...PROTEINS.viruses,
+  ...PROTEINS.antibodies,
+  ...PROTEINS.nanotech,
+];
