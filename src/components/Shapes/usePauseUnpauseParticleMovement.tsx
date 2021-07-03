@@ -44,10 +44,8 @@ import { usePrevious } from "../../utils/hooks";
 //       return;
 //     }
 
-//     // console.log("🌟🚨 ~ useFrame ~ maxVelocity", maxVelocity);
 //     // currentVelocity.current.forEach((v) => {
 //     //   if (v / maxVelocity > 0.8) {
-//     //     console.log("🌟🚨 ~ useFrame ~ v", v);
 //     //   }
 //     // });
 //     // if (currentVelocity.current)

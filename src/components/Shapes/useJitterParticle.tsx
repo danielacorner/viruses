@@ -47,10 +47,6 @@ export function useJitterParticle({ mass, ref, api = {} as any | WorkerVec }) {
 
       // TODO every so often, clamp the angular velocity
       // if (frameIdx % 60 === 0) {
-      //   console.log(
-      //     "🌟🚨 ~ useFrame ~ api.angularVelocity",
-      //     api.angularVelocity.copy()
-      //   );
       //   api.angularVelocity.set(
       //     //     // ...currentAngularVelocity.current.map((q) => q)
       //     ...api.angularVelocity

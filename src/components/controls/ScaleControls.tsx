@@ -11,7 +11,6 @@ import { useAtom } from "jotai";
 
 export function ScaleControls() {
   const [scale, setScale] = useAtom(scaleAtom);
-  console.log("🌟🚨 ~ ScaleControls ~ scale", scale);
   const isTouchDevice = getIsTouchDevice();
   const { active: loading } = useProgress();
 
@@ -44,8 +43,7 @@ export function ScaleControls() {
               if (loading && newValue < lowestSoFar.current) {
                 return;
               }
-              console.log("🌟🚨 ~ ScaleControls ~ newValue", newValue);
-              setScale(newValue as any);
+              setScale(Number(newValue));
             }}
             min={MIN_SCALE}
             step={0.00000001}

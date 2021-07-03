@@ -9,6 +9,16 @@ export const MAX_SCALE = 0.03;
 export const useIsTabletOrLarger = () =>
   useMediaQuery(`(min-width: ${BREAKPOINT_TABLET}px)`);
 
+export const COMMON_MATERIAL_PROPS = {
+  transparent: true,
+  wireframe: false,
+  depthTest: false,
+  flatShading: false,
+  roughness: 0.4,
+  vertexColors: false,
+  reflectivity: 1,
+};
+
 export const DISTORTION_TEXTURE = "/images/textures/texture-distortion-map.jpg";
 export const CUSTOM_SCROLLBAR_CSS = `
 @supports (overflow: overlay){

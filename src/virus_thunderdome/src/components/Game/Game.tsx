@@ -117,7 +117,6 @@ function Antibodies() {
 
 function WavesOfVirusCreation() {
   const currentWaveIdx = useStore((s) => s.currentWaveIdx);
-  console.log("🌟🚨 ~ WavesOfVirusCreation ~ currentWaveIdx", currentWaveIdx);
   const wavesSoFar = WAVES.slice(0, currentWaveIdx);
 
   return (

@@ -17,7 +17,6 @@ export function CanvasAndSceneEmpty({
   isStartPage = false,
 }) {
   const isTouchDevice = getIsTouchDevice();
-  // console.log("🌟🚨 ~ isTouchDevice", isTouchDevice);
   const windowSize = useWindowSize();
   const SpinIfLoadingIndicator = isLoadingIndicator
     ? SpinScene

@@ -94,13 +94,6 @@ export function useSpringStoreImmediately({
         return;
       }
       if (setterFn) {
-        console.log("🌟🚨 ~ onChange ~ firstValue", firstValue);
-        console.log(
-          "🌟🚨 ~ onChange ~ firstValue + delta * progress",
-          firstValue + delta * progress
-        );
-        console.log("🌟🚨 ~ onChange ~ delta", delta);
-        console.log("🌟🚨 ~ onChange ~ progress", progress);
         setterFn(firstValue + delta * progress);
       } else {
         // generic set - worse performance

@@ -20,27 +20,18 @@ fsExtra.readdir(pathToModels, (err, files) => {
       const glb = fsExtra.readFileSync(pathToModels + file);
       // convert glb to gltf
       glbToGltf(glb).then(function (results) {
-        console.log("🌟🚨 ~ results", results);
         // convert gltf to draco-gltf
         processGltf(results.gltf).then(function (dracoResults) {
-          console.log("🌟🚨 ~ dracoResults", dracoResults);
           // convert back to glb
           gltfToGlb(dracoResults.gltf).then((glbResults) => {
-            console.log("🌟🚨 ~ gltfToGlb ~ glbResults", glbResults);
             // fsExtra.writeJsonSync(pathToModels + outputFile, results.glb);
           });
         });
       });
 
       // const result = await processGlb(glb, options).then(function (results) {
-      //   console.log("🌟🚨 ~ results", results);
       //   fsExtra.writeFileSync(pathToModels + outputFile, results.glb);
-      //   console.log(
-      //     "🌟🚨 ~ pathToModels + outputFile",
-      //     pathToModels + outputFile
-      //   );
       // });
-      // console.log("🌟🚨 ~ result ~ result", result);
     }
   });
   process.exit(0);

@@ -28,10 +28,6 @@ export function PlayerHpBarAndFloor({
         collidingBody?.name &&
         PROTEINS.viruses.find((v) => v.name === collidingBody.name);
       if (virusCollisionTarget) {
-        console.log(
-          "🌟🚨 ~ const[ref]=usePlane ~ virusCollisionTarget.radius",
-          virusCollisionTarget.radius
-        );
         set({ playerHp: Math.max(0, playerHp - virusCollisionTarget.radius) });
       }
     },

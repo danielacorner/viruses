@@ -12,11 +12,12 @@ import { useMount } from "./utils/utils";
 import ErrorBoundary from "./components/ErrorBoundary";
 import AudioSoundButton from "./components/controls/AudioSoundButton";
 import { StartPage } from "./StartPage";
-
+import { Stats } from "@react-three/drei";
 function App() {
   return (
     <div className="App">
       <ErrorBoundary boundaryTitle="App">
+        {process.env.NODE_ENV === "development" && <Stats />}
         <LoadingIndicator />
         <LazyLoadedScene />
         <div id="memoryStats"></div>

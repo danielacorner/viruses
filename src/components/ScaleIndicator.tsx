@@ -122,7 +122,7 @@ export function ScaleIndicator() {
                     t.position[1],
                     t.position[2] * (t.side === "right" ? 0.91 : 1),
                   ],
-                  color: "#ffffff",
+                  color: "#111111",
                   fontSize: 0.22,
                   style: {
                     whiteSpace: "nowrap",
@@ -135,7 +135,7 @@ export function ScaleIndicator() {
                 outlineOffsetY={"0%"}
                 outlineBlur={"30%"}
                 outlineOpacity={0.6}
-                outlineColor="black"
+                outlineColor="white"
               >
                 {t.name}
               </Text>

@@ -7,10 +7,13 @@ import {
   SPEED_X,
   AMPLITUDE_X_INV,
 } from "./LoadingIndicator";
+import { useSpring, animated } from "@react-spring/three";
+import { COMMON_MATERIAL_PROPS } from "../../utils/constants";
 
 export function SpinningParticle() {
   const scalePct = useScalePercent();
 
+  const refConstant = useRef(null as any);
   const ref1 = useRef(null as any);
   const ref2 = useRef(null as any);
   const ref3 = useRef(null as any);
@@ -22,6 +25,13 @@ export function SpinningParticle() {
     if (!ref1.current) {
       return;
     }
+
+    // (time-based sine curve)
+    refConstant.current.rotation.x = Math.sin(time * SPEED_Y) * AMPLITUDE_Y;
+    refConstant.current.rotation.y =
+      refConstant.current.rotation.y +
+      Math.cos(time * SPEED_X) * AMPLITUDE_X_INV;
+
     ref1.current.rotation.x = -Math.sin(time * SPEED_Y) * AMPLITUDE_Y;
     ref1.current.rotation.y =
       ref1.current.rotation.y + Math.cos(time * SPEED_X) * AMPLITUDE_X_INV;
@@ -44,6 +54,17 @@ export function SpinningParticle() {
   });
   return (
     <>
+      {/* constant-size particle */}
+      <mesh ref={refConstant}>
+        <icosahedronBufferGeometry args={[1, 0]} />
+        <animated.meshPhysicalMaterial
+          {...COMMON_MATERIAL_PROPS}
+          opacity={0.5}
+          roughness={0.4}
+          metalness={0.9}
+        />
+      </mesh>
+      {/* other particles scale with scalePct */}
       <mesh ref={ref1}>
         <tetrahedronBufferGeometry args={[scalePct * 0.25, 0]} />
         <meshPhysicalMaterial

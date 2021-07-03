@@ -91,9 +91,7 @@ export function InteractiveParticle(props) {
   // const circleRef = useRef(null as any);
   // React.useEffect(() => {
   //   if (ref.current) {
-  //     console.log("🌟🚨 ~ React.useEffect ~ ref.current", ref.current);
   //     ref.current.traverse((node) => {
-  //       console.log("🌟🚨 ~ ref.current.traverse ~ node", node);
   //       if ((node as any).material) {
   //         (node as any).material.displacementMap = displacementMap;
   //         (node as any).material.normalMap = normalMap;

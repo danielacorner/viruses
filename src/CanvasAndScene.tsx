@@ -22,7 +22,7 @@ export default function CanvasAndScene({ renderProteins = true }) {
   return (
     <Sentry.ErrorBoundary
       fallback={() => {
-        console.log(`🌟🚨 An error has occurred: CanvasAndScene`);
+        console.log(`🚨 An error has occurred: CanvasAndScene`);
         return null;
       }}
     >

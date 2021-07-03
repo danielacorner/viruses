@@ -24,8 +24,6 @@ export function BtnStartNextWave() {
   const isWaveComplete = useStore((s) => s.isWaveComplete);
   useEffect(() => {
     if (numDefeatedViruses === totalVirusesSoFar && !isWaveComplete) {
-      console.log("🌟🚨 ~ useEffect ~ totalVirusesSoFar", totalVirusesSoFar);
-      console.log("🌟🚨 ~ useEffect ~ numDefeatedViruses", numDefeatedViruses);
       setTimeout(() => {
         set({ isWaveComplete: true });
         // restore full HP
