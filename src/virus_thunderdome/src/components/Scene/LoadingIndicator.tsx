@@ -6,6 +6,8 @@ import { useFrame } from "@react-three/fiber";
 import { CanvasAndSceneEmpty } from "../../CanvasAndSceneEmpty";
 import { useStore } from "../../store";
 import { MAX_SCALE, MIN_SCALE } from "../../utils/constants";
+import { useAtom } from "jotai";
+import { scaleAtom } from "../../../../store";
 
 export function LoadingIndicator() {
   const { active, progress, errors, item, loaded, total } = useProgress();
@@ -41,7 +43,7 @@ const SPEED_X = 0.2;
 const AMPLITUDE_Y = 1;
 const AMPLITUDE_X_INV = 0.01;
 function SpinningParticle() {
-  const scale = useStore((s) => s.scale);
+  const [scale, setScale] = useAtom(scaleAtom);
   const scalePct = (scale - MIN_SCALE) / (MAX_SCALE - MIN_SCALE);
 
   const ref1 = useRef(null as any);

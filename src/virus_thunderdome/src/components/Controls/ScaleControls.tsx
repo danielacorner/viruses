@@ -5,9 +5,11 @@ import styled from "styled-components/macro";
 import { ZoomOut, ZoomIn } from "@material-ui/icons";
 import { getIsTouchDevice } from "../../utils/getIsTouchDevice";
 import { MIN_SCALE, MAX_SCALE } from "../../utils/constants";
+import { useAtom } from "jotai";
+import { scaleAtom } from "../../../../store";
 
 export function ScaleControls() {
-  const scale = useStore((s) => s.scale);
+  const [scale, setScale] = useAtom(scaleAtom);
   const isTouchDevice = getIsTouchDevice();
 
   const isLandscape =

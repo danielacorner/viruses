@@ -2,8 +2,9 @@ import { Quaternion, useFrame } from "@react-three/fiber";
 import { randBetween, useMount } from "../../utils/utils";
 import * as THREE from "three";
 import { useVelocity } from "./useVelocity";
-import { useStore } from "../../store";
+import { scaleAtom, useStore } from "../../store";
 import { useRef } from "react";
+import { useAtom } from "jotai";
 let frameIdx = 0;
 const FORCE = 0.0000005;
 const distanceFromParticle = 0;
@@ -91,7 +92,7 @@ const POSITION_JITTER_COEFF = 100;
 
 function useGetJitterPositions(mass) {
   const { velocity } = useVelocity(mass);
-  const scale = useStore((s) => s.scale);
+  const [scale, setScale] = useAtom(scaleAtom);
   // ? ONLY when the temperature changes, change the velocity
 
   const jitterPosition = velocity * POSITION_JITTER_COEFF * scale ** 3; // position changes with scale^3

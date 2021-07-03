@@ -9,6 +9,8 @@ import { useSpring, a } from "react-spring/three";
 import { Protein, PROTEINS, PROTEIN_TYPES } from "../../utils/PROTEINS";
 import { FloatingHtmlOverlay } from "./FloatingHtmlOverlay";
 import { toConvexProps } from "../../../../components/Shapes/toConvexProps";
+import { useAtom } from "jotai";
+import { scaleAtom } from "../../../../store";
 
 export type ParticleProps = Protein & {
   position: [number, number, number];
@@ -43,7 +45,7 @@ function InteractiveParticle(props: ParticleProps) {
   } = props;
 
   const setSelectedProtein = useStore((s) => s.setSelectedProtein);
-  const scale = useStore((s) => s.scale);
+  const [scale, setScale] = useAtom(scaleAtom);
 
   // each virus has a polyhedron shape, usually icosahedron (20 faces)
   // this shape determines how it bumps into other particles
@@ -256,7 +258,7 @@ function handleCollide(
 
 /** hide particle if too big or too small */
 export function useShouldRenderParticle(radius: number) {
-  const scale = useStore((s) => s.scale);
+  const [scale, setScale] = useAtom(scaleAtom);
   const worldRadius = useStore((s) => s.worldRadius);
 
   return getShouldRenderParticle(scale, radius, worldRadius);

@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { useVelocity } from "./useVelocity";
 import { useStore } from "../../store";
 import { Quaternion, Vector } from "../../types";
+import { useAtom } from "jotai";
+import { scaleAtom } from "../../../../store";
 
 export function useChangeVelocityWhenTemperatureChanges({
   mass,
@@ -11,7 +13,7 @@ export function useChangeVelocityWhenTemperatureChanges({
   numParticles = 0,
 }) {
   const { temperature, velocity } = useVelocity(mass);
-  const scale = useStore((s) => s.scale);
+  const [scale, setScale] = useAtom(scaleAtom);
   // current particle velocity
 
   // ! api.subscribe causes errors when adding bodies https://github.com/pmndrs/use-cannon/issues/115
@@ -72,7 +74,7 @@ export function useChangeVelocityWhenTemperatureChanges({
 
 // function useChangeTemperatureWhenScaleChanges() {
 //   const set = useStore((s) => s.set);
-//   const scale = useStore((s) => s.scale);
+//   const [scale] = useAtom(scaleAtom)
 //   const temperature = useStore((s) => s.temperature);
 //   const prevScale = usePrevious(scale);
 
@@ -89,7 +91,7 @@ export function useChangeVelocityWhenTemperatureChanges({
 // }
 
 // function useChangeVelocityWhenScaleChanges({ mass, api, instanced = false }) {
-//   const scale = useStore((s) => s.scale);
+//   const [scale] = useAtom(scaleAtom)
 //   // current particle velocity
 //   const currentVelocity = useRef([0, 0, 0] as Vector);
 //   useMount(

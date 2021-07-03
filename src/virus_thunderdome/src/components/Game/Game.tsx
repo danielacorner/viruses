@@ -6,6 +6,8 @@ import { WAVES, Wave } from "./WAVES";
 import { SHOT_TYPES } from "../CellAndAntibodyButtons/CellAndAntibodyButtons";
 import { useFrame } from "@react-three/fiber";
 import { useProgress } from "@react-three/drei";
+import { useAtom } from "jotai";
+import { scaleAtom } from "../../../../store";
 
 const VIRUS_SPAWN_START_DELAY = 1 * 1000;
 
@@ -133,7 +135,7 @@ const APPEAR_INTERVAL = 1000;
 function SingleWave({ viruses, moveCameraTo = null }: Wave) {
   const createVirus = useStore((s) => s.createVirus);
   const started = useStore((s) => s.started);
-  const scale = useStore((s) => s.scale);
+  const [scale, setScale] = useAtom(scaleAtom);
   const { active: loading } = useProgress();
   const currentWaveIdx = useStore((s) => s.currentWaveIdx);
   const scaleTarget = WAVES[Math.max(0, currentWaveIdx - 1)].scaleTarget;
@@ -252,7 +254,7 @@ export function StorylineSequence() {
   // set something once after a timeout
   // useEffect(() => {
   //   const timer = setTimeout(() => {
-  //     set({ scale: 0.01 });
+  // setScale(0.01);
   //   }, 5000);
   //   return () => {
   //     clearTimeout(timer);

@@ -39,7 +39,7 @@ export default function CanvasAndScene({ renderProteins = true }) {
           <DeviceOrientationOrbitControls />
         ) : (
           <OrbitControls {...({} as any)} />
-        )}{" "}
+        )}
         <Scene />
       </Canvas>
       {/* {process.env.NODE_ENV === "development" && isTabletOrLarger ? (

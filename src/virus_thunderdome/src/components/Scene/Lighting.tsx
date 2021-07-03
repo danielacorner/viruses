@@ -27,7 +27,7 @@ export function Lighting() {
 // function SpotLightOnSelectedProtein() {
 //   const selectedProtein = useStore((s) => s.selectedProtein);
 //   const worldRadius = useStore((s) => s.worldRadius);
-//   const scale = useStore((s) => s.scale);
+//   const [scale] = useAtom(scaleAtom)
 //   const set = useStore((s) => s.set);
 //   const [selectedCoords, setSelectedCoords] = useState({ x: 0, y: 0, z: 0 });
 

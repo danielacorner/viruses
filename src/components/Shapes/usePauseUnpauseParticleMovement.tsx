@@ -13,7 +13,7 @@ import { usePrevious } from "../../utils/hooks";
 //   numInstances = 0,
 // }) {
 //   // const budgeTemperature = useBudgeTemperature();
-//   const scale = useStore((s) => s.scale);
+//   const [scale] = useAtom(scaleAtom)
 //   //  when scale increases, max velocity decreases
 //   const scalePct = (scale - MIN_SCALE) / (MAX_SCALE - MIN_SCALE);
 //   // cap maximum particle velocity

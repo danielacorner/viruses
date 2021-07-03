@@ -1,7 +1,8 @@
 import React from "react";
 import { Line, Text } from "@react-three/drei";
-import { useStore } from "../store";
+import { scaleAtom, useStore } from "../store";
 import { useIsTabletOrLarger } from "../utils/constants";
+import { useAtom } from "jotai";
 
 type Tick = {
   name: string;
@@ -12,7 +13,7 @@ type Tick = {
 export function ScaleIndicator() {
   const wr = useStore((s) => s.worldRadius * 0.999);
   const wd = 2 * wr;
-  const scale = useStore((s) => s.scale);
+  const [scale, setScale] = useAtom(scaleAtom);
   const worldRadius = useStore((s) => s.worldRadius);
   const scaled = scale / 0.002 / 4;
   // create 10 big ticks

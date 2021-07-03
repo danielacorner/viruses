@@ -8,17 +8,22 @@ import { Water } from "./Water";
 import { ScaleIndicator } from "../Sliders/ScaleIndicator";
 import CellsModels from "../CellAndAntibodyButtons/CellsModels";
 import Game from "../Game/Game";
-import { useAudioTrack } from "../music/useAudioTrack";
+import { usePlayAudioTrackOnStart } from "../music/useAudioTrack";
 import { useSpring, a } from "react-spring/three";
 import { useCameraY } from "./useCameraY";
+import { getIsTouchDevice } from "../../../../getIsTouchDevice";
+import { DeviceOrientationOrbitControls } from "../../../../components/DeviceOrientationOrbitControls";
 
 const Scene = () => {
   // useCameraWobble();
   return (
     <Suspense fallback={null}>
-      <AudioTrack />
-      <OrbitControls {...({} as any)} />
-      <PhysicsSceneMovable />
+      {getIsTouchDevice() ? (
+        <DeviceOrientationOrbitControls />
+      ) : (
+        <OrbitControls {...({} as any)} />
+      )}
+      {/* <PhysicsSceneMovable /> */}
       <Lighting />
     </Suspense>
   );
@@ -55,7 +60,7 @@ function Debugger({ children }) {
 
 function AudioTrack() {
   // audio track
-  useAudioTrack();
+  usePlayAudioTrackOnStart();
   return null;
 }
 

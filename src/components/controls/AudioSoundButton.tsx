@@ -5,15 +5,15 @@ import styled from "styled-components/macro";
 import { atomWithStorage } from "jotai/utils";
 import { useAtom } from "jotai";
 import { BREAKPOINT_MOBILE } from "../../utils/constants";
-const isAudioPlayingAtom = atomWithStorage("isAudioPlaying", false); // As of Chrome 66, videos must be muted in order to play automatically https://www.npmjs.com/package/react-player
+import { isAudioPlayingAtom } from "../../store";
 
 /** show or hide the info overlay */
-export default function AudioSoundButton() {
+export default function AudioSoundButton({ title, href }) {
   const [isAudioPlaying, setIsAudioPlaying] = useAtom(isAudioPlayingAtom);
 
   const music = {
-    title: "Inner Life of the Cell - Protein Packing",
-    href: "https://www.youtube.com/watch?v=uHeTQLNFTgU",
+    title,
+    href,
   };
   return (
     <>

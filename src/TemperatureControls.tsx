@@ -1,12 +1,13 @@
 import React from "react";
-import { useStore } from "./store";
+import { useStore, scaleAtom } from "./store";
+import { useAtom } from "jotai";
 import { Slider, Typography } from "@material-ui/core";
 import styled from "styled-components/macro";
 import { AcUnit, Whatshot } from "@material-ui/icons";
 
 export function TemperatureControls() {
   const temperature = useStore((s) => s.temperature);
-  const scale = useStore((s) => s.scale);
+  const [scale, setScale] = useAtom(scaleAtom);
   const set = useStore((s) => s.set);
   const setTemperature = useStore((s) => s.setTemperature);
   const paused = useStore((s) => s.paused);

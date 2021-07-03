@@ -9,7 +9,8 @@ import { Water } from "./components/Scene/Water";
 import { PHYSICS_PROPS } from "./utils/PHYSICS_PROPS";
 import { Walls } from "./components/Scene/Walls";
 import { ScaleIndicator } from "./components/Sliders/ScaleIndicator";
-import { useStore } from "./store";
+import { useStore, scaleAtom } from "../../store";
+import { useAtom } from "jotai";
 
 export function CanvasAndSceneEmpty({
   children = null,

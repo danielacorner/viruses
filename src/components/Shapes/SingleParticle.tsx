@@ -1,12 +1,13 @@
 import React, { useMemo, useRef } from "react";
 import { useConvexPolyhedron } from "@react-three/cannon";
 import { useJitterParticle } from "./useJitterParticle";
-import { useStore } from "../../store";
+import { scaleAtom, useStore } from "../../store";
 import * as THREE from "three";
 import { useChangeVelocityWhenTemperatureChanges } from "./useChangeVelocityWhenTemperatureChanges";
 import styled from "styled-components/macro";
 import { Html } from "@react-three/drei";
 import { toConvexProps } from "./toConvexProps";
+import { useAtom } from "jotai";
 
 /** Particle which can interact with others, or not (passes right through them) */
 export function SingleParticle(props) {
@@ -20,7 +21,7 @@ export function InteractiveParticle(props) {
   const { position, Component, mass, numIcosahedronFaces } = props;
 
   const set = useStore((s) => s.set);
-  const scale = useStore((s) => s.scale);
+  const [scale, setScale] = useAtom(scaleAtom);
   const isTooltipMaximized = useStore((s) => s.isTooltipMaximized);
   const selectedProtein = useStore((s) => s.selectedProtein);
   const isSelectedProtein =
@@ -140,7 +141,7 @@ const CircleOutline = styled.div`
 `;
 function HighlightParticle() {
   const selectedProtein = useStore((s) => s.selectedProtein);
-  const scale = useStore((s) => s.scale);
+  const [scale, setScale] = useAtom(scaleAtom);
   return selectedProtein ? (
     <Html>
       <CircleOutline radius={selectedProtein.radius * scale * 70} />
@@ -150,7 +151,7 @@ function HighlightParticle() {
 
 /** hide particle if too big or too small */
 export function useShouldRenderParticle(radius: number) {
-  const scale = useStore((s) => s.scale);
+  const [scale, setScale] = useAtom(scaleAtom);
   const worldRadius = useStore((s) => s.worldRadius);
 
   return getShouldRenderParticle(scale, radius, worldRadius);

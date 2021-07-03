@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { useStore } from "../../store";
+import { scaleAtom } from "../../store";
 import { Slider, Typography, useMediaQuery } from "@material-ui/core";
 import styled from "styled-components/macro";
 import { ZoomOut, ZoomIn } from "@material-ui/icons";
@@ -7,9 +7,11 @@ import { getIsTouchDevice } from "../../getIsTouchDevice";
 import { MIN_SCALE, MAX_SCALE } from "../../utils/constants";
 import { useProgress } from "@react-three/drei";
 import { darkText, darkTextShadow } from "../../utils/colors";
+import { useAtom } from "jotai";
+
 export function ScaleControls() {
-  const scale = useStore((s) => s.scale);
-  const set = useStore((s) => s.set);
+  const [scale, setScale] = useAtom(scaleAtom);
+  console.log("🌟🚨 ~ ScaleControls ~ scale", scale);
   const isTouchDevice = getIsTouchDevice();
   const { active: loading } = useProgress();
 
@@ -42,7 +44,8 @@ export function ScaleControls() {
               if (loading && newValue < lowestSoFar.current) {
                 return;
               }
-              set({ scale: newValue });
+              console.log("🌟🚨 ~ ScaleControls ~ newValue", newValue);
+              setScale(newValue as any);
             }}
             min={MIN_SCALE}
             step={0.00000001}

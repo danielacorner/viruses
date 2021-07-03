@@ -3,12 +3,12 @@ import Alert from "@material-ui/lab/Alert";
 import { atomWithStorage } from "jotai/utils";
 import { useAtom } from "jotai";
 import { MAX_SCALE } from "../utils/constants";
-import { useStore } from "../store";
+import { scaleAtom, useStore } from "../store";
 const minScaleEverAtom = atomWithStorage("minScaleEver", MAX_SCALE);
 
 /** David Attenborough style commentary */
 const PopupToastsTour = () => {
-  const scale = useStore((s) => s.scale);
+  const [scale, setScale] = useAtom(scaleAtom);
 
   // when scale changes, remember the highest it's ever been
   const [minScaleEver, setMinScaleEver] = useAtom(minScaleEverAtom);

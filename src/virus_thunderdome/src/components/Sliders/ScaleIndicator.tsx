@@ -2,6 +2,8 @@ import React from "react";
 import { Line, Text } from "@react-three/drei";
 import { INITIAL_CEILING_HEIGHT, useStore } from "../../store";
 import { useIsTabletOrLarger } from "../../utils/constants";
+import { useAtom } from "jotai";
+import { scaleAtom } from "../../../../store";
 
 type Tick = {
   name: string;
@@ -14,7 +16,7 @@ export function ScaleIndicator() {
   const ceilingHeightMultiplier = ceilingHeight / INITIAL_CEILING_HEIGHT;
   const wr = useStore((s) => s.worldRadius * 0.999);
   const wd = 2 * wr;
-  const scale = useStore((s) => s.scale);
+  const [scale, setScale] = useAtom(scaleAtom);
   const worldRadius = useStore((s) => s.worldRadius);
   const commonProps = { color: "hsla(0,0%,80%)" };
   const scaled = scale / 0.002 / 4;

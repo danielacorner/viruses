@@ -3,6 +3,8 @@ import { randBetween } from "../../utils/utils";
 import * as THREE from "three";
 import { useVelocity } from "./useVelocity";
 import { useStore } from "../../store";
+import { useAtom } from "jotai";
+import { scaleAtom } from "../../../../store";
 
 // api
 type WorkerVec = {
@@ -15,7 +17,7 @@ const POSITION_JITTER_COEFF = 100;
 export function useJitterParticle({ mass, ref, api = {} as any | WorkerVec }) {
   const { velocity } = useVelocity(mass);
   const paused = useStore((s) => s.paused);
-  const scale = useStore((s) => s.scale);
+  const [scale, setScale] = useAtom(scaleAtom);
   // ? ONLY when the temperature changes, change the velocity
 
   const jitterPosition = velocity * POSITION_JITTER_COEFF * scale ** 3; // position changes with scale^3

@@ -1,6 +1,7 @@
 import React, { Suspense, useEffect } from "react";
 import Tooltip from "./components/Tooltip";
-import { useStore } from "./store";
+import { useStore, scaleAtom } from "./store";
+import { useAtom } from "jotai";
 import {
   HasRunOutOfMemory,
   LoadingIndicator,
@@ -21,8 +22,10 @@ function App() {
         <div id="memoryStats"></div>
         <Tooltip />
         <GuidedTour />
-        <AudioSoundButton />
-        <SaveControlsSettingsToLocalStorage />
+        <AudioSoundButton
+          title={"Inner Life of the Cell - Protein Packing"}
+          href={"https://www.youtube.com/watch?v=uHeTQLNFTgU"}
+        />
         <HasRunOutOfMemory />
       </ErrorBoundary>
     </div>
@@ -33,7 +36,7 @@ export default App;
 
 const CanvasAndSceneLazy = React.lazy(() => import("./CanvasAndScene"));
 const ThunderdomeCanvasAndSceneLazy = React.lazy(
-  () => import("./virus_thunderdome/src/App")
+  () => import("./virus_thunderdome/src/CanvasAndScene")
 );
 
 function LazyLoadedScene() {
@@ -50,35 +53,4 @@ function LazyLoadedScene() {
   ) : (
     <StartPage />
   );
-}
-
-// could replace with atomWithStorage
-function SaveControlsSettingsToLocalStorage() {
-  const set = useStore((s) => s.set);
-  const scale = useStore((s) => s.scale);
-  // const temperature = useStore((s) => s.temperature);
-
-  const [settings, setSettings] = useLocalStorageState("settings", {
-    // temperature,
-    scale,
-  });
-
-  // when app mounts, retrieve settings from local storage
-  useMount(() => {
-    if (!settings) {
-      return;
-    }
-    // if (settings.temperature) {
-    //   set({ temperature: settings.temperature });
-    // }
-    if (settings.scale) {
-      set({ scale: settings.scale });
-    }
-  });
-
-  useEffect(() => {
-    setSettings({ scale });
-  }, [scale, setSettings]);
-
-  return null;
 }

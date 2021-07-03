@@ -1,6 +1,7 @@
 import { Button, Typography } from "@material-ui/core";
 import { CanvasAndSceneEmpty } from "./CanvasAndSceneEmpty";
-import { useStore } from "./store";
+import { useStore, scaleAtom } from "./store";
+import { useAtom } from "jotai";
 import ErrorBoundary from "./components/ErrorBoundary";
 import {
   getShouldRenderParticle,
@@ -12,7 +13,7 @@ import styled from "styled-components/macro";
 export function StartPage() {
   const set = useStore((s) => s.set);
   const r = useStore((s) => s.worldRadius);
-  const scale = useStore((s) => s.scale);
+  const [scale, setScale] = useAtom(scaleAtom);
   const worldRadius = useStore((s) => s.worldRadius);
 
   const [protein1, protein2, protein3] = ALL_PROTEINS.filter((p) =>
@@ -66,7 +67,7 @@ export function StartPage() {
           variant="contained"
           color="primary"
         >
-          Explore the Terrarium
+          Explore the Terrarium 🔬
         </Button>
 
         <Button
