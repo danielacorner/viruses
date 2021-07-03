@@ -5,7 +5,7 @@ import { useAtom } from "jotai";
 import {
   HasRunOutOfMemory,
   LoadingIndicator,
-} from "./components/LoadingIndicator";
+} from "./components/LoadingIndicator/LoadingIndicator";
 import GuidedTour from "./components/GuidedTour";
 import { useLocalStorageState } from "./utils/useLocalStorageState";
 import { useMount } from "./utils/utils";

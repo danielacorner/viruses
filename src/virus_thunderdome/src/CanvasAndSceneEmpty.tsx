@@ -8,7 +8,7 @@ import { Physics } from "@react-three/cannon";
 import { Water } from "./components/Scene/Water";
 import { PHYSICS_PROPS } from "./utils/PHYSICS_PROPS";
 import { Walls } from "./components/Scene/Walls";
-import { ScaleIndicator } from "./components/Sliders/ScaleIndicator";
+import { ScaleIndicator } from "../../components/ScaleIndicator";
 import { useStore, scaleAtom } from "../../store";
 import { useAtom } from "jotai";
 

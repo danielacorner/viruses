@@ -5,7 +5,7 @@ import WarningOutlined from "@material-ui/icons/WarningOutlined";
 import { CanvasAndSceneEmpty } from "./CanvasAndSceneEmpty";
 import { useStore, scaleAtom } from "./store";
 import { useAtom } from "jotai";
-import { LoadingIndicator } from "./components/Scene/LoadingIndicator";
+import { LoadingIndicator } from "../../components/Scene/LoadingIndicator";
 import { useMount } from "./utils/utils";
 import { render } from "react-dom";
 import MemoryStats from "react-memorystats";

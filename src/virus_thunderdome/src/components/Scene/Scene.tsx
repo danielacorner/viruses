@@ -5,7 +5,7 @@ import { Lighting } from "./Lighting";
 import { Walls } from "./Walls";
 import { PHYSICS_PROPS } from "../../utils/PHYSICS_PROPS";
 import { Water } from "./Water";
-import { ScaleIndicator } from "../Sliders/ScaleIndicator";
+import { ScaleIndicator } from "../../../../components/ScaleIndicator";
 import CellsModels from "../CellAndAntibodyButtons/CellsModels";
 import Game from "../Game/Game";
 import { usePlayAudioTrackOnStart } from "../music/useAudioTrack";
