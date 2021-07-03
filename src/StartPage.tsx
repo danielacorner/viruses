@@ -6,7 +6,8 @@ import {
   getShouldRenderParticle,
   SingleParticle,
 } from "./components/Shapes/SingleParticle";
-import { ALL_PROTEINS, PROTEINS } from "./utils/PROTEINS";
+import { ALL_PROTEINS } from "./utils/PROTEINS";
+import styled from "styled-components/macro";
 
 export function StartPage() {
   const set = useStore((s) => s.set);
@@ -37,21 +38,8 @@ export function StartPage() {
           />
         )}
       </CanvasAndSceneEmpty>
-      <div
-        style={{
-          pointerEvents: "none",
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          display: "grid",
-          placeItems: "center",
-          alignContent: "center",
-          gridGap: "1em",
-          minHeight: "100vh",
-        }}
-      >
+
+      <StartPageStyles>
         <Typography style={{ textAlign: "center" }} variant="h3">
           Virus{" "}
           <span role="img" aria-label="">
@@ -73,14 +61,44 @@ export function StartPage() {
           style={{
             padding: "0.25em 3em",
             pointerEvents: "auto",
-            background: "hsl(0,0%,85%)",
           }}
           onClick={() => set({ started: true })}
-          variant="outlined"
+          variant="contained"
+          color="primary"
         >
-          Start
+          Explore the Terrarium
         </Button>
-      </div>
+
+        <Button
+          style={{
+            padding: "0.25em 3em",
+            pointerEvents: "auto",
+            background: "hsl(0,0%,85%)",
+          }}
+          onClick={() => set({ startedThunderdome: true })}
+          variant="outlined"
+          color="primary"
+        >
+          Play Virus ⚡ Thunderdome
+        </Button>
+      </StartPageStyles>
     </ErrorBoundary>
   );
 }
+
+const StartPageStyles = styled.div`
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  grid-gap: 1em;
+  min-height: 100vh;
+  button {
+    text-transform: none;
+  }
+`;

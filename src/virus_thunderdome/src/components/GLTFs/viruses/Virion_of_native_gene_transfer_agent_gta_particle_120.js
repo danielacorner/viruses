@@ -1171,5 +1171,5 @@ export default function Model(props) {
 }
 
 // useGLTF.preload(
-  "/models/viruses/virion_of_native_gene_transfer_agent_gta_particle_120.glb"
-);
+//   "/models/viruses/virion_of_native_gene_transfer_agent_gta_particle_120.glb"
+// );

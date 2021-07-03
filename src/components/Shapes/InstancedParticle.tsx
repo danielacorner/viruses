@@ -1,17 +1,14 @@
-import React, { useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import { useSphere } from "@react-three/cannon";
 import { useSpring, a } from "react-spring/three";
 import { useJitterInstanceParticle } from "./useJitterParticle";
-import { useFrame, useLoader } from "@react-three/fiber";
 import * as THREE from "three";
 // https://discourse.threejs.org/t/there-is-no-gltfloader-in-three-module/16117/4
-import { useMount } from "../../utils/utils";
-import { useGLTF } from "../../../utils/useGltf";
+import { useGLTF } from "../../utils/useGltf";
 
 import { getRandPosition } from "./particleUtils";
 import { useStore } from "../../store";
 // import * as antibody from "./models/1bv1/scene.gltf";
-import niceColors from "nice-color-palettes";
 
 const dummy = new THREE.Object3D();
 

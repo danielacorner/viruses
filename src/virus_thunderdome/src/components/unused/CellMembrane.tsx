@@ -7,7 +7,7 @@ title: Cell membrane
 */
 
 import React, { useRef } from "react";
-import { useGLTF } from "../../../utils/useGltf";
+import { useGLTF } from "../../utils/useGltf";
 
 export default function Model(props) {
   const group = useRef();

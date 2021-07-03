@@ -13,6 +13,7 @@ export type GlobalStateType = {
   isTooltipMaximized: boolean;
   loading: boolean;
   started: boolean;
+  startedThunderdome: boolean;
   paused: boolean;
   hasRunOutOfMemory: boolean;
   shuffled: number; // random number to trigger useEffect
@@ -33,6 +34,7 @@ export const useStore = create<GlobalStateType>(
     paused: false,
     hasRunOutOfMemory: false,
     started: startsStarted,
+    startedThunderdome: false,
     loading: !startsStarted,
     worldRadius: 5,
     temperature: 1,

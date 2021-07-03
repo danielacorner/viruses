@@ -32,12 +32,20 @@ function App() {
 export default App;
 
 const CanvasAndSceneLazy = React.lazy(() => import("./CanvasAndScene"));
+const ThunderdomeCanvasAndSceneLazy = React.lazy(
+  () => import("./virus_thunderdome/src/App")
+);
 
 function LazyLoadedScene() {
   const started = useStore((s) => s.started);
+  const startedThunderdome = useStore((s) => s.startedThunderdome);
   return started ? (
     <Suspense fallback={<>Loading Canvas</>}>
       <CanvasAndSceneLazy />
+    </Suspense>
+  ) : startedThunderdome ? (
+    <Suspense fallback={<>Loading Thunderdome</>}>
+      <ThunderdomeCanvasAndSceneLazy />
     </Suspense>
   ) : (
     <StartPage />

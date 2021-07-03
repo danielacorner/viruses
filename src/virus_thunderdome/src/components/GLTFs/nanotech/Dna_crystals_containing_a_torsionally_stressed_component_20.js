@@ -65,5 +65,5 @@ export default function Model(props) {
 }
 
 // useGLTF.preload(
-  "/models/nanotech/3d_crystals_containing_a_torsionally_stressed_component_20.glb"
-);
+//   "/models/nanotech/3d_crystals_containing_a_torsionally_stressed_component_20.glb"
+// );

@@ -21,5 +21,5 @@ export default function Model(props) {
 }
 
 // useGLTF.preload(
-  "/models/nanotech/nanoparticle_COVID_19_vaccine_candidate_50.glb"
-);
+//   "/models/nanotech/nanoparticle_COVID_19_vaccine_candidate_50.glb"
+// );

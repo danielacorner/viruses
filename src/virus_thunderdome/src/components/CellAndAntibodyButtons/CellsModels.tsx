@@ -1,5 +1,4 @@
-import React from "react";
-import { useGLTF } from "../../../utils/useGltf";
+import { useGLTF } from "../../utils/useGltf";
 
 import HUD from "./HUD";
 import { useCellsFiltered } from "../useCellsFiltered";

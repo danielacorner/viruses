@@ -35,5 +35,5 @@ export default function Model(props) {
 }
 
 // useGLTF.preload(
-  "/models/nanotech/self_assembling_dna_crystal_scaffold_with_rhombohedral_symmetry_6.glb"
-);
+//   "/models/nanotech/self_assembling_dna_crystal_scaffold_with_rhombohedral_symmetry_6.glb"
+// );

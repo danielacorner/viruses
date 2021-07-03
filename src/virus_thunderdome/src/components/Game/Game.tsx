@@ -74,11 +74,11 @@ function Viruses() {
         const z = randBetween(-jitter, jitter);
         return (
           <SingleParticleMounted
+            key={id_str}
             {...{
               ...virusData,
               iconIdx,
               position: [x, y, z],
-              key: id_str,
             }}
           />
         );
@@ -98,11 +98,11 @@ function Antibodies() {
         const [x, y, z] = getPosition(worldRadius);
         return (
           <SingleParticleMounted
+            key={id_str}
             {...{
               ...abData,
               iconIdx,
               position: [x, y, z],
-              key: id_str,
               // each antibody decomposes after a set amount of time
               lifespan: 3.5 * 1000,
             }}
