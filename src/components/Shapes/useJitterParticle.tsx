@@ -1,34 +1,57 @@
-import { Quaternion, useFrame } from "@react-three/fiber";
-import { randBetween, useMount } from "../../utils/utils";
+import { useFrame } from "@react-three/fiber";
+import { randBetween } from "../../utils/utils";
 import * as THREE from "three";
 import { useVelocity } from "./useVelocity";
 import { scaleAtom, useStore } from "../../store";
-import { useRef } from "react";
 import { useAtom } from "jotai";
-let frameIdx = 0;
-const FORCE = 0.0000005;
+export const FORCE = 0.0000005;
 const distanceFromParticle = 0;
-const MAX_ANGULAR_VELOCITY = 8;
 
-// api
-type WorkerVec = {
-  set: (x: number, y: number, z: number) => void;
-  copy: ({ x, y, z }: THREE.Vector3 | THREE.Euler) => void;
-  subscribe: (callback: (value: number[]) => void) => void;
-};
-export function useJitterParticle({ mass, ref, api = {} as any | WorkerVec }) {
+export function useJitterRefParticle({ mass, ref }) {
+  const { velocity } = useVelocity(mass);
+  const paused = useStore((s) => s.paused);
+  const [scale, setScale] = useAtom(scaleAtom);
+  // ? ONLY when the temperature changes, change the velocity
+
+  const jitterPosition = velocity * POSITION_JITTER_COEFF * scale ** 3; // position changes with scale^3
+  const jitterRotation = velocity * ROTATION_JITTER_COEFF; // rotation doesn't change with scale
+  const rPos = () => randBetween(-jitterPosition, jitterPosition, true);
+  const rRot = () => randBetween(-jitterRotation, jitterRotation, true);
+
+  useFrame(() => {
+    if (paused || !ref.current) {
+      return;
+    }
+    // jitter position
+    const { x, y, z } = ref.current.position;
+    ref.current.position.x = ref.current.position.x + rPos();
+    ref.current.position.y = ref.current.position.y + rPos();
+    ref.current.position.z = ref.current.position.z + rPos();
+
+    // jitter rotation
+    const { x: rx, y: ry, z: rz } = ref.current.position;
+    ref.current.rotation.x = ref.current.rotation.x + rRot();
+    ref.current.rotation.y = ref.current.rotation.y + rRot();
+    ref.current.rotation.z = ref.current.rotation.z + rRot();
+  });
+}
+
+export function useJitterPhysicsParticle({
+  mass,
+  ref,
+  api,
+}: {
+  mass: number;
+  ref: any;
+  api: any;
+  // api: { [property: string]: WorkerVec };
+}) {
   const paused = useStore((s) => s.paused);
   // ? ONLY when the temperature changes, change the velocity
 
   const { rPos, rRot } = useGetJitterPositions(mass);
 
-  // const currentAngularVelocity = useRef([0, 0, 0, 0] as Quaternion);
-  // useMount(() =>
-  //   api.angularVelocity.subscribe((q) => (currentAngularVelocity.current = q))
-  // );
-
   useFrame(() => {
-    frameIdx++;
     if (paused || !api.position) {
       return;
     }
@@ -44,25 +67,6 @@ export function useJitterParticle({ mass, ref, api = {} as any | WorkerVec }) {
         ref.current.position.y + (Math.random() - 0.5) * distanceFromParticle,
         ref.current.position.z + (Math.random() - 0.5) * distanceFromParticle,
       ];
-
-      // TODO every so often, clamp the angular velocity
-      // if (frameIdx % 60 === 0) {
-      //   api.angularVelocity.set(
-      //     //     // ...currentAngularVelocity.current.map((q) => q)
-      //     ...api.angularVelocity
-      //       .copy()
-      //       .map((q) =>
-      //         Math.max(-MAX_ANGULAR_VELOCITY, Math.min(MAX_ANGULAR_VELOCITY, q))
-      //       )
-      //   );
-      // }
-      // clamp angular velocity
-      // api.angularVelocity.set(
-      //   //     // ...currentAngularVelocity.current.map((q) => q)
-      //   ...currentAngularVelocity.current.map((q) =>
-      //     Math.max(-MAX_ANGULAR_VELOCITY, Math.min(MAX_ANGULAR_VELOCITY, q))
-      //   )
-      // );
 
       // jitter position
       api.applyForce(impulse, worldPoint);

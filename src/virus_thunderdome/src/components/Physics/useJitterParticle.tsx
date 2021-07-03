@@ -14,7 +14,11 @@ type WorkerVec = {
 };
 const ROTATION_JITTER_COEFF = 0.05;
 const POSITION_JITTER_COEFF = 100;
-export function useJitterParticle({ mass, ref, api = {} as any | WorkerVec }) {
+export function useJitterPhysicsParticle({
+  mass,
+  ref,
+  api = {} as any | WorkerVec,
+}) {
   const { velocity } = useVelocity(mass);
   const paused = useStore((s) => s.paused);
   const [scale, setScale] = useAtom(scaleAtom);
@@ -29,21 +33,41 @@ export function useJitterParticle({ mass, ref, api = {} as any | WorkerVec }) {
     if (paused || !api.position) {
       return;
     }
-    if (ref.current) {
-      // jitter position
-      const { x, y, z } = ref.current.position;
-      api.position.set(...[x, y, z].map((p) => p + rPos()));
-      // ref.current.position.x = ref.current.position.x + rPos();
-      // ref.current.position.y = ref.current.position.y + rPos();
-      // ref.current.position.z = ref.current.position.z + rPos();
+    // jitter position
+    const { x, y, z } = ref.current.position;
+    api.position.set(...[x, y, z].map((p) => p + rPos()));
 
-      // jitter rotation
-      const { x: rx, y: ry, z: rz } = ref.current.position;
-      api.rotation.set(...[rx, ry, rz].map((r) => r + rRot()));
-      // ref.current.rotation.x = ref.current.rotation.x + rRot();
-      // ref.current.rotation.y = ref.current.rotation.y + rRot();
-      // ref.current.rotation.z = ref.current.rotation.z + rRot();
+    // jitter rotation
+    const { x: rx, y: ry, z: rz } = ref.current.position;
+    api.rotation.set(...[rx, ry, rz].map((r) => r + rRot()));
+  });
+}
+export function useJitterRefParticle({ mass, ref }) {
+  const { velocity } = useVelocity(mass);
+  const paused = useStore((s) => s.paused);
+  const [scale, setScale] = useAtom(scaleAtom);
+  // ? ONLY when the temperature changes, change the velocity
+
+  const jitterPosition = velocity * POSITION_JITTER_COEFF * scale ** 3; // position changes with scale^3
+  const jitterRotation = velocity * ROTATION_JITTER_COEFF; // rotation doesn't change with scale
+  const rPos = () => randBetween(-jitterPosition, jitterPosition, true);
+  const rRot = () => randBetween(-jitterRotation, jitterRotation, true);
+
+  useFrame(() => {
+    if (paused || !ref.current) {
+      return;
     }
+    // jitter position
+    const { x, y, z } = ref.current.position;
+    ref.current.position.x = ref.current.position.x + rPos();
+    ref.current.position.y = ref.current.position.y + rPos();
+    ref.current.position.z = ref.current.position.z + rPos();
+
+    // jitter rotation
+    const { x: rx, y: ry, z: rz } = ref.current.position;
+    ref.current.rotation.x = ref.current.rotation.x + rRot();
+    ref.current.rotation.y = ref.current.rotation.y + rRot();
+    ref.current.rotation.z = ref.current.rotation.z + rRot();
   });
 }
 

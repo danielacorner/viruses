@@ -1,6 +1,7 @@
 import React, { useMemo, useRef } from "react";
 import { useConvexPolyhedron } from "@react-three/cannon";
-import { useJitterParticle } from "./useJitterParticle";
+import { useJitterRefParticle } from "./useJitterParticle";
+import { useClampAngularVelocity } from "./useClampAngularVelocity";
 import { scaleAtom, useStore } from "../../store";
 import * as THREE from "three";
 import { useChangeVelocityWhenTemperatureChanges } from "./useChangeVelocityWhenTemperatureChanges";
@@ -54,11 +55,13 @@ export function InteractiveParticle(props) {
     // },
   }));
 
-  useJitterParticle({
+  useJitterRefParticle({
     mass,
     ref,
-    api,
+    // api,
   });
+
+  useClampAngularVelocity({ api });
 
   // when temperature changes, change particle velocity
   useChangeVelocityWhenTemperatureChanges({ mass, api });
@@ -180,7 +183,7 @@ function NonInteractiveParticle({
   pathToImage,
 }) {
   const ref = useRef();
-  useJitterParticle({
+  useJitterRefParticle({
     mass,
     ref,
   });

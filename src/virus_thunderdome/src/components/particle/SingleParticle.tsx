@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { useConvexPolyhedron } from "@react-three/cannon";
-import { useJitterParticle } from "../Physics/useJitterParticle";
+import { useJitterRefParticle } from "../Physics/useJitterParticle";
 import { useStore } from "../../store";
 import * as THREE from "three";
 import { useChangeVelocityWhenTemperatureChanges } from "../Physics/useChangeVelocityWhenTemperatureChanges";
@@ -11,6 +11,7 @@ import { FloatingHtmlOverlay } from "./FloatingHtmlOverlay";
 import { toConvexProps } from "../../../../components/Shapes/toConvexProps";
 import { useAtom } from "jotai";
 import { scaleAtom } from "../../../../store";
+import { NonInteractiveParticle } from "./NonInteractiveParticle";
 
 export type ParticleProps = Protein & {
   position: [number, number, number];
@@ -131,11 +132,11 @@ function InteractiveParticle(props: ParticleProps) {
     },
   });
 
-  // useJitterParticle({
-  //   mass,
-  //   ref,
-  //   api,
-  // });
+  useJitterRefParticle({
+    mass,
+    ref,
+    // api,
+  });
 
   // when temperature changes, change particle velocity
   useChangeVelocityWhenTemperatureChanges({ mass, api });
@@ -275,33 +276,4 @@ export function getShouldRenderParticle(
   const tooBigToRender = particleSize > worldRadius / MIN_RADIUS;
   const tooSmallToRender = particleSize < worldRadius / MAX_RADIUS;
   return !(tooBigToRender || tooSmallToRender);
-}
-
-/** doesn't interact with other particles (passes through them) */
-function NonInteractiveParticle({
-  pathToGLTF,
-  mass,
-  position,
-  Component,
-  numIcosahedronFaces,
-  pathToImage,
-}) {
-  const ref = useRef();
-  useJitterParticle({
-    mass,
-    ref,
-  });
-  const scale = useStore((state) => state.scale);
-
-  return (
-    <mesh
-      frustumCulled={true}
-      renderOrder={3}
-      ref={ref}
-      scale={[scale, scale, scale]}
-      position={position}
-    >
-      <Component />
-    </mesh>
-  );
 }
