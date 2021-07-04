@@ -20,8 +20,8 @@ export function Plane({
     133, // index of the matcap texture https://github.com/emmelleppi/matcaps/blob/master/matcap-list.json
     1024 // size of the texture ( 64, 128, 256, 512, 1024 )
   );
-  // TODO: useNormalTexture https://github.com/pmndrs/drei#usenormaltexture
 
+  // useNormalTexture https://github.com/pmndrs/drei#usenormaltexture
   // const distortionTexture = useTexture(DISTORTION_TEXTURE);
 
   return (
@@ -67,7 +67,7 @@ export function Plane({
           />
           <meshMatcapMaterial
             matcap={matcap as any}
-            opacity={0.3}
+            opacity={0.15}
             transparent={true}
           />
         </>

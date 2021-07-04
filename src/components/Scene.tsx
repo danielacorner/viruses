@@ -6,10 +6,11 @@ import { PHYSICS_PROPS } from "../utils/PHYSICS_PROPS";
 import { ALL_PROTEINS } from "../utils/PROTEINS";
 import { Water } from "./Water";
 import { SelectedParticleDisplay } from "./SelectedParticleDisplay";
+import { useStore } from "../store";
 
-const randIdx = Math.ceil(Math.random() * 4);
 const Scene = () => {
   // useSetTemperatureLowInitially();
+  const selectedProtein = useStore((s) => s.selectedProtein);
 
   return (
     <>
@@ -40,7 +41,7 @@ const Scene = () => {
           // preset={"night"}
           scene={undefined} // adds the ability to pass a custom THREE.Scene
         /> */}
-        <SelectedParticleDisplay />
+        {selectedProtein && <SelectedParticleDisplay />}
         {/* <Cells /> */}
       </Physics>
       {/* <CustomEffects /> */}

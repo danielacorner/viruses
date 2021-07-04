@@ -29,7 +29,7 @@ export function TemperatureControls() {
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [set]);
 
-  const max = 0.000005 / scale ** 3;
+  const max = 0.0001 / scale ** 3;
 
   return (
     <TemperatureControlsStyles>

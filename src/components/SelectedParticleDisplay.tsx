@@ -10,6 +10,7 @@ export function SelectedParticleDisplay() {
   // const selectedGltf = useGLTF(selectedProtein?.pathToGLTF);
   const scale = useStore((s) => s.scale) * 50;
 
+  // selected particle is displayed in a HUD
   const { gl, scene, camera, size } = useThree();
   const virtualScene = useMemo(() => new Scene(), []);
   const virtualCam = useRef();
@@ -25,6 +26,7 @@ export function SelectedParticleDisplay() {
     gl.clearDepth();
     gl.render(virtualScene, virtualCam.current);
   }, 1);
+
   const Component = selectedProtein?.Component || (() => <mesh />);
 
   return createPortal(

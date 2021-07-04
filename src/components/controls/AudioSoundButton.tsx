@@ -39,6 +39,7 @@ export default function AudioSoundButton({ title, href }) {
 }
 const SoundButtonStyles = styled.div`
   position: fixed;
+  z-index: 20;
   top: 0px;
   right: 0px;
   height: 48px;

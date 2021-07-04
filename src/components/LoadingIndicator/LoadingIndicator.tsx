@@ -82,7 +82,7 @@ const LoadingIndicatorStyles = styled.div`
   place-content: center;
   justify-items: start;
   align-items: start;
-  z-index: 999;
+  z-index: 10;
   right: 1em;
   left: 4em;
   width: calc(100vw - 5em);
