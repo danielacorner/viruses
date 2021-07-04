@@ -1,11 +1,17 @@
 import React, { useRef } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import { getIsTouchDevice } from "../../../../getIsTouchDevice";
+import { isDarkModeAtom } from "../../../../store";
+import { useAtom } from "jotai";
 
 export function Lighting() {
+  const [isDarkMode] = useAtom(isDarkModeAtom);
   return (
     <>
-      <color attach="background" args={["#ffffff"] as any} />
+      <color
+        attach="background"
+        args={[isDarkMode ? "black" : "white"] as any}
+      />
       {!getIsTouchDevice() && <LightFollowsMouse />}
 
       {/* <SpotLightOnSelectedProtein /> */}

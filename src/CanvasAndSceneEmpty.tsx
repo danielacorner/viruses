@@ -27,7 +27,6 @@ export function CanvasAndSceneEmpty({
   const [isDarkMode] = useAtom(isDarkModeAtom);
   return (
     <Canvas
-      mode="concurrent"
       onCreated={({ gl }) => {
         gl.shadowMap.enabled = true;
         gl.shadowMap.type = THREE.PCFShadowMap;

@@ -42,7 +42,6 @@ export function LoadingIndicator() {
   useDetectStuckOnLoading();
   const { active, progress, errors, item, loaded, total } = useProgress();
   // const active = true;
-  const [isDarkMode] = useAtom(isDarkModeAtom);
   return errors.length > 0 ? (
     <div
       style={{ maxWidth: "100vw", wordBreak: "break-all", padding: "0 6em" }}
@@ -68,7 +67,6 @@ export function LoadingIndicator() {
       />
       <CanvasAndSceneEmpty isLoadingIndicator={true}>
         <SpinningParticle />
-        {isDarkMode && <DarkModeBackground />}
       </CanvasAndSceneEmpty>
       {/* <CenteredSpinner /> */}
     </Sentry.ErrorBoundary>

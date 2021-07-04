@@ -22,10 +22,10 @@ function App() {
       document.getElementById("memoryStats")
     );
   });
-  // const [isDarkMode] = useAtom(isDarkModeAtom);
+  const [isDarkMode] = useAtom(isDarkModeAtom);
 
   return (
-    <div className="App">
+    <AppStyles className="App" {...{ isDarkMode }}>
       <LoadingIndicator />
       <LazyLoadedScene />
       <div id="memoryStats"></div>
@@ -35,9 +35,14 @@ function App() {
       {/* <GuidedTour /> */}
       <AttributionLinks />
       <SaveControlsSettingsToLocalStorage />
-    </div>
+    </AppStyles>
   );
 }
+
+const AppStyles = styled.div`
+  background: ${(p) => (p.isDarkMode ? "black" : "white")};
+  min-height: 100vh;
+`;
 
 export default App;
 

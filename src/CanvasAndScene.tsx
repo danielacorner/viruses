@@ -27,15 +27,16 @@ export default function CanvasAndScene({ renderProteins = true }) {
       }}
     >
       <Canvas
-        mode="concurrent"
-        onCreated={({ gl }) => {
-          gl.shadowMap.enabled = true;
-          gl.shadowMap.type = THREE.PCFShadowMap;
-        }}
-        gl={{ antialias: false, alpha: false }}
+        // onCreated={({ gl }) => {
+        //   gl.shadowMap.enabled = true;
+        //   gl.shadowMap.type = THREE.PCFShadowMap;
+        // }}
+        // gl={{ antialias: false, alpha: false }}
         style={{ height: windowSize.height, width: windowSize.width }}
         camera={{ fov: 75, position: [0, 0, 15] }}
       >
+        {/* <color attach="background" args={["red"]} /> */}
+
         {getIsTouchDevice() ? (
           <DeviceOrientationOrbitControls />
         ) : (

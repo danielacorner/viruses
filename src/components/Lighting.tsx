@@ -5,9 +5,10 @@ import { isDarkModeAtom, useStore } from "../store";
 import { useAtom } from "jotai";
 
 export function Lighting() {
+  const [isDarkMode] = useAtom(isDarkModeAtom);
   return (
     <>
-      <color attach="background" args={["#ffffff"] as any} />
+      <color attach="background" args={[isDarkMode ? "black" : "white"]} />
       {!getIsTouchDevice() && <LightFollowsMouse />}
 
       {/* <SpotLightOnSelectedProtein /> */}

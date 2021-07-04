@@ -136,7 +136,7 @@ export function ScaleIndicator() {
                 outlineOffsetY={"0%"}
                 outlineBlur={"30%"}
                 outlineOpacity={0.6}
-                outlineColor="white"
+                outlineColor={isDarkMode ? "black" : "white"}
               >
                 {t.name}
               </Text>

@@ -7,12 +7,13 @@ import "./errorReporting";
 import * as serviceWorker from "./serviceWorker";
 import { ErrorBoundary } from "@sentry/react";
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.render(
   <React.StrictMode>
     <ErrorBoundary>
       <App />
     </ErrorBoundary>
-  </React.StrictMode>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
