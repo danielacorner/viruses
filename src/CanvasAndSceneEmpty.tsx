@@ -10,6 +10,9 @@ import { PHYSICS_PROPS } from "./utils/PHYSICS_PROPS";
 import { Walls } from "./components/Walls";
 import { DeviceOrientationOrbitControls } from "./components/DeviceOrientationOrbitControls";
 import { getIsTouchDevice } from "./getIsTouchDevice";
+import { useAtom } from "jotai";
+import { DarkModeBackground } from "./components/Scene";
+import { isDarkModeAtom } from "./store";
 
 export function CanvasAndSceneEmpty({
   children = null,
@@ -21,6 +24,7 @@ export function CanvasAndSceneEmpty({
   const SpinIfLoadingIndicator = isLoadingIndicator
     ? SpinScene
     : React.Fragment;
+  const [isDarkMode] = useAtom(isDarkModeAtom);
   return (
     <Canvas
       onCreated={({ gl }) => {
@@ -45,6 +49,7 @@ export function CanvasAndSceneEmpty({
             <Water />
             {children}
             <Walls />
+            {isDarkMode && <DarkModeBackground />}
           </mesh>
         </Physics>
       </SpinIfLoadingIndicator>

@@ -4,8 +4,6 @@ import * as THREE from "three";
 import { useVelocity } from "./useVelocity";
 import { scaleAtom, useStore } from "../../store";
 import { useAtom } from "jotai";
-export const FORCE = 0.0000005;
-const distanceFromParticle = 0;
 
 export function useJitterRefParticle({ mass, ref }) {
   const { velocity } = useVelocity(mass);
@@ -36,12 +34,13 @@ export function useJitterRefParticle({ mass, ref }) {
   });
 }
 
+const FORCE = 0.0005;
+const DISTANCE_FROM_PARTICLE = 1;
+
 export function useJitterPhysicsParticle({
-  mass,
   ref,
   api,
 }: {
-  mass: number;
   ref: any;
   api: any;
   // api: { [property: string]: WorkerVec };
@@ -49,7 +48,7 @@ export function useJitterPhysicsParticle({
   const paused = useStore((s) => s.paused);
   // ? ONLY when the temperature changes, change the velocity
 
-  const { rPos, rRot } = useGetJitterPositions(mass);
+  // const { rPos, rRot } = useGetJitterPositions(mass);
 
   useFrame(() => {
     if (paused || !api.position) {
@@ -63,14 +62,14 @@ export function useJitterPhysicsParticle({
         (Math.random() - 0.5) * impulseAmount,
       ];
       const worldPoint = [
-        ref.current.position.x + (Math.random() - 0.5) * distanceFromParticle,
-        ref.current.position.y + (Math.random() - 0.5) * distanceFromParticle,
-        ref.current.position.z + (Math.random() - 0.5) * distanceFromParticle,
+        ref.current.position.x + (Math.random() - 0.5) * DISTANCE_FROM_PARTICLE,
+        ref.current.position.y + (Math.random() - 0.5) * DISTANCE_FROM_PARTICLE,
+        ref.current.position.z + (Math.random() - 0.5) * DISTANCE_FROM_PARTICLE,
       ];
 
       // jitter position
-      api.applyForce(impulse, worldPoint);
-      // api.applyImpulse(impulse, worldPoint);
+      // api.applyForce(impulse, worldPoint);
+      api.applyImpulse(impulse, worldPoint);
       // const { x, y, z } = ref.current.position;
       // api.position.set(...[x, y, z].map((p) => p + rPos()));
       // ref.current.position.x = ref.current.position.x + rPos();

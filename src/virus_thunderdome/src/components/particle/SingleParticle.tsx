@@ -12,6 +12,7 @@ import { toConvexProps } from "../../../../components/Shapes/toConvexProps";
 import { useAtom } from "jotai";
 import { scaleAtom } from "../../../../store";
 import { NonInteractiveParticle } from "./NonInteractiveParticle";
+import { useJitterPhysicsParticle } from "../../../../components/Shapes/useJitterParticle";
 
 export type ParticleProps = Protein & {
   position: [number, number, number];
@@ -132,11 +133,15 @@ function InteractiveParticle(props: ParticleProps) {
     },
   });
 
-  useJitterRefParticle({
-    mass,
+  useJitterPhysicsParticle({
     ref,
-    // api,
+    api,
   });
+  // useJitterRefParticle({
+  //   mass,
+  //   ref,
+  //   // api,
+  // });
 
   // when temperature changes, change particle velocity
   useChangeVelocityWhenTemperatureChanges({ mass, api });

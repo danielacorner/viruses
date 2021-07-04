@@ -25,17 +25,7 @@ const Scene = () => {
         })}
         <Water />
         <Walls />
-        {isDarkMode && (
-          <>
-            <Stars count={1000} />
-            <Sky
-              rayleigh={7}
-              mieCoefficient={0.1}
-              mieDirectionalG={1}
-              turbidity={50}
-            />
-          </>
-        )}
+        {isDarkMode && <DarkModeBackground />}
         {/* <Environment
           background={true}
           files={[
@@ -65,3 +55,17 @@ const Scene = () => {
 };
 
 export default Scene;
+
+export function DarkModeBackground() {
+  return (
+    <>
+      <Stars count={500} />
+      <Sky
+        rayleigh={7}
+        mieCoefficient={0.1}
+        mieDirectionalG={1}
+        turbidity={50}
+      />
+    </>
+  );
+}

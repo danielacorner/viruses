@@ -1,6 +1,6 @@
 import { Button, Typography } from "@material-ui/core";
 import { CanvasAndSceneEmpty } from "./CanvasAndSceneEmpty";
-import { useStore, scaleAtom } from "./store";
+import { useStore, scaleAtom, isDarkModeAtom } from "./store";
 import { useAtom } from "jotai";
 import ErrorBoundary from "./components/ErrorBoundary";
 import {
@@ -19,6 +19,7 @@ export function StartPage() {
   const [protein1, protein2, protein3] = ALL_PROTEINS.filter((p) =>
     getShouldRenderParticle(scale, p.radius, worldRadius)
   ).slice(0, 3);
+  const [isDarkMode] = useAtom(isDarkModeAtom);
 
   return (
     <ErrorBoundary boundaryTitle={"Start Page"}>
@@ -40,7 +41,7 @@ export function StartPage() {
         )}
       </CanvasAndSceneEmpty>
 
-      <StartPageStyles>
+      <StartPageStyles {...{ isDarkMode }}>
         <Typography style={{ textAlign: "center" }} variant="h3">
           Virus{" "}
           <span role="img" aria-label="">
@@ -102,4 +103,5 @@ const StartPageStyles = styled.div`
   button {
     text-transform: none;
   }
+  color: ${(p) => (p.isDarkMode ? "white" : "black")};
 `;

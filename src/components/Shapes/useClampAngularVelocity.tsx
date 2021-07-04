@@ -2,7 +2,6 @@ import { useFrame } from "@react-three/fiber";
 import { useMount } from "../../utils/utils";
 import { useStore } from "../../store";
 import { useRef } from "react";
-import { FORCE } from "./useJitterParticle";
 import { Vector3 } from "@react-three/fiber/dist/declarations/src/three-types";
 let frameIdx = 0;
 const MAX_ANGULAR_VELOCITY = 1;
@@ -21,12 +20,6 @@ export function useClampAngularVelocity({ api }) {
     if (paused || !api) {
       return;
     }
-    const impulseAmount = Math.random() * FORCE;
-    const impulse = [
-      (Math.random() - 0.5) * impulseAmount,
-      (Math.random() - 0.5) * impulseAmount,
-      (Math.random() - 0.5) * impulseAmount,
-    ];
 
     // if ((frameIdx % FPS) / CLAMP_N_TIMES_PER_SECOND === 0) {
     const [x, y, z] = currentAngularVelocity.current.map((q) =>

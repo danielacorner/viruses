@@ -1,6 +1,6 @@
 import React from "react";
 import { Line, Text } from "@react-three/drei";
-import { scaleAtom, useStore } from "../store";
+import { isDarkModeAtom, scaleAtom, useStore } from "../store";
 import { useIsTabletOrLarger } from "../utils/constants";
 import { useAtom } from "jotai";
 
@@ -80,6 +80,7 @@ export function ScaleIndicator() {
     }))
     .slice(1) as Tick[];
   const isTabletOrLarger = useIsTabletOrLarger();
+  const [isDarkMode] = useAtom(isDarkModeAtom);
   return (
     <>
       <EdgeLines />
@@ -100,7 +101,7 @@ export function ScaleIndicator() {
             <group>
               <Line
                 isShaderMaterial={false}
-                color={"hsl(0,0%,50%)"}
+                color={`hsl(0,0%,${isDarkMode ? 80 : 50}%)`}
                 points={[
                   t.position,
                   [
@@ -122,7 +123,7 @@ export function ScaleIndicator() {
                     t.position[1],
                     t.position[2] * (t.side === "right" ? 0.91 : 1),
                   ],
-                  color: "#111111",
+                  color: isDarkMode ? "#eeeeee" : "#111111",
                   fontSize: 0.22,
                   style: {
                     whiteSpace: "nowrap",

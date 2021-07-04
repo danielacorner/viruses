@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Button, LinearProgress, Typography } from "@material-ui/core";
-import { useProgress } from "@react-three/drei";
+import { Sky, useProgress } from "@react-three/drei";
 import styled from "styled-components/macro";
 import { useFrame } from "@react-three/fiber";
 import { CanvasAndSceneEmpty } from "../../CanvasAndSceneEmpty";
@@ -10,6 +10,7 @@ import { useAtom } from "jotai";
 import { MIN_SCALE, MAX_SCALE } from "../../utils/constants";
 import { SpinningParticle } from "./SpinningParticle";
 import { useSpring, animated } from "@react-spring/three";
+import { DarkModeBackground } from "../Scene";
 
 const TIME_BEFORE_SHOW_REFRESH_BTN = 20 * 1000;
 export const SPEED_Y = 0.5;
@@ -67,6 +68,7 @@ export function LoadingIndicator() {
       />
       <CanvasAndSceneEmpty isLoadingIndicator={true}>
         <SpinningParticle />
+        <DarkModeBackground />
       </CanvasAndSceneEmpty>
       {/* <CenteredSpinner /> */}
     </Sentry.ErrorBoundary>
