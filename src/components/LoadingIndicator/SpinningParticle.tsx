@@ -7,7 +7,6 @@ import {
   SPEED_X,
   AMPLITUDE_X_INV,
 } from "./LoadingIndicator";
-import { useSpring, animated } from "@react-spring/three";
 import { COMMON_MATERIAL_PROPS } from "../../utils/constants";
 
 export function SpinningParticle() {
@@ -57,7 +56,7 @@ export function SpinningParticle() {
       {/* constant-size particle */}
       <mesh ref={refConstant}>
         <icosahedronBufferGeometry args={[1, 0]} />
-        <animated.meshPhysicalMaterial
+        <meshPhysicalMaterial
           {...COMMON_MATERIAL_PROPS}
           opacity={0.5}
           roughness={0.4}
