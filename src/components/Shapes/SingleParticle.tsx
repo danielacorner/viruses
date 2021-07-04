@@ -23,6 +23,7 @@ export function InteractiveParticle(props) {
 
   const set = useStore((s) => s.set);
   const [scale, setScale] = useAtom(scaleAtom);
+  console.log("🌟🚨 ~ InteractiveParticle ~ scale", scale);
   const isTooltipMaximized = useStore((s) => s.isTooltipMaximized);
   const selectedProtein = useStore((s) => s.selectedProtein);
   const isSelectedProtein =
@@ -38,9 +39,9 @@ export function InteractiveParticle(props) {
   const geo = useMemo(
     () =>
       toConvexProps(
-        new THREE.IcosahedronBufferGeometry(props.radius * 0.001, detail)
+        new THREE.IcosahedronBufferGeometry(props.radius * scale, detail)
       ),
-    [props.radius, detail]
+    [props.radius, scale, detail]
   );
 
   const [ref, api] = useConvexPolyhedron(() => ({
