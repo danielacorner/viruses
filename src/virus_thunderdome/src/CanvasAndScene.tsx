@@ -10,12 +10,6 @@ import AudioSoundButton from "../../components/controls/AudioSoundButton";
 
 export default function CanvasAndScene({ renderProteins = true }) {
   const windowSize = useWindowSize();
-  //  // This one makes the camera move in and out
-  //  useFrame(({ clock, camera }) => {
-  //   camera.position.z = 50 + Math.sin(clock.getElapsedTime()) * 30
-  // })
-  const isTabletOrLarger = windowSize.width >= BREAKPOINT_TABLET;
-
   return (
     <>
       <AudioSoundButton

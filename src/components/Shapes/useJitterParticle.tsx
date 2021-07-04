@@ -70,18 +70,6 @@ export function useJitterPhysicsParticle({
       // jitter position
       // api.applyForce(impulse, worldPoint);
       api.applyImpulse(impulse, worldPoint);
-      // const { x, y, z } = ref.current.position;
-      // api.position.set(...[x, y, z].map((p) => p + rPos()));
-      // ref.current.position.x = ref.current.position.x + rPos();
-      // ref.current.position.y = ref.current.position.y + rPos();
-      // ref.current.position.z = ref.current.position.z + rPos();
-
-      // jitter rotation
-      // const { x: rx, y: ry, z: rz } = ref.current.position;
-      // api.rotation.set(...[rx, ry, rz].map((r) => r + rRot()));
-      // ref.current.rotation.x = ref.current.rotation.x + rRot();
-      // ref.current.rotation.y = ref.current.rotation.y + rRot();
-      // ref.current.rotation.z = ref.current.rotation.z + rRot();
     }
   });
 }
@@ -109,7 +97,7 @@ export function useJitterInstanceParticle({
   numParticles,
   ref,
 }) {
-  useFrame((state) => {
+  useFrame(() => {
     if (!ref.current) {
       return;
     }
