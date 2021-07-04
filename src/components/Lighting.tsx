@@ -1,7 +1,8 @@
 import React, { useRef } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import { getIsTouchDevice } from "../getIsTouchDevice";
-import { useStore } from "../store";
+import { isDarkModeAtom, useStore } from "../store";
+import { useAtom } from "jotai";
 
 export function Lighting() {
   return (
@@ -106,6 +107,7 @@ function LightFollowsMouse() {
       -camera.position.z
     );
   });
+  const [isDarkMode] = useAtom(isDarkModeAtom);
 
   return (
     <>
@@ -116,7 +118,7 @@ function LightFollowsMouse() {
       <pointLight
         ref={light}
         distance={60}
-        intensity={10.2}
+        intensity={isDarkMode ? 1 : 10.2}
         color="lightblue"
       />
     </>

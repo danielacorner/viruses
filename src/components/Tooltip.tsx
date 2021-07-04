@@ -1,5 +1,5 @@
 import React from "react";
-import { useStore } from "../store";
+import { isDarkModeAtom, useStore } from "../store";
 import styled from "styled-components/macro";
 import { Close, Fullscreen, FullscreenExit } from "@material-ui/icons";
 import {
@@ -16,6 +16,7 @@ import {
   BREAKPOINT_TABLET,
   CUSTOM_SCROLLBAR_CSS,
 } from "../utils/constants";
+import { useAtom } from "jotai";
 const TOOLTIP = {
   height: 442,
   width: 300,
@@ -30,6 +31,7 @@ const Tooltip = () => {
   );
   const isTabletOrLarger = useMediaQuery(`(min-width: ${BREAKPOINT_TABLET}px)`);
   const isHorizontalLayout = isTooltipMaximized && isDesktopOrLarger;
+  const [isDarkMode] = useAtom(isDarkModeAtom);
 
   return selectedProtein ? (
     <>
@@ -48,10 +50,9 @@ const Tooltip = () => {
         </ClickAwayListener>
       </Modal>
       <TooltipStyles
+        {...{ isDarkMode, isDesktopOrLarger, isHorizontalLayout }}
         height={TOOLTIP.height * (isTabletOrLarger ? 1 : 0.85)}
         width={TOOLTIP.width * (isTabletOrLarger ? 1 : 0.7)}
-        isDesktopOrLarger={isDesktopOrLarger}
-        isHorizontalLayout={isHorizontalLayout}
       >
         <TooltipContent />
       </TooltipStyles>
@@ -292,7 +293,7 @@ const TooltipStyles = styled.div`
           : ""}
       opacity: ${(props) => (props.maximized ? 1 : 0.8)};
       box-sizing: border-box;
-      color: black;
+      color: ${(p) => (p.isDarkMode ? "white" : "black")};
       display: grid;
       grid-template-rows: auto ${(props) =>
           props.maximized && props.isHorizontalLayout ? 1.5 : 2}em ${(props) =>
@@ -300,8 +301,10 @@ const TooltipStyles = styled.div`
           props.maximized ? "1fr" : "5em"};
       grid-gap: 0.5em;
       position: relative;
-      text-shadow: 0px 1px 4px white, 0px 1px 4px white, 0px 1px 4px white,
-        0px 1px 4px white;
+      text-shadow: 0px 1px 4px ${(p) => (p.isDarkMode ? "black" : "white")},
+        0px 1px 4px ${(p) => (p.isDarkMode ? "black" : "white")},
+        0px 1px 4px ${(p) => (p.isDarkMode ? "black" : "white")},
+        0px 1px 4px ${(p) => (p.isDarkMode ? "black" : "white")};
       .titleSection {
         text-align: left;
         display: grid;
@@ -313,7 +316,7 @@ const TooltipStyles = styled.div`
         grid-gap: 0.5em;
         h6 {
           font-style: italic;
-          color: hsl(0, 0%, 50%);
+          color: hsl(0, 0%, ${(p) => (p.isDarkMode ? 80 : 50)}%);
           line-height: 1em;
         }
         a {
@@ -349,7 +352,7 @@ const TooltipStyles = styled.div`
             justify-self: right;
           }
           .label {
-            color: hsl(0, 0%, 50%);
+            color: hsl(0, 0%, ${(p) => (p.isDarkMode ? 80 : 50)}%);
           }
         }
       }
@@ -390,7 +393,7 @@ const TooltipStyles = styled.div`
         right: 0em;
       }
       .pubmedAbstract {
-        background: white;
+        background: ${(p) => (p.isDarkMode ? "none" : "white")};
         ${(props) =>
           props.maximized && !props.isDesktopOrLarger
             ? `

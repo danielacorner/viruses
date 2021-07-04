@@ -1,6 +1,6 @@
 import React, { Suspense, useEffect } from "react";
 import Tooltip from "./components/Tooltip";
-import { useStore, scaleAtom } from "./store";
+import { useStore, scaleAtom, isDarkModeAtom } from "./store";
 import { useAtom } from "jotai";
 import {
   HasRunOutOfMemory,
@@ -13,6 +13,8 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import AudioSoundButton from "./components/controls/AudioSoundButton";
 import { StartPage } from "./StartPage";
 import { Stats } from "@react-three/drei";
+import DarkModeButton from "./components/controls/DarkModeButton";
+
 function App() {
   return (
     <div className="App">
@@ -27,6 +29,7 @@ function App() {
           title={"Inner Life of the Cell - Protein Packing"}
           href={"https://www.youtube.com/watch?v=uHeTQLNFTgU"}
         />
+        <DarkModeButton />
         <HasRunOutOfMemory />
       </ErrorBoundary>
     </div>

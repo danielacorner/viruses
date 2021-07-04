@@ -1,17 +1,23 @@
 import React, { useEffect, useRef } from "react";
-import { scaleAtom } from "../../store";
+import { isDarkModeAtom, scaleAtom } from "../../store";
 import { Slider, Typography, useMediaQuery } from "@material-ui/core";
 import styled from "styled-components/macro";
 import { ZoomOut, ZoomIn } from "@material-ui/icons";
 import { getIsTouchDevice } from "../../getIsTouchDevice";
 import { MIN_SCALE, MAX_SCALE } from "../../utils/constants";
 import { useProgress } from "@react-three/drei";
-import { darkText, darkTextShadow } from "../../utils/colors";
+import {
+  darkText,
+  darkTextShadow,
+  lightText,
+  lightTextShadow,
+} from "../../utils/colors";
 import { useAtom } from "jotai";
 
 export function ScaleControls() {
   const [scale, setScale] = useAtom(scaleAtom);
   const isTouchDevice = getIsTouchDevice();
+  const [isDarkMode] = useAtom(isDarkModeAtom);
   const { active: loading } = useProgress();
 
   const isLandscape =
@@ -23,7 +29,7 @@ export function ScaleControls() {
     lowestSoFar.current = Math.min(scale, lowestSoFar.current);
   }, [scale]);
   return (
-    <ScaleControlsStyles isLandscape={isLandscape}>
+    <ScaleControlsStyles {...{ isLandscape, isDarkMode }}>
       <Typography align="center" id="volume-slider" gutterBottom>
         Scale
       </Typography>
@@ -70,9 +76,12 @@ const ScaleControlsStyles = styled.div`
   min-height: 50vh;
   color: ${darkText};
   text-shadow: ${darkTextShadow};
+  color: ${(p) => (p.isDarkMode ? lightText : darkText)};
+  text-shadow: ${(p) => (p.isDarkMode ? lightTextShadow : darkTextShadow)};
   .MuiSlider-root {
-    color: hsl(0, 0%, 30%);
+    color: hsl(0, 0%, ${(p) => (p.isDarkMode ? 70 : 30)}%);
   }
+
   .grid {
     display: grid;
     justify-items: center;

@@ -1,17 +1,23 @@
 import React from "react";
-import { useStore, scaleAtom } from "./store";
+import { useStore, scaleAtom, isDarkModeAtom } from "./store";
 import { useAtom } from "jotai";
 import { Grid, IconButton, Typography } from "@material-ui/core";
 import styled from "styled-components/macro";
 import { Pause, PlayArrowOutlined } from "@material-ui/icons";
 import { useEventListener, usePreviousIf } from "./utils/hooks";
-import { darkText, darkTextShadow } from "./utils/colors";
+import {
+  darkText,
+  darkTextShadow,
+  lightText,
+  lightTextShadow,
+} from "./utils/colors";
 
 export function PauseControls() {
   const paused = useStore((s) => s.paused);
   const set = useStore((s) => s.set);
   const temperature = useStore((s) => s.temperature);
   const prevTemp = usePreviousIf(temperature, temperature !== 0);
+  const [isDarkMode] = useAtom(isDarkModeAtom);
 
   const handlePauseUnpause = () => {
     const nextPaused = !paused;
@@ -31,7 +37,10 @@ export function PauseControls() {
   );
 
   return (
-    <PauseControlsStyles onClick={() => handlePauseUnpause()}>
+    <PauseControlsStyles
+      {...{ isDarkMode }}
+      onClick={() => handlePauseUnpause()}
+    >
       <Typography align="center" id="volume-slider">
         {paused ? "Play" : "Pause"}
       </Typography>
@@ -45,6 +54,9 @@ export function PauseControls() {
 }
 const PauseControlsStyles = styled.div`
   cursor: pointer;
-  color: ${darkText};
-  text-shadow: ${darkTextShadow};
+  color: ${(p) => (p.isDarkMode ? lightText : darkText)};
+  text-shadow: ${(p) => (p.isDarkMode ? lightTextShadow : darkTextShadow)};
+  .MuiButtonBase-root {
+    color: hsla(0, 0%, ${(p) => (p.isDarkMode ? 100 : 0)}%, 0.5);
+  }
 `;

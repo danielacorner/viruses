@@ -1,9 +1,15 @@
 import React from "react";
-import { useStore, scaleAtom } from "./store";
+import { useStore, scaleAtom, isDarkModeAtom } from "./store";
 import { useAtom } from "jotai";
 import { Slider, Typography } from "@material-ui/core";
 import styled from "styled-components/macro";
 import { AcUnit, Whatshot } from "@material-ui/icons";
+import {
+  darkText,
+  darkTextShadow,
+  lightText,
+  lightTextShadow,
+} from "./utils/colors";
 
 export function TemperatureControls() {
   const temperature = useStore((s) => s.temperature);
@@ -11,6 +17,7 @@ export function TemperatureControls() {
   const set = useStore((s) => s.set);
   const setTemperature = useStore((s) => s.setTemperature);
   const paused = useStore((s) => s.paused);
+  const [isDarkMode] = useAtom(isDarkModeAtom);
 
   // set temperature low initially
 
@@ -32,7 +39,7 @@ export function TemperatureControls() {
   const max = 0.0001 / scale ** 3;
 
   return (
-    <TemperatureControlsStyles>
+    <TemperatureControlsStyles {...{ isDarkMode }}>
       <Typography align="center" id="volume-slider" gutterBottom>
         Temperature
       </Typography>
@@ -75,6 +82,11 @@ export function TemperatureControls() {
 const POW = 0.5;
 
 const TemperatureControlsStyles = styled.div`
+  color: ${(p) => (p.isDarkMode ? lightText : darkText)};
+  text-shadow: ${(p) => (p.isDarkMode ? lightTextShadow : darkTextShadow)};
+  .MuiSlider-root {
+    color: hsl(0, 0%, ${(p) => (p.isDarkMode ? 70 : 30)}%);
+  }
   .grid {
     display: grid;
     grid-template-columns: auto 1fr auto;

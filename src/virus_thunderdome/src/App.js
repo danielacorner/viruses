@@ -13,6 +13,8 @@ import { CellAndAntibodyButtons } from "./components/CellAndAntibodyButtons/Cell
 import { useLocalStorageState } from "./utils/useLocalStorageState";
 import { AttributionLinks } from "./AttributionLinks";
 import styled from "styled-components/macro";
+import { isDarkModeAtom } from "../../store";
+import { useAtom } from "jotai";
 function App() {
   useMount(() => {
     render(
@@ -20,6 +22,8 @@ function App() {
       document.getElementById("memoryStats")
     );
   });
+  // const [isDarkMode] = useAtom(isDarkModeAtom);
+
   return (
     <div className="App">
       <LoadingIndicator />

@@ -5,7 +5,7 @@ import styled from "styled-components/macro";
 import { atomWithStorage } from "jotai/utils";
 import { useAtom } from "jotai";
 import { BREAKPOINT_MOBILE } from "../../utils/constants";
-import { isAudioPlayingAtom } from "../../store";
+import { isAudioPlayingAtom, isDarkModeAtom } from "../../store";
 
 /** show or hide the info overlay */
 export default function AudioSoundButton({ title, href }) {
@@ -15,9 +15,11 @@ export default function AudioSoundButton({ title, href }) {
     title,
     href,
   };
+  const [isDarkMode] = useAtom(isDarkModeAtom);
+
   return (
     <>
-      <SoundButtonStyles>
+      <SoundButtonStyles {...{ isDarkMode }}>
         <Tooltip title={isAudioPlaying ? "mute 🔈" : "unmute 🔊"}>
           <IconButton onClick={() => setIsAudioPlaying(!isAudioPlaying)}>
             {isAudioPlaying ? <VolumeUp /> : <VolumeMute />}
@@ -48,7 +50,7 @@ const SoundButtonStyles = styled.div`
   display: flex;
   align-items: center;
   .MuiButtonBase-root {
-    color: hsla(0, 100%, 0%, 0.5);
+    color: hsla(0, 0%, ${(p) => (p.isDarkMode ? 100 : 0)}%, 0.5);
     position: relative;
   }
   .soundInfo {

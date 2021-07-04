@@ -17,11 +17,6 @@ export default function BottomControls() {
         grid-template-columns: 1fr auto;
         align-items: center;
         grid-gap: 2em;
-        color: ${darkText};
-        text-shadow: ${darkTextShadow};
-        .MuiSlider-root {
-          color: hsl(0, 0%, 30%);
-        }
       `}
     >
       {/* <ShuffleControls /> */}
