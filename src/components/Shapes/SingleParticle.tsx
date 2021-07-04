@@ -6,7 +6,7 @@ import { scaleAtom, useStore } from "../../store";
 import * as THREE from "three";
 import { useChangeVelocityWhenTemperatureChanges } from "./useChangeVelocityWhenTemperatureChanges";
 import styled from "styled-components/macro";
-import { Html } from "@react-three/drei";
+import { Html, useDetectGPU } from "@react-three/drei";
 import { toConvexProps } from "./toConvexProps";
 import { useAtom } from "jotai";
 
@@ -23,7 +23,6 @@ export function InteractiveParticle(props) {
 
   const set = useStore((s) => s.set);
   const [scale, setScale] = useAtom(scaleAtom);
-  console.log("🌟🚨 ~ InteractiveParticle ~ scale", scale);
   const isTooltipMaximized = useStore((s) => s.isTooltipMaximized);
   const selectedProtein = useStore((s) => s.selectedProtein);
   const isSelectedProtein =
@@ -155,22 +154,24 @@ function HighlightParticle() {
 export function useShouldRenderParticle(radius: number) {
   const [scale, setScale] = useAtom(scaleAtom);
   const worldRadius = useStore((s) => s.worldRadius);
+  const gpuInfo = useDetectGPU();
 
-  return getShouldRenderParticle(scale, radius, worldRadius);
+  return getShouldRenderParticle(scale, radius, worldRadius, gpuInfo);
 }
 
 // particle must be within this radius range at the current scale
-const BIGGEST_PARTICLE_RADIUS = 0.2;
-const SMALLEST_PARTICLE_RADIUS = 0.05;
+const MAX_PARTICLE_RADIUS = 0.2;
+const MIN_PARTICLE_RADIUS = 0.05;
 export function getShouldRenderParticle(
   scale: number,
   radius: number,
-  worldRadius: number
+  worldRadius: number,
+  gpuInfo?: any
 ) {
   const particleSize = scale * radius;
-  const tooBigToRender = particleSize > worldRadius * BIGGEST_PARTICLE_RADIUS;
-  const tooSmallToRender =
-    particleSize < worldRadius * SMALLEST_PARTICLE_RADIUS;
+  const tooBigToRender =
+    particleSize > worldRadius * (gpuInfo?.tier >= 3 ? 0.18 : 0.15);
+  const tooSmallToRender = particleSize < worldRadius * MIN_PARTICLE_RADIUS;
   return !(tooBigToRender || tooSmallToRender);
 }
 

@@ -5,7 +5,7 @@ import styled from "styled-components/macro";
 import { useFrame } from "@react-three/fiber";
 import { CanvasAndSceneEmpty } from "../../CanvasAndSceneEmpty";
 import * as Sentry from "@sentry/react";
-import { scaleAtom, useStore } from "../../store";
+import { isDarkModeAtom, scaleAtom, useStore } from "../../store";
 import { useAtom } from "jotai";
 import { MIN_SCALE, MAX_SCALE } from "../../utils/constants";
 import { SpinningParticle } from "./SpinningParticle";
@@ -42,7 +42,7 @@ export function LoadingIndicator() {
   useDetectStuckOnLoading();
   const { active, progress, errors, item, loaded, total } = useProgress();
   // const active = true;
-
+  const [isDarkMode] = useAtom(isDarkModeAtom);
   return errors.length > 0 ? (
     <div
       style={{ maxWidth: "100vw", wordBreak: "break-all", padding: "0 6em" }}
@@ -68,7 +68,7 @@ export function LoadingIndicator() {
       />
       <CanvasAndSceneEmpty isLoadingIndicator={true}>
         <SpinningParticle />
-        <DarkModeBackground />
+        {isDarkMode && <DarkModeBackground />}
       </CanvasAndSceneEmpty>
       {/* <CenteredSpinner /> */}
     </Sentry.ErrorBoundary>

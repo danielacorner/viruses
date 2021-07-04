@@ -26,7 +26,9 @@ const SH1_140 = React.lazy(() => import("../components/GLTFs/viruses/SH1_140"));
 const Varicella_zoster_300 = React.lazy(
   () => import("../components/GLTFs/viruses/Varicella_zoster_300")
 );
-const HIV_200 = React.lazy(() => import("../components/GLTFs/viruses/HIV_200"));
+const HIV_1200 = React.lazy(
+  () => import("../../../components/GLTFs/viruses/HIV_1200")
+);
 const Spiroplasma_50 = React.lazy(
   () => import("../components/GLTFs/viruses/Spiroplasma_50")
 );
@@ -401,7 +403,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
         "Varicella-zoster virus (VZV), a member of the Alphaherpesvirinae subfamily, causes severe diseases in humans of all ages. The viral capsids play critical roles in herpesvirus infection, making them potential antiviral targets. Here, we present the 3.7-Å-resolution structure of the VZV A-capsid and define the molecular determinants underpinning the assembly of this complicated viral machinery. Overall, the VZV capsid has a similar architecture to that of other known herpesviruses. The major capsid protein (MCP) assembles into pentons and hexons, forming extensive intra- and inter-capsomer interaction networks that are further secured by the small capsid protein (SCP) and the heterotriplex. The structure reveals a pocket beneath the floor of MCP that could potentially be targeted by antiviral inhibitors. In addition, we identified two alphaherpesvirus-specific structural features in SCP and Tri1 proteins. These observations highlight the divergence of different herpesviruses and provide an important basis for developing antiviral drugs.",
     },
     {
-      Component: HIV_200,
+      Component: HIV_1200,
       name: "HIV",
       type: PROTEIN_TYPES.virus,
       PDBUrl: "https://www.rcsb.org/structure/3J3Y",
@@ -410,7 +412,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       radius: 540,
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 20,
-      pathToGLTF: "/models/viruses/HIV_200.glb",
+      pathToGLTF: "/models/viruses/HIV_1200.glb",
       pathToImage: "/models/viruses/hiv.webp",
       interactive: true,
       authors:

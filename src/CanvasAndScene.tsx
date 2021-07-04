@@ -27,6 +27,7 @@ export default function CanvasAndScene({ renderProteins = true }) {
       }}
     >
       <Canvas
+        mode="concurrent"
         onCreated={({ gl }) => {
           gl.shadowMap.enabled = true;
           gl.shadowMap.type = THREE.PCFShadowMap;

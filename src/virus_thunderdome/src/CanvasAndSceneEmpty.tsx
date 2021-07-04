@@ -24,6 +24,7 @@ export function CanvasAndSceneEmpty({
     : React.Fragment;
   return (
     <Canvas
+      mode="concurrent"
       onCreated={({ gl }) => {
         gl.shadowMap.enabled = true;
         gl.shadowMap.type = THREE.PCFShadowMap;
