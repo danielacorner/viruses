@@ -1,11 +1,12 @@
 import React, { useRef } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
+import { getIsTouchDevice } from "../../../../getIsTouchDevice";
 
 export function Lighting() {
   return (
     <>
       <color attach="background" args={["#ffffff"] as any} />
-      <LightFollowsMouse />
+      {!getIsTouchDevice() && <LightFollowsMouse />}
 
       {/* <SpotLightOnSelectedProtein /> */}
       <ambientLight intensity={0.3} />

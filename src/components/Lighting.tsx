@@ -1,11 +1,13 @@
 import React, { useRef } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
+import { getIsTouchDevice } from "../getIsTouchDevice";
+import { useStore } from "../store";
 
 export function Lighting() {
   return (
     <>
       <color attach="background" args={["#ffffff"] as any} />
-      {/* <LightFollowsMouse /> */}
+      {!getIsTouchDevice() && <LightFollowsMouse />}
 
       {/* <SpotLightOnSelectedProtein /> */}
       <ambientLight intensity={0.3} />
@@ -92,17 +94,31 @@ export function Lighting() {
 function LightFollowsMouse() {
   const light = useRef(null as any);
   const { viewport, mouse } = useThree();
+  const wr = useStore((s) => s.worldRadius);
 
-  useFrame((state) => {
+  useFrame(({ camera }) => {
     // Makes the light follow the mouse
     light.current?.position.set(
-      (mouse.x * viewport.width) / 2,
-      (mouse.y * viewport.height) / 2,
-      0
+      mouse.x * viewport.width,
+      // (mouse.x * viewport.width) / 2,
+      mouse.y * viewport.height,
+      // y2 + (mouse.y * viewport.height) / 2,
+      -camera.position.z
     );
   });
 
   return (
-    <pointLight ref={light} distance={60} intensity={0.2} color="lightblue" />
+    <>
+      {/* <mesh ref={light}>
+        <meshBasicMaterial color="black" />
+        <boxBufferGeometry args={[1, 1, 1]} />
+      </mesh> */}
+      <pointLight
+        ref={light}
+        distance={60}
+        intensity={10.2}
+        color="lightblue"
+      />
+    </>
   );
 }
