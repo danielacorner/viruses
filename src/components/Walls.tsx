@@ -20,7 +20,7 @@ export function Walls() {
       rotation: [0 * Math.PI, 0, 0],
       color: colors[1],
       position: [0, -0, -worldRadius],
-      reflect: true,
+      // reflect: true,
     },
     // {/* in front (camera-side) */}
     {
@@ -34,28 +34,28 @@ export function Walls() {
       rotation: [0, 0.5 * Math.PI, 0],
       color: colors[1],
       position: [-worldRadius, 0, 0],
-      reflect: true,
+      // reflect: true,
     },
     // {/* right */}
     {
       rotation: [0, -0.5 * Math.PI, 0],
       color: colors[2],
       position: [worldRadius, -0, 0],
-      reflect: true,
+      // reflect: true,
     },
     // {/* floor */}
     {
       rotation: [-0.5 * Math.PI, 0, 0],
       color: colors[1],
       position: [0, -worldRadius, 0],
-      reflect: true,
+      // reflect: true,
     },
     // {/* ceiling */}
     {
       rotation: [0.5 * Math.PI, 0, 0],
       color: colors[1],
       position: [0, worldRadius, 0],
-      reflect: true,
+      // reflect: true,
     },
   ];
   const scalePct = useScalePercent();
