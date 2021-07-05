@@ -17,6 +17,8 @@ import {
   BREAKPOINT_TABLET,
   CUSTOM_SCROLLBAR_CSS,
 } from "../../utils/constants";
+import { useAtom } from "jotai";
+import { isDarkModeAtom } from "../../../../store";
 
 const TOOLTIP = {
   height: 442,
@@ -32,7 +34,7 @@ const SelectedParticleTooltip = () => {
   );
   const isTabletOrLarger = useMediaQuery(`(min-width: ${BREAKPOINT_TABLET}px)`);
   const isHorizontalLayout = isTooltipMaximized && isDesktopOrLarger;
-
+  const [isDarkMode] = useAtom(isDarkModeAtom);
   return selectedProtein ? (
     <>
       <Modal open={isTooltipMaximized}>
@@ -44,12 +46,14 @@ const SelectedParticleTooltip = () => {
             maximized={true}
             isDesktopOrLarger={isDesktopOrLarger}
             isHorizontalLayout={isHorizontalLayout}
+            {...{ isDarkMode }}
           >
             <TooltipContent />
           </TooltipStyles>
         </ClickAwayListener>
       </Modal>
       <TooltipStyles
+        {...{ isDarkMode }}
         height={TOOLTIP.height * (isTabletOrLarger ? 1 : 0.85)}
         width={TOOLTIP.width * (isTabletOrLarger ? 1 : 0.7)}
         isDesktopOrLarger={isDesktopOrLarger}
@@ -304,7 +308,7 @@ const TooltipStyles = styled.div`
         text-align: center;
         width: 100%;
         padding: 0.5em;
-        background: white;
+        background: ${props.isDarkMode ? "hsla(0,0%,0%,0.8)" : "white"};
         box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.31);
         `
           : `
@@ -332,7 +336,7 @@ const TooltipStyles = styled.div`
       ${(props) =>
         props.maximized
           ? `
-          background: white;
+          background: ${props.isDarkMode ? "hsla(0,0%,0%,0.8)" : "white"};
     `
           : ""}
       overflow: ${(props) => (props.maximized ? "auto" : "visible")};
@@ -395,7 +399,13 @@ const TooltipStyles = styled.div`
       }
       .imgWrapper {
         position: relative;
-        background: ${(props) => (props.maximized ? "white" : "none")};
+        background: ${(props) =>
+          props.maximized
+            ? props.isDarkMode
+              ? "hsla(0,0%,0%,0.8)"
+              : "white"
+            : "none"};
+
         img {
           width: 100%;
           height: 100%;
@@ -406,12 +416,12 @@ const TooltipStyles = styled.div`
       button {
         font-size: 32px;
         position: absolute;
-        color: black;
+        color: ${(p) => (p.isDarkMode ? "white" : "black")};
         z-index: 3;
       }
 
       .pubmedAbstract {
-        background: white;
+        color: ${(p) => (p.isDarkMode ? "black" : "white")};
         ${(props) =>
           props.maximized && !props.isDesktopOrLarger
             ? `

@@ -19,9 +19,10 @@ import {
 } from "../utils/constants";
 import { useAtom } from "jotai";
 const TOOLTIP = {
-  height: 442,
+  height: 454,
   width: 300,
 };
+const darkBackground = "hsla(0,0%,0%,0.6)";
 
 const Tooltip = () => {
   const isTooltipMaximized = useStore((s) => s.isTooltipMaximized);
@@ -45,6 +46,7 @@ const Tooltip = () => {
             maximized={true}
             isDesktopOrLarger={isDesktopOrLarger}
             isHorizontalLayout={isHorizontalLayout}
+            {...{ isDarkMode }}
           >
             <TooltipContent />
           </TooltipStyles>
@@ -262,10 +264,8 @@ const TitleSectionStyledA = styled.a`
     font-style: italic;
     color: hsl(0, 0%, ${(p) => (p.isDarkMode ? 80 : 50)}%);
   }
-  a {
-    color: #14bcff;
-  }
   .title {
+    color: ${(p) => (p.isDarkMode ? "#a0e4ff" : "#14bcff")};
     font-size: 1.2em;
     line-height: 1.2em;
   }
@@ -281,13 +281,13 @@ const TitleSectionStyledA = styled.a`
     align-items: center;
   }
   .MuiSvgIcon-root {
-    color: hsla(0, 0%, ${(p) => (p.isDarkmode ? 60 : 40)}%, 0.2);
+    color: hsla(0, 0%, ${(p) => (p.isDarkMode ? 100 : 40)}%, 0.2);
   }
   &:hover {
     background: ${(p) => (p.isTooltipMaximized ? "" : "$$$")}
-      hsla(0, 0%, ${(p) => (p.isDarkmode ? 100 : 0)}%, 0.05);
+      hsla(0, 0%, ${(p) => (p.isDarkMode ? 100 : 0)}%, 0.05);
     .MuiSvgIcon-root {
-      color: hsla(0, 0%, ${(p) => (p.isDarkmode ? 100 : 0)}%, 0.5);
+      color: hsla(0, 0%, ${(p) => (p.isDarkMode ? 100 : 0)}%, 0.5);
     }
   }
 `;
@@ -301,7 +301,10 @@ const TooltipStyles = styled.div`
   }
   position: fixed;
   overflow: ${(props) => (props.maximized ? "hidden" : "visible")};
-  ${(props) => (props.maximized ? "background: white;" : "")}
+  ${(props) =>
+    props.maximized
+      ? `background: ${props.isDarkMode ? darkBackground : "white"};`
+      : ""}
   bottom: ${(props) => (props.maximized ? 32 : 12)}px;
   left: ${(props) => (props.maximized ? 32 : 0)}px;
   ${(props) =>
@@ -327,7 +330,7 @@ const TooltipStyles = styled.div`
       background-image: linear-gradient(
         to bottom,
         transparent calc(100% - 32px),
-        white
+        ${props.isDarkMode ? darkBackground : "white"}
       );
       height: 100%;
       width: 100%;
@@ -367,10 +370,11 @@ const TooltipStyles = styled.div`
           props.maximized ? "1fr" : "5em"};
       grid-gap: 0.5em;
       position: relative;
-      text-shadow: 0px 1px 4px ${(p) => (p.isDarkMode ? "black" : "white")},
-        0px 1px 4px ${(p) => (p.isDarkMode ? "black" : "white")},
-        0px 1px 4px ${(p) => (p.isDarkMode ? "black" : "white")},
-        0px 1px 4px ${(p) => (p.isDarkMode ? "black" : "white")};
+      text-shadow: ${(p) =>
+        `0px 1px 4px
+          ${p.isDarkMode ? "hsla(0,0%,0%,0.3), " : "white, "}`
+          .repeat(4)
+          .slice(0, -2)};
       .details {
         display: grid;
         height: fit-content;
@@ -402,7 +406,13 @@ const TooltipStyles = styled.div`
       }
       .imgWrapper {
         position: relative;
-        background: ${(props) => (props.maximized ? "white" : "none")};
+
+        background: ${(props) =>
+          props.maximized
+            ? props.isDarkMode
+              ? darkBackground
+              : "white"
+            : "none"};
         max-height: 800px;
         max-width: 800px;
         margin: auto;
@@ -411,13 +421,10 @@ const TooltipStyles = styled.div`
           height: 100%;
           object-fit: contain;
           box-sizing: border-box;
+          ${(p) => (p.isDarkMode ? "opacity: 0.7;" : "")}
         }
       }
-      button {
-        font-size: 32px;
-        position: absolute;
-        color: black;
-      }
+
       .btnClose {
         position: absolut;
         top: 0;
@@ -436,8 +443,15 @@ const TooltipStyles = styled.div`
         bottom: 0em;
         right: 0em;
       }
+      button {
+        font-size: 32px;
+        position: absolute;
+        color: ${(p) => (p.isDarkMode ? "white" : "black")};
+        z-index: 3;
+      }
+
       .pubmedAbstract {
-        background: ${(p) => (p.isDarkMode ? "none" : "white")};
+        color: ${(p) => (p.isDarkMode ? "white" : "black")};
         ${(props) =>
           props.maximized && !props.isDesktopOrLarger
             ? `
