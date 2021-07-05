@@ -1,7 +1,14 @@
 import React from "react";
 import { usePlane } from "@react-three/cannon";
-import { Reflector, useMatcapTexture, useTexture } from "@react-three/drei";
+import {
+  Reflector,
+  useDetectGPU,
+  useMatcapTexture,
+  useTexture,
+} from "@react-three/drei";
 import { DISTORTION_TEXTURE } from "../../utils/constants";
+import { useAtom } from "jotai";
+import { isDarkModeAtom } from "../../store";
 
 export function Plane({
   width = 100,
@@ -24,6 +31,9 @@ export function Plane({
   // useNormalTexture https://github.com/pmndrs/drei#usenormaltexture
   // const distortionTexture = useTexture(DISTORTION_TEXTURE);
 
+  const { tier } = useDetectGPU();
+
+  const [isDarkMode] = useAtom(isDarkModeAtom);
   return (
     <mesh ref={ref} /* receiveShadow */>
       {reflect ? (
@@ -32,13 +42,13 @@ export function Plane({
           <Reflector
             {...({} as any)}
             args={[1, 1]} // PlaneBufferGeometry arguments
-            resolution={256} // Off-buffer resolution, lower=faster, higher=better quality
-            mirror={0.5} // Mirror environment, 0 = texture colors, 1 = pick up env colors
-            mixBlur={1.0} // How much blur mixes with surface roughness (default = 0), note that this can affect performance
-            mixStrength={0.5} // Strength of the reflections
-            depthScale={1} // Scale the depth factor (0 = no depth, default = 0)
-            minDepthThreshold={0.9} // Lower edge for the depthTexture interpolation (default = 0)
-            maxDepthThreshold={1} // Upper edge for the depthTexture interpolation (default = 0)
+            resolution={tier >= 3 ? 512 : 256} // Off-buffer resolution, lower=faster, higher=better quality
+            mirror={isDarkMode ? 0.8 : 0.5} // Mirror environment, 0 = texture colors, 1 = pick up env colors
+            // mixBlur={1.0} // How much blur mixes with surface roughness (default = 0), note that this can affect performance
+            mixStrength={isDarkMode ? 0.2 : 1} // Strength of the reflections
+            // depthScale={0.5} // Scale the depth factor (0 = no depth, default = 0)
+            // minDepthThreshold={0.9} // Lower edge for the depthTexture interpolation (default = 0)
+            // maxDepthThreshold={1} // Upper edge for the depthTexture interpolation (default = 0)
             depthToBlurRatioBias={0.25} // Adds a bias factor to the depthTexture before calculating the blur amount [blurFactor = blurTexture * (depthTexture + bias)]. It accepts values between 0 and 1, default is 0.25. An amount > 0 of bias makes sure that the blurTexture is not too sharp because of the multiplication with the depthTexture
             distortion={0} // Amount of distortion based on the distortionMap texture
             // distortionMap={distortionTexture} // The red channel of this texture is used as the distortion map. Default is null
@@ -55,6 +65,10 @@ export function Plane({
             {(Material, props) => (
               <>
                 <Material {...props} />
+                <planeGeometry
+                  attach="geometry"
+                  args={[width, height, widthSegments, heightSegments]}
+                />
               </>
             )}
           </Reflector>

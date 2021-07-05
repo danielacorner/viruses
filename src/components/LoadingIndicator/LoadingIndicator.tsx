@@ -126,13 +126,14 @@ const SDiv = styled.div`
   bottom: 0;
   display: grid;
   place-items: center;
+  color: ${(p) => (p.isDarkMode ? "white" : "black")};
 `;
 export function HasRunOutOfMemory() {
   const hasRunOutOfMemory = useStore((s) => s.hasRunOutOfMemory);
-
+  const [isDarkMode] = useAtom(isDarkModeAtom);
   return (
     hasRunOutOfMemory && (
-      <SDiv>
+      <SDiv {...{ isDarkMode }}>
         <Typography variant="h6" className="oops">
           Oops, looks like it{"'"}s not loading... try again?
         </Typography>
