@@ -159,9 +159,9 @@ export function useShouldRenderParticle(radius: number) {
   return getShouldRenderParticle(scale, radius, worldRadius, gpuInfo);
 }
 
+const MAX_PARTICLE_RADIUS = { mobile: 0.15, desktop: 0.18 };
+const MIN_PARTICLE_RADIUS = { mobile: 0.07, desktop: 0.05 };
 // particle must be within this radius range at the current scale
-const MAX_PARTICLE_RADIUS = 0.2;
-const MIN_PARTICLE_RADIUS = 0.05;
 export function getShouldRenderParticle(
   scale: number,
   radius: number,
@@ -170,8 +170,17 @@ export function getShouldRenderParticle(
 ) {
   const particleSize = scale * radius;
   const tooBigToRender =
-    particleSize > worldRadius * (gpuInfo?.tier >= 3 ? 0.18 : 0.15);
-  const tooSmallToRender = particleSize < worldRadius * MIN_PARTICLE_RADIUS;
+    particleSize >
+    worldRadius *
+      (gpuInfo?.tier >= 3
+        ? MAX_PARTICLE_RADIUS.desktop
+        : MAX_PARTICLE_RADIUS.mobile);
+  const tooSmallToRender =
+    particleSize <
+    worldRadius *
+      (gpuInfo?.tier >= 3
+        ? MIN_PARTICLE_RADIUS.desktop
+        : MIN_PARTICLE_RADIUS.mobile);
   return !(tooBigToRender || tooSmallToRender);
 }
 

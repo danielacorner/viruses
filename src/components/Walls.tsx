@@ -12,6 +12,7 @@ const colors = ["#69d2e7", "#a7dbd8", "#e0e4cc", "#f38630", "#fa6900"];
 // const palette = niceColors[6]; // e.g. => [ "#69d2e7", "#a7dbd8", "#e0e4cc", "#f38630", "#fa6900" ]
 export function Walls() {
   const { tier } = useDetectGPU();
+  const reflect = tier >= 4;
   const worldRadius = useStore((state) => state.worldRadius);
   // const palette = ["#69d2e7", "#a7dbd8", "#e0e4cc", "#f38630", "#fa6900"];
   const walls = [
@@ -20,7 +21,7 @@ export function Walls() {
       rotation: [0 * Math.PI, 0, 0],
       color: colors[1],
       position: [0, -0, -worldRadius],
-      // reflect: true,
+      reflect,
     },
     // {/* in front (camera-side) */}
     {
@@ -34,28 +35,28 @@ export function Walls() {
       rotation: [0, 0.5 * Math.PI, 0],
       color: colors[1],
       position: [-worldRadius, 0, 0],
-      // reflect: true,
+      reflect,
     },
     // {/* right */}
     {
       rotation: [0, -0.5 * Math.PI, 0],
       color: colors[2],
       position: [worldRadius, -0, 0],
-      // reflect: true,
+      reflect,
     },
     // {/* floor */}
     {
       rotation: [-0.5 * Math.PI, 0, 0],
       color: colors[1],
       position: [0, -worldRadius, 0],
-      // reflect: true,
+      reflect,
     },
     // {/* ceiling */}
     {
       rotation: [0.5 * Math.PI, 0, 0],
       color: colors[1],
       position: [0, worldRadius, 0],
-      // reflect: true,
+      reflect,
     },
   ];
   const scalePct = useScalePercent();
