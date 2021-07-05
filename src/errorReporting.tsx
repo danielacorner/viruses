@@ -18,8 +18,7 @@ if (process.env.NODE_ENV === "production") {
     `Setting up error reporting service, env: ${process.env.NODE_ENV}`
   );
   Sentry.init({
-    dsn:
-      "https://6712fd5790fe4b5ba7e75a21954bfcc1@o576653.ingest.sentry.io/5730520",
+    dsn: "https://6712fd5790fe4b5ba7e75a21954bfcc1@o576653.ingest.sentry.io/5730520",
 
     // tracing
     integrations: [new Integrations.BrowserTracing()],

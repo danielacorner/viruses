@@ -9,6 +9,7 @@ import {
   Typography,
   useMediaQuery,
 } from "@material-ui/core";
+import { OpenInNew } from "@material-ui/icons";
 import { startCase } from "lodash";
 import {
   BREAKPOINT_DESKTOP,
@@ -124,6 +125,7 @@ function TooltipContent() {
     />
   );
   const isHorizontalLayout = isTooltipMaximized && isDesktopOrLarger;
+  const [isDarkMode] = useAtom(isDarkModeAtom);
   return (
     <div
       className="overflowWrapper"
@@ -152,20 +154,37 @@ function TooltipContent() {
       ) : null}
       <div className="tooltipContent">
         {isTooltipMaximized ? <BtnClose /> : null}
-        <div className="titleSection">
-          <a
-            href={selectedProtein.PDBUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+        <TitleSectionStyledA
+          className="titleSection"
+          href={selectedProtein.PDBUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          {...{
+            isHorizontalLayout,
+            isTooltipMaximized,
+            isDarkMode,
+          }}
+        >
+          <div className="titleAndSubtitle">
             <Typography className="title" variant="body1">
               {startCase(selectedProtein.name)}
             </Typography>
-          </a>
-          <Typography variant="subtitle1" style={{ whiteSpace: "nowrap" }}>
-            {selectedProtein.type}
-          </Typography>
-        </div>
+            <Typography variant="subtitle1" style={{ whiteSpace: "nowrap" }}>
+              {selectedProtein.type}
+            </Typography>
+          </div>
+          {isTooltipMaximized && (
+            <div className="imgAndLinkIcon">
+              <OpenInNew />
+              <img
+                id="rcsblogo"
+                src="https://cdn.rcsb.org/rcsb-pdb/v2/common/images/rcsb_logo.png"
+                data-src="https://cdn.rcsb.org/rcsb-pdb/v2/common/images/rcsb_logo.png"
+                alt="RCSB PDB"
+              />
+            </div>
+          )}
+        </TitleSectionStyledA>
 
         <div className="details">
           <div className="measurement weight">
@@ -225,6 +244,53 @@ function TooltipContent() {
 function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+
+const TitleSectionStyledA = styled.a`
+  padding: 10px;
+  margin: -10px -10px 10px;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  text-align: left;
+  ${(p) =>
+    p.isHorizontalLayout || p.isTooltipMaximized ? "" : "height: 1.5em;"}
+  grid-template-rows: 1fr auto;
+  align-content: end;
+  align-items: center;
+  grid-gap: 0.5em;
+  h6 {
+    font-style: italic;
+    color: hsl(0, 0%, ${(p) => (p.isDarkMode ? 80 : 50)}%);
+  }
+  a {
+    color: #14bcff;
+  }
+  .title {
+    font-size: 1.2em;
+    line-height: 1.2em;
+  }
+  #rcsblogo {
+    height: 36px;
+  }
+  .MuiTypography-subtitle1 {
+    line-height: 2em;
+  }
+  .imgAndLinkIcon {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .MuiSvgIcon-root {
+    color: hsla(0, 0%, ${(p) => (p.isDarkmode ? 60 : 40)}%, 0.2);
+  }
+  &:hover {
+    background: ${(p) => (p.isTooltipMaximized ? "" : "$$$")}
+      hsla(0, 0%, ${(p) => (p.isDarkmode ? 100 : 0)}%, 0.05);
+    .MuiSvgIcon-root {
+      color: hsla(0, 0%, ${(p) => (p.isDarkmode ? 100 : 0)}%, 0.5);
+    }
+  }
+`;
 
 const TooltipStyles = styled.div`
   width: ${(props) => props.width}px;
@@ -305,28 +371,6 @@ const TooltipStyles = styled.div`
         0px 1px 4px ${(p) => (p.isDarkMode ? "black" : "white")},
         0px 1px 4px ${(p) => (p.isDarkMode ? "black" : "white")},
         0px 1px 4px ${(p) => (p.isDarkMode ? "black" : "white")};
-      .titleSection {
-        text-align: left;
-        display: grid;
-        ${(props) =>
-          props.isHorizontalLayout || props.maximized ? "" : "height: 1.5em;"}
-        grid-template-rows: 1fr auto;
-        align-content: end;
-        align-items: center;
-        grid-gap: 0.5em;
-        h6 {
-          font-style: italic;
-          color: hsl(0, 0%, ${(p) => (p.isDarkMode ? 80 : 50)}%);
-          line-height: 1em;
-        }
-        a {
-          color: #14bcff;
-        }
-        .title {
-          font-size: 1.2em;
-          line-height: 1.2em;
-        }
-      }
       .details {
         display: grid;
         height: fit-content;

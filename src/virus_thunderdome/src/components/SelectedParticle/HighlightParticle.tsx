@@ -5,7 +5,7 @@ import { Html } from "@react-three/drei";
 import { useAtom } from "jotai";
 import { scaleAtom } from "../../../../store";
 
-export function HighlightParticle() {
+export function FloatingHtmlOverlayCircle() {
   const selectedProtein = useStore((s) => s.selectedProtein);
   const [scale, setScale] = useAtom(scaleAtom);
   return selectedProtein ? (
@@ -15,8 +15,9 @@ export function HighlightParticle() {
   ) : null;
 }
 const CircleOutline = styled.div`
-  border: 2px solid #ff4775;
+  border: 2px solid #838383;
   box-sizing: border-box;
+  background: white;
   border-radius: 50%;
   width: ${(props) => props.radius * 2}px;
   height: ${(props) => props.radius * 2}px;

@@ -3,6 +3,7 @@ import { useStore } from "../store";
 import { Plane } from "./Shapes/Plane";
 import { useScalePercent } from "./useScalePercent";
 import { ScaleIndicator } from "./ScaleIndicator";
+import { useDetectGPU } from "@react-three/drei";
 // const colors = niceColors[17];
 const colors = ["#69d2e7", "#a7dbd8", "#e0e4cc", "#f38630", "#fa6900"];
 
@@ -10,6 +11,7 @@ const colors = ["#69d2e7", "#a7dbd8", "#e0e4cc", "#f38630", "#fa6900"];
 // https://raw.githubusercontent.com/Jam3/nice-color-palettes/HEAD/visualize/1000.png
 // const palette = niceColors[6]; // e.g. => [ "#69d2e7", "#a7dbd8", "#e0e4cc", "#f38630", "#fa6900" ]
 export function Walls() {
+  const { tier } = useDetectGPU();
   const worldRadius = useStore((state) => state.worldRadius);
   // const palette = ["#69d2e7", "#a7dbd8", "#e0e4cc", "#f38630", "#fa6900"];
   const walls = [

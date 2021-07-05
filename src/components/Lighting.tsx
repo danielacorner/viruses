@@ -13,7 +13,8 @@ export function Lighting() {
 
       {/* <SpotLightOnSelectedProtein /> */}
       <ambientLight intensity={0.3} />
-      {/* <pointLight position={[-10, -10, -10]} intensity={1} /> */}
+      <pointLight position={[-10, -10, -10]} intensity={1} />
+
       <spotLight
         position={[10, 10, 10]}
         angle={0.5}
@@ -100,6 +101,7 @@ function LightFollowsMouse() {
 
   useFrame(({ camera }) => {
     // Makes the light follow the mouse
+    // TODO: rotate with camera rotation
     light.current?.position.set(
       mouse.x * viewport.width,
       // (mouse.x * viewport.width) / 2,
@@ -119,7 +121,7 @@ function LightFollowsMouse() {
       <pointLight
         ref={light}
         distance={60}
-        intensity={isDarkMode ? 1 : 10.2}
+        intensity={isDarkMode ? 1 : 0.03}
         color="lightblue"
       />
     </>
