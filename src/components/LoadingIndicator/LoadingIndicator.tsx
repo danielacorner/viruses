@@ -39,6 +39,7 @@ function useDetectStuckOnLoading() {
 }
 
 export function LoadingIndicator() {
+  const [isDarkMode] = useAtom(isDarkModeAtom);
   useDetectStuckOnLoading();
   const { active, progress, errors, item, loaded, total } = useProgress();
   // const active = true;
@@ -54,7 +55,7 @@ export function LoadingIndicator() {
         return null;
       }}
     >
-      <LoadingIndicatorStyles>
+      <LoadingIndicatorStyles {...{ isDarkMode }}>
         <div>
           {loaded}/{total} models loaded
         </div>{" "}
@@ -89,6 +90,7 @@ const LoadingIndicatorStyles = styled.div`
   grid-template-columns: 16vw 1fr;
   grid-gap: 1em;
   word-break: break-all;
+  color: ${(p) => (p.isDarkMode ? "white" : "black")};
 `;
 
 // function useInterval({ cb, interval }) {

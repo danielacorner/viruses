@@ -7,7 +7,7 @@ import { useGLTF } from "../../../utils/useGltf";
 
 export default function Model(props) {
   const group = useRef();
-  const { nodes } = useGLTF("/models/viruses/HIV_1200.glb");
+  const { nodes } = useGLTF("/models/viruses/HIV_1200_draco.glb");
   return (
     <group ref={group} {...props} dispose={null}>
       <mesh
@@ -4718,4 +4718,4 @@ export default function Model(props) {
   );
 }
 
-// useGLTF.preload('/models/viruses/HIV_1200.glb')
+// useGLTF.preload('/models/viruses/HIV_1200_draco.glb')
