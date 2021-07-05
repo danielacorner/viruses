@@ -270,18 +270,36 @@ const TitleSectionStyledA = styled.a`
     line-height: 1.2em;
   }
   #rcsblogo {
-    height: 36px;
+    height: 18px;
   }
   .MuiTypography-subtitle1 {
     line-height: 2em;
   }
   .imgAndLinkIcon {
     display: flex;
+    margin-top: 4px;
+    margin-right: 4px;
     gap: 10px;
-    align-items: center;
+    align-self: end;
+    flex-direction: column-reverse;
+    align-items: flex-end;
   }
   .MuiSvgIcon-root {
+    height: 0.8em;
+    width: 0.8em;
     color: hsla(0, 0%, ${(p) => (p.isDarkMode ? 100 : 40)}%, 0.2);
+  }
+  @media (min-width: ${BREAKPOINT_MOBILE}px) {
+    .imgAndLinkIcon {
+      align-self: unset;
+    }
+    #rcsblogo {
+      height: 36px;
+    }
+    .MuiSvgIcon-root {
+      height: 1em;
+      width: 1em;
+    }
   }
   &:hover {
     background: ${(p) => (p.isTooltipMaximized ? "" : "$$$")}
