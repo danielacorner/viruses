@@ -608,26 +608,26 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       pubmedAbstract:
         "We report the crystal structure of a novel 60-subunit dodecahedral cage that results from self-assembly of a re-engineered version of a natural protein (PduA) from the Pdu microcompartment shell. Biophysical data illustrate the dependence of assembly on solution conditions, opening up new applications in microcompartment studies and nanotechnology.",
     },
-    {
-      Component: A_circularly_permuted_pdu_a_forming_an_icosahedral_cage_20,
-      name: "A circularly permuted PduA forming an icosahedral cage",
-      type: PROTEIN_TYPES.nanotech,
-      PDBUrl: "https://www.rcsb.org/structure/5HPN",
-      mass: 43.99,
-      // atomCount: 99723, // PDB
-      radius: 56, // measured using PDB 3d viewer e.g. https://www.rcsb.org/3d-view/6CGR/1
-      atomCount: 2890,
-      numIcosahedronFaces: 20,
-      numAsymmetricUnits: 12,
-      pathToGLTF:
-        "/models/nanotech/a_circularly_permuted_pdu_a_forming_an_icosahedral_cage_20_draco.glb",
-      pathToImage:
-        "/models/nanotech/a_circularly_permuted_pdu_a_forming_an_icosahedral_cage.webp",
-      interactive: true,
-      authors: "Jorda, J., Leibly, D.J., Thompson, M.C., Yeates, T.O.",
-      pubmedAbstract:
-        "We report the crystal structure of a novel 60-subunit dodecahedral cage that results from self-assembly of a re-engineered version of a natural protein (PduA) from the Pdu microcompartment shell. Biophysical data illustrate the dependence of assembly on solution conditions, opening up new applications in microcompartment studies and nanotechnology.",
-    },
+    // {
+    //   Component: A_circularly_permuted_pdu_a_forming_an_icosahedral_cage_20,
+    //   name: "A circularly permuted PduA forming an icosahedral cage",
+    //   type: PROTEIN_TYPES.nanotech,
+    //   PDBUrl: "https://www.rcsb.org/structure/5HPN",
+    //   mass: 43.99,
+    //   // atomCount: 99723, // PDB
+    //   radius: 56, // measured using PDB 3d viewer e.g. https://www.rcsb.org/3d-view/6CGR/1
+    //   atomCount: 2890,
+    //   numIcosahedronFaces: 20,
+    //   numAsymmetricUnits: 12,
+    //   pathToGLTF:
+    //     "/models/nanotech/a_circularly_permuted_pdu_a_forming_an_icosahedral_cage_20_draco.glb",
+    //   pathToImage:
+    //     "/models/nanotech/a_circularly_permuted_pdu_a_forming_an_icosahedral_cage.webp",
+    //   interactive: true,
+    //   authors: "Jorda, J., Leibly, D.J., Thompson, M.C., Yeates, T.O.",
+    //   pubmedAbstract:
+    //     "We report the crystal structure of a novel 60-subunit dodecahedral cage that results from self-assembly of a re-engineered version of a natural protein (PduA) from the Pdu microcompartment shell. Biophysical data illustrate the dependence of assembly on solution conditions, opening up new applications in microcompartment studies and nanotechnology.",
+    // },
     {
       Component: Computationally_designed_mini_tetraloop_tetraloop_receptor_10,
       name: "Computationally designed mini tetraloop-tetraloop receptor by the RNAMake program",
