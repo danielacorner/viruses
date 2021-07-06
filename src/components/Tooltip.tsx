@@ -380,7 +380,9 @@ const TooltipStyles = styled.div`
           : ""}
       opacity: ${(props) => (props.maximized ? 1 : 0.8)};
       box-sizing: border-box;
-      color: ${(p) => (p.isDarkMode ? "white" : "black")};
+      .MuiSvgIcon-root {
+        color: hsla(0, 0%, ${(p) => (p.isDarkMode ? 0 : 0)}%, 0.5);
+      }
       display: grid;
       grid-template-rows: auto ${(props) =>
           props.maximized && props.isHorizontalLayout ? 1.5 : 2}em ${(props) =>
