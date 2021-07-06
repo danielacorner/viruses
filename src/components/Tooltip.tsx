@@ -248,8 +248,8 @@ function numberWithCommas(x) {
 }
 
 const TitleSectionStyledA = styled.a`
-  padding: 10px;
-  margin: -10px -10px 10px;
+  padding: 20px;
+  margin: -20px -20px 10px;
   display: flex;
   gap: 10px;
   justify-content: space-between;
@@ -301,9 +301,19 @@ const TitleSectionStyledA = styled.a`
       width: 1em;
     }
   }
+  ${(p) =>
+    p.isTooltipMaximized
+      ? `
+  background: hsla(0, 0%, ${p.isDarkMode ? 100 : 0}%, 0.03);
+  `
+      : ""}
   &:hover {
-    background: ${(p) => (p.isTooltipMaximized ? "" : "$$$")}
-      hsla(0, 0%, ${(p) => (p.isDarkMode ? 100 : 0)}%, 0.05);
+    ${(p) =>
+      p.isTooltipMaximized
+        ? `
+  background: hsla(0, 0%, ${p.isDarkMode ? 100 : 0}%, 0.05);
+  `
+        : ""}
     .MuiSvgIcon-root {
       color: hsla(0, 0%, ${(p) => (p.isDarkMode ? 100 : 0)}%, 0.5);
     }
@@ -313,7 +323,7 @@ const TitleSectionStyledA = styled.a`
 const TooltipStyles = styled.div`
   width: ${(props) => props.width}px;
   height: ${(props) => props.height}px;
-  border-radius: 4px;
+  border-radius: 30px;
   @media (min-width: ${BREAKPOINT_MOBILE}px) {
     transform: unset;
   }

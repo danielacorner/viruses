@@ -40,9 +40,9 @@ export function TemperatureControls() {
 
   return (
     <TemperatureControlsStyles {...{ isDarkMode }}>
-      <Typography align="center" id="volume-slider" gutterBottom>
+      {/* <Typography align="center" id="volume-slider" gutterBottom>
         Temperature
-      </Typography>
+      </Typography> */}
       <div className="grid">
         <div className="grid-item">
           <AcUnit />

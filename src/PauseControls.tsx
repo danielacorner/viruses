@@ -42,7 +42,7 @@ export function PauseControls() {
       onClick={() => handlePauseUnpause()}
     >
       <Typography align="center" id="volume-slider">
-        {paused ? "Play" : "Pause"}
+        {/* {paused ? "Play" : "Pause"} */}
       </Typography>
       <Grid container spacing={2}>
         <Grid item>

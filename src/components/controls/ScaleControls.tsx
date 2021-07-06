@@ -31,7 +31,7 @@ export function ScaleControls() {
   return (
     <ScaleControlsStyles {...{ isLandscape, isDarkMode }}>
       <Typography align="center" id="volume-slider" gutterBottom>
-        Scale
+        {/* Scale */}
       </Typography>
       <div className="grid">
         <div className="grid-item">
@@ -70,7 +70,7 @@ const ScaleControlsStyles = styled.div`
   display: grid;
   grid-template-rows: auto 1fr;
   justify-items: center;
-  right: 16px;
+  right: 6px;
   bottom: 124px;
   height: calc(100vh - 248px);
   min-height: 50vh;
