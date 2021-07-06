@@ -13,7 +13,7 @@ const colors = ["#69d2e7", "#a7dbd8", "#e0e4cc", "#f38630", "#fa6900"];
 export function Walls() {
   const { tier } = useDetectGPU();
   // const reflect = tier >= 2;
-  const reflect = true;
+  const reflect = false;
   console.log("🌟🚨 ~ Walls ~ tier", tier);
   // const reflect = tier >= 4;
   const worldRadius = useStore((state) => state.worldRadius);
