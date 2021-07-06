@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Tour from "reactour";
 import styled from "styled-components/macro";
 import { getIsTouchDevice } from "../getIsTouchDevice";
-import { useStore } from "../store";
+import { isDarkModeAtom, useStore } from "../store";
 import { atomWithStorage } from "jotai/utils";
 import { useAtom } from "jotai";
 const isFirstVisitAtom = atomWithStorage("isFirstVisit", true);
@@ -15,6 +15,7 @@ const GuidedTour = () => {
   // show the tour if it's our first time visiting the app
   const [isFirstVisit, setIsFirstVisit] = useAtom(isFirstVisitAtom);
   const [isTourOpen, setIsTourOpen] = useState(false);
+  const [isDarkMode] = useAtom(isDarkModeAtom);
 
   return !started ? null : (
     <>
@@ -28,7 +29,7 @@ const GuidedTour = () => {
         badgeContent={(curr, tot) => `${curr}/${tot}`}
       />
 
-      <ButtonStartTour {...{ setIsTourOpen, isFirstVisit }} />
+      <ButtonStartTour {...{ setIsTourOpen, isFirstVisit, isDarkMode }} />
       <LinkToGithub />
       <InitialTerrariumPositionStyles />
       <FullScreenPositionStyles />
@@ -81,6 +82,9 @@ const ButtonStartTourStyles = styled.div`
   position: fixed;
   top: 0.5em;
   left: 0.5em;
+  .MuiSvgIcon-root {
+    color: hsla(0, 0%, ${(p) => (p.isDarkMode ? 100 : 0)}%, 0.5);
+  }
 `;
 
 const SQUARE_WIDTH = 700;

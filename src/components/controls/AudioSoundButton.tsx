@@ -6,6 +6,7 @@ import { atomWithStorage } from "jotai/utils";
 import { useAtom } from "jotai";
 import { BREAKPOINT_MOBILE } from "../../utils/constants";
 import { isAudioPlayingAtom, isDarkModeAtom } from "../../store";
+import { getIsTouchDevice } from "../../getIsTouchDevice";
 
 /** show or hide the info overlay */
 export default function AudioSoundButton({ title, href }) {
@@ -19,7 +20,7 @@ export default function AudioSoundButton({ title, href }) {
 
   return (
     <>
-      <SoundButtonStyles {...{ isDarkMode }}>
+      <SoundButtonStyles {...{ isDarkMode, isAudioPlaying }}>
         <Tooltip title={isAudioPlaying ? "mute 🔈" : "unmute 🔊"}>
           <IconButton onClick={() => setIsAudioPlaying(!isAudioPlaying)}>
             {isAudioPlaying ? <VolumeUp /> : <VolumeMute />}
@@ -54,6 +55,7 @@ const SoundButtonStyles = styled.div`
     position: relative;
   }
   .soundInfo {
+    padding: 20px 0;
     font-size: 16px;
     @media (min-width: ${BREAKPOINT_MOBILE}px) {
       font-size: 18px;
@@ -63,11 +65,14 @@ const SoundButtonStyles = styled.div`
     a {
       color: hsla(0, 100%, 0%, 0.5);
     }
-    opacity: 0;
+    opacity: ${(p) => (p.isAudioPlaying && getIsTouchDevice() ? 0.5 : 0)};
+    max-width: calc(100vw - ${3 * 32}px);
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   &:hover {
     .soundInfo {
-      opacity: 0.5;
+      opacity: ${() => (getIsTouchDevice() ? `$$$` : 0.5)};
     }
   }
 `;
