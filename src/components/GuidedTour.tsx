@@ -54,8 +54,8 @@ function LinkToGithub() {
           style={{
             position: "fixed",
             opacity: selectedProtein ? 0.2 : 0.6,
-            bottom: 8,
-            left: 8,
+            bottom: 16,
+            left: 16,
             transform: "scale(0.9)",
           }}
         >
