@@ -1,5 +1,5 @@
 import React from "react";
-import { useStore, GlobalStateType } from "../store";
+import { useStore } from "../store";
 import { useGLTF } from "../utils/useGltf";
 
 const CELLS = [
@@ -12,7 +12,7 @@ const CELLS = [
 ];
 const SCALE = 0.2;
 export default function Cells() {
-  const worldRadius = useStore((s: GlobalStateType) => s.worldRadius);
+  const worldRadius = useStore((s) => s.worldRadius);
   return (
     <>
       {CELLS.map(({ Component, ...rest }, idx) => {

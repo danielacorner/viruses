@@ -12,7 +12,7 @@ type SelectedProtein = Protein & {
   api: any;
 };
 
-export type GlobalStateType = {
+type GlobalStateType = {
   worldRadius: number;
   temperature: number;
   isTooltipMaximized: boolean;

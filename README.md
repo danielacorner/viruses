@@ -1,4 +1,13 @@
-# Hey, welcome to my virus terrarium 🦠
+# Hey, welcome to my virus terrarium! 🦠
+
+<p align="center">
+<a href="https://open.vscode.dev/danielacorner/viruses">
+        <img src="https://open.vscode.dev/badges/open-in-vscode.svg"
+            alt="follow on Twitter"></a>
+<a href="https://twitter.com/intent/follow?screen_name=danielacorner">
+        <img src="https://img.shields.io/twitter/follow/danielacorner?style=social&logo=twitter"
+            alt="follow on Twitter"></a>
+</p>
 
 I used [ChimeraX](https://www.rbvi.ucsf.edu/chimerax/download.html) to visualize virus capsid data from the [Protein DataBank (PDB)](https://www.rcsb.org/), and export .glb files
 
