@@ -7,9 +7,8 @@ import { useDetectGPU } from "@react-three/drei";
 const colors = ["#69d2e7", "#a7dbd8", "#e0e4cc", "#f38630", "#fa6900"];
 
 export function Walls() {
-  const { tier } = useDetectGPU();
-  const reflect = true;
-  console.log("🌟🚨 ~ Walls ~ tier", tier);
+  const { tier, isMobile } = useDetectGPU();
+  const reflect = tier >= 3 && !isMobile;
   const worldRadius = useStore((state) => state.worldRadius);
   const walls = [
     // {/* behind (back wall) */}
