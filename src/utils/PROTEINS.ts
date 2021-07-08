@@ -282,43 +282,43 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       pubmedAbstract:
         "Herpes simplex viruses (HSVs) rely on capsid-associated tegument complex (CATC) for long-range axonal transport of their genome-containing capsids between sites of infection and neuronal cell bodies. Here we report cryo-electron microscopy structures of the HSV-1 capsid with CATC up to 3.5-angstrom resolution and atomic models of multiple conformers of capsid proteins VP5, VP19c, VP23, and VP26 and tegument proteins pUL17, pUL25, and pUL36. Crowning every capsid vertex are five copies of heteropentameric CATC, each containing a pUL17 monomer supporting the coiled-coil helix bundle of a pUL25 dimer and a pUL36 dimer, thus positioning their flexible domains for potential involvement in nuclear capsid egress and axonal capsid transport. Notwithstanding newly discovered fold conservation between triplex proteins and bacteriophage λ protein gpD and the previously recognized bacteriophage HK97 gp5-like fold in VP5, HSV-1 capsid proteins exhibit extraordinary diversity in forms of domain insertion and conformational polymorphism, not only for interactions with tegument proteins but also for encapsulation of large genomes.",
     },
-    {
-      Component: Nodavirus_40_radial,
-      name: "Penaeus vannamei nodavirus",
-      type: PROTEIN_TYPES.virus,
-      PDBUrl: "https://www.rcsb.org/structure/6AB6",
-      mass: 121.03,
-      atomCount: 7256,
-      radius: 180,
-      numIcosahedronFaces: 20,
-      numAsymmetricUnits: 20,
-      pathToGLTF:
-        "/models/viruses/Penaeus_vannamei_nodavirus_40_radial_draco.glb",
-      pathToImage: "/models/viruses/Penaeus_vannamei_nodavirus_radial.png",
-      interactive: true,
-      authors:
-        "Chen, N.C., Yoshimura, M., Miyazaki, N., Guan, H.H., Chuankhayan, P., Lin, C.C., Chen, S.K., Lin, P.J., Huang, Y.C., Iwasaki, K., Nakagawa, A., Chan, S.I., Chen, C.J.",
-      pubmedAbstract:
-        "Shrimp nodaviruses, including Penaeus vannamei (PvNV) and Macrobrachium rosenbergii nodaviruses (MrNV), cause white-tail disease in shrimps, with high mortality. The viral capsid structure determines viral assembly and host specificity during infections. Here, we show cryo-EM structures of T  = 3 and T  = 1 PvNV-like particles (PvNV-LPs), crystal structures of the protrusion-domains (P-domains) of PvNV and MrNV, and the crystal structure of the ∆N-ARM-PvNV shell-domain (S-domain) in T  = 1 subviral particles. The capsid protein of PvNV reveals five domains: the P-domain with a new jelly-roll structure forming cuboid-like spikes; the jelly-roll S-domain with two calcium ions; the linker between the S- and P-domains exhibiting new cross and parallel conformations; the N-arm interacting with nucleotides organized along icosahedral two-fold axes; and a disordered region comprising the basic N -terminal arginine-rich motif (N-ARM) interacting with RNA. The N-ARM controls T  = 3 and T  = 1 assemblies. Increasing the N / C -termini flexibility leads to particle polymorphism. Linker flexibility may influence the dimeric-spike arrangement.",
-    },
-    {
-      Component: SH1_140,
-      name: "SH1 virus",
-      type: PROTEIN_TYPES.virus,
-      PDBUrl: "https://www.rcsb.org/structure/6QT9",
-      mass: 604.19,
-      atomCount: 42370,
-      radius: 400,
-      numIcosahedronFaces: 20,
-      numAsymmetricUnits: 20,
-      pathToGLTF: "/models/viruses/SH1_140_draco.glb",
-      pathToImage: "/models/viruses/sh1.webp",
-      interactive: true,
-      authors:
-        "Colibus, L., Roine, E., Walter, T.S., Ilca, S.L., Wang, X., Wang, N., Roseman, A.M., Bamford, D., Huiskonen, J.T., Stuart, D.I.",
-      pubmedAbstract:
-        "Many of the largest known viruses belong to the PRD1-adeno structural lineage characterised by conserved pseudo-hexameric capsomers composed of three copies of a single major capsid protein (MCP). Here, by high-resolution cryo-EM analysis, we show that a class of archaeal viruses possess hetero-hexameric MCPs which mimic the PRD1-adeno lineage trimer. These hetero-hexamers are built from heterodimers and utilise a jigsaw-puzzle system of pegs and holes, and underlying minor capsid proteins, to assemble the capsid laterally from the 5-fold vertices. At these vertices proteins engage inwards with the internal membrane vesicle whilst 2-fold symmetric horn-like structures protrude outwards. The horns are assembled from repeated globular domains attached to a central spine, presumably facilitating multimeric attachment to the cell receptor. Such viruses may represent precursors of the main PRD1-adeno lineage, similarly engaging cell-receptors via 5-fold spikes and using minor proteins to define particle size.",
-    },
+    // {
+    //   Component: Nodavirus_40_radial,
+    //   name: "Penaeus vannamei nodavirus",
+    //   type: PROTEIN_TYPES.virus,
+    //   PDBUrl: "https://www.rcsb.org/structure/6AB6",
+    //   mass: 121.03,
+    //   atomCount: 7256,
+    //   radius: 180,
+    //   numIcosahedronFaces: 20,
+    //   numAsymmetricUnits: 20,
+    //   pathToGLTF:
+    //     "/models/viruses/Penaeus_vannamei_nodavirus_40_radial_draco.glb",
+    //   pathToImage: "/models/viruses/Penaeus_vannamei_nodavirus_radial.png",
+    //   interactive: true,
+    //   authors:
+    //     "Chen, N.C., Yoshimura, M., Miyazaki, N., Guan, H.H., Chuankhayan, P., Lin, C.C., Chen, S.K., Lin, P.J., Huang, Y.C., Iwasaki, K., Nakagawa, A., Chan, S.I., Chen, C.J.",
+    //   pubmedAbstract:
+    //     "Shrimp nodaviruses, including Penaeus vannamei (PvNV) and Macrobrachium rosenbergii nodaviruses (MrNV), cause white-tail disease in shrimps, with high mortality. The viral capsid structure determines viral assembly and host specificity during infections. Here, we show cryo-EM structures of T  = 3 and T  = 1 PvNV-like particles (PvNV-LPs), crystal structures of the protrusion-domains (P-domains) of PvNV and MrNV, and the crystal structure of the ∆N-ARM-PvNV shell-domain (S-domain) in T  = 1 subviral particles. The capsid protein of PvNV reveals five domains: the P-domain with a new jelly-roll structure forming cuboid-like spikes; the jelly-roll S-domain with two calcium ions; the linker between the S- and P-domains exhibiting new cross and parallel conformations; the N-arm interacting with nucleotides organized along icosahedral two-fold axes; and a disordered region comprising the basic N -terminal arginine-rich motif (N-ARM) interacting with RNA. The N-ARM controls T  = 3 and T  = 1 assemblies. Increasing the N / C -termini flexibility leads to particle polymorphism. Linker flexibility may influence the dimeric-spike arrangement.",
+    // },
+    // {
+    //   Component: SH1_140,
+    //   name: "SH1 virus",
+    //   type: PROTEIN_TYPES.virus,
+    //   PDBUrl: "https://www.rcsb.org/structure/6QT9",
+    //   mass: 604.19,
+    //   atomCount: 42370,
+    //   radius: 400,
+    //   numIcosahedronFaces: 20,
+    //   numAsymmetricUnits: 20,
+    //   pathToGLTF: "/models/viruses/SH1_140_draco.glb",
+    //   pathToImage: "/models/viruses/sh1.webp",
+    //   interactive: true,
+    //   authors:
+    //     "Colibus, L., Roine, E., Walter, T.S., Ilca, S.L., Wang, X., Wang, N., Roseman, A.M., Bamford, D., Huiskonen, J.T., Stuart, D.I.",
+    //   pubmedAbstract:
+    //     "Many of the largest known viruses belong to the PRD1-adeno structural lineage characterised by conserved pseudo-hexameric capsomers composed of three copies of a single major capsid protein (MCP). Here, by high-resolution cryo-EM analysis, we show that a class of archaeal viruses possess hetero-hexameric MCPs which mimic the PRD1-adeno lineage trimer. These hetero-hexamers are built from heterodimers and utilise a jigsaw-puzzle system of pegs and holes, and underlying minor capsid proteins, to assemble the capsid laterally from the 5-fold vertices. At these vertices proteins engage inwards with the internal membrane vesicle whilst 2-fold symmetric horn-like structures protrude outwards. The horns are assembled from repeated globular domains attached to a central spine, presumably facilitating multimeric attachment to the cell receptor. Such viruses may represent precursors of the main PRD1-adeno lineage, similarly engaging cell-receptors via 5-fold spikes and using minor proteins to define particle size.",
+    // },
     {
       Component: Faust_1200_1,
       name: "Faustovirus",
@@ -428,24 +428,24 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       pubmedAbstract:
         "Spiroplasma virus, SpV4, is a small, non-enveloped virus that infects the helical mollicute Spiroplasma melliferum. SpV4 exhibits several similarities to the Chlamydia phage, Chp1, and the Coliphages alpha 3, phi K, G4 and phi X174. All of these viruses are members of the Microviridae. These viruses have isometric capsids with T = 1 icosahedral symmetry, cause lytic infections and are the only icosahedral phages that contain single-stranded circular DNA genomes. The aim of this comparative study on these phages was to understand the role of their capsid proteins during host receptor recognition.",
     },
-    {
-      Component: Sindbis_70,
-      name: "Sindbis virus",
-      type: PROTEIN_TYPES.virus,
-      PDBUrl: "https://www.rcsb.org/structure/1Z8Y",
-      mass: 258.38,
-      atomCount: 18071,
-      radius: 300,
-      numIcosahedronFaces: 20,
-      numAsymmetricUnits: 20,
-      pathToGLTF: "/models/viruses/Sindbis_70_draco.glb",
-      pathToImage: "/models/viruses/sindbis.webp",
-      interactive: true,
-      authors:
-        "Mukhopadhyay, S., Zhang, W., Gabler, S., Chipman, P.R., Strauss, E.G., Strauss, J.H., Baker, T.S., Kuhn, R.J., Rossmann, M.G.",
-      pubmedAbstract:
-        "The 9 A resolution cryo-electron microscopy map of Sindbis virus presented here provides structural information on the polypeptide topology of the E2 protein, on the interactions between the E1 and E2 glycoproteins in the formation of a heterodimer, on the difference in conformation of the two types of trimeric spikes, on the interaction between the transmembrane helices of the E1 and E2 proteins, and on the conformational changes that occur when fusing with a host cell. The positions of various markers on the E2 protein established the approximate topology of the E2 structure. The largest conformational differences between the icosahedral surface spikes at icosahedral 3-fold and quasi-3-fold positions are associated with the monomers closest to the 5-fold axes. The long E2 monomers, containing the cell receptor recognition motif at their extremities, are shown to rotate by about 180 degrees and to move away from the center of the spikes during fusion.",
-    },
+    // {
+    //   Component: Sindbis_70,
+    //   name: "Sindbis virus",
+    //   type: PROTEIN_TYPES.virus,
+    //   PDBUrl: "https://www.rcsb.org/structure/1Z8Y",
+    //   mass: 258.38,
+    //   atomCount: 18071,
+    //   radius: 300,
+    //   numIcosahedronFaces: 20,
+    //   numAsymmetricUnits: 20,
+    //   pathToGLTF: "/models/viruses/Sindbis_70_draco.glb",
+    //   pathToImage: "/models/viruses/sindbis.webp",
+    //   interactive: true,
+    //   authors:
+    //     "Mukhopadhyay, S., Zhang, W., Gabler, S., Chipman, P.R., Strauss, E.G., Strauss, J.H., Baker, T.S., Kuhn, R.J., Rossmann, M.G.",
+    //   pubmedAbstract:
+    //     "The 9 A resolution cryo-electron microscopy map of Sindbis virus presented here provides structural information on the polypeptide topology of the E2 protein, on the interactions between the E1 and E2 glycoproteins in the formation of a heterodimer, on the difference in conformation of the two types of trimeric spikes, on the interaction between the transmembrane helices of the E1 and E2 proteins, and on the conformational changes that occur when fusing with a host cell. The positions of various markers on the E2 protein established the approximate topology of the E2 structure. The largest conformational differences between the icosahedral surface spikes at icosahedral 3-fold and quasi-3-fold positions are associated with the monomers closest to the 5-fold axes. The long E2 monomers, containing the cell receptor recognition motif at their extremities, are shown to rotate by about 180 degrees and to move away from the center of the spikes during fusion.",
+    // },
     {
       Component: Poliovirus_50,
       name: "Poliovirus",
