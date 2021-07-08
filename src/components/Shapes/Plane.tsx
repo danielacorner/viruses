@@ -42,7 +42,7 @@ export function Plane({
           <Reflector
             {...({} as any)}
             args={[1, 1]} // PlaneBufferGeometry arguments
-            resolution={tier >= 3 ? 512 : 256} // Off-buffer resolution, lower=faster, higher=better quality
+            resolution={tier >= 4 ? 512 : 256} // Off-buffer resolution, lower=faster, higher=better quality
             mirror={isDarkMode ? 0.8 : 0.5} // Mirror environment, 0 = texture colors, 1 = pick up env colors
             // mixBlur={1.0} // How much blur mixes with surface roughness (default = 0), note that this can affect performance
             mixStrength={isDarkMode ? 0.2 : 1} // Strength of the reflections

@@ -9,6 +9,7 @@ const colors = ["#69d2e7", "#a7dbd8", "#e0e4cc", "#f38630", "#fa6900"];
 export function Walls() {
   const { tier, isMobile } = useDetectGPU();
   const reflect = tier >= 3 && !isMobile;
+  const reflectHighend = tier >= 4 && !isMobile;
   const worldRadius = useStore((state) => state.worldRadius);
   const walls = [
     // {/* behind (back wall) */}
@@ -30,14 +31,14 @@ export function Walls() {
       rotation: [0, 0.5 * Math.PI, 0],
       color: colors[1],
       position: [-worldRadius, 0, 0],
-      reflect,
+      reflect: reflectHighend,
     },
     // {/* right */}
     {
       rotation: [0, -0.5 * Math.PI, 0],
       color: colors[2],
       position: [worldRadius, -0, 0],
-      reflect,
+      reflect: reflectHighend,
     },
     // {/* floor */}
     {
