@@ -37,11 +37,12 @@ export default function CanvasAndScene({ renderProteins = true }) {
       >
         {/* <color attach="background" args={["red"]} /> */}
 
-        {getIsTouchDevice() ? (
+        <OrbitControls {...({} as any)} />
+        {/* {getIsTouchDevice() ? (
           <DeviceOrientationOrbitControls />
         ) : (
           <OrbitControls {...({} as any)} />
-        )}
+        )} */}
         <Scene />
       </Canvas>
       {/* {process.env.NODE_ENV === "development" && isTabletOrLarger ? (
