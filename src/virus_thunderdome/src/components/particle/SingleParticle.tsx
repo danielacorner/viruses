@@ -136,6 +136,7 @@ function InteractiveParticle(props: ParticleProps) {
   useJitterPhysicsParticle({
     ref,
     api,
+    mass,
   });
   // useJitterRefParticle({
   //   mass,
