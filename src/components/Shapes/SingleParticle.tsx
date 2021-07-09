@@ -19,8 +19,16 @@ export function SingleParticle(props) {
 }
 /** interacts with other particles using @react-three/cannon */
 export function InteractiveParticle(props) {
-  const { position, Component, mass, numIcosahedronFaces } = props;
+  const {
+    position,
+    Component,
+    mass,
+    numIcosahedronFaces,
+    shouldRenderModel,
+    radius,
+  } = props;
 
+  const worldRadius = useStore((s) => s.worldRadius);
   const set = useStore((s) => s.set);
   const [scale, setScale] = useAtom(scaleAtom);
   const isTooltipMaximized = useStore((s) => s.isTooltipMaximized);
@@ -81,32 +89,11 @@ export function InteractiveParticle(props) {
     }
   };
 
-  // https://codeworkshop.dev/blog/2020-11-05-displacement-maps-normal-maps-and-textures-in-react-three-fiber/
-  // const displacementMap = useLoader(
-  //   THREE.TextureLoader,
-  //   "/images/maps/displacement-map.jpg"
-  // );
-  // const normalMap = useLoader(
-  //   THREE.TextureLoader,
-  //   "/images/maps/normal-map.jpg"
-  // );
-  // // apply texture on mount to all mesh nodes
-  // const circleRef = useRef(null as any);
-  // React.useEffect(() => {
-  //   if (ref.current) {
-  //     ref.current.traverse((node) => {
-  //       if ((node as any).material) {
-  //         (node as any).material.displacementMap = displacementMap;
-  //         (node as any).material.normalMap = normalMap;
-  //       }
-  //     });
-  //   }
-  //   if (circleRef.current) {
-  //     circleRef.current.material.map = displacementMap;
-  //     circleRef.current.material.displacementMap = displacementMap;
-  //     circleRef.current.material.normalMap = normalMap;
-  //   }
-  // }, []);
+  const actualRadius = radius * scale;
+  // bigger radius = smaller opacity
+  // 0 when radius = N * worldRadius
+  const opacity = (0.5 * worldRadius - actualRadius) / worldRadius;
+
   return (
     <mesh
       ref={ref}
@@ -115,17 +102,22 @@ export function InteractiveParticle(props) {
       onPointerUp={handlePointerUp}
     >
       {isSelectedProtein && !isTooltipMaximized ? <HighlightParticle /> : null}
-      <Component />
-      {/* <mesh ref={circleRef}>
-        <sphereBufferGeometry args={[10, 16, 16]} />
-        <meshStandardMaterial
-          attach="material"
-          color={"red"}
-          // map={displacementMap}
-          // displacementMap={displacementMap}
-          // normalMap={normalMap}
-        />
-      </mesh> */}
+      {shouldRenderModel ? (
+        <Component />
+      ) : opacity > 0 ? (
+        <mesh>
+          <sphereBufferGeometry args={[radius, 16, 16]} />
+          <meshStandardMaterial
+            attach="material"
+            color={"cornflowerblue"}
+            transparent={true}
+            opacity={opacity}
+            // map={displacementMap}
+            // displacementMap={displacementMap}
+            // normalMap={normalMap}
+          />
+        </mesh>
+      ) : null}
     </mesh>
   );
 }
