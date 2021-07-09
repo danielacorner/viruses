@@ -12,10 +12,18 @@ import { useAtom } from "jotai";
 
 /** Particle which can interact with others, or not (passes right through them) */
 export function SingleParticle(props) {
+  const [scale] = useAtom(scaleAtom);
+
+  const worldRadius = useStore((s) => s.worldRadius);
+  const actualRadius = props.radius * scale;
+  // bigger radius = smaller opacity
+  // 0 when radius = N * worldRadius
+  const opacity = (0.4 * worldRadius - actualRadius) / worldRadius;
+
   const Particle = props.interactive
     ? InteractiveParticle
     : NonInteractiveParticle;
-  return <Particle {...props} />;
+  return opacity > 0 ? <Particle {...props} {...{ opacity }} /> : null;
 }
 /** interacts with other particles using @react-three/cannon */
 export function InteractiveParticle(props) {
@@ -26,11 +34,11 @@ export function InteractiveParticle(props) {
     numIcosahedronFaces,
     shouldRenderModel,
     radius,
+    opacity,
   } = props;
 
-  const worldRadius = useStore((s) => s.worldRadius);
   const set = useStore((s) => s.set);
-  const [scale, setScale] = useAtom(scaleAtom);
+  const [scale] = useAtom(scaleAtom);
   const isTooltipMaximized = useStore((s) => s.isTooltipMaximized);
   const selectedProtein = useStore((s) => s.selectedProtein);
   const isSelectedProtein =
@@ -82,11 +90,6 @@ export function InteractiveParticle(props) {
       handleSetSelectedProtein();
     }
   };
-
-  const actualRadius = radius * scale;
-  // bigger radius = smaller opacity
-  // 0 when radius = N * worldRadius
-  const opacity = (0.4 * worldRadius - actualRadius) / worldRadius;
 
   return (
     <mesh
