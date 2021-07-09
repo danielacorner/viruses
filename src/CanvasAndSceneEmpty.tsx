@@ -48,7 +48,7 @@ export function CanvasAndSceneEmpty({
           <mesh scale={isLoadingIndicator ? [0.75, 0.75, 0.75] : [1, 1, 1]}>
             <Water />
             {children}
-            <Walls />
+            <Walls {...{ reflectAll: isLoadingIndicator }} />
             {isDarkMode && <DarkModeBackground />}
           </mesh>
         </Physics>
