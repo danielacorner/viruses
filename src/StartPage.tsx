@@ -18,7 +18,9 @@ export function StartPage() {
 
   const [protein1, protein2, protein3] = ALL_PROTEINS.filter((p) =>
     getShouldRenderParticle(scale, p.radius, worldRadius)
-  ).slice(0, 3);
+  )
+    .slice(0, 3)
+    .map((p) => ({ ...p, shouldRenderModel: true }));
   const [isDarkMode] = useAtom(isDarkModeAtom);
 
   return (
