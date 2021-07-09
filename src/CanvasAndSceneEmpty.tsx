@@ -35,7 +35,11 @@ export function CanvasAndSceneEmpty({
       {...(isLoadingIndicator
         ? { camera: { fov: 75, position: [0, 0, 15] } }
         : {})}
-      style={{ height: windowSize.height, width: windowSize.width }}
+      style={{
+        height: windowSize.height,
+        width: windowSize.width,
+        touchAction: "none",
+      }}
     >
       <Lighting />
       <SpinIfLoadingIndicator>

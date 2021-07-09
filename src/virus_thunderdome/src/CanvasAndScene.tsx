@@ -23,7 +23,11 @@ export default function CanvasAndScene({ renderProteins = true }) {
           gl.shadowMap.type = THREE.PCFShadowMap;
         }}
         gl={{ antialias: false, alpha: false }}
-        style={{ height: windowSize.height, width: windowSize.width }}
+        style={{
+          height: windowSize.height,
+          width: windowSize.width,
+          touchAction: "none",
+        }}
         camera={{ fov: 75, position: INITIAL_CAMERA_POSITION as any }}
       >
         <Scene />
