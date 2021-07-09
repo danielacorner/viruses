@@ -92,7 +92,7 @@ export function InteractiveParticle(props) {
   const actualRadius = radius * scale;
   // bigger radius = smaller opacity
   // 0 when radius = N * worldRadius
-  const opacity = (0.5 * worldRadius - actualRadius) / worldRadius;
+  const opacity = (0.4 * worldRadius - actualRadius) / worldRadius;
 
   return (
     <mesh
