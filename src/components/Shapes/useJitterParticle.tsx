@@ -5,6 +5,7 @@ import { useVelocity } from "./useVelocity";
 import { scaleAtom, useStore } from "../../store";
 import { useAtom } from "jotai";
 import { usePrevPosition, usePrevRotation } from "./usePrevPosition";
+import { MAX_SCALE, MIN_SCALE } from "../../utils/constants";
 
 export function useJitterRefParticle({ mass, ref }) {
   const { velocity } = useVelocity(mass);
@@ -52,12 +53,20 @@ export function useJitterPhysicsParticle({
   // ? ONLY when the temperature changes, change the velocity
 
   const prevPosition = usePrevPosition(api);
-  const prevRotation = usePrevRotation(api);
 
-  const { rPos, rRot } = useGetJitterPositions(mass);
+  const [scale] = useAtom(scaleAtom);
+  const { rPos } = useGetJitterPositions(mass);
 
+  // seems too jittery at > half scale
+  const scaledHalfwayUp = scale < (MAX_SCALE - MIN_SCALE) / 2;
   useFrame(() => {
-    if (paused || !api.position || !ref.current || !prevPosition.current) {
+    if (
+      paused ||
+      !api.position ||
+      !ref.current ||
+      !prevPosition.current ||
+      scaledHalfwayUp
+    ) {
       return;
     }
     // jitter position
