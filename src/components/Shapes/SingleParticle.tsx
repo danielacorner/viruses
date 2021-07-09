@@ -63,13 +63,7 @@ export function InteractiveParticle(props) {
     // },
   }));
 
-  useJitterRefParticle({
-    mass,
-    ref,
-    // api,
-  });
-
-  useClampAngularVelocity({ api });
+  // useClampAngularVelocity({ api });
 
   // when temperature changes, change particle velocity
   useChangeVelocityWhenTemperatureChanges({ mass, api });

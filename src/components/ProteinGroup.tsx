@@ -31,29 +31,19 @@ const ProteinGroup = (props) => {
     setPositionsArray,
     worldRadius
   );
+  const shouldRenderModel = useShouldRenderParticle(props.radius);
 
   return (
     <>
       {positionsArray.map((position) => (
-        <SingleParticleIfVisibleAtScale
+        <SingleParticle
           key={JSON.stringify(position)}
-          {...props}
-          position={position}
+          {...{ ...props, position, shouldRenderModel }}
         />
       ))}
     </>
   );
 };
-
-function SingleParticleIfVisibleAtScale(props) {
-  // const shouldRender = useShouldRenderParticle(props.radius);
-  const shouldRenderModel = useShouldRenderParticle(props.radius);
-  const shouldRender = true;
-
-  return shouldRender ? (
-    <SingleParticle {...{ ...props, shouldRenderModel }} />
-  ) : null;
-}
 
 export default ProteinGroup;
 
