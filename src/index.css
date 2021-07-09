@@ -17,8 +17,8 @@ code {
     monospace;
 }
 
-#memoryStats > div {
-  top: 4px;
+.memoryStats {
+  left: 48px !important;
 }
 .reactour__helper {
   line-height: 1.3em;

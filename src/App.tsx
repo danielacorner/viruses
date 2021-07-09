@@ -19,10 +19,11 @@ function App() {
   return (
     <div className="App">
       <ErrorBoundary boundaryTitle="App">
-        {process.env.NODE_ENV === "development" && <Stats />}
+        {process.env.NODE_ENV === "development" && (
+          <Stats className="memoryStats" />
+        )}
         <LoadingIndicator />
         <LazyLoadedScene />
-        <div id="memoryStats"></div>
         <Tooltip />
         <GuidedTour />
         <AudioSoundButton
