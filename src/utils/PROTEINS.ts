@@ -587,27 +587,27 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       authors: "Simmons, C.R., MacCulloch, T., Stephanopoulos, N., Yan, H.",
       pubmedAbstract: "To be published.",
     },
-    {
-      Component: Dna_crystals_containing_a_torsionally_stressed_component_20,
-      name: "Self-Assembling 3D DNA Crystals Containing a Torsionally Stressed Component",
-      type: PROTEIN_TYPES.nanotech,
-      PDBUrl: "https://www.rcsb.org/structure/5EOS",
-      mass: 12.8,
-      // atomCount: 99723, // PDB
-      radius: 38, // measured using PDB 3d viewer e.g. https://www.rcsb.org/3d-view/6CGR/1
-      atomCount: 858,
-      numIcosahedronFaces: 1,
-      numAsymmetricUnits: 1,
-      pathToGLTF:
-        "/models/nanotech/dna_crystals_containing_a_torsionally_stressed_component_20_draco.glb",
-      pathToImage:
-        "/models/nanotech/dna_crystals_containing_a_torsionally_stressed_component.webp",
-      interactive: true,
-      authors:
-        "Hernandez, C., Birktoft, J.J., Ohayon, Y.P., Chandrasekaran, A.R., Abdallah, H., Sha, R., Stojanoff, V., Mao, C., Seeman, N.C.",
-      pubmedAbstract:
-        "We report the crystal structure of a novel 60-subunit dodecahedral cage that results from self-assembly of a re-engineered version of a natural protein (PduA) from the Pdu microcompartment shell. Biophysical data illustrate the dependence of assembly on solution conditions, opening up new applications in microcompartment studies and nanotechnology.",
-    },
+    // {
+    //   Component: Dna_crystals_containing_a_torsionally_stressed_component_20,
+    //   name: "Self-Assembling 3D DNA Crystals Containing a Torsionally Stressed Component",
+    //   type: PROTEIN_TYPES.nanotech,
+    //   PDBUrl: "https://www.rcsb.org/structure/5EOS",
+    //   mass: 12.8,
+    //   // atomCount: 99723, // PDB
+    //   radius: 38, // measured using PDB 3d viewer e.g. https://www.rcsb.org/3d-view/6CGR/1
+    //   atomCount: 858,
+    //   numIcosahedronFaces: 1,
+    //   numAsymmetricUnits: 1,
+    //   pathToGLTF:
+    //     "/models/nanotech/dna_crystals_containing_a_torsionally_stressed_component_20_draco.glb",
+    //   pathToImage:
+    //     "/models/nanotech/dna_crystals_containing_a_torsionally_stressed_component.webp",
+    //   interactive: true,
+    //   authors:
+    //     "Hernandez, C., Birktoft, J.J., Ohayon, Y.P., Chandrasekaran, A.R., Abdallah, H., Sha, R., Stojanoff, V., Mao, C., Seeman, N.C.",
+    //   pubmedAbstract:
+    //     "We report the crystal structure of a novel 60-subunit dodecahedral cage that results from self-assembly of a re-engineered version of a natural protein (PduA) from the Pdu microcompartment shell. Biophysical data illustrate the dependence of assembly on solution conditions, opening up new applications in microcompartment studies and nanotechnology.",
+    // },
     // {
     //   Component: A_circularly_permuted_pdu_a_forming_an_icosahedral_cage_20,
     //   name: "A circularly permuted PduA forming an icosahedral cage",
