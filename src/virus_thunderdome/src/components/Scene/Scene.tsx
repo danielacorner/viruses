@@ -8,7 +8,6 @@ import { Water } from "./Water";
 import { ScaleIndicator } from "../../../../components/ScaleIndicator";
 import CellsModels from "../CellAndAntibodyButtons/CellsModels";
 import Game from "../Game/Game";
-import { usePlayAudioTrackOnStart } from "../music/useAudioTrack";
 import { useSpring, a } from "react-spring/three";
 import { useCameraY } from "./useCameraY";
 import { getIsTouchDevice } from "../../../../getIsTouchDevice";
@@ -56,12 +55,6 @@ function Debugger({ children }) {
   ) : (
     <>{children}</>
   );
-}
-
-function AudioTrack() {
-  // audio track
-  usePlayAudioTrackOnStart();
-  return null;
 }
 
 // PROTEINS.forEach(({ pathToGLTF }) => // useGLTF.preload(pathToGLTF));

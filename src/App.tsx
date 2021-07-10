@@ -14,8 +14,6 @@ import AudioSoundButton from "./components/controls/AudioSoundButton";
 import { StartPage } from "./StartPage";
 import { Stats } from "@react-three/drei";
 import DarkModeButton from "./components/controls/DarkModeButton";
-import innerLifeOfCellMusic from "./assets/music";
-import nopiAqiralMusic from "./virus_thunderdome/src/music/music";
 
 function App() {
   const startedThunderdome = useStore((s) => s.startedThunderdome);
@@ -39,7 +37,7 @@ function App() {
             {...{
               title: "Nōpi - Aqiral",
               href: "https://www.youtube.com/watch?v=c-o8o9cYJeY",
-              audioFile: nopiAqiralMusic,
+              audioFile: `${process.env.PUBLIC_URL}/audio/NopiAqiral.mp3`,
             }}
           />
         ) : (
@@ -47,7 +45,7 @@ function App() {
             {...{
               title: "Inner Life of the Cell - Protein Packing",
               href: "https://www.youtube.com/watch?v=uHeTQLNFTgU",
-              audioFile: innerLifeOfCellMusic,
+              audioFile: `${process.env.PUBLIC_URL}/audio/InnerLifeOfCell.mp3`,
             }}
           />
         )}

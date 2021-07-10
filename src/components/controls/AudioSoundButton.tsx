@@ -7,7 +7,6 @@ import { isAudioPlayingAtom, isDarkModeAtom } from "../../store";
 import { getIsTouchDevice } from "../../getIsTouchDevice";
 import { useEffect } from "react";
 import useSound from "use-sound";
-import { useMount } from "../../utils/utils";
 
 /** show or hide the info overlay */
 export default function AudioSoundButton({ title, href, audioFile }) {
