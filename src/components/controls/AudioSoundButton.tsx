@@ -13,7 +13,7 @@ import { useMount } from "../../utils/utils";
 export default function AudioSoundButton({ title, href, audioFile }) {
   const [isAudioPlaying, setIsAudioPlaying] = useAtom(isAudioPlayingAtom);
 
-  useAudioTrack(isAudioPlaying, audioFile);
+  useAudioTrack(audioFile);
 
   const [isDarkMode] = useAtom(isDarkModeAtom);
   return (
@@ -34,25 +34,27 @@ export default function AudioSoundButton({ title, href, audioFile }) {
   );
 }
 
-function useAudioTrack(isSoundOn, music) {
-  const [play, { isPlaying, pause }] = useSound(music, { volume: 1 });
-
-  useMount(() => {
-    if (isSoundOn) {
-      play();
-    }
-    return () => {
-      pause();
-    };
+function useAudioTrack(audioFile) {
+  const [isAudioPlaying, setIsAudioPlaying] = useAtom(isAudioPlayingAtom);
+  const [play, { isPlaying, pause }] = useSound(audioFile, {
+    volume: 1,
   });
 
+  // pause current music when we switch music
   useEffect(() => {
-    if (isSoundOn && !isPlaying) {
-      play();
-    } else if (!isSoundOn && isPlaying) {
+    if (isPlaying) {
       pause();
     }
-  }, [isSoundOn, isPlaying, play, pause]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [audioFile]);
+
+  useEffect(() => {
+    if (isAudioPlaying && !isPlaying) {
+      play();
+    } else if (!isAudioPlaying && isPlaying) {
+      pause();
+    }
+  }, [isAudioPlaying, isPlaying, play, pause]);
 }
 
 const SoundButtonStyles = styled.div`

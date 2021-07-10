@@ -83,7 +83,7 @@ export function StartPage() {
           variant="outlined"
           color="primary"
         >
-          Play Virus ⚡ Thunderdome
+          🚧🏗👷‍♀️ Play Virus ⚡ Thunderdome
         </Button>
       </StartPageStyles>
     </ErrorBoundary>

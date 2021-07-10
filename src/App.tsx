@@ -14,9 +14,12 @@ import AudioSoundButton from "./components/controls/AudioSoundButton";
 import { StartPage } from "./StartPage";
 import { Stats } from "@react-three/drei";
 import DarkModeButton from "./components/controls/DarkModeButton";
-import music from "./assets/music";
+import innerLifeOfCellMusic from "./assets/music";
+import nopiAqiralMusic from "./virus_thunderdome/src/music/music";
 
 function App() {
+  const startedThunderdome = useStore((s) => s.startedThunderdome);
+
   return (
     <div className="App">
       <ErrorBoundary boundaryTitle="App">
@@ -25,13 +28,29 @@ function App() {
         )}
         <LoadingIndicator />
         <LazyLoadedScene />
-        <Tooltip />
-        <GuidedTour />
-        <AudioSoundButton
-          title={"Inner Life of the Cell - Protein Packing"}
-          href={"https://www.youtube.com/watch?v=uHeTQLNFTgU"}
-          audioFile={music}
-        />
+        {startedThunderdome ? null : (
+          <>
+            <Tooltip />
+            <GuidedTour />
+          </>
+        )}
+        {startedThunderdome ? (
+          <AudioSoundButton
+            {...{
+              title: "Nōpi - Aqiral",
+              href: "https://www.youtube.com/watch?v=c-o8o9cYJeY",
+              audioFile: nopiAqiralMusic,
+            }}
+          />
+        ) : (
+          <AudioSoundButton
+            {...{
+              title: "Inner Life of the Cell - Protein Packing",
+              href: "https://www.youtube.com/watch?v=uHeTQLNFTgU",
+              audioFile: innerLifeOfCellMusic,
+            }}
+          />
+        )}
         <DarkModeButton />
         <HasRunOutOfMemory />
       </ErrorBoundary>

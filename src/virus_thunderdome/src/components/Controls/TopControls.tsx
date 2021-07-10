@@ -21,7 +21,7 @@ export default function TopControls() {
       `}
     >
       <ScaleControls />
-      <MuteControls />
+      {/* <MuteControls /> */}
       {/* <ShuffleControls /> */}
     </StyledDiv>
   );

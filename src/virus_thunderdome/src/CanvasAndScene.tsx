@@ -7,15 +7,17 @@ import { Canvas } from "@react-three/fiber";
 import SideControls from "./components/Controls/SideControls";
 import { BREAKPOINT_TABLET, INITIAL_CAMERA_POSITION } from "./utils/constants";
 import AudioSoundButton from "../../components/controls/AudioSoundButton";
+import music from "./music/music";
 
 export default function CanvasAndScene({ renderProteins = true }) {
   const windowSize = useWindowSize();
   return (
     <>
-      <AudioSoundButton
+      {/* <AudioSoundButton
         title={"Nōpi - Aqiral"}
         href={"https://www.youtube.com/watch?v=c-o8o9cYJeY"}
-      />
+        audioFile={music}
+      /> */}
       {/* <Controls.Provider> */}
       <Canvas
         onCreated={({ gl }) => {
