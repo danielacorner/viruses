@@ -505,24 +505,24 @@ export const PROTEINS: { [type: string]: Protein[] } = {
   // ANTIBODIES
   // ANTIBODIES
   antibodies: [
-    {
-      Component: Antibody_hiv_10,
-      name: "anti-HIV Antibody",
-      type: PROTEIN_TYPES.antibody,
-      PDBUrl: "https://www.rcsb.org/structure/3RPI",
-      mass: 96.41,
-      atomCount: 6650,
-      radius: 50,
-      numIcosahedronFaces: 20,
-      numAsymmetricUnits: 1,
-      pathToGLTF: "/models/antibodies/antibody_hiv_10_draco.glb",
-      pathToImage: "/models/antibodies/antibody_hiv.webp",
-      interactive: true,
-      authors:
-        "Scheid, J.F., Mouquet, H., Ueberheide, B., Diskin, R., Klein, F., Oliveira, T.Y., Pietzsch, J., Fenyo, D., Abadir, A., Velinzon, K., Hurley, A., Myung, S., Boulad, F., Poignard, P., Burton, D.R., Pereyra, F., Ho, D.D., Walker, B.D., Seaman, M.S., Bjorkman, P.J., Chait, B.T., Nussenzweig, M.C.",
-      pubmedAbstract:
-        "Passive transfer of broadly neutralizing HIV antibodies can prevent infection, which suggests that vaccines that elicit such antibodies would be protective. Thus far, however, few broadly neutralizing HIV antibodies that occur naturally have been characterized. To determine whether these antibodies are part of a larger group of related molecules, we cloned 576 new HIV antibodies from four unrelated individuals. All four individuals produced expanded clones of potent broadly neutralizing CD4-binding-site antibodies that mimic binding to CD4. Despite extensive hypermutation, the new antibodies shared a consensus sequence of 68 immunoglobulin H (IgH) chain amino acids and arise independently from two related IgH genes. Comparison of the crystal structure of one of the antibodies to the broadly neutralizing antibody VRC01 revealed conservation of the contacts to the HIV spike.",
-    },
+    // {
+    //   Component: Antibody_hiv_10,
+    //   name: "anti-HIV Antibody",
+    //   type: PROTEIN_TYPES.antibody,
+    //   PDBUrl: "https://www.rcsb.org/structure/3RPI",
+    //   mass: 96.41,
+    //   atomCount: 6650,
+    //   radius: 50,
+    //   numIcosahedronFaces: 20,
+    //   numAsymmetricUnits: 1,
+    //   pathToGLTF: "/models/antibodies/antibody_hiv_10_draco.glb",
+    //   pathToImage: "/models/antibodies/antibody_hiv.webp",
+    //   interactive: true,
+    //   authors:
+    //     "Scheid, J.F., Mouquet, H., Ueberheide, B., Diskin, R., Klein, F., Oliveira, T.Y., Pietzsch, J., Fenyo, D., Abadir, A., Velinzon, K., Hurley, A., Myung, S., Boulad, F., Poignard, P., Burton, D.R., Pereyra, F., Ho, D.D., Walker, B.D., Seaman, M.S., Bjorkman, P.J., Chait, B.T., Nussenzweig, M.C.",
+    //   pubmedAbstract:
+    //     "Passive transfer of broadly neutralizing HIV antibodies can prevent infection, which suggests that vaccines that elicit such antibodies would be protective. Thus far, however, few broadly neutralizing HIV antibodies that occur naturally have been characterized. To determine whether these antibodies are part of a larger group of related molecules, we cloned 576 new HIV antibodies from four unrelated individuals. All four individuals produced expanded clones of potent broadly neutralizing CD4-binding-site antibodies that mimic binding to CD4. Despite extensive hypermutation, the new antibodies shared a consensus sequence of 68 immunoglobulin H (IgH) chain amino acids and arise independently from two related IgH genes. Comparison of the crystal structure of one of the antibodies to the broadly neutralizing antibody VRC01 revealed conservation of the contacts to the HIV spike.",
+    // },
     {
       Component: Antibody_herpes,
       name: "anti-Herpes Antibody",
