@@ -1,23 +1,21 @@
 import { VolumeUp, VolumeMute } from "@material-ui/icons";
 import { IconButton, Tooltip } from "@material-ui/core";
-import ReactPlayer from "react-player";
 import styled from "styled-components/macro";
-import { atomWithStorage } from "jotai/utils";
 import { useAtom } from "jotai";
 import { BREAKPOINT_MOBILE } from "../../utils/constants";
 import { isAudioPlayingAtom, isDarkModeAtom } from "../../store";
 import { getIsTouchDevice } from "../../getIsTouchDevice";
+import { useEffect } from "react";
+import useSound from "use-sound";
+import { useMount } from "../../utils/utils";
 
 /** show or hide the info overlay */
-export default function AudioSoundButton({ title, href }) {
+export default function AudioSoundButton({ title, href, audioFile }) {
   const [isAudioPlaying, setIsAudioPlaying] = useAtom(isAudioPlayingAtom);
 
-  const music = {
-    title,
-    href,
-  };
-  const [isDarkMode] = useAtom(isDarkModeAtom);
+  useAudioTrack(isAudioPlaying, audioFile);
 
+  const [isDarkMode] = useAtom(isDarkModeAtom);
   return (
     <>
       <SoundButtonStyles {...{ isDarkMode, isAudioPlaying }}>
@@ -25,21 +23,38 @@ export default function AudioSoundButton({ title, href }) {
           <IconButton onClick={() => setIsAudioPlaying(!isAudioPlaying)}>
             {isAudioPlaying ? <VolumeUp /> : <VolumeMute />}
             <div className="soundInfo">
-              <a href={music.href} target="_blank" rel="noopener noreferrer">
-                {music.title}
+              <a href={href} target="_blank" rel="noopener noreferrer">
+                {title}
               </a>
             </div>
           </IconButton>
         </Tooltip>
       </SoundButtonStyles>
-      <ReactPlayer
-        style={{ visibility: "hidden", position: "fixed" }}
-        playing={isAudioPlaying}
-        url={music.href}
-      />
     </>
   );
 }
+
+function useAudioTrack(isSoundOn, music) {
+  const [play, { isPlaying, pause }] = useSound(music, { volume: 1 });
+
+  useMount(() => {
+    if (isSoundOn) {
+      play();
+    }
+    return () => {
+      pause();
+    };
+  });
+
+  useEffect(() => {
+    if (isSoundOn && !isPlaying) {
+      play();
+    } else if (!isSoundOn && isPlaying) {
+      pause();
+    }
+  }, [isSoundOn, isPlaying, play, pause]);
+}
+
 const SoundButtonStyles = styled.div`
   position: fixed;
   z-index: 20;
