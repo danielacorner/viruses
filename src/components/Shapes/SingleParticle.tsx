@@ -41,6 +41,7 @@ export function InteractiveParticle(props) {
   } = props;
 
   const set = useStore((s) => s.set);
+  const started = useStore((s) => s.started);
   const [scale] = useAtom(scaleAtom);
   const isTooltipMaximized = useStore((s) => s.isTooltipMaximized);
   const selectedProtein = useStore((s) => s.selectedProtein);
@@ -63,18 +64,13 @@ export function InteractiveParticle(props) {
   );
 
   const [ref, api] = useConvexPolyhedron(() => ({
-    // TODO: accurate mass data from PDB --> need to multiply by number of residues or something else? doesn't seem right
     mass: mockMass, // approximate mass using volume of a sphere equation
     position,
     // type: !paused ? "Dynamic" : "Static",
     // https://threejs.org/docs/scenes/geometry-browser.html#IcosahedronBufferGeometry
     args: geo as any,
-    // material: {
-    //   restitution: 1,
-    // },
   }));
 
-  // ! not working
   useJitterPhysicsParticle({
     api,
     ref,
@@ -96,7 +92,7 @@ export function InteractiveParticle(props) {
   };
   const handlePointerUp = () => {
     const timeSincePointerDown = Date.now() - pointerDownTime.current;
-    if (timeSincePointerDown < 300) {
+    if (timeSincePointerDown < 300 && started) {
       handleSetSelectedProtein();
     }
   };

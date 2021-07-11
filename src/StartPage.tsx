@@ -44,7 +44,10 @@ export function StartPage() {
       </CanvasAndSceneEmpty>
 
       <StartPageStyles {...{ isDarkMode }}>
-        <Typography style={{ textAlign: "center" }} variant="h3">
+        <Typography
+          style={{ textAlign: "center", maxWidth: "calc(100vw - 64px)" }}
+          variant="h3"
+        >
           Virus{" "}
           <span role="img" aria-label="">
             🦠
@@ -83,7 +86,7 @@ export function StartPage() {
           variant="outlined"
           color="primary"
         >
-          🚧🏗👷‍♀️ Play Virus ⚡ Thunderdome
+          Play Virus ⚡ Thunderdome (🚧🏗👷‍♀️)
         </Button>
       </StartPageStyles>
     </ErrorBoundary>
