@@ -5,7 +5,7 @@ import { atomWithStorage } from "jotai/utils";
 
 export const isAudioPlayingAtom = atomWithStorage("isAudioPlaying", false); // As of Chrome 66, videos must be muted in order to play automatically https://www.npmjs.com/package/react-player
 export const scaleAtom = atomWithStorage("scale", MIN_SCALE); // As of Chrome 66, videos must be muted in order to play automatically https://www.npmjs.com/package/react-player
-export const isDarkModeAtom = atomWithStorage("isDarkMode", false);
+export const isDarkModeAtom = atomWithStorage("isDarkMode", true);
 
 type SelectedProtein = Protein & {
   position: [number, number, number];
