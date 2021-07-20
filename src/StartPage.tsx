@@ -82,6 +82,7 @@ export function StartPage() {
             pointerEvents: "auto",
             background: "hsl(0,0%,85%)",
           }}
+          disabled={process.env.NODE_ENV === "production"}
           onClick={() => set({ startedThunderdome: true })}
           variant="outlined"
           color="primary"

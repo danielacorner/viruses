@@ -22,7 +22,7 @@ const Scene = () => {
       ) : (
         <OrbitControls {...({} as any)} />
       )}
-      {/* <PhysicsSceneMovable /> */}
+      <PhysicsSceneMovable />
       <Lighting />
     </Suspense>
   );
@@ -37,7 +37,7 @@ function PhysicsSceneMovable() {
     <a.group position={springDownOnWaveChange.position}>
       <Physics {...PHYSICS_PROPS}>
         <Debugger>
-          <Walls />
+          {/* <Walls /> */}
           <Water />
           <ScaleIndicator />
           <Game />

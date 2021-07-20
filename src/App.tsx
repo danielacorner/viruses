@@ -7,8 +7,6 @@ import {
   LoadingIndicator,
 } from "./components/LoadingIndicator/LoadingIndicator";
 import GuidedTour from "./components/GuidedTour";
-import { useLocalStorageState } from "./utils/useLocalStorageState";
-import { useMount } from "./utils/utils";
 import ErrorBoundary from "./components/ErrorBoundary";
 import AudioSoundButton from "./components/controls/AudioSoundButton";
 import { StartPage } from "./StartPage";
@@ -32,23 +30,19 @@ function App() {
             <GuidedTour />
           </>
         )}
-        {startedThunderdome ? (
-          <AudioSoundButton
-            {...{
-              title: "Nōpi - Aqiral",
-              href: "https://www.youtube.com/watch?v=c-o8o9cYJeY",
-              audioFile: `${process.env.PUBLIC_URL}/audio/NopiAqiral.mp3`,
-            }}
-          />
-        ) : (
-          <AudioSoundButton
-            {...{
-              title: "Inner Life of the Cell - Protein Packing",
-              href: "https://www.youtube.com/watch?v=uHeTQLNFTgU",
-              audioFile: `${process.env.PUBLIC_URL}/audio/InnerLifeOfCell.mp3`,
-            }}
-          />
-        )}
+        <AudioSoundButton
+          {...(startedThunderdome
+            ? {
+                title: "Nōpi - Aqiral",
+                href: "https://www.youtube.com/watch?v=c-o8o9cYJeY",
+                audioFile: `${process.env.PUBLIC_URL}/audio/NopiAqiral.mp3`,
+              }
+            : {
+                title: "Inner Life of the Cell - Protein Packing",
+                href: "https://www.youtube.com/watch?v=uHeTQLNFTgU",
+                audioFile: `${process.env.PUBLIC_URL}/audio/InnerLifeOfCell.mp3`,
+              })}
+        />
         <DarkModeButton />
         <HasRunOutOfMemory />
       </ErrorBoundary>

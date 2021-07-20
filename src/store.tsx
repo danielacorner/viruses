@@ -50,3 +50,23 @@ export const useStore = create<GlobalStateType>(
     setTemperature: (newT) => set(() => ({ temperature: newT })),
   })
 );
+
+import { Canvas, useThree } from "@react-three/fiber";
+
+function FullPageOverlayFollowsMouse() {
+  <div style={{ position: "fixed", inset: 0, pointerEvents: "none" }}>
+    <Canvas style={{ width: window.innerWidth, height: window.innerHeight }}>
+      <ThingThatFollowsMouse />
+    </Canvas>
+  </div>;
+}
+
+function ThingThatFollowsMouse() {
+  const { mouse } = useThree();
+  return (
+    <mesh>
+      <meshBasicMaterial />
+      <boxBufferGeometry />
+    </mesh>
+  );
+}

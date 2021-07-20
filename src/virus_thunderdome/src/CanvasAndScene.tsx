@@ -5,7 +5,7 @@ import TopControls from "./components/Controls/TopControls";
 import { Canvas } from "@react-three/fiber";
 
 import SideControls from "./components/Controls/SideControls";
-import { BREAKPOINT_TABLET, INITIAL_CAMERA_POSITION } from "./utils/constants";
+import { INITIAL_CAMERA_POSITION } from "./utils/constants";
 
 export default function CanvasAndScene({ renderProteins = true }) {
   const windowSize = useWindowSize();
