@@ -51,6 +51,7 @@
     "no-bitwise": 2,
     "no-commented-code": 0,
     "prettier/prettier": 0,
+    "no-mixed-spaces-and-tabs": 0,
     "no-console": [
       0,
       "log",
