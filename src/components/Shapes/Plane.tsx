@@ -79,11 +79,11 @@ export function Plane({
             attach="geometry"
             args={[width, height, widthSegments, heightSegments]}
           />
-          {/* <meshMatcapMaterial
-            matcap={matcap as any}
+          <meshMatcapMaterial
+            matcap={matcap}
             opacity={0.15}
             transparent={true}
-          /> */}
+          />
         </>
       )}
       {/*  <meshStandardMaterial
