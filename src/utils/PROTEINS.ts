@@ -136,7 +136,10 @@ const Color_device_state_a_10 = React.lazy(
   () => import("../components/GLTFs/nanotech/Color_device_state_a_10")
 );
 const Octahedral_nanoparticle_20 = React.lazy(
-  () => import("../components/GLTFs/nanotech/Octahedral_nanoparticle_20")
+  () =>
+    import(
+      "../components/GLTFs/nanotech/Octahedral_nanoparticle_20_cleaned_draco"
+    )
 );
 const Tetrahedral_nanoparticle_20 = React.lazy(
   () => import("../components/GLTFs/nanotech/Tetrahedral_nanoparticle_20")
@@ -798,7 +801,8 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       radius: 100,
       numIcosahedronFaces: 8,
       numAsymmetricUnits: 1,
-      pathToGLTF: "/models/nanotech/octahedral_nanoparticle_20_draco.glb",
+      pathToGLTF:
+        "/models/nanotech/octahedral_nanoparticle_20_cleaned_draco.glb",
       pathToImage: "/models/nanotech/octahedral_nanoparticle.webp",
       interactive: true,
       authors:
