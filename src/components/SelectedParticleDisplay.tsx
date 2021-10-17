@@ -1,14 +1,15 @@
-import { useStore } from "../store";
+import { scaleAtom, useStore } from "../store";
 import { Scene, Matrix4 } from "three";
-import React, { useRef, useMemo } from "react";
+import { useRef, useMemo } from "react";
 import { useFrame, useThree, createPortal } from "@react-three/fiber";
-import { OrthographicCamera, useCamera } from "@react-three/drei";
+import { OrthographicCamera } from "@react-three/drei";
+import { useAtom } from "jotai";
 
 /** based on Viewcube https://codesandbox.io/s/react-three-fiber-viewcube-py4db */
 export function SelectedParticleDisplay() {
   const selectedProtein = useStore((s) => s.selectedProtein);
   // const selectedGltf = useGLTF(selectedProtein?.pathToGLTF);
-  const scale = useStore((s) => s.scale) * 50;
+  const [scale] = useAtom(scaleAtom);
 
   // selected particle is displayed in a HUD
   const { gl, scene, camera, size } = useThree();

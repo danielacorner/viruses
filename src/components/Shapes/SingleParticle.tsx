@@ -193,7 +193,7 @@ function NonInteractiveParticle({
     mass,
     ref,
   });
-  const scale = useStore((state) => state.scale);
+  const [scale] = useAtom(scaleAtom);
 
   return (
     <mesh

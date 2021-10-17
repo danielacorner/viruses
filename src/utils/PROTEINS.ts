@@ -110,7 +110,10 @@ const Co_assembling_protein_dna_nanowires_13 = React.lazy(
     )
 );
 const Dna_origami_16_helix_bundle_50 = React.lazy(
-  () => import("../components/GLTFs/nanotech/Dna_origami_16_helix_bundle_50")
+  () =>
+    import(
+      "../components/GLTFs/nanotech/Dna_origami_16_helix_bundle_50_cleaned_draco"
+    )
 );
 const Six_fold_symmetric_dna_scaffold_10 = React.lazy(
   () =>
@@ -723,7 +726,8 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       atomCount: 54985,
       numIcosahedronFaces: 10,
       numAsymmetricUnits: 1,
-      pathToGLTF: "/models/nanotech/Dna_origami_16_helix_bundle_50_draco.glb",
+      pathToGLTF:
+        "/models/nanotech/Dna_origami_16_helix_bundle_50_cleaned_draco.glb",
       pathToImage: "/models/nanotech/Dna_origami_16_helix_bundle.webp",
       interactive: true,
       authors:

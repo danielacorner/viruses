@@ -1,10 +1,10 @@
 import create from "zustand";
-import { MIN_SCALE } from "./utils/constants";
+import { MAX_SCALE, MIN_SCALE } from "./utils/constants";
 import { Protein } from "./utils/PROTEINS";
 import { atomWithStorage } from "jotai/utils";
 
 export const isAudioPlayingAtom = atomWithStorage("isAudioPlaying", false); // As of Chrome 66, videos must be muted in order to play automatically https://www.npmjs.com/package/react-player
-export const scaleAtom = atomWithStorage("scale", MIN_SCALE); // As of Chrome 66, videos must be muted in order to play automatically https://www.npmjs.com/package/react-player
+export const scaleAtom = atomWithStorage("scale", MAX_SCALE); // As of Chrome 66, videos must be muted in order to play automatically https://www.npmjs.com/package/react-player
 export const isDarkModeAtom = atomWithStorage("isDarkMode", true);
 
 type SelectedProtein = Protein & {
@@ -22,7 +22,6 @@ type GlobalStateType = {
   paused: boolean;
   hasRunOutOfMemory: boolean;
   shuffled: number; // random number to trigger useEffect
-  scale: number;
   selectedProtein: null | SelectedProtein;
   set: (newState: any) => any;
   setTemperature: (newT: number) => any;
@@ -44,7 +43,6 @@ export const useStore = create<GlobalStateType>(
     worldRadius: 5,
     temperature: 1,
     shuffled: 0,
-    scale: MIN_SCALE,
     selectedProtein: null as null | SelectedProtein,
     set: (newState) => set((state) => ({ ...state, ...newState })),
     setTemperature: (newT) => set(() => ({ temperature: newT })),
