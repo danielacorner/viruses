@@ -62,7 +62,7 @@ export function StartPage() {
             gridGap: "0.25em",
           }}
         >
-          <Typography variant="body2">Requirements: 40MB download</Typography>
+          <Typography variant="body2">Requirements: 30MB download</Typography>
         </div>
         <Button
           style={{

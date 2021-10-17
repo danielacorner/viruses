@@ -24,7 +24,7 @@ const SH1_140 = React.lazy(() => import("../components/GLTFs/viruses/SH1_140"));
 //   () => import("../components/GLTFs/viruses/Haloarcula_californiae_140")
 // );
 const Varicella_zoster_300 = React.lazy(
-  () => import("../components/GLTFs/viruses/Varicella_zoster_300")
+  () => import("../components/GLTFs/viruses/Varicella_zoster_300_cleaned_draco")
 );
 const HIV_200 = React.lazy(
   () => import("../components/GLTFs/viruses/HIV_200_cleaned_draco")
@@ -387,7 +387,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       radius: 588,
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 20,
-      pathToGLTF: "/models/viruses/varicella_zoster_300_draco.glb",
+      pathToGLTF: "/models/viruses/varicella_zoster_300_cleaned_draco.glb",
       pathToImage: "/models/viruses/varicella_zoster.webp",
       interactive: true,
       authors:
