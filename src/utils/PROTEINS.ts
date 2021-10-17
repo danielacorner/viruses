@@ -11,7 +11,7 @@ const Herpes_600 = React.lazy(
   () => import("../components/GLTFs/viruses/Herpes_600_cleaned_draco")
 );
 const Rice_dwarf_100 = React.lazy(
-  () => import("../components/GLTFs/viruses/Rice_dwarf_100")
+  () => import("../components/GLTFs/viruses/Rice_dwarf_100_cleaned_draco")
 );
 const Faust_1200_1 = React.lazy(
   () => import("../components/GLTFs/viruses/Faust_1200_1")
@@ -351,7 +351,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       radius: 360,
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 20,
-      pathToGLTF: "/models/viruses/Rice_dwarf_100_draco.glb",
+      pathToGLTF: "/models/viruses/Rice_dwarf_100_cleaned_draco.glb",
       pathToImage: "/models/viruses/rice_dwarf_virus.webp",
       interactive: true,
       authors:
