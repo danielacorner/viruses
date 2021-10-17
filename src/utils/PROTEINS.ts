@@ -109,7 +109,7 @@ const Self_assembled_3d_dna_crystals_13 = React.lazy(
 const Co_assembling_protein_dna_nanowires_13 = React.lazy(
   () =>
     import(
-      "../components/GLTFs/nanotech/Co_assembling_protein_dna_nanowires_13"
+      "../components/GLTFs/nanotech/Co_assembling_protein_dna_nanowires_13_cleaned_draco"
     )
 );
 const Dna_origami_16_helix_bundle_50 = React.lazy(
@@ -771,7 +771,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       numIcosahedronFaces: 10,
       numAsymmetricUnits: 1,
       pathToGLTF:
-        "/models/nanotech/co_assembling_protein_dna_nanowires_13_draco.glb",
+        "/models/nanotech/co_assembling_protein_dna_nanowires_13_cleaned_draco.glb",
       pathToImage: "/models/nanotech/co_assembling_protein_dna_nanowires.webp",
       interactive: true,
       authors: "Mou, Y., Yu, J.Y., Wannier, T.M., Guo, C.L., Mayo, S.L.",
