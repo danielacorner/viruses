@@ -20,4 +20,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/models/viruses/bacteriophage_P68_120_cleaned_draco.glb");
+// useGLTF.preload("/models/viruses/bacteriophage_P68_120_cleaned_draco.glb");

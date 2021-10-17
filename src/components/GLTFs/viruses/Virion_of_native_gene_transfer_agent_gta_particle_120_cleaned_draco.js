@@ -20,6 +20,6 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload(
-  "/models/viruses/virion_of_native_gene_transfer_agent_gta_particle_120_cleaned_draco.glb"
-);
+// useGLTF.preload(
+//   "/models/viruses/virion_of_native_gene_transfer_agent_gta_particle_120_cleaned_draco.glb"
+// );
