@@ -136,7 +136,8 @@ const A_circularly_permuted_pdu_a_forming_an_icosahedral_cage_20 = React.lazy(
     )
 );
 const Color_device_state_a_10 = React.lazy(
-  () => import("../components/GLTFs/nanotech/Color_device_state_a_10")
+  () =>
+    import("../components/GLTFs/nanotech/Color_device_state_a_10_cleaned_draco")
 );
 const Octahedral_nanoparticle_20 = React.lazy(
   () =>
@@ -697,7 +698,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       atomCount: 2664,
       numIcosahedronFaces: 5,
       numAsymmetricUnits: 1,
-      pathToGLTF: "/models/nanotech/color_device_state_a_10_draco.glb",
+      pathToGLTF: "/models/nanotech/color_device_state_a_10_cleaned_draco.glb",
       pathToImage: "/models/nanotech/color_device_state_a.webp",
       interactive: true,
       authors:
