@@ -39,7 +39,7 @@ const Poliovirus_50 = React.lazy(
   () => import("../components/GLTFs/viruses/Poliovirus_50_cleaned_draco")
 );
 const Denguevirus_50 = React.lazy(
-  () => import("../components/GLTFs/viruses/Denguevirus_50")
+  () => import("../components/GLTFs/viruses/Denguevirus_50_cleaned_draco")
 );
 const HPV_100 = React.lazy(
   () => import("../components/GLTFs/viruses/Hpv_100_cleaned_draco")
@@ -483,7 +483,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       radius: 285,
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 20,
-      pathToGLTF: "/models/viruses/denguevirus_50_draco.glb",
+      pathToGLTF: "/models/viruses/denguevirus_50_cleaned_draco.glb",
       pathToImage: "/models/viruses/denguevirus.webp",
       interactive: true,
       authors:
