@@ -31,7 +31,7 @@ const InstancedParticle = ({
     // rotation: [-Math.PI / 2, 0, 0],
     mass: 1,
     position: getRandPosition(worldRadius),
-    args: 1, // ? https://codesandbox.io/s/r3f-cannon-instanced-physics-devf8?file=/src/index.js
+    args: [1], // ? https://codesandbox.io/s/r3f-cannon-instanced-physics-devf8?file=/src/index.js
   }));
 
   useJitterInstanceParticle({

@@ -8,6 +8,6 @@ export const PHYSICS_PROPS = {
     frictionEquationStiffness: 1e7,
     frictionEquationRelaxation: 2,
   },
-  gravity: [0, 0, 0],
+  gravity: [0, 0, 0] as any,
   step: 1 / 60, // simulation speed
 };

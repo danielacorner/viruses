@@ -12,7 +12,7 @@ export function ATPInstanced() {
   const [ref] = useSphere((index) => ({
     mass: 0.2,
     position: [Math.random() - 0.5, Math.random() - 0.5, index * 2],
-    args: 1,
+    args: [1],
   }));
   const { nodes, materials } = useGLTF("/models/other/ATP.glb") as any;
 

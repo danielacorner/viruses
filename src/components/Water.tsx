@@ -15,7 +15,7 @@ export function Water() {
   const [ref, api] = useSphere((index) => ({
     mass: paused ? 0 : mass,
     position: getRandPosition(worldRadius),
-    args: 1,
+    args: [1],
     material: {
       restitution: 0.0001,
     },

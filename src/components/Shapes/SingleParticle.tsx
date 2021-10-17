@@ -68,7 +68,7 @@ export function InteractiveParticle(props) {
     position,
     // type: !paused ? "Dynamic" : "Static",
     // https://threejs.org/docs/scenes/geometry-browser.html#IcosahedronBufferGeometry
-    args: geo as any,
+    args: [geo as any],
   }));
 
   useJitterPhysicsParticle({
