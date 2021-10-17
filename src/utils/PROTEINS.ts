@@ -55,7 +55,7 @@ const Bacteriophage_phi29_prohead_80 = React.lazy(
 const Virion_of_native_gene_transfer_agent_gta_particle_120 = React.lazy(
   () =>
     import(
-      "../components/GLTFs/viruses/Virion_of_native_gene_transfer_agent_gta_particle_120"
+      "../components/GLTFs/viruses/Virion_of_native_gene_transfer_agent_gta_particle_120_cleaned_draco"
     )
 );
 // antibodies
@@ -207,7 +207,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 20,
       pathToGLTF:
-        "/models/viruses/virion_of_native_gene_transfer_agent_gta_particle_120_draco.glb",
+        "/models/viruses/virion_of_native_gene_transfer_agent_gta_particle_120_cleaned_draco.glb",
       pathToImage:
         "/models/viruses/virion_of_native_gene_transfer_agent_gta_particle.webp",
       interactive: true,
