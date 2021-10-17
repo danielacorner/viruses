@@ -30,13 +30,13 @@ const HIV_200 = React.lazy(
   () => import("../components/GLTFs/viruses/HIV_200_cleaned_draco")
 );
 const Spiroplasma_50 = React.lazy(
-  () => import("../components/GLTFs/viruses/Spiroplasma_50")
+  () => import("../components/GLTFs/viruses/Spiroplasma_50_cleaned_draco")
 );
 const Sindbis_70 = React.lazy(
   () => import("../components/GLTFs/viruses/Sindbis_70")
 );
 const Poliovirus_50 = React.lazy(
-  () => import("../components/GLTFs/viruses/Poliovirus_50")
+  () => import("../components/GLTFs/viruses/Poliovirus_50_cleaned_draco")
 );
 const Denguevirus_50 = React.lazy(
   () => import("../components/GLTFs/viruses/Denguevirus_50")
@@ -424,7 +424,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       radius: 175,
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 20,
-      pathToGLTF: "/models/viruses/Spiroplasma_50_draco.glb",
+      pathToGLTF: "/models/viruses/Spiroplasma_50_cleaned_draco.glb",
       pathToImage: "/models/viruses/Spiroplasma_SPV4.webp",
       interactive: true,
       authors:
@@ -460,7 +460,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       radius: 160,
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 20,
-      pathToGLTF: "/models/viruses/poliovirus_50_draco.glb",
+      pathToGLTF: "/models/viruses/poliovirus_50_cleaned_draco.glb",
       pathToImage: "/models/viruses/poliovirus.webp",
       interactive: true,
       authors: "Hiremath, C.N., Filman, D.J., Grant, R.A., Hogle, J.M.",
