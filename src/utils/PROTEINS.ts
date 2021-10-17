@@ -8,7 +8,7 @@ const Adenovirus_160_outer = React.lazy(
   () => import("../components/GLTFs/viruses/Adenovirus_160_outer_cleaned_draco")
 );
 const Herpes_600 = React.lazy(
-  () => import("../components/GLTFs/viruses/Herpes_600")
+  () => import("../components/GLTFs/viruses/Herpes_600_cleaned_draco")
 );
 const Rice_dwarf_100 = React.lazy(
   () => import("../components/GLTFs/viruses/Rice_dwarf_100")
@@ -278,7 +278,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       radius: 525, // measured using PDB 3d viewer e.g. https://www.rcsb.org/3d-view/6CGR/1
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 20,
-      pathToGLTF: "/models/viruses/Herpes_600_draco.glb",
+      pathToGLTF: "/models/viruses/Herpes_600_cleaned_draco.glb",
       pathToImage: "/models/viruses/herpes.webp",
       interactive: true,
       authors: "Dai, X., Zhou, Z.H.",
