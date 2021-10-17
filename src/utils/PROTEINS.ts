@@ -82,7 +82,7 @@ const Self_assembling_dna_crystal_scaffold_with_rhombohedral_symmetry_6 =
 const Nanoparticle_COVID_19_vaccine_candidate_50 = React.lazy(
   () =>
     import(
-      "../components/GLTFs/nanotech/Nanoparticle_COVID_19_vaccine_candidate_50"
+      "../components/GLTFs/nanotech/Nanoparticle_COVID_19_vaccine_candidate_50_cleaned"
     )
 );
 const Dna_crystals_containing_a_torsionally_stressed_component_20 = React.lazy(
@@ -95,7 +95,8 @@ const Protein_cage_20 = React.lazy(
   () => import("../components/GLTFs/nanotech/Protein_cage_20")
 );
 const Dna_origami_object_80 = React.lazy(
-  () => import("../components/GLTFs/nanotech/Dna_origami_object_80")
+  () =>
+    import("../components/GLTFs/nanotech/Dna_origami_object_80_cleaned_draco")
 );
 const Self_assembled_3d_dna_crystals_13 = React.lazy(
   () => import("../components/GLTFs/nanotech/Self_assembled_3d_dna_crystals_13")
@@ -136,7 +137,10 @@ const Tetrahedral_nanoparticle_20 = React.lazy(
   () => import("../components/GLTFs/nanotech/Tetrahedral_nanoparticle_20")
 );
 const Icosahedral_nanoparticle_20 = React.lazy(
-  () => import("../components/GLTFs/nanotech/Icosahedral_nanoparticle_20")
+  () =>
+    import(
+      "../components/GLTFs/nanotech/Icosahedral_nanoparticle_20_cleaned_draco"
+    )
 );
 // // cells
 // const Eosinophil = React.lazy(
@@ -563,7 +567,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 1,
       pathToGLTF:
-        "/models/nanotech/nanoparticle_COVID_19_vaccine_candidate_50_draco.glb",
+        "/models/nanotech/nanoparticle_COVID_19_vaccine_candidate_50_cleaned.glb",
       pathToImage:
         "/models/nanotech/nanoparticle_COVID_19_vaccine_candidate.webp",
       interactive: true,
@@ -700,7 +704,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       atomCount: 294953,
       numIcosahedronFaces: 10,
       numAsymmetricUnits: 1,
-      pathToGLTF: "/models/nanotech/dna_origami_object_80_draco.glb",
+      pathToGLTF: "/models/nanotech/dna_origami_object_80_cleaned_draco.glb",
       pathToImage: "/models/nanotech/dna_origami_object.webp",
       interactive: true,
       authors: "Bai, X., Martin, T.G., Scheres, S.H.W., Dietz, H.",
@@ -824,7 +828,8 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       radius: 120,
       numIcosahedronFaces: 5,
       numAsymmetricUnits: 1,
-      pathToGLTF: "/models/nanotech/icosahedral_nanoparticle_20_draco.glb",
+      pathToGLTF:
+        "/models/nanotech/icosahedral_nanoparticle_20_cleaned_draco.glb",
       pathToImage: "/models/nanotech/icosahedral_nanoparticle.webp",
       interactive: true,
       authors:
