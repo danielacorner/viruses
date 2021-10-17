@@ -1,5 +1,7 @@
 # Hey, welcome to my virus terrarium! 🦠
 
+App: https://www.virusterrarium.com
+
 <p align="center">
 <a href="https://open.vscode.dev/danielacorner/viruses">
         <img src="https://open.vscode.dev/badges/open-in-vscode.svg"
@@ -66,4 +68,4 @@ In ChimeraX, you can type commands in the terminal at the bottom.
 - `surface all resolution 6` = [surface-render](https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/surface.html) each atom with a sphere of radius 6 Angstroms (Å)
 - `windowsize 640 640` - set viewport to 640 width and height
 
-inspired by [BioVisions - Inner Life of the Cell | Protein Packing](https://www.youtube.com/watch?v=VdmbpAo9JR4)
+inspired by [BioVisions - Inner Life of the Cell | Protein Packing](https://www.youtube.com/watch?v=VdmbpAo9JR4) and [Skeptics Guide podcast](https://www.theskepticsguide.org/)

@@ -237,15 +237,31 @@ const TOUR_STEPS = [
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							you can find the code here
+							you can find the code and tools used here
+						</a>
+						, and check out{" "}
+						<a
+							href="github.com/danielacorner/"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							my other projects over here
 						</a>
 						.
 					</p>
 					<p>
-						Comments, suggestions, or other feedback?
-						<BtnGetInTouch />
+						<div
+							style={{
+								display: "grid",
+								gridTemplateRows: "auto auto",
+								justifyItems: "center",
+							}}
+						>
+							<div>Comments, suggestions, or other feedback?</div>
+							<BtnGetInTouch />
+						</div>
 					</p>
-					<p>
+					<p style={{ textAlign: "right" }}>
 						Cheers! <span role="img">🍻</span>
 					</p>
 				</div>
@@ -259,16 +275,15 @@ function BtnGetInTouch() {
 	const [, setIsTourOpen] = useAtom(isTourOpenAtom);
 
 	return (
-		<>
-			<Button
-				style={{ textTransform: "none", marginLeft: 12 }}
-				onClick={() => {
-					setIsFormOpen(true);
-					setIsTourOpen(false);
-				}}
-			>
-				➡️ Get in touch!
-			</Button>
-		</>
+		<Button
+			variant="outlined"
+			style={{ textTransform: "none" }}
+			onClick={() => {
+				setIsFormOpen(true);
+				setIsTourOpen(false);
+			}}
+		>
+			➡️ Get in touch
+		</Button>
 	);
 }
