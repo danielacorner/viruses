@@ -14,7 +14,7 @@ const Rice_dwarf_100 = React.lazy(
   () => import("../components/GLTFs/viruses/Rice_dwarf_100_cleaned_draco")
 );
 const Faust_1200_1 = React.lazy(
-  () => import("../components/GLTFs/viruses/Faust_1200_1")
+  () => import("../components/GLTFs/viruses/Faust_1200_1_cleaned_draco")
 );
 const Nodavirus_40_radial = React.lazy(
   () => import("../components/GLTFs/viruses/Nodavirus_40_radial")
@@ -43,7 +43,8 @@ const Denguevirus_50 = React.lazy(
 );
 const HPV_100 = React.lazy(() => import("../components/GLTFs/viruses/HPV_100"));
 const Bacteriophage_P68_120 = React.lazy(
-  () => import("../components/GLTFs/viruses/Bacteriophage_P68_120")
+  () =>
+    import("../components/GLTFs/viruses/Bacteriophage_P68_120_cleaned_draco")
 );
 const Bacteriophage_phi29_prohead_80 = React.lazy(
   () =>
@@ -242,7 +243,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       atomCount: 1074183,
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 20,
-      pathToGLTF: "/models/viruses/bacteriophage_P68_120_draco.glb",
+      pathToGLTF: "/models/viruses/bacteriophage_P68_120_cleaned_draco.glb",
       pathToImage: "/models/viruses/bacteriophage_P68.webp",
       interactive: true,
       authors:
@@ -333,7 +334,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       atomCount: 28956, // ChimeraX "select all"
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 20,
-      pathToGLTF: "/models/viruses/faust_1200_1_draco.glb",
+      pathToGLTF: "/models/viruses/faust_1200_1_cleaned_draco.glb",
       pathToImage: "/models/viruses/faustovirus.webp",
       interactive: true,
       authors:
