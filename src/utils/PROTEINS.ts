@@ -5,7 +5,7 @@ import React from "react";
 // viruses
 // viruses
 const Adenovirus_160_outer = React.lazy(
-  () => import("../components/GLTFs/viruses/Adenovirus_160_outer")
+  () => import("../components/GLTFs/viruses/Adenovirus_160_outer_cleaned_draco")
 );
 const Herpes_600 = React.lazy(
   () => import("../components/GLTFs/viruses/Herpes_600")
@@ -26,8 +26,8 @@ const SH1_140 = React.lazy(() => import("../components/GLTFs/viruses/SH1_140"));
 const Varicella_zoster_300 = React.lazy(
   () => import("../components/GLTFs/viruses/Varicella_zoster_300")
 );
-const HIV_1200 = React.lazy(
-  () => import("../components/GLTFs/viruses/HIV_1200")
+const HIV_200 = React.lazy(
+  () => import("../components/GLTFs/viruses/HIV_200_cleaned_draco")
 );
 const Spiroplasma_50 = React.lazy(
   () => import("../components/GLTFs/viruses/Spiroplasma_50")
@@ -46,7 +46,10 @@ const Bacteriophage_P68_120 = React.lazy(
   () => import("../components/GLTFs/viruses/Bacteriophage_P68_120")
 );
 const Bacteriophage_phi29_prohead_80 = React.lazy(
-  () => import("../components/GLTFs/viruses/Bacteriophage_phi29_prohead_80")
+  () =>
+    import(
+      "../components/GLTFs/viruses/Bacteriophage_phi29_prohead_80_cleaned_draco"
+    )
 );
 const Virion_of_native_gene_transfer_agent_gta_particle_120 = React.lazy(
   () =>
@@ -257,7 +260,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       atomCount: 200268, // ChimeraX ??
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 20,
-      pathToGLTF: "/models/viruses/adenovirus_160_outer_draco.glb",
+      pathToGLTF: "/models/viruses/adenovirus_160_outer_cleaned_draco.glb",
       pathToImage: "/models/viruses/adenovirus.webp",
       interactive: true,
       authors:
@@ -393,7 +396,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
         "Varicella-zoster virus (VZV), a member of the Alphaherpesvirinae subfamily, causes severe diseases in humans of all ages. The viral capsids play critical roles in herpesvirus infection, making them potential antiviral targets. Here, we present the 3.7-Å-resolution structure of the VZV A-capsid and define the molecular determinants underpinning the assembly of this complicated viral machinery. Overall, the VZV capsid has a similar architecture to that of other known herpesviruses. The major capsid protein (MCP) assembles into pentons and hexons, forming extensive intra- and inter-capsomer interaction networks that are further secured by the small capsid protein (SCP) and the heterotriplex. The structure reveals a pocket beneath the floor of MCP that could potentially be targeted by antiviral inhibitors. In addition, we identified two alphaherpesvirus-specific structural features in SCP and Tri1 proteins. These observations highlight the divergence of different herpesviruses and provide an important basis for developing antiviral drugs.",
     },
     {
-      Component: HIV_1200,
+      Component: HIV_200,
       name: "HIV",
       type: PROTEIN_TYPES.virus,
       PDBUrl: "https://www.rcsb.org/structure/3J3Y",
@@ -402,7 +405,7 @@ export const PROTEINS: { [type: string]: Protein[] } = {
       radius: 540,
       numIcosahedronFaces: 20,
       numAsymmetricUnits: 20,
-      pathToGLTF: "/models/viruses/HIV_1200_draco.glb",
+      pathToGLTF: "/models/viruses/HIV_200_cleaned_draco.glb",
       pathToImage: "/models/viruses/hiv.webp",
       interactive: true,
       authors:

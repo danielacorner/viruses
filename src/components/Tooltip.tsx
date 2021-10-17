@@ -15,9 +15,9 @@ import {
   BREAKPOINT_DESKTOP,
   BREAKPOINT_MOBILE,
   BREAKPOINT_TABLET,
-  CUSTOM_SCROLLBAR_CSS,
 } from "../utils/constants";
 import { useAtom } from "jotai";
+import { CUSTOM_SCROLLBAR_CSS } from "../utils/CUSTOM_SCROLLBAR_CSS";
 const TOOLTIP = {
   height: 454,
   width: 300,

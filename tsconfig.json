@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -22,6 +18,8 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "src",
+    "Adenovirus_160_outer_cleaned_draco.js",
+    "Adenovirus_160_outer_cleaned_draco.js"
   ]
 }

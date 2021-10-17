@@ -75,20 +75,6 @@ export function StartPage() {
         >
           Explore the Terrarium 🔬
         </Button>
-
-        <Button
-          style={{
-            padding: "0.25em 3em",
-            pointerEvents: "auto",
-            background: "hsl(0,0%,85%)",
-          }}
-          disabled={process.env.NODE_ENV === "production"}
-          onClick={() => set({ startedThunderdome: true })}
-          variant="outlined"
-          color="primary"
-        >
-          Play Virus ⚡ Thunderdome (🚧🏗👷‍♀️)
-        </Button>
       </StartPageStyles>
     </ErrorBoundary>
   );
