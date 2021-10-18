@@ -47,7 +47,6 @@ const Scene = () => {
           scene={undefined} // adds the ability to pass a custom THREE.Scene
         /> */}
         {/* {selectedProtein && <SelectedParticleDisplay />} */}
-        {/* <Cells /> */}
       </Physics>
       {/* <CustomEffects /> */}
     </>
