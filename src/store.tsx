@@ -1,10 +1,10 @@
 import create from "zustand";
-import { MAX_SCALE, MIN_SCALE } from "./utils/constants";
+import { INITIAL_SCALE } from "./utils/constants";
 import { Protein } from "./utils/PROTEINS";
 import { atomWithStorage } from "jotai/utils";
 
 export const isAudioPlayingAtom = atomWithStorage("isAudioPlaying", false); // As of Chrome 66, videos must be muted in order to play automatically https://www.npmjs.com/package/react-player
-export const scaleAtom = atomWithStorage("scale", MAX_SCALE); // As of Chrome 66, videos must be muted in order to play automatically https://www.npmjs.com/package/react-player
+export const scaleAtom = atomWithStorage("scale", INITIAL_SCALE); // As of Chrome 66, videos must be muted in order to play automatically https://www.npmjs.com/package/react-player
 export const isDarkModeAtom = atomWithStorage("isDarkMode", true);
 
 type SelectedProtein = Protein & {

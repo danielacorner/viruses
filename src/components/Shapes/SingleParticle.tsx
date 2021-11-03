@@ -87,26 +87,26 @@ export function InteractiveParticle(props) {
 
   const pointerDownTime = useRef(0);
   // if we mousedown AND mouseup over the same particle very quickly, select it
-  const handlePointerDown = () => {
+  const handlePointerDown = (e) => {
+    e.stopPropagation();
     pointerDownTime.current = Date.now();
   };
-  const handlePointerUp = () => {
+  const handlePointerUp = (e) => {
+    e.stopPropagation();
     const timeSincePointerDown = Date.now() - pointerDownTime.current;
-    if (timeSincePointerDown < 300 && started) {
+    if (pointerDownTime.current && timeSincePointerDown < 300 && started) {
       handleSetSelectedProtein();
     }
+    pointerDownTime.current = 0;
   };
 
   return (
-    <mesh
-      ref={ref}
-      scale={[scale, scale, scale]}
-      onPointerDown={handlePointerDown}
-      onPointerUp={handlePointerUp}
-    >
+    <mesh ref={ref} scale={[scale, scale, scale]}>
       {isSelectedProtein && !isTooltipMaximized ? <HighlightParticle /> : null}
       {shouldRenderModel ? (
-        <Component />
+        <mesh onPointerDown={handlePointerDown} onPointerUp={handlePointerUp}>
+          <Component />
+        </mesh>
       ) : opacity > 0 ? (
         <mesh>
           <sphereBufferGeometry args={[radius, 16, 16]} />
