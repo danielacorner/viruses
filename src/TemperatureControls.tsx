@@ -14,7 +14,7 @@ import {
 export function TemperatureControls() {
   const temperature = useStore((s) => s.temperature);
   const [scale, setScale] = useAtom(scaleAtom);
-  const set = useStore((s) => s.set);
+  const setPaused = useStore((s) => s.setPaused);
   const setTemperature = useStore((s) => s.setTemperature);
   const paused = useStore((s) => s.paused);
   const [isDarkMode] = useAtom(isDarkModeAtom);
@@ -56,9 +56,9 @@ export function TemperatureControls() {
               // pause when temperature is moved to 0
               // unpause when temperature is moved away from 0
               if (newValue === 0 && !paused) {
-                set({ paused: true });
+                setPaused(true);
               } else if (newValue !== 0 && paused) {
-                set({ paused: false });
+                setPaused(false);
               }
 
               const newT = Number(newValue) ** POW;

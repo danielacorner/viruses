@@ -54,7 +54,7 @@ export function Lighting() {
 //   // which breaks the simulation if we have any active subscriptions
 //   // so, unsubscribe when scale changes
 //   useEffect(() => {
-//     set({ selectedProtein: null });
+//     setSelectedProtein(null);
 //   // eslint-disable-next-line react-hooks/exhaustive-deps
 //   }, [scale]);
 

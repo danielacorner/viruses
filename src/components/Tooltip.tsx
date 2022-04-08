@@ -26,7 +26,7 @@ const darkBackground = "hsla(0,0%,0%,0.6)";
 
 const Tooltip = () => {
   const isTooltipMaximized = useStore((s) => s.isTooltipMaximized);
-  const set = useStore((s) => s.set);
+  const setIsTooltipMaximized = useStore((s) => s.setIsTooltipMaximized);
   const selectedProtein = useStore((s) => s.selectedProtein);
   const isDesktopOrLarger = useMediaQuery(
     `(min-width: ${BREAKPOINT_DESKTOP}px)`
@@ -38,9 +38,7 @@ const Tooltip = () => {
   return selectedProtein ? (
     <>
       <Modal open={isTooltipMaximized}>
-        <ClickAwayListener
-          onClickAway={() => set({ isTooltipMaximized: false })}
-        >
+        <ClickAwayListener onClickAway={() => setIsTooltipMaximized(false)}>
           <TooltipStyles
             // onTouchStart={() => setMaximized(!maximized)}
             maximized={true}
@@ -67,7 +65,7 @@ function BtnMaximize() {
   const isDesktopOrLarger = useMediaQuery(
     `(min-width: ${BREAKPOINT_DESKTOP}px)`
   );
-  const set = useStore((s) => s.set);
+  const setIsTooltipMaximized = useStore((s) => s.setIsTooltipMaximized);
   const isTooltipMaximized = useStore((s) => s.isTooltipMaximized);
 
   return (
@@ -75,7 +73,7 @@ function BtnMaximize() {
       className="btnMaximize"
       onClick={(e) => {
         e.stopPropagation();
-        set({ isTooltipMaximized: !isTooltipMaximized });
+        setIsTooltipMaximized(!isTooltipMaximized);
       }}
     >
       {isTooltipMaximized ? (
@@ -90,17 +88,18 @@ function BtnMaximize() {
 }
 
 function TooltipContent() {
-  const set = useStore((s) => s.set);
+  const setIsTooltipMaximized = useStore((s) => s.setIsTooltipMaximized);
   const isTooltipMaximized = useStore((s) => s.isTooltipMaximized);
   const selectedProtein = useStore((s) => s.selectedProtein);
+  const setSelectedProtein = useStore((s) => s.setSelectedProtein);
 
   const BtnClose = () => (
     <IconButton
       className="btnClose"
       onClick={(e) => {
         e.stopPropagation();
-        set({ isTooltipMaximized: false });
-        set({ selectedProtein: null });
+        setIsTooltipMaximized(false);
+        setSelectedProtein(null);
       }}
     >
       <Close />
@@ -214,7 +213,7 @@ function TooltipContent() {
           <div
             className="imgWrapper"
             onClick={() => {
-              set({ isTooltipMaximized: !isTooltipMaximized });
+              setIsTooltipMaximized(!isTooltipMaximized);
             }}
           >
             {isTooltipMaximized ? null : <BtnClose />}
@@ -226,7 +225,7 @@ function TooltipContent() {
           className="pubmedAbstract"
           onClick={() => {
             if (!isTooltipMaximized) {
-              set({ isTooltipMaximized: true });
+              setIsTooltipMaximized(true);
             }
           }}
         >

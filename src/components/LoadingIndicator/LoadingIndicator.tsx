@@ -3,7 +3,6 @@ import { Button, LinearProgress, Typography } from "@material-ui/core";
 import { useProgress } from "@react-three/drei";
 import styled from "styled-components/macro";
 import { CanvasAndSceneEmpty } from "../../CanvasAndSceneEmpty";
-import * as Sentry from "@sentry/react";
 import { isDarkModeAtom, useStore } from "../../store";
 import { useAtom } from "jotai";
 import { SpinningParticle } from "./SpinningParticle";
@@ -17,19 +16,19 @@ export const AMPLITUDE_X_INV = 0.01;
 
 function useDetectStuckOnLoading() {
   const { active, progress } = useProgress();
-  const set = useStore((s) => s.set);
+  const setHasRunOutOfMemory = useStore((s) => s.setHasRunOutOfMemory);
   // if it's been loading with the same progress for 30s, we'll show a refresh button
   useEffect(() => {
     let timer;
     if (active) {
       timer = setTimeout(() => {
-        set({ hasRunOutOfMemory: true });
+        setHasRunOutOfMemory(true);
       }, TIME_BEFORE_SHOW_REFRESH_BTN);
     }
 
     return () => {
       clearTimeout(timer);
-      set({ hasRunOutOfMemory: false });
+      setHasRunOutOfMemory(false);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [progress, active]);

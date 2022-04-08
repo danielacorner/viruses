@@ -11,7 +11,7 @@ import { ALL_PROTEINS } from "./utils/PROTEINS";
 import styled from "styled-components/macro";
 
 export function StartPage() {
-  const set = useStore((s) => s.set);
+  const setStarted = useStore((s) => s.setStarted);
   const r = useStore((s) => s.worldRadius);
   const [scale, setScale] = useAtom(scaleAtom);
   const worldRadius = useStore((s) => s.worldRadius);
@@ -69,7 +69,7 @@ export function StartPage() {
             padding: "0.25em 3em",
             pointerEvents: "auto",
           }}
-          onClick={() => set({ started: true })}
+          onClick={() => setStarted(true)}
           variant="contained"
           color="primary"
         >

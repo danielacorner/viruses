@@ -16,15 +16,19 @@ type GlobalStateType = {
   worldRadius: number;
   temperature: number;
   isTooltipMaximized: boolean;
+  setIsTooltipMaximized: (n: boolean) => void;
   loading: boolean;
   started: boolean;
+  setStarted: (n: boolean) => void;
   startedThunderdome: boolean;
   paused: boolean;
+  setPaused: (n: boolean) => void;
   hasRunOutOfMemory: boolean;
+  setHasRunOutOfMemory: (n: boolean) => void;
   shuffled: number; // random number to trigger useEffect
   selectedProtein: null | SelectedProtein;
-  set: (newState: any) => any;
-  setTemperature: (newT: number) => any;
+  setSelectedProtein: (n: null | SelectedProtein) => void;
+  setTemperature: (newT: number) => void;
 };
 
 // const startsStarted = true;
@@ -35,16 +39,20 @@ const startsStarted = false && process.env.NODE_ENV === "development";
 export const useStore = create<GlobalStateType>(
   (set): GlobalStateType => ({
     isTooltipMaximized: false,
+    setIsTooltipMaximized: (n) => set({ isTooltipMaximized: n }),
     paused: false,
+    setPaused: (n) => set({ paused: n }),
     hasRunOutOfMemory: false,
+    setHasRunOutOfMemory: (n) => set({ hasRunOutOfMemory: n }),
     started: startsStarted,
+    setStarted: (n) => set({ started: n }),
     startedThunderdome: false,
     loading: !startsStarted,
     worldRadius: 5,
     temperature: 1,
     shuffled: 0,
     selectedProtein: null as null | SelectedProtein,
-    set: (newState) => set((state) => ({ ...state, ...newState })),
+    setSelectedProtein: (n) => set({ selectedProtein: n }),
     setTemperature: (newT) => set(() => ({ temperature: newT })),
   })
 );

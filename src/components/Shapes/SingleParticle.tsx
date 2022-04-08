@@ -40,7 +40,7 @@ export function InteractiveParticle(props) {
     opacity,
   } = props;
 
-  const set = useStore((s) => s.set);
+  const setSelectedProtein = useStore((s) => s.setSelectedProtein);
   const started = useStore((s) => s.started);
   const [scale] = useAtom(scaleAtom);
   const isTooltipMaximized = useStore((s) => s.isTooltipMaximized);
@@ -82,8 +82,7 @@ export function InteractiveParticle(props) {
   // when temperature changes, change particle velocity
   useChangeVelocityWhenTemperatureChanges({ mass, api });
 
-  const handleSetSelectedProtein = () =>
-    set({ selectedProtein: { ...props, api } });
+  const handleSetSelectedProtein = () => setSelectedProtein({ ...props, api });
 
   const pointerDownTime = useRef(0);
   // if we mousedown AND mouseup over the same particle very quickly, select it

@@ -14,7 +14,8 @@ import {
 
 export function PauseControls() {
   const paused = useStore((s) => s.paused);
-  const set = useStore((s) => s.set);
+  const setPaused = useStore((s) => s.setPaused);
+  const setTemperature = useStore((s) => s.setTemperature);
   const temperature = useStore((s) => s.temperature);
   const prevTemp = usePreviousIf(temperature, temperature !== 0);
   const [isDarkMode] = useAtom(isDarkModeAtom);
@@ -24,12 +25,12 @@ export function PauseControls() {
 
     // freeze or unfreeze the temperature
     if (nextPaused === true && temperature !== 0) {
-      set({ temperature: 0 });
+      setTemperature(0);
     } else if (!nextPaused && temperature === 0) {
-      set({ temperature: prevTemp });
+      setTemperature(prevTemp);
     }
 
-    set({ paused: nextPaused });
+    setPaused(nextPaused);
   };
 
   useEventListener("keydown", (event) =>
