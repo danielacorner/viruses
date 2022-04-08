@@ -5,20 +5,11 @@ import * as Sentry from "@sentry/react";
 
 import { ScaleControls } from "./components/controls/ScaleControls";
 import BottomControls from "./components/controls/BottomControls";
-import { useMediaQuery } from "@material-ui/core";
-import { BREAKPOINT_TABLET } from "./utils/constants";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import { getIsTouchDevice } from "./getIsTouchDevice";
-import { DeviceOrientationOrbitControls } from "./components/DeviceOrientationOrbitControls";
 
 export default function CanvasAndScene({ renderProteins = true }) {
   const windowSize = useWindowSize();
-  const isTabletOrLarger = useMediaQuery(`(min-width: ${BREAKPOINT_TABLET}px)`);
-  //  // This one makes the camera move in and out
-  //  useFrame(({ clock, camera }) => {
-  //   camera.position.z = 50 + Math.sin(clock.getElapsedTime()) * 30
-  // })
   return (
     <Sentry.ErrorBoundary
       fallback={() => {
@@ -27,11 +18,11 @@ export default function CanvasAndScene({ renderProteins = true }) {
       }}
     >
       <Canvas
-        // onCreated={({ gl }) => {
-        //   gl.shadowMap.enabled = true;
-        //   gl.shadowMap.type = THREE.PCFShadowMap;
-        // }}
-        // gl={{ antialias: false, alpha: false }}
+        onCreated={({ gl }) => {
+          gl.shadowMap.enabled = true;
+          gl.shadowMap.type = THREE.PCFShadowMap;
+        }}
+        gl={{ antialias: false, alpha: false }}
         style={{
           height: windowSize.height,
           width: windowSize.width,
@@ -39,8 +30,6 @@ export default function CanvasAndScene({ renderProteins = true }) {
         }}
         camera={{ fov: 75, position: [0, 0, 15] }}
       >
-        {/* <color attach="background" args={["red"]} /> */}
-
         <OrbitControls {...({} as any)} />
         {/* {getIsTouchDevice() ? (
           <DeviceOrientationOrbitControls />

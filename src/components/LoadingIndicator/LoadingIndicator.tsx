@@ -1,16 +1,12 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { Button, LinearProgress, Typography } from "@material-ui/core";
-import { Sky, useProgress } from "@react-three/drei";
+import { useProgress } from "@react-three/drei";
 import styled from "styled-components/macro";
-import { useFrame } from "@react-three/fiber";
 import { CanvasAndSceneEmpty } from "../../CanvasAndSceneEmpty";
 import * as Sentry from "@sentry/react";
-import { isDarkModeAtom, scaleAtom, useStore } from "../../store";
+import { isDarkModeAtom, useStore } from "../../store";
 import { useAtom } from "jotai";
-import { MIN_SCALE, MAX_SCALE } from "../../utils/constants";
 import { SpinningParticle } from "./SpinningParticle";
-import { useSpring, animated } from "@react-spring/three";
-import { DarkModeBackground } from "../Scene";
 
 const TIME_BEFORE_SHOW_REFRESH_BTN = 20 * 1000;
 export const SPEED_Y = 0.5;
@@ -42,7 +38,6 @@ export function LoadingIndicator() {
   const [isDarkMode] = useAtom(isDarkModeAtom);
   useDetectStuckOnLoading();
   const { active, progress, errors, item, loaded, total } = useProgress();
-  // const active = true;
   return errors.length > 0 ? (
     <div
       style={{ maxWidth: "100vw", wordBreak: "break-all", padding: "0 6em" }}
@@ -69,7 +64,6 @@ export function LoadingIndicator() {
       <CanvasAndSceneEmpty isLoadingIndicator={true}>
         <SpinningParticle />
       </CanvasAndSceneEmpty>
-      {/* <CenteredSpinner /> */}
     </Sentry.ErrorBoundary>
   ) : null;
 }
@@ -92,31 +86,6 @@ const LoadingIndicatorStyles = styled.div`
   word-break: break-all;
   color: ${(p) => (p.isDarkMode ? "white" : "black")};
 `;
-
-// function useInterval({ cb, interval }) {
-//   useMount(() => {
-//     const timer = window.setInterval(cb, interval);
-//     return () => window.clearInterval(timer);
-//   });
-// }
-
-// const StyledDiv = styled.div`
-//   pointer-events: none;
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   right: 0;
-//   bottom: 0;
-//   display: grid;
-//   place-items: center;
-// `;
-// function CenteredSpinner() {
-//   return (
-//     <StyledDiv>
-//       <CircularProgress size={100} />
-//     </StyledDiv>
-//   );
-// }
 
 const SDiv = styled.div`
   position: fixed;
