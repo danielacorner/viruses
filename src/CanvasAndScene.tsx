@@ -1,7 +1,6 @@
 import Scene from "./components/Scene";
 import { useWindowSize } from "./utils/hooks";
 import * as THREE from "three";
-import * as Sentry from "@sentry/react";
 
 import { ScaleControls } from "./components/controls/ScaleControls";
 import BottomControls from "./components/controls/BottomControls";
@@ -11,12 +10,7 @@ import { OrbitControls } from "@react-three/drei";
 export default function CanvasAndScene({ renderProteins = true }) {
   const windowSize = useWindowSize();
   return (
-    <Sentry.ErrorBoundary
-      fallback={() => {
-        console.log(`🚨 An error has occurred: CanvasAndScene`);
-        return null;
-      }}
-    >
+    <>
       <Canvas
         onCreated={({ gl }) => {
           gl.shadowMap.enabled = true;
@@ -44,6 +38,6 @@ export default function CanvasAndScene({ renderProteins = true }) {
       </Controls.Provider> */}
       <ScaleControls />
       <BottomControls />
-    </Sentry.ErrorBoundary>
+    </>
   );
 }

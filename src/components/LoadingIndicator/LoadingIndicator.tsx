@@ -7,6 +7,7 @@ import * as Sentry from "@sentry/react";
 import { isDarkModeAtom, useStore } from "../../store";
 import { useAtom } from "jotai";
 import { SpinningParticle } from "./SpinningParticle";
+import ErrorBoundary from "../ErrorBoundary";
 
 const TIME_BEFORE_SHOW_REFRESH_BTN = 20 * 1000;
 export const SPEED_Y = 0.5;
@@ -45,9 +46,9 @@ export function LoadingIndicator() {
       {JSON.stringify(errors)}
     </div>
   ) : active ? (
-    <Sentry.ErrorBoundary
-      fallback={() => {
-        return null;
+    <ErrorBoundary
+      component={(p) => {
+        return <>{JSON.stringify(p)}</>;
       }}
     >
       <LoadingIndicatorStyles {...{ isDarkMode }}>
@@ -64,7 +65,7 @@ export function LoadingIndicator() {
       <CanvasAndSceneEmpty isLoadingIndicator={true}>
         <SpinningParticle />
       </CanvasAndSceneEmpty>
-    </Sentry.ErrorBoundary>
+    </ErrorBoundary>
   ) : null;
 }
 

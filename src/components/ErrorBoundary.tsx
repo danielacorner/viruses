@@ -1,9 +1,6 @@
 import { Component, ReactNode } from "react";
 import ReactJson from "react-json-view";
 
-/** Sentry exposes a Sentry.ErrorBoundary component as well, if we want to send bounded errors to Sentry
- * https://docs.sentry.io/platforms/javascript/guides/react/#add-react-error-boundary
- */
 export class ErrorBoundary extends Component<{
   ignore?: boolean;
   component?: JSX.Element | ((err: { error: any; info: any }) => ReactNode);
