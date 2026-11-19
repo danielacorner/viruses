@@ -1,6 +1,6 @@
 # Hey, welcome to my virus terrarium! 🦠
 
-App: https://www.virusterrarium.com
+App: https://virus-terrarium.netlify.app
 
 <p align="center">
 <a href="https://open.vscode.dev/danielacorner/viruses">
